@@ -1,0 +1,6 @@
+.idea
+stonks-api.json
+.env
+node_modules/
+package-lock.json
+index.html
