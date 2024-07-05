@@ -2,20 +2,26 @@
   "name": "stonks",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "dev": "nodemon .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html --dist-dir dist",
+    "build": "parcel build src/index.html --dist-dir dist",
+    "gstart": "clasp push --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "googleapis": "^140.0.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "@types/google-apps-script": "^1.0.83",
+    "nodemon": "^3.1.4",
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
   }
 }

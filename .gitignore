@@ -4,3 +4,6 @@ stonks-api.json
 node_modules/
 package-lock.json
 index.html
+.parcel-cache
+./dist/index.html
+.clasp.json
