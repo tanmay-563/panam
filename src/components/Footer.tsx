@@ -1,7 +1,14 @@
 import React from 'react'
 const Footer = () => {
     return (
-        <div className="footer">footer</div>
+        <div className="footer">
+            <span>
+                Stonks
+            </span>
+            <span>
+                Made with ♥️ in India
+            </span>
+        </div>
     )
 }
 
