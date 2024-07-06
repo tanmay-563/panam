@@ -7,7 +7,7 @@ export const menu = [
                 id: 1,
                 title: "Overview",
                 url: "/",
-                icon: "overview.svg",
+                icon: "overview",
             }
         ],
     },
@@ -19,7 +19,7 @@ export const menu = [
                 id: 1,
                 title: "Mutual Funds",
                 url: "/mutual-funds",
-                icon: "mf.svg",
+                icon: "mutualFunds",
             }
         ],
     }

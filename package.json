@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "rm -rf dist/* && parcel build src/index.html --dist-dir dist && cp ./src/main.js ./src/appsscript.json ./dist",
     "start": "rm -rf dist/* && cp ./src/main.js ./src/appsscript.json ./dist && parcel src/index.html --dist-dir dist -p 8000",
-    "build": "rm -rf dist/* && parcel build src/index.html --dist-dir dist && cp ./src/main.js ./src/appsscript.json ./dist",
+    "build": "rm -rf dist/* && cp ./src/main.js ./src/appsscript.json ./dist && parcel build src/index.html --dist-dir dist",
     "debug": "parcel src/index.html --dist-dir dist --log-level verbose -p 8000",
     "gstart": "clasp push --watch",
     "deploy": "clasp push && clasp deploy",

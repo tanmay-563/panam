@@ -1,7 +1,10 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import {menu} from "../listData"
+import DynamicIcons from "./DynamicIcons";
+
 const Menu = () => {
+    console.log("hey")
     return (
         <div className="menu">
             {menu.map((item) => (
@@ -9,7 +12,7 @@ const Menu = () => {
                     <span className="title">{item.title}</span>
                     {item.listItems.map((listItem) => (
                         <Link to={listItem.url} className="listItem" key={listItem.id}>
-                            <img src={listItem.icon} alt="" />
+                            <DynamicIcons iconName={listItem.icon}></DynamicIcons>
                             <span className="listItemTitle">{listItem.title}</span>
                         </Link>
                     ))}
