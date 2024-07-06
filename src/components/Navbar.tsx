@@ -1,17 +1,30 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useLocation} from "react-router-dom";
+import LogoIcon from "../../public/logo_light.svg";
+import GithubIcon from "../../public/github.svg";
+import SearchIcon from "../../public/search.svg";
+import SettingsIcon from "../../public/settings.svg";
+
 const Navbar = () => {
+
+    const location = useLocation();
+
+    useEffect(() => {
+        console.log(location.pathname);
+    }, [location]);
+
     return (
         <div className="navbar">
-            <div className="logo">
-                <img src="/logo_light.svg" alt=""/>
+            <div className="logoBox">
+                <LogoIcon className="logo"/>
                 <span>
                     Stonks
                 </span>
             </div>
             <div className="icons">
-                <img src="/search.svg" alt="search" className="icon"/>
-                <img src="/github.svg" alt="" className="icon"/>
-                <img src="/settings.svg" alt="" className="icon"/>
+                <SearchIcon className="icon"/>
+                <GithubIcon className="icon"/>
+                <SettingsIcon className="icon"/>
             </div>
 
         </div>

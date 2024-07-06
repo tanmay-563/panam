@@ -2,5 +2,8 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "jsx": "react-jsx"
-  }
+  },
+  "include": ["src",
+    "src/custom.d.ts"
+  ]
 }

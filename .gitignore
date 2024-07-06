@@ -7,6 +7,4 @@ index.html
 .parcel-cache
 .clasp.json
 dist
-!dist/**.js
-!dist/appscript.json
 .DS_Store

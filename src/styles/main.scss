@@ -8,7 +8,11 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box;;
+}
+
+html, body, #app{
+  height: 100%;
 }
 
 a {
@@ -20,10 +24,14 @@ a {
   font-family: "Inter", sans-serif;
   background-color: $main-bg;
   color: $main-color;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
   display: flex;
+  flex: 1
 }
 
 .menuContainer {

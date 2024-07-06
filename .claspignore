@@ -7,6 +7,10 @@
 !**/*.js
 !**/*.ts
 !**/*.html
+!**/*.css
+!**/*.css.map
+!**/*.svg
+!**/*.png
 
 # ignore even valid files if in…
 .git/**

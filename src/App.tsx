@@ -42,6 +42,18 @@ function App() {
                     path: "mutual-funds",
                     element: <MutualFunds/>,
                 },
+            ],
+        },
+        {
+            path: "*",
+            element: <Layout/>,
+            children: [
+                {
+                    path: "*",
+                    element: (
+                        <Home/>
+                    ),
+                },
             ]
         }
     ]);
