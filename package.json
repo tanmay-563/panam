@@ -2,26 +2,34 @@
   "name": "stonks",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/main.js",
   "scripts": {
     "dev": "nodemon .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.html --dist-dir dist",
+    "start": "parcel src/index.html --dist-dir dist -p 8000",
     "build": "parcel build src/index.html --dist-dir dist",
-    "gstart": "clasp push --watch"
+    "debug": "parcel src/index.html --dist-dir dist --log-level verbose -p 8000",
+    "gstart": "clasp push --watch",
+    "deploy": "clasp deploy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "parcel-reporter-static-files-copy": "^1.5.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.1",
+    "sass": "^1.77.6"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
     "@types/google-apps-script": "^1.0.83",
     "nodemon": "^3.1.4",
     "parcel": "^2.12.0",
     "process": "^0.11.10"
+  },
+  "staticFiles": {
+    "staticPath": "public"
   }
 }

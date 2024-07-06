@@ -1,0 +1,23 @@
+.navbar {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo{
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
+    img{
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .icons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
