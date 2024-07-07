@@ -14,7 +14,7 @@ function App() {
     console.log(process.env.NODE_ENV)
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
-    const [instrument, setInstrument] = useState("");
+    const [selectedMenuItem, setSelectedMenuItem] = useState("");
 
     const fetchSheetData = () => {
         console.log("fetching...")
@@ -47,7 +47,7 @@ function App() {
                 <Navbar onRefresh={fetchSheetData}/>
                 <div className="container">
                     <div className="menuContainer">
-                        <Menu instruments={data?.instruments} setInstrument={setInstrument}/>
+                        <Menu instruments={data?.instruments} selectedMenuItem={selectedMenuItem} setSelectedMenuItem={setSelectedMenuItem}/>
                     </div>
                     <div className="contentContainer">
                         <Outlet/>
@@ -75,7 +75,7 @@ function App() {
                 },
                 {
                     path: "transactions",
-                    element: <Transactions headers={data?.headerMap} data={data?.dataMap} instrument={instrument}/>,
+                    element: <Transactions headers={data?.headerMap} data={data?.dataMap} instrument={selectedMenuItem}/>,
                 },
             ],
         },
