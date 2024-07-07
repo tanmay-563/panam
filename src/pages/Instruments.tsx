@@ -9,9 +9,9 @@ const Instruments = ({headers, data, instrument}) => {
     );
     const columns: GridColDef[] = headers[instrument] && headers[instrument].length > 0 ?
         headers[instrument].map((columnName) => ({
-        field: columnName,
-        headerName: columnName,
-        width: 150,
+            field: columnName,
+            headerName: columnName,
+            flex: 1,
     })) : [];
 
     return (
@@ -59,6 +59,7 @@ const Instruments = ({headers, data, instrument}) => {
                         color: 'var(--dark-color)',
                     }
                 }}
+                autoHeight={true}
             />
         </div>
     );
