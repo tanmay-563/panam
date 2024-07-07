@@ -4,7 +4,7 @@ import {
     RouterProvider,
     Outlet,
 } from "react-router-dom";
-import MutualFunds from "./pages/MutualFunds";
+import Transactions from "./pages/Transactions";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
@@ -12,14 +12,17 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
     console.log(process.env.NODE_ENV)
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
+    const [instrument, setInstrument] = useState("");
 
     const fetchSheetData = () => {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
-            setData([]);
+            let data = {"instruments": ["mutualfund"]}
+            setData(data);
+            setLoading(false);
         }
         else{
             google.script.run.withSuccessHandler((data) => {
@@ -44,7 +47,7 @@ function App() {
                 <Navbar onRefresh={fetchSheetData}/>
                 <div className="container">
                     <div className="menuContainer">
-                        <Menu/>
+                        <Menu instruments={data?.instruments} setInstrument={setInstrument}/>
                     </div>
                     <div className="contentContainer">
                         <Outlet/>
@@ -71,8 +74,8 @@ function App() {
                     ),
                 },
                 {
-                    path: "mutual-funds",
-                    element: <MutualFunds headers={data?.headerMap?.MutualFund} data={data?.dataMap?.MutualFund}/>,
+                    path: "transactions",
+                    element: <Transactions headers={data?.headerMap} data={data?.dataMap} instrument={instrument}/>,
                 },
             ],
         },

@@ -15,7 +15,7 @@ function fetchData(){
     const [header, ...rows] = sheet.getDataRange().getValues();
     headerMap[sheet.getSheetName().toLowerCase()] = header
     dataMap[sheet.getSheetName().toLowerCase()] = rows
-    instruments.append(sheet.getSheetName().toLowerCase());
+    instruments.push(sheet.getSheetName().toLowerCase());
   })
   return JSON.stringify({instruments: instruments,
     headerMap: headerMap,

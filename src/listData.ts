@@ -11,18 +11,18 @@ export const menu = [
             }
         ],
     },
-    {
-        id: 2,
-        title: "Instruments",
-        listItems: [
-            {
-                id: 1,
-                title: "Mutual Funds",
-                url: "/mutual-funds",
-                icon: "mutualFunds",
-            }
-        ],
-    }
+    // {
+    //     id: 2,
+    //     title: "Instruments",
+    //     listItems: [
+    //         {
+    //             id: 1,
+    //             title: "Mutual Funds",
+    //             url: "/mutual-funds",
+    //             icon: "mutualFunds",
+    //         }
+    //     ],
+    // }
 ];
 
 export const topDealUsers = [

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import OverviewIcon from "../../public/overview.svg";
-import MutualFundsIcon from "../../public/mf.svg";
+import MutualFundIcon from "../../public/mutualfund.svg";
 
 const iconMap = {
-    "mutualfunds": MutualFundsIcon,
+    "mutualfund": MutualFundIcon,
     "overview": OverviewIcon,
 };
 

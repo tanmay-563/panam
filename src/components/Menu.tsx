@@ -2,8 +2,10 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import {menu} from "../listData"
 import DynamicIcons from "./DynamicIcons";
+import Transactions from "../pages/Transactions";
 
-const Menu = () => {
+const Menu = ({instruments, setInstrument}) => {
+    console.log(instruments)
     return (
         <div className="menu">
             {menu.map((item) => (
@@ -17,6 +19,15 @@ const Menu = () => {
                     ))}
                 </div>
             ))}
+            <div className="item">
+                <span className="title">Transactions</span>
+                {instruments.map((listItem, index) => (
+                    <Link to="/transactions" className="listItem" key={index} onClick={() => setInstrument(listItem)}>
+                        <DynamicIcons iconName={listItem}></DynamicIcons>
+                        <span className="listItemTitle">{listItem}</span>
+                    </Link>
+                ))}
+            </div>
         </div>
     )
 }
