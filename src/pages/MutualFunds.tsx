@@ -1,47 +1,18 @@
+import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 
-const tableStyle = {
-    width: '100%',
-    borderCollapse: 'collapse',
-};
-
-const thTdStyle = {
-    border: '1px solid #ddd',
-    padding: '8px',
-};
-
-const thStyle = {
-    backgroundColor: '#f2f2f2',
-};
-
-const MutualFunds = ({data}) => {
-    // return(
-    //     <div>
-    //         MF
-    //     </div>
-    // )
+const MutualFunds = ({headers, data}) => {
+    const rows: GridRowsProp[] = data.map((row) =>
+        Object.fromEntries(headers.map((key, i) => [key, row[i]])),
+    );
+    const columns: GridColDef[] = headers && headers.length > 0 ? headers.map((columnName) => ({
+        field: columnName,
+        headerName: columnName,
+        width: 150,
+    })) : [];
 
     return (
         <div>
-            <h1>Data from Google Sheets!</h1>
-            <table style={tableStyle}>
-                <thead>
-                <tr>
-                    <th style={{ ...thTdStyle, ...thStyle }}>Column 1</th>
-                    <th style={{ ...thTdStyle, ...thStyle }}>Column 2</th>
-                    <th style={{ ...thTdStyle, ...thStyle }}>Column 3</th>
-                    <th style={{ ...thTdStyle, ...thStyle }}>Column 4</th>
-                </tr>
-                </thead>
-                <tbody>
-                {data.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                        {row.map((cell, cellIndex) => (
-                            <td key={cellIndex} style={thTdStyle}>{cell}</td>
-                        ))}
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+            <DataGrid rows={rows} columns={columns}/>
         </div>
     );
 };

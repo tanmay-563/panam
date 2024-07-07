@@ -23,10 +23,15 @@ function App() {
         }
         else{
             google.script.run.withSuccessHandler((data) => {
-                setData(data);
-            }).getSheetData();
+                console.log("data ", data)
+                setData(JSON.parse(data));
+                setLoading(false)
+            }).withFailureHandler((error) => {
+                console.error("Error fetching data:", error);
+                setData([]);
+                setLoading(false);
+            }).fetchData();
         }
-        setLoading(false)
     };
 
     useEffect(() => {
@@ -49,11 +54,11 @@ function App() {
             </div>
         )
     }
-    // if(loading){
-    //     Layout = () => {
-    //         return <div>Loading..</div> //TODO setup loading icon
-    //     }
-    // }
+    if(loading){
+        Layout = () => {
+            return <div>Loading..</div> //TODO setup loading icon
+        }
+    }
     const router = createBrowserRouter([
         {
             path: "/",
@@ -67,7 +72,7 @@ function App() {
                 },
                 {
                     path: "mutual-funds",
-                    element: <MutualFunds data={data}/>,
+                    element: <MutualFunds headers={data?.headerMap?.MutualFund} data={data?.dataMap?.MutualFund}/>,
                 },
             ],
         },
