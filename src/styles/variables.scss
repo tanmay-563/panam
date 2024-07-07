@@ -6,3 +6,12 @@ $dark-bg: #222b3c;
 $main-color: white;
 $soft-color: #ddd;
 $dark-color: #2a3447;
+
+:root {
+  --main-bg: #{$main-bg};
+  --soft-bg: #{$soft-bg};
+  --dark-bg: #{dark-bg};
+  --main-color: #{$main-color};
+  --soft-color: #{$soft-color};
+  --dark-color: #{$dark-color};
+}

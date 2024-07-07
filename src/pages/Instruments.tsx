@@ -1,6 +1,9 @@
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
+import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid';
 
-const Transactions = ({headers, data, instrument}) => {
+const Instruments = ({headers, data, instrument}) => {
+    if(!instrument){
+        return <div></div>
+    }
     const rows: GridRowsProp[] = data[instrument].map((row) =>
         Object.fromEntries(headers[instrument].map((key, i) => [key, row[i]])),
     );
@@ -12,7 +15,7 @@ const Transactions = ({headers, data, instrument}) => {
     })) : [];
 
     return (
-        <div>
+        <div style={{ height: '100%', width: '100%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
@@ -24,10 +27,41 @@ const Transactions = ({headers, data, instrument}) => {
                         paginationModel: { pageSize: 5, page: 0 },
                     },
                 }}
+                slots={
+                    {toolbar: GridToolbar}
+                }
+                slotProps={{
+                    toolbar: {
+                        showQuickFilter: true,
+                    },
+                }}
                 pageSizeOptions={[5, 10, 100]}
+                sx={{
+                    '& .MuiDataGrid-toolbarContainer': {
+                        backgroundColor: 'var(--soft-color)',
+                    },
+                    '& .MuiInputBase-root': {
+                        color: 'var(--dark-bg)',
+                    },
+                    '& .MuiTablePagination-root ': {
+                        color: 'var(--soft-color)',
+                    },
+                    '& .MuiTablePagination-selectIcon': {
+                        color: 'var(--soft-color)',
+                    },
+                    '& .MuiTablePagination-actions': {
+                        color: 'var(--soft-color)',
+                    },
+                    '& .MuiDataGrid-selectedRowCount': {
+                        color: 'var(--soft-color)',
+                    },
+                    '& .MuiDataGrid-topContainer': {
+                        color: 'var(--dark-color)',
+                    }
+                }}
             />
         </div>
     );
 };
 
-export default Transactions;
+export default Instruments;

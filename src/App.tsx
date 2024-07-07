@@ -4,7 +4,7 @@ import {
     RouterProvider,
     Outlet,
 } from "react-router-dom";
-import Transactions from "./pages/Transactions";
+import Instruments from "./pages/Instruments";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
@@ -20,7 +20,10 @@ function App() {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
-            let data = {"instruments": ["mutualfund"]}
+            let data = {"instruments": ["mutualfund"],
+                "headerMap":{"mutualfund":["id","Scheme Name"]},
+                "dataMap":{"mutualfund":[[1,"Mirae"]]}
+            };
             setData(data);
             setLoading(false);
         }
@@ -75,7 +78,7 @@ function App() {
                 },
                 {
                     path: "transactions",
-                    element: <Transactions headers={data?.headerMap} data={data?.dataMap} instrument={selectedMenuItem}/>,
+                    element: <Instruments headers={data?.headerMap} data={data?.dataMap} instrument={selectedMenuItem}/>,
                 },
             ],
         },
