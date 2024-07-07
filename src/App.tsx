@@ -1,4 +1,3 @@
-import GoogleSheetsTable from "./GoogleSheetsTable";
 import Home from "./pages/Home";
 import {
     createBrowserRouter,
@@ -9,12 +8,35 @@ import MutualFunds from "./pages/MutualFunds";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
+import React, { useEffect, useState } from 'react';
 
 function App() {
-    const Layout = () =>{
+    console.log(process.env.NODE_ENV)
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchSheetData = () => {
+        console.log("fetching...")
+        setLoading(true);
+        if (process.env.NODE_ENV == "development"){
+            setData([]);
+        }
+        else{
+            google.script.run.withSuccessHandler((data) => {
+                setData(data);
+            }).getSheetData();
+        }
+        setLoading(false)
+    };
+
+    useEffect(() => {
+        fetchSheetData();
+    }, []);
+
+    let Layout = () =>{
         return (
             <div className="main">
-                <Navbar/>
+                <Navbar onRefresh={fetchSheetData}/>
                 <div className="container">
                     <div className="menuContainer">
                         <Menu/>
@@ -27,6 +49,11 @@ function App() {
             </div>
         )
     }
+    // if(loading){
+    //     Layout = () => {
+    //         return <div>Loading..</div> //TODO setup loading icon
+    //     }
+    // }
     const router = createBrowserRouter([
         {
             path: "/",
@@ -40,7 +67,7 @@ function App() {
                 },
                 {
                     path: "mutual-funds",
-                    element: <MutualFunds/>,
+                    element: <MutualFunds data={data}/>,
                 },
             ],
         },

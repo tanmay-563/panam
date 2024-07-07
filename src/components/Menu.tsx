@@ -4,7 +4,6 @@ import {menu} from "../listData"
 import DynamicIcons from "./DynamicIcons";
 
 const Menu = () => {
-    console.log("hey")
     return (
         <div className="menu">
             {menu.map((item) => (

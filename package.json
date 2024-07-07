@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "rm -rf dist/* && parcel build src/index.html --dist-dir dist && cp ./src/main.js ./src/appsscript.json ./dist",
-    "start": "rm -rf dist/* && cp ./src/main.js ./src/appsscript.json ./dist && parcel src/index.html --dist-dir dist -p 8000",
+    "dev": "rm -rf dist/* && cp ./src/main.js ./src/appsscript.json ./dist && NODE_ENV=development parcel src/index.html --dist-dir dist -p 8000",
+    "start": "rm -rf dist/* && cp ./src/main.js ./src/appsscript.json ./dist && NODE_ENV=production parcel src/index.html --dist-dir dist -p 8000",
     "build": "rm -rf dist/* && cp ./src/main.js ./src/appsscript.json ./dist && parcel build src/index.html --dist-dir dist",
     "debug": "parcel src/index.html --dist-dir dist --log-level verbose -p 8000",
     "gstart": "clasp push --watch",
     "deploy": "clasp push && clasp deploy",
-    "gpush": "clasp push",
-    "clean": "rm -rf dist/*"
+    "push": "clasp push",
+    "clean": "rm -rf .parcel-cache && rm -rf dist/*"
   },
   "keywords": [],
   "author": "",

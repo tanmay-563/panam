@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 
 const tableStyle = {
     width: '100%',
@@ -14,24 +13,12 @@ const thStyle = {
     backgroundColor: '#f2f2f2',
 };
 
-const MutualFunds = () => {
+const MutualFunds = ({data}) => {
     // return(
     //     <div>
     //         MF
     //     </div>
     // )
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        const fetchSheetData = () => {
-            // @ts-ignore
-            google.script.run.withSuccessHandler((data) => {
-                setData(data);
-            }).getSheetData();
-        };
-
-        fetchSheetData();
-    }, []);
 
     return (
         <div>
