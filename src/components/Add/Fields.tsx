@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {Field, Form, Formik} from "formik";
 import AutosuggestWrapper from "./AutosuggestWrapper";
 
 const Fields = ({
@@ -29,51 +28,11 @@ const Fields = ({
     });
 
     const [values, setValues] = useState({});
-    const handleChange = (columnName, value) => {
-        setValues(prevValues => ({
-            ...prevValues,
-            [columnName]: value
-        }));
-    };
 
     const handleSubmit = event => {
         event.preventDefault();
         console.log(values); // Handle form submission logic here
-        // Reset form state if needed
         setValues({});
-    };
-
-    // Autosuggest component for each field
-    const renderAutosuggest = columnName => {
-        const value = values[columnName] || '';
-        const handleChangeInput = (_, { newValue }) => {
-            handleChange(columnName, newValue);
-        };
-
-        const getSuggestions = value => {
-            const inputValue = value.trim().toLowerCase();
-            const suggestions = uniqueValues[columnName].filter(
-                suggestion => suggestion && suggestion.toLowerCase().startsWith(inputValue)
-            );
-            return suggestions.slice(0, 5); // Limit suggestions to 5 items
-        };
-
-        const inputProps = {
-            value,
-            onChange: handleChangeInput,
-            placeholder: `Type ${columnName}`
-        };
-
-        return (
-            <Autosuggest
-                suggestions={getSuggestions(value)}
-                onSuggestionsFetchRequested={({ value }) => getSuggestions(value)}
-                onSuggestionsClearRequested={() => {}}
-                getSuggestionValue={suggestion => suggestion}
-                renderSuggestion={suggestion => <div>{suggestion}</div>}
-                inputProps={inputProps}
-            />
-        );
     };
 
     const handleSuggestionsSelected = (suggestion) => {

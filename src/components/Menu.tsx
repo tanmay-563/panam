@@ -16,7 +16,7 @@ const Menu = ({instruments, selectedMenuItem, setSelectedMenuItem}) => {
                             className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
                             key={listItem.id}
                             onClick={() => setSelectedMenuItem(listItem)}>
-                            <DynamicIcons iconName={listItem.icon}></DynamicIcons>
+                            <DynamicIcons name={listItem.icon}></DynamicIcons>
                             <span className="listItemTitle">{listItem.title}</span>
                         </Link>
                     ))}
@@ -30,7 +30,7 @@ const Menu = ({instruments, selectedMenuItem, setSelectedMenuItem}) => {
                         className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
                         key={index}
                         onClick={() => setSelectedMenuItem(listItem)}>
-                        <DynamicIcons iconName={listItem}></DynamicIcons>
+                        <DynamicIcons name={listItem}></DynamicIcons>
                         <span className="listItemTitle">{listItem}</span>
                     </Link>
                 ))}

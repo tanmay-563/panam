@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import React, { useEffect, useState } from 'react';
 import Add from "./components/Add/Add";
+import DynamicIcons from "./components/DynamicIcons";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -21,9 +22,9 @@ function App() {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
-            let data = {"instruments": ["mutualfund", "mufi"],
-                "headerMap":{"mutualfund":["id","Name"]},
-                "dataMap":{"mutualfund":[[1,"Mirae"]]}
+            let data = {"instruments": ["mutualfund", "epf", "fdss", "lic", "nps", "sgb"],
+                "headerMap":{"mutualfund":["id","Name"],"epf":["id","Name"]},
+                "dataMap":{"mutualfund":[[1,"Mirae"]],"epf":[[1,"Contr"]]}
             };
             setData(data);
             setLoading(false);
