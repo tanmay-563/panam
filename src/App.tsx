@@ -9,19 +9,20 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import React, { useEffect, useState } from 'react';
+import Add from "./components/Add";
 
 function App() {
     console.log(process.env.NODE_ENV)
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState("");
-
+    const [openAdd, setOpenAdd] = useState(false);
     const fetchSheetData = () => {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
-            let data = {"instruments": ["mutualfund"],
-                "headerMap":{"mutualfund":["id","Scheme Name"]},
+            let data = {"instruments": ["mutualfund", "mufi"],
+                "headerMap":{"mutualfund":["id","Name"]},
                 "dataMap":{"mutualfund":[[1,"Mirae"]]}
             };
             setData(data);
@@ -47,13 +48,19 @@ function App() {
     let Layout = () =>{
         return (
             <div className="main">
-                <Navbar onRefresh={fetchSheetData}/>
+                <Navbar onRefresh={fetchSheetData} onOpenAdd={setOpenAdd}/>
                 <div className="container">
                     <div className="menuContainer">
                         <Menu instruments={data?.instruments} selectedMenuItem={selectedMenuItem} setSelectedMenuItem={setSelectedMenuItem}/>
                     </div>
                     <div className="contentContainer">
                         <Outlet/>
+                        {openAdd && <Add
+                            instruments={data?.instruments}
+                            headerMap={data?.headerMap}
+                            dataMap={data?.dataMap}
+                            setOpenAdd={setOpenAdd}
+                        />}
                     </div>
                 </div>
                 <Footer/>

@@ -5,6 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "types": ["node"],
     "lib": ["es2019"],
+    "resolveJsonModule": true
   },
   "include": ["src",
     "src/custom.d.ts"

@@ -1,0 +1,9 @@
+{
+  "datagrid": {
+    "initialState": {
+      "columns": {
+        "visibleColumns": ["Name", "Date", "Invested", "Current"]
+      }
+    }
+  }
+}

@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import LogoIcon from "../../public/logo_light.svg";
 import GithubIcon from "../../public/github.svg";
-import SearchIcon from "../../public/search.svg";
+import AddIcon from "../../public/add.svg";
 import RefreshIcon from "../../public/refresh.svg";
 import SettingsIcon from "../../public/settings.svg";
+import Add from "./Add";
 
-const Navbar = ({onRefresh}) => {
+const Navbar = ({onRefresh, onOpenAdd}) => {
+
     return (
         <div className="navbar">
             <div className="logoBox">
@@ -15,7 +17,7 @@ const Navbar = ({onRefresh}) => {
                 </span>
             </div>
             <div className="icons">
-                <SearchIcon className="icon"/>
+                <AddIcon className="icon" onClick={()=>onOpenAdd(true)}/>
                 <RefreshIcon className="icon" onClick={onRefresh}/>
                 <GithubIcon className="icon"/>
                 <SettingsIcon className="icon"/>
