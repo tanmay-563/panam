@@ -1,32 +1,43 @@
 import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid';
-import config from "../config/default.json";
 
-type Props = {
-    headers: any,
-    data: any,
-    instrument: string
-};
-
-const Instruments = (props: Props) => {
-    if(!props.instrument){
+const Instruments = ({
+                         headerMap,
+                         data,
+                         config,
+                         instrument
+                     }) => {
+    if(!instrument){
         return <div></div>
     }
 
-    const rows: GridRowsProp[] = props.data[props.instrument].map((row) =>
-        Object.fromEntries(props.headers[props.instrument].map((key, i) => [key, row[i]])),
+    let cc = config["_columns"]
+    let columnConfig= cc.data.map(row => {
+        let obj = {};
+        cc.headers.forEach((header, index) => {
+            obj[header] = row[index];
+        });
+        return obj;
+    }).filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
+
+    const headers = headerMap[instrument]
+
+    const rows: GridRowsProp[] = data[instrument].map((row) =>
+        Object.fromEntries(headers.map((key, i) => [key, row[i]])),
     );
 
-    const columns: GridColDef[] = props.headers[props.instrument] && props.headers[props.instrument].length > 0 ?
-        props.headers[props.instrument].map((columnName) => ({
+    const columns: GridColDef[] = headers && headers.length > 0 ?
+        headers.map((columnName) => ({
             field: columnName,
             headerName: columnName,
             flex: 1,
     })) : [];
 
-    const columnVisibilityModel = columns.reduce((acc, column) => {
-        acc[column.field] = config.datagrid.initialState.columns.visibleColumns.includes(column.field); // Set true for 'id' and 'name', false for others
-        return acc;
-    }, {});
+    let columnVisibilityModel = {}
+    columnConfig.forEach(item => {
+            columnVisibilityModel[item.Column] = item.isInitiallyVisible;
+    });
+    console.log("conf " + columnConfig)
+    console.log(columnVisibilityModel);
 
     const dataGridStyles = {
         '& .MuiDataGrid-toolbarContainer': {
@@ -54,7 +65,7 @@ const Instruments = (props: Props) => {
 
     return (
         <div>
-            <div className="title">{props.instrument}</div>
+            <div className="title">{instrument}</div>
             <DataGrid
                 rows={rows}
                 columns={columns}

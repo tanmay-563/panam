@@ -24,15 +24,15 @@ function App() {
         if (process.env.NODE_ENV == "development"){
             let data = {"instruments": ["mutualfund", "epf", "fdss", "lic", "nps", "sgb"],
                 "headerMap":{"mutualfund":["id","Name"],"epf":["id","Name"]},
-                "dataMap":{"mutualfund":[[1,"Mirae"]],"epf":[[1,"Contr"]]}
+                "dataMap":{"mutualfund":[[1,"Mirae"]],"epf":[[1,"Contr"]]},
             };
             setData(data);
             setLoading(false);
         }
         else{
             google.script.run.withSuccessHandler((data) => {
-                console.log("data ", data)
                 setData(JSON.parse(data));
+                console.log("data ", JSON.parse(data).config)
                 setLoading(false)
             }).withFailureHandler((error) => {
                 console.error("Error fetching data:", error);
@@ -86,7 +86,12 @@ function App() {
                 },
                 {
                     path: "transactions",
-                    element: <Instruments headers={data?.headerMap} data={data?.dataMap} instrument={selectedMenuItem}/>,
+                    element: <Instruments
+                        headerMap={data?.headerMap}
+                        data={data?.dataMap}
+                        config={data?.config}
+                        instrument={selectedMenuItem}
+                    />,
                 },
             ],
         },
