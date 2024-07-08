@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import React, { useEffect, useState } from 'react';
-import Add from "./components/Add";
+import Add from "./components/Add/Add";
 
 function App() {
     console.log(process.env.NODE_ENV)
