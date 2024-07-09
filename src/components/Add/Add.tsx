@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-// import Autosuggest from 'react-autosuggest';
 import Fields from "./Fields";
 import AutosuggestWrapper from "./AutosuggestWrapper";
 
@@ -8,6 +7,7 @@ const Add = ({
                  instruments,
                  contentColumnMap,
                  headerMap,
+                config
              }) => {
     const [selectedInstrument, setSelectedInstrument] = useState('');
 
@@ -34,7 +34,12 @@ const Add = ({
                         />
                     </div>
                 </form>
-                <Fields instrument={selectedInstrument} headerMap={headerMap} contentColumnMap={contentColumnMap}/>
+                <Fields
+                    instrument={selectedInstrument}
+                    headerMap={headerMap}
+                    contentColumnMap={contentColumnMap}
+                    config={config}
+                />
             </div>
         </div>
     )

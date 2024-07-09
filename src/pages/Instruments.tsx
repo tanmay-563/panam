@@ -9,9 +9,7 @@ const Instruments = ({
     if(!instrument){
         return <div></div>
     }
-
-    let cc = config["_columns"]
-    let columnConfig= cc.filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
+    let columnConfig= config["_columns"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
 
     const headers = headerMap[instrument]
 

@@ -1,5 +1,4 @@
 function convertToJSON(array) {
-    console.log("Arr " + array)
     const headers = array[0];
     const rows = array.slice(1);
 

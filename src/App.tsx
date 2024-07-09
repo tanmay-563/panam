@@ -59,6 +59,7 @@ function App() {
                             headerMap={data?.headerMap}
                             contentColumnMap={data?.contentColumnMap}
                             setOpenAdd={setOpenAdd}
+                            config={data?.config}
                         />}
                     </div>
                 </div>
