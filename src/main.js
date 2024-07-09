@@ -3,7 +3,7 @@ let faviconUrl = "https://drive.google.com/uc?id=1aQQqYhnESMZ-ZboAs4Rdcu0x8O0ZXl
 function doGet() {
   return HtmlService.createHtmlOutputFromFile("index")
       .setFaviconUrl(faviconUrl)
-      .setTitle("Stonks");
+      .setTitle("Panam");
 }
 
 function fetchData(){

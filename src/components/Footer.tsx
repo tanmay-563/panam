@@ -3,7 +3,7 @@ const Footer = () => {
     return (
         <div className="footer">
             <span>
-                Stonks
+                Panam
             </span>
             <span>
                 Made with ♥️ in India

@@ -13,7 +13,7 @@ const Navbar = ({onRefresh, onOpenAdd}) => {
             <div className="logoBox">
                 <LogoIcon className="logo"/>
                 <span>
-                    Stonks
+                    Panam
                 </span>
             </div>
             <div className="icons">
