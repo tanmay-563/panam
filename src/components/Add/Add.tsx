@@ -21,15 +21,27 @@ const Add = ({
         }
     }, [selectedMenuItem])
 
+    const  getRequiredHeaders = (instrument) =>{
+        try{
+            let columnConfig= config["_columns"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
+            let isAutomatedColumns = columnConfig.filter(config => config.isAutomated == true).map(config => config.Column);
+            return headerMap[instrument].filter(header => !isAutomatedColumns.includes(header));
+        }
+        catch (e){
+            return headerMap[instrument]
+        }
+    }
+
     const handleSubmit = () =>{
-        console.log("input " + JSON.stringify(inputValues))
+        const requiredHeaders = getRequiredHeaders(selectedInstrument)
+        requiredHeaders.forEach((header)=>{
+            console.log("header " + header)
+            console.log("data " + JSON.stringify(inputValues[header]))
+        })
     }
 
     const handleInstrumentSelected = (entity, suggestion) => {
-        console.log("suggestion ", suggestion)
-        if(suggestion.Name){
-            setSelectedInstrument(suggestion.Name.toLowerCase())
-        }
+        setSelectedInstrument(suggestion.Name?.toLowerCase() ?? suggestion);
     };
 
     return (
@@ -55,9 +67,8 @@ const Add = ({
                 </form>
                 <Fields
                     instrument={selectedInstrument}
-                    headerMap={headerMap}
+                    requiredHeaders={getRequiredHeaders(selectedInstrument)}
                     contentColumnMap={contentColumnMap}
-                    config={config}
                     inputValues={inputValues}
                 />
                 <div className="modalFooter">

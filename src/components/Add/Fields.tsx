@@ -14,34 +14,25 @@ function getRequiredHeaders(instrument, headers, contentColumnMap, config){
 
 const Fields = ({
                        instrument,
-                       headerMap,
                        contentColumnMap,
-                       config,
+                       requiredHeaders,
                        inputValues
                    }) => {
-    let headers = headerMap[instrument]
-    if(!headers){
-        return (
-            <div/>
-        )
-    }
-    headers = getRequiredHeaders(instrument, headers, contentColumnMap, config)
-
+    if(!requiredHeaders)
+        return <div/>
     let uniqueValues = {}
-    headers.forEach(columnName => {
+    requiredHeaders.forEach(columnName => {
         uniqueValues[columnName] = Array.from(new Set(contentColumnMap[instrument][columnName]));
     });
 
     const handleInputChange = (entity, suggestion) => {
-        console.log("entity ", entity)
-        console.log('Selected:', suggestion);
         inputValues[entity] = suggestion
     };
 
     return (
         <form className="form">
             <div className="fields">
-                {headers.map(columnName => (
+                {requiredHeaders.map(columnName => (
                     <div key={columnName} className="field">
                         <label htmlFor={columnName}>{columnName}</label>
                         <AutosuggestWrapper
