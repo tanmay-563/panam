@@ -2,7 +2,7 @@ import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid'
 
 const Instruments = ({
                          headerMap,
-                         data,
+                         contentRowMap,
                          config,
                          instrument
                      }) => {
@@ -11,19 +11,11 @@ const Instruments = ({
     }
 
     let cc = config["_columns"]
-    let columnConfig= cc.data.map(row => {
-        let obj = {};
-        cc.headers.forEach((header, index) => {
-            obj[header] = row[index];
-        });
-        return obj;
-    }).filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
+    let columnConfig= cc.filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
 
     const headers = headerMap[instrument]
 
-    const rows: GridRowsProp[] = data[instrument].map((row) =>
-        Object.fromEntries(headers.map((key, i) => [key, row[i]])),
-    );
+    const rows: GridRowsProp[] = contentRowMap[instrument]
 
     const columns: GridColDef[] = headers && headers.length > 0 ?
         headers.map((columnName) => ({
@@ -36,8 +28,6 @@ const Instruments = ({
     columnConfig.forEach(item => {
             columnVisibilityModel[item.Column] = item.isInitiallyVisible;
     });
-    console.log("conf " + columnConfig)
-    console.log(columnVisibilityModel);
 
     const dataGridStyles = {
         '& .MuiDataGrid-toolbarContainer': {

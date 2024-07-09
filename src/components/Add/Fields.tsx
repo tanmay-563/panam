@@ -4,27 +4,18 @@ import AutosuggestWrapper from "./AutosuggestWrapper";
 const Fields = ({
                        instrument,
                        headerMap,
-                       dataMap
+                    contentColumnMap
                    }) => {
-    let header = headerMap[instrument]
-    if(!header){
+    let headers = headerMap[instrument]
+    if(!headers){
         return (
             <div/>
         )
     }
     const uniqueValues = {};
 
-    header.forEach(columnName => {
-        uniqueValues[columnName] = [];
-    });
-
-    dataMap[instrument].forEach(row => {
-        header.forEach((columnName, columnIndex) => {
-            const value = row[columnIndex];
-            if (!uniqueValues[columnName].includes(value)) {
-                uniqueValues[columnName].push(value);
-            }
-        });
+    headers.forEach(columnName => {
+        uniqueValues[columnName] = Array.from(new Set(contentColumnMap[instrument][columnName]));
     });
 
     const [values, setValues] = useState({});
@@ -41,7 +32,7 @@ const Fields = ({
 
     return (
         <form onSubmit={handleSubmit}>
-            {header.map(columnName => (
+            {headers.map(columnName => (
                 <div key={columnName}>
                     <label htmlFor={columnName}>{columnName}</label>
                     <AutosuggestWrapper

@@ -10,7 +10,8 @@ import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import React, { useEffect, useState } from 'react';
 import Add from "./components/Add/Add";
-import DynamicIcons from "./components/DynamicIcons";
+import devData from "./devData.json";
+import getProcessedData from "./utils/dataProcessor";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -22,17 +23,14 @@ function App() {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
-            let data = {"instruments": ["mutualfund", "epf", "fdss", "lic", "nps", "sgb"],
-                "headerMap":{"mutualfund":["id","Name"],"epf":["id","Name"]},
-                "dataMap":{"mutualfund":[[1,"Mirae"]],"epf":[[1,"Contr"]]},
-            };
-            setData(data);
+            let data = devData.data;
+            setData(getProcessedData(data));
             setLoading(false);
         }
         else{
             google.script.run.withSuccessHandler((data) => {
-                setData(JSON.parse(data));
-                console.log("data ", JSON.parse(data).config)
+                setData(getProcessedData(JSON.parse(data)));
+                console.log("data ", JSON.parse(data))
                 setLoading(false)
             }).withFailureHandler((error) => {
                 console.error("Error fetching data:", error);
@@ -59,7 +57,7 @@ function App() {
                         {openAdd && <Add
                             instruments={data?.instruments}
                             headerMap={data?.headerMap}
-                            dataMap={data?.dataMap}
+                            contentColumnMap={data?.contentColumnMap}
                             setOpenAdd={setOpenAdd}
                         />}
                     </div>
@@ -88,7 +86,7 @@ function App() {
                     path: "transactions",
                     element: <Instruments
                         headerMap={data?.headerMap}
-                        data={data?.dataMap}
+                        contentRowMap={data?.contentRowMap}
                         config={data?.config}
                         instrument={selectedMenuItem}
                     />,

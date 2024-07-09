@@ -7,8 +7,10 @@
   - scriptId - id after  https://script.google.com/u/0/home/projects/ in url
   - rootDir - /Users/m.akshay/projects/personal/stonks/dist
 - to implement
-  - separate out data processing file
+  - separate out contentRowMap processing file
   - use column config more exctensively
   - ask for password
-  - add data
+  - add contentRowMap
   - setup loading icon
+  - rebrand to panam
+  - 

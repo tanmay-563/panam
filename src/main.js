@@ -1,6 +1,4 @@
 let faviconUrl = "https://drive.google.com/uc?id=1aQQqYhnESMZ-ZboAs4Rdcu0x8O0ZXlvo&export=download&format=png"
-let headerMap = {}
-let dataMap = {}
 
 function doGet() {
   return HtmlService.createHtmlOutputFromFile("index")
@@ -10,43 +8,14 @@ function doGet() {
 
 function fetchData(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let instruments = []
-  let config = {}
+  let data = {}
   ss.getSheets().forEach((sheet)=>{
     let sheetName = sheet.getSheetName().toLowerCase()
-    const [header, ...rows] = sheet.getDataRange().getValues();
-    if(sheetName[0] === '_'){
-      config[sheetName] = {
-        headers: header,
-        data: rows,
-      }
-    }
-    else{
-      headerMap[sheetName] = header
-      dataMap[sheetName] = rows
-      instruments.push(sheetName);
-    }
+    data[sheetName]  = sheet.getDataRange().getValues();
   })
-  return JSON.stringify({instruments: instruments,
-    headerMap: headerMap,
-    dataMap: dataMap,
-    config: config,
-  })
+  return JSON.stringify(data)
 }
 
-function getHeader(sheetName){
-  if (Object.keys(headerMap).length === 0){
-    fetchData();
-  }
-  return headerMap[sheetName];
-}
-
-function getRows(sheetName){
-  if (Object.keys(dataMap).length === 0){
-    fetchData();
-  }
-  return dataMap[sheetName];
-}
 
 function copyFormulasToLastRow(sheetName){
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();

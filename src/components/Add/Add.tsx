@@ -3,14 +3,12 @@ import React, {useState} from 'react'
 import Fields from "./Fields";
 import AutosuggestWrapper from "./AutosuggestWrapper";
 
-type Props = {
-    setOpenAdd,
-    instruments,
-    dataMap,
-    headerMap,
-};
-
-const Add = (props: Props) => {
+const Add = ({
+                 setOpenAdd,
+                 instruments,
+                 contentColumnMap,
+                 headerMap,
+             }) => {
     const [selectedInstrument, setSelectedInstrument] = useState('');
 
     const handleSubmit = (e) =>{
@@ -24,19 +22,19 @@ const Add = (props: Props) => {
     return (
         <div className="add">
             <div className="modal">
-                <span className="close" onClick={()=>props.setOpenAdd(false)}>X</span>
+                <span className="close" onClick={()=>setOpenAdd(false)}>X</span>
                 <h1> Add new transaction</h1>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Instrument Type</label>
                         <AutosuggestWrapper
-                            suggestions={props.instruments}
+                            suggestions={instruments}
                             onSuggestionSelected={handleInstrumentSelected}
                             placeholder=""
                         />
                     </div>
                 </form>
-                <Fields instrument={selectedInstrument} headerMap={props.headerMap} dataMap={props.dataMap}/>
+                <Fields instrument={selectedInstrument} headerMap={headerMap} contentColumnMap={contentColumnMap}/>
             </div>
         </div>
     )
