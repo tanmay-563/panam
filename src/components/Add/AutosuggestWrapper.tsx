@@ -2,7 +2,18 @@ import React, {useState} from 'react'
 import Autosuggest from 'react-autosuggest';
 
 const MAX_SUGGESTIONS = 5;
-const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) => {
+
+function getSuggestion(suggestion, suggestionsKey){
+    suggestion = typeof suggestion == "string" ? suggestion : suggestion[suggestionsKey]
+    return typeof suggestion == "string"? suggestion: "";
+}
+
+const AutosuggestWrapper = ({
+                                suggestions,
+                                onSuggestionSelected,
+                                placeholder,
+                                suggestionsKey = ""
+}) => {
     const [value, setValue] = useState('');
     const [suggestionsArray, setSuggestionsArray] = useState([]);
 
@@ -10,17 +21,16 @@ const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) 
         const inputValueLowerCase = inputValue.trim().toLowerCase();
         const inputLength = inputValueLowerCase.length;
 
-        return inputLength === 0 || (suggestions.length && typeof suggestions[0] != "string") ?
-            [] : suggestions.filter(suggestion =>
-            suggestion.toLowerCase().slice(0, inputLength) === inputValueLowerCase
-        ).slice(0, MAX_SUGGESTIONS);
+        return (inputLength === 0)? [] :suggestions.filter(suggestion =>
+            getSuggestion(suggestion, suggestionsKey).toLowerCase().slice(0, inputLength) === inputValueLowerCase
+        ).slice(0, MAX_SUGGESTIONS)
     };
 
-    const getSuggestionValue = (suggestion) => suggestion;
+    const getSuggestionValue = (suggestion) => getSuggestion(suggestion, suggestionsKey);
 
     const renderSuggestion = (suggestion) => (
         <span id="suggestionText">
-            {suggestion}
+            {getSuggestion(suggestion, suggestionsKey)}
         </span>
     );
 
@@ -55,13 +65,6 @@ const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) 
                     onSuggestionSelected(suggestion);
                 }
             }}
-            // theme={{
-            //     container: 'autosuggest-container',
-            //     input: 'autosuggest-input',
-            //     suggestionsContainer: 'autosuggest-suggestions-container',
-            //     suggestion: 'autosuggest-suggestion',
-            //     suggestionHighlighted: 'autosuggest-suggestion--highlighted'
-            // }}
         />
     );
 };

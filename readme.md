@@ -9,3 +9,4 @@
 - to implement
   - use column config more exctensively
   - ask for password
+  - in memory cache for all stuff local storage

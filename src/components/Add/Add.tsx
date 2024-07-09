@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Fields from "./Fields";
 import AutosuggestWrapper from "./AutosuggestWrapper";
+import {getDisplayName} from "../../utils/helper";
 
 const Add = ({
                  instruments,
@@ -10,21 +11,23 @@ const Add = ({
                  setOpenAdd,
                 config
              }) => {
-    console.log(selectedMenuItem)
+    const instrumentsConfig = config?._instruments || {};
     const [selectedInstrument, setSelectedInstrument] = useState('');
 
     useEffect(()=>{
         if(instruments.includes(selectedMenuItem)){
             setSelectedInstrument(selectedMenuItem)
         }
-    }, selectedMenuItem)
+    }, [selectedMenuItem])
 
     const handleSubmit = (e) =>{
         e.preventDefault()
     }
 
     const handleInstrumentSelected = (suggestion) => {
-        setSelectedInstrument(suggestion)
+        if(suggestion.Name){
+            setSelectedInstrument(suggestion.Name.toLowerCase())
+        }
     };
 
     return (
@@ -38,9 +41,10 @@ const Add = ({
                             <label>Instrument Type</label>
                             <div>
                                 <AutosuggestWrapper
-                                    suggestions={instruments}
+                                    suggestions={instrumentsConfig}
                                     onSuggestionSelected={handleInstrumentSelected}
-                                    placeholder={selectedInstrument}
+                                    placeholder={getDisplayName(instrumentsConfig, selectedInstrument)}
+                                    suggestionsKey="Display Name"
                                 />
                             </div>
                         </div>

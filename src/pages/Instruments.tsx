@@ -38,7 +38,9 @@ const Instruments = ({
     }, []);
 
     useEffect(() => {
-        localStorage.setItem(getLocalStorageKey(instrument), JSON.stringify(columnVisibility));
+        if(Object.keys(columnVisibility).length){
+            localStorage.setItem(getLocalStorageKey(instrument), JSON.stringify(columnVisibility));
+        }
     }, [columnVisibility]);
 
     const rows: GridRowsProp[] = contentRowMap[instrument]

@@ -1,6 +1,6 @@
-export function getDisplayName(config, instrument) {
+export function getDisplayName(instrumentsConfig, instrument) {
     try{
-        const entry = config.find(item => item.Name.toLowerCase() === instrument.toLowerCase());
+        const entry = instrumentsConfig.find(item => item.Name.toLowerCase() === instrument.toLowerCase());
         return entry ? entry["Display Name"] : undefined;
     }
     catch (e){
