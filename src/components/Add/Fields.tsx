@@ -1,20 +1,14 @@
 import React, {useState} from 'react'
 import AutosuggestWrapper from "./AutosuggestWrapper";
 
-function getUniqueColumnValues(instrument, headers, contentColumnMap, config){
-    const uniqueValues = {};
+function getRequiredHeaders(instrument, headers, contentColumnMap, config){
     try{
         let columnConfig= config["_columns"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
         let isAutomatedColumns = columnConfig.filter(config => config.isAutomated == true).map(config => config.Column);
-        headers = headers.filter(header => !isAutomatedColumns.includes(header));
-
-        headers.forEach(columnName => {
-            uniqueValues[columnName] = Array.from(new Set(contentColumnMap[instrument][columnName]));
-        });
-        return uniqueValues
+        return headers.filter(header => !isAutomatedColumns.includes(header));
     }
     catch (e){
-        return uniqueValues
+        return headers
     }
 }
 
@@ -30,7 +24,12 @@ const Fields = ({
             <div/>
         )
     }
-    const uniqueValues = getUniqueColumnValues(instrument, headers, contentColumnMap, config)
+    headers = getRequiredHeaders(instrument, headers, contentColumnMap, config)
+
+    let uniqueValues = {}
+    headers.forEach(columnName => {
+        uniqueValues[columnName] = Array.from(new Set(contentColumnMap[instrument][columnName]));
+    });
 
     const [values, setValues] = useState({});
 

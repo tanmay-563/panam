@@ -12,6 +12,8 @@ import React, { useEffect, useState } from 'react';
 import Add from "./components/Add/Add";
 import devData from "./devData.json";
 import getProcessedData from "./utils/dataProcessor";
+import ReactLoading from 'react-loading';
+import LoadingOverlay from "./components/LoadingOverlay";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -25,7 +27,7 @@ function App() {
         if (process.env.NODE_ENV == "development"){
             let data = devData.data;
             setData(getProcessedData(data));
-            setLoading(false);
+            setTimeout(() => setLoading(false), 3 * 1000)
         }
         else{
             google.script.run.withSuccessHandler((data) => {
@@ -50,10 +52,16 @@ function App() {
                 <Navbar onRefresh={fetchSheetData} onOpenAdd={setOpenAdd}/>
                 <div className="container">
                     <div className="menuContainer">
-                        <Menu instruments={data?.instruments} selectedMenuItem={selectedMenuItem} setSelectedMenuItem={setSelectedMenuItem}/>
+                        <Menu
+                            instruments={data?.instruments}
+                            config={data?.config}
+                            selectedMenuItem={selectedMenuItem}
+                            setSelectedMenuItem={setSelectedMenuItem}
+                        />
                     </div>
                     <div className="contentContainer">
                         <Outlet/>
+                        {loading && <LoadingOverlay/>}
                         {openAdd && <Add
                             instruments={data?.instruments}
                             headerMap={data?.headerMap}
@@ -67,11 +75,7 @@ function App() {
             </div>
         )
     }
-    if(loading){
-        Layout = () => {
-            return <div>Loading..</div> //TODO setup loading icon
-        }
-    }
+
     const router = createBrowserRouter([
         {
             path: "/",

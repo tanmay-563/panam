@@ -18,9 +18,9 @@ const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) 
     const getSuggestionValue = (suggestion) => suggestion;
 
     const renderSuggestion = (suggestion) => (
-        <div>
+        <span id="suggestionText">
             {suggestion}
-        </div>
+        </span>
     );
 
     const onChange = (event, { newValue }) => {

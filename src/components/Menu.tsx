@@ -2,9 +2,14 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import {menu} from "../listData"
 import DynamicIcons from "./DynamicIcons";
-
-const Menu = ({instruments, selectedMenuItem, setSelectedMenuItem}) => {
-    console.log(selectedMenuItem)
+import {getDisplayName} from "../utils/helper";
+const Menu = ({
+                  instruments,
+                  config,
+                  selectedMenuItem,
+                  setSelectedMenuItem}
+) => {
+    const instrumentConfig = config?._instruments || {};
     return (
         <div className="menu">
             {menu.map((item) => (
@@ -24,14 +29,14 @@ const Menu = ({instruments, selectedMenuItem, setSelectedMenuItem}) => {
             ))}
             <div className="item">
                 <span className="title">Transactions</span>
-                {instruments.map((listItem, index) => (
+                {instruments?.map((listItem, index) => (
                     <Link
                         to="/transactions"
                         className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
                         key={index}
                         onClick={() => setSelectedMenuItem(listItem)}>
                         <DynamicIcons name={listItem}></DynamicIcons>
-                        <span className="listItemTitle">{listItem}</span>
+                        <span className="listItemTitle">{getDisplayName(instrumentConfig, listItem)}</span>
                     </Link>
                 ))}
             </div>
