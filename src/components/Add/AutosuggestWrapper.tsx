@@ -55,13 +55,13 @@ const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) 
                     onSuggestionSelected(suggestion);
                 }
             }}
-            theme={{
-                container: 'autosuggest-container',
-                input: 'autosuggest-input',
-                suggestionsContainer: 'autosuggest-suggestions-container',
-                suggestion: 'autosuggest-suggestion',
-                suggestionHighlighted: 'autosuggest-suggestion--highlighted'
-            }}
+            // theme={{
+            //     container: 'autosuggest-container',
+            //     input: 'autosuggest-input',
+            //     suggestionsContainer: 'autosuggest-suggestions-container',
+            //     suggestion: 'autosuggest-suggestion',
+            //     suggestionHighlighted: 'autosuggest-suggestion--highlighted'
+            // }}
         />
     );
 };
