@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Autosuggest from 'react-autosuggest';
 
 const MAX_SUGGESTIONS = 5;
@@ -10,13 +10,17 @@ function getSuggestion(suggestion, suggestionsKey){
 
 const AutosuggestWrapper = ({
                                 suggestions,
-                                onSuggestionSelected,
+                                onChangeHandler,
                                 placeholder,
+                                entity,
                                 suggestionsKey = ""
 }) => {
     const [value, setValue] = useState('');
     const [suggestionsArray, setSuggestionsArray] = useState([]);
 
+    useEffect(()=>{
+        setValue('')
+    },[suggestions])
     const getSuggestions = (inputValue) => {
         const inputValueLowerCase = inputValue.trim().toLowerCase();
         const inputLength = inputValueLowerCase.length;
@@ -36,6 +40,9 @@ const AutosuggestWrapper = ({
 
     const onChange = (event, { newValue }) => {
         setValue(newValue);
+        if (onChangeHandler) {
+            onChangeHandler(entity, newValue);
+        }
     };
 
     const onSuggestionsFetchRequested = ({ value }) => {
@@ -49,7 +56,7 @@ const AutosuggestWrapper = ({
     const inputProps = {
         placeholder: placeholder || '',
         value,
-        onChange: onChange
+        onChange: onChange,
     };
 
     return (
@@ -61,8 +68,8 @@ const AutosuggestWrapper = ({
             renderSuggestion={renderSuggestion}
             inputProps={inputProps}
             onSuggestionSelected={(event, { suggestion }) => {
-                if (onSuggestionSelected) {
-                    onSuggestionSelected(suggestion);
+                if (onChangeHandler) {
+                    onChangeHandler(entity, suggestion);
                 }
             }}
         />

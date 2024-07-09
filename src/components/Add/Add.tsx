@@ -13,6 +13,7 @@ const Add = ({
              }) => {
     const instrumentsConfig = config?._instruments || {};
     const [selectedInstrument, setSelectedInstrument] = useState('');
+    let inputValues = {}
 
     useEffect(()=>{
         if(instruments.includes(selectedMenuItem)){
@@ -20,11 +21,12 @@ const Add = ({
         }
     }, [selectedMenuItem])
 
-    const handleSubmit = (e) =>{
-        e.preventDefault()
+    const handleSubmit = () =>{
+        console.log("input " + JSON.stringify(inputValues))
     }
 
-    const handleInstrumentSelected = (suggestion) => {
+    const handleInstrumentSelected = (entity, suggestion) => {
+        console.log("suggestion ", suggestion)
         if(suggestion.Name){
             setSelectedInstrument(suggestion.Name.toLowerCase())
         }
@@ -35,15 +37,16 @@ const Add = ({
             <div className="modal">
                 <span className="close" onClick={()=>setOpenAdd(false)}>X</span>
                 <h1> Add new transaction</h1>
-                <form onSubmit={handleSubmit} className="form">
+                <form className="form">
                     <div className="fields">
                         <div className="field">
                             <label>Instrument Type</label>
                             <div>
                                 <AutosuggestWrapper
                                     suggestions={instrumentsConfig}
-                                    onSuggestionSelected={handleInstrumentSelected}
+                                    onChangeHandler={handleInstrumentSelected}
                                     placeholder={getDisplayName(instrumentsConfig, selectedInstrument)}
+                                    entity="Instrument Type"
                                     suggestionsKey="Display Name"
                                 />
                             </div>
@@ -55,7 +58,14 @@ const Add = ({
                     headerMap={headerMap}
                     contentColumnMap={contentColumnMap}
                     config={config}
+                    inputValues={inputValues}
                 />
+                <div className="modalFooter">
+                    {selectedInstrument != ''
+                        && <div className="submit" onClick={handleSubmit}>
+                            SUBMIT
+                            </div>}
+                </div>
             </div>
         </div>
     )

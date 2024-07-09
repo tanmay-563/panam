@@ -15,8 +15,9 @@ function getRequiredHeaders(instrument, headers, contentColumnMap, config){
 const Fields = ({
                        instrument,
                        headerMap,
-                    contentColumnMap,
-                    config
+                       contentColumnMap,
+                       config,
+                       inputValues
                    }) => {
     let headers = headerMap[instrument]
     if(!headers){
@@ -31,33 +32,27 @@ const Fields = ({
         uniqueValues[columnName] = Array.from(new Set(contentColumnMap[instrument][columnName]));
     });
 
-    const [values, setValues] = useState({});
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log(values);
-        setValues({});
-    };
-
-    const handleSuggestionsSelected = (suggestion) => {
+    const handleInputChange = (entity, suggestion) => {
+        console.log("entity ", entity)
         console.log('Selected:', suggestion);
+        inputValues[entity] = suggestion
     };
 
     return (
-        <form onSubmit={handleSubmit} className="form">
+        <form className="form">
             <div className="fields">
                 {headers.map(columnName => (
                     <div key={columnName} className="field">
                         <label htmlFor={columnName}>{columnName}</label>
                         <AutosuggestWrapper
                             suggestions={uniqueValues[columnName]}
-                            onSuggestionSelected={handleSuggestionsSelected}
+                            onChangeHandler={handleInputChange}
                             placeholder=""
+                            entity={columnName}
                         />
                     </div>
                 ))}
             </div>
-            <div className="submit">Submit</div>
         </form>
     );
 }
