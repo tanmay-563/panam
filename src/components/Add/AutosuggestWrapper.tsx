@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Autosuggest from 'react-autosuggest';
 
+const MAX_SUGGESTIONS = 5;
 const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) => {
     const [value, setValue] = useState('');
     const [suggestionsArray, setSuggestionsArray] = useState([]);
@@ -12,7 +13,7 @@ const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) 
         return inputLength === 0 || (suggestions.length && typeof suggestions[0] != "string") ?
             [] : suggestions.filter(suggestion =>
             suggestion.toLowerCase().slice(0, inputLength) === inputValueLowerCase
-        );
+        ).slice(0, MAX_SUGGESTIONS);
     };
 
     const getSuggestionValue = (suggestion) => suggestion;
@@ -36,7 +37,7 @@ const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) 
     };
 
     const inputProps = {
-        placeholder: placeholder || 'Type a suggestion',
+        placeholder: placeholder || '',
         value,
         onChange: onChange
     };
@@ -53,6 +54,13 @@ const AutosuggestWrapper = ({ suggestions, onSuggestionSelected, placeholder }) 
                 if (onSuggestionSelected) {
                     onSuggestionSelected(suggestion);
                 }
+            }}
+            theme={{
+                container: 'autosuggest-container',
+                input: 'autosuggest-input',
+                suggestionsContainer: 'autosuggest-suggestions-container',
+                suggestion: 'autosuggest-suggestion',
+                suggestionHighlighted: 'autosuggest-suggestion--highlighted'
             }}
         />
     );

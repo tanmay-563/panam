@@ -44,18 +44,20 @@ const Fields = ({
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {headers.map(columnName => (
-                <div key={columnName}>
-                    <label htmlFor={columnName}>{columnName}</label>
-                    <AutosuggestWrapper
-                        suggestions={uniqueValues[columnName]}
-                        onSuggestionSelected={handleSuggestionsSelected}
-                        placeholder=""
-                    />
-                </div>
-            ))}
-            <button type="submit">Submit</button>
+        <form onSubmit={handleSubmit} className="form">
+            <div className="fields">
+                {headers.map(columnName => (
+                    <div key={columnName} className="field">
+                        <label htmlFor={columnName}>{columnName}</label>
+                        <AutosuggestWrapper
+                            suggestions={uniqueValues[columnName]}
+                            onSuggestionSelected={handleSuggestionsSelected}
+                            placeholder=""
+                        />
+                    </div>
+                ))}
+            </div>
+            <div className="submit">Submit</div>
         </form>
     );
 }

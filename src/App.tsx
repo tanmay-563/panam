@@ -27,7 +27,7 @@ function App() {
         if (process.env.NODE_ENV == "development"){
             let data = devData.data;
             setData(getProcessedData(data));
-            setTimeout(() => setLoading(false), 3 * 1000)
+            setTimeout(() => setLoading(false), 0)
         }
         else{
             google.script.run.withSuccessHandler((data) => {
@@ -66,6 +66,7 @@ function App() {
                             instruments={data?.instruments}
                             headerMap={data?.headerMap}
                             contentColumnMap={data?.contentColumnMap}
+                            selectedMenuItem={selectedMenuItem}
                             setOpenAdd={setOpenAdd}
                             config={data?.config}
                         />}

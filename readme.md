@@ -9,7 +9,3 @@
 - to implement
   - use column config more exctensively
   - ask for password
-  - add contentRowMap
-  - setup loading icon
-  - rebrand to panam
-  - 
