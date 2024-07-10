@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import AutosuggestWrapper from "./AutosuggestWrapper";
+import AutocompleteWrapper from "./AutocompleteWrapper";
 
 function getRequiredHeaders(instrument, headers, contentColumnMap, config){
     try{
@@ -30,21 +31,22 @@ const Fields = ({
     };
 
     return (
-        <form className="form">
-            <div className="fields">
-                {requiredHeaders.map(columnName => (
-                    <div key={columnName} className="field">
-                        <label htmlFor={columnName}>{columnName}</label>
-                        <AutosuggestWrapper
-                            suggestions={uniqueValues[columnName]}
-                            onChangeHandler={handleInputChange}
-                            placeholder=""
-                            entity={columnName}
-                        />
-                    </div>
-                ))}
-            </div>
-        </form>
+        <div className="fields">
+            {requiredHeaders.map(columnName => (
+                <div key={columnName} className="field">
+                    {/*<AutosuggestWrapper*/}
+                    {/*    suggestions={uniqueValues[columnName]}*/}
+                    {/*    onChangeHandler={handleInputChange}*/}
+                    {/*    placeholder=""*/}
+                    {/*    entity={columnName}*/}
+                    {/*/>*/}
+                    <AutocompleteWrapper
+                        suggestions={uniqueValues[columnName]}
+                        column={columnName}
+                    />
+                </div>
+            ))}
+        </div>
     );
 }
 

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Fields from "./Fields";
-import AutosuggestWrapper from "./AutosuggestWrapper";
-import {getDisplayName} from "../../utils/helper";
+import {Select, MenuItem, FormControl, InputLabel} from '@mui/material';
 
 const Add = ({
                  instruments,
@@ -40,8 +39,8 @@ const Add = ({
         })
     }
 
-    const handleInstrumentSelected = (entity, suggestion) => {
-        setSelectedInstrument(suggestion.Name?.toLowerCase() ?? suggestion);
+    const handleInstrumentSelected = (suggestion) => {
+        setSelectedInstrument(suggestion);
     };
 
     return (
@@ -49,22 +48,47 @@ const Add = ({
             <div className="modal">
                 <span className="close" onClick={()=>setOpenAdd(false)}>X</span>
                 <h1> Add new transaction</h1>
-                <form className="form">
-                    <div className="fields">
-                        <div className="field">
-                            <label>Instrument Type</label>
-                            <div>
-                                <AutosuggestWrapper
-                                    suggestions={instrumentsConfig}
-                                    onChangeHandler={handleInstrumentSelected}
-                                    placeholder={getDisplayName(instrumentsConfig, selectedInstrument)}
-                                    entity="Instrument Type"
-                                    suggestionsKey="Display Name"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                <FormControl fullWidth>
+                    <InputLabel>Instrument Type</InputLabel>
+                    <Select
+                        value={selectedInstrument}
+                        onChange={(e) => handleInstrumentSelected(e.target.value)}
+                        displayEmpty
+                        label="Instrument Type"
+                        sx = {{
+                            '& .MuiSelect-select': {
+                                color: 'var(--soft-color)',
+                            },
+                            '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: 'var(--ultra-soft-color)',
+                                '&:hover': {
+                                    borderColor: 'var(--ultra-soft-color)',
+                                },
+                                '&.Mui-focused': {
+                                    borderColor: 'var(--ultra-soft-color)',
+                                },
+                            },
+                            '& .MuiSvgIcon-root': {
+                                color: 'var(--soft-color)',
+                            },
+                            '& .MuiInputBase-root:hover': {
+                                borderColor: 'var(--soft-color)',
+                            }
+                        }}
+                    >
+                        {instrumentsConfig.map((instrument) => (
+                            <MenuItem
+                                key={instrument.Name.toLowerCase()}
+                                value={instrument.Name.toLowerCase()}
+                                sx={{
+                                    color: "var(--dark-color)",
+                                }}
+                            >
+                                {instrument["Display Name"]}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
                 <Fields
                     instrument={selectedInstrument}
                     requiredHeaders={getRequiredHeaders(selectedInstrument)}
