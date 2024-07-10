@@ -16,7 +16,6 @@ const Fields = ({
 
     const handleInputChange = (column, value) => {
         inputValues[column] = value
-        console.log(inputValues)
     };
 
     return (

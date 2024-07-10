@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Fields from "./Fields";
 import {Select, MenuItem, FormControl, InputLabel} from '@mui/material';
+import AlertBox from "../AlertBox";
 
 const Add = ({
                  instruments,
@@ -12,6 +13,8 @@ const Add = ({
              }) => {
     const instrumentsConfig = config?._instruments || {};
     const [selectedInstrument, setSelectedInstrument] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [failure, setFailure] = useState(false);
     let inputValues = {}
 
     useEffect(()=>{
@@ -33,9 +36,30 @@ const Add = ({
 
     const handleSubmit = () =>{
         const requiredHeaders = getRequiredHeaders(selectedInstrument)
+        let preventSubmit = false;
         requiredHeaders.forEach((header)=>{
-            console.log(header + ": " + JSON.stringify(inputValues[header]))
+            if (!(header in inputValues)){
+                console.log("required key missing");
+                preventSubmit = true;
+            }
         })
+        if(preventSubmit)
+            return;
+        console.log(selectedInstrument)
+        if (process.env.NODE_ENV == "development"){
+            // setOpenAdd(false)
+            setSuccess(true);
+        }
+        else{
+            google.script.run.withSuccessHandler((data) => {
+                console.log("success!")
+                setOpenAdd(false)
+                setSuccess(true);
+            }).withFailureHandler((error) => {
+                console.error("Error fetching data:", error);
+                setFailure(true);
+            }).addRow(selectedInstrument, inputValues);
+        }
     }
 
     const handleInstrumentSelected = (suggestion) => {
@@ -44,6 +68,11 @@ const Add = ({
 
     return (
         <div className="add">
+            {success ? <AlertBox
+                        severity="success"
+                        title="Success"
+                        message="Transaction added successfully"
+                        /> :
             <div className="modal">
                 <span className="close" onClick={()=>setOpenAdd(false)}>X</span>
                 <h1> Add new transaction</h1>
@@ -97,12 +126,14 @@ const Add = ({
                     inputValues={inputValues}
                 />
                 <div className="modalFooter">
-                    {selectedInstrument != ''
-                        && <div className="submit" onClick={handleSubmit}>
+                    {selectedInstrument != '' &&
+                        <div className="submit" onClick={handleSubmit}>
                             SUBMIT
-                            </div>}
+                        </div>
+                    }
                 </div>
             </div>
+            }
         </div>
     )
 }

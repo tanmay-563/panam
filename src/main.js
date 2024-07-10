@@ -17,20 +17,16 @@ function fetchData(){
 }
 
 
-function copyFormulasToLastRow(sheetName){
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+function copyFormulasToLastRow(sheet){
   var lastRow = sheet.getLastRow();
   var lastColumn = sheet.getLastColumn();
 
-  // Get the formulas from the last row
   var lastRowRange = sheet.getRange(lastRow, 1, 1, lastColumn);
   var formulas = lastRowRange.getFormulas()[0];
 
-  // Define the range for the new row
   var newRow = lastRow + 1;
   var newRowRange = sheet.getRange(newRow, 1, 1, lastColumn);
 
-  // Adjust the formulas to reference the new row
   var newFormulas = formulas.map(function(formula) {
     if (formula) {
       return formula.replace(new RegExp(lastRow, 'g'), newRow);
@@ -38,6 +34,22 @@ function copyFormulasToLastRow(sheetName){
     return formula;
   });
 
-  // Set the adjusted formulas into the new row
   newRowRange.setFormulas([newFormulas]);
+}
+
+function addRow(sheetName, rowMap){
+  let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+
+  let headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  let newRowData = headers.map(header => {
+    if (rowMap.hasOwnProperty(header)) {
+      return rowMap[header];
+    } else {
+      let lastRow = sheet.getLastRow();
+      let formula = sheet.getRange(lastRow, headers.indexOf(header) + 1).getFormula();
+      return formula.replace(new RegExp(lastRow, 'g'), lastRow+1).replace(new RegExp(lastRow-1, 'g'), lastRow);
+    }
+  });
+
+  sheet.appendRow(newRowData);
 }

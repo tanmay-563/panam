@@ -39,6 +39,7 @@ function AutocompleteWrapper({
                 <TextField
                     {...params}
                     label={column}
+                    required
                 />
             }
             sx={{
