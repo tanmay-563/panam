@@ -28,8 +28,8 @@ function AutocompleteWrapper({
             }
             sx={{
                 width: '200px',
-                '& .MuiFormLabel-root': {
-                    color: 'var(--soft-color)',
+                '& .MuiFormControl-root .MuiFormLabel-root': {
+                    color: 'var(--ultra-soft-color)',
                 },
                 '& .MuiInputBase-input': {
                     fontSize: '14px',
@@ -38,16 +38,13 @@ function AutocompleteWrapper({
                     fontSize: '14px',
                 },
                 '& .MuiAutocomplete-input': {
-                    color: 'var(--soft-color)',
+                    color: 'var(--ultra-soft-color)',
                 },
-                '& .MuiOutlinedInput-notchedOutline': {
+                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
                     borderColor: 'var(--ultra-soft-color)',
-                    '&:hover': {
-                        borderColor: 'var(--ultra-soft-color)',
-                    },
-                    '&.Mui-focused': {
-                        borderColor: 'var(--ultra-soft-color)',
-                    },
+                },
+                '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'var(--soft-color)',
                 },
             }}
         />

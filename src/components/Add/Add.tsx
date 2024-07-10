@@ -48,7 +48,9 @@ const Add = ({
             <div className="modal">
                 <span className="close" onClick={()=>setOpenAdd(false)}>X</span>
                 <h1> Add new transaction</h1>
-                <FormControl fullWidth>
+                <FormControl
+                    fullWidth
+                >
                     <InputLabel>Instrument Type</InputLabel>
                     <Select
                         value={selectedInstrument}
@@ -56,24 +58,24 @@ const Add = ({
                         displayEmpty
                         label="Instrument Type"
                         sx = {{
+                            '& .modal .MuiFormControl-root .MuiFormLabel-root': {
+                                color: 'var(--ultra-soft-color)',
+                            },
                             '& .MuiSelect-select': {
-                                color: 'var(--soft-color)',
+                                color: 'var(--ultra-soft-color)',
                             },
                             '& .MuiOutlinedInput-notchedOutline': {
                                 borderColor: 'var(--ultra-soft-color)',
-                                '&:hover': {
-                                    borderColor: 'var(--ultra-soft-color)',
-                                },
-                                '&.Mui-focused': {
-                                    borderColor: 'var(--ultra-soft-color)',
-                                },
+                            },
+                            '&:hover .MuiOutlinedInput-notchedOutline': {
+                                borderColor: 'var(--soft-color)',
+                            },
+                            '&:not(.Mui-disabled):hover::before': {
+                                borderColor: 'white',
                             },
                             '& .MuiSvgIcon-root': {
                                 color: 'var(--soft-color)',
                             },
-                            '& .MuiInputBase-root:hover': {
-                                borderColor: 'var(--soft-color)',
-                            }
                         }}
                     >
                         {instrumentsConfig.map((instrument) => (
