@@ -20,7 +20,7 @@
     overflow: auto;
 
     h1{
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       font-size: 24px;
       color: $soft-color;
     }
@@ -72,6 +72,7 @@
       flex-wrap: wrap;
       max-width: 500px;
       justify-content: space-between;
+      padding-bottom: 10px;
 
       .field{
         padding: 10px;

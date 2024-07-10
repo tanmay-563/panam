@@ -1,23 +1,38 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import {useEffect, useState} from "react";
 
 const MAX_SUGGESTIONS = 5;
 
 function AutocompleteWrapper({
                                  suggestions,
-                                column
+                                 column,
+                                 handleInputChange
 }) {
+    const [value, setValue] = useState('')
+
+    useEffect(()=>{
+        setValue('')
+    }, [suggestions])
+
     const filterOptions = (options, state) => {
         return options.slice(0, MAX_SUGGESTIONS);
     };
 
+    const onInputChange = (event, value) => {
+        setValue(value);
+        if(handleInputChange){
+            handleInputChange(column, value)
+        }
+    }
+
     return (
         <Autocomplete
+            value={value}
             disablePortal
             freeSolo
-            limitTags={5}
-            className="autocomplete-box"
+            onInputChange={onInputChange}
             filterOptions={filterOptions}
             options={suggestions}
             renderInput={(params) =>

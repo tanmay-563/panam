@@ -34,8 +34,7 @@ const Add = ({
     const handleSubmit = () =>{
         const requiredHeaders = getRequiredHeaders(selectedInstrument)
         requiredHeaders.forEach((header)=>{
-            console.log("header " + header)
-            console.log("data " + JSON.stringify(inputValues[header]))
+            console.log(header + ": " + JSON.stringify(inputValues[header]))
         })
     }
 
