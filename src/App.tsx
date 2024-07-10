@@ -14,6 +14,7 @@ import devData from "./devData.json";
 import getProcessedData from "./utils/dataProcessor";
 import ReactLoading from 'react-loading';
 import LoadingOverlay from "./components/LoadingOverlay";
+import AlertBox from "./components/AlertBox";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -21,6 +22,7 @@ function App() {
     const [loading, setLoading] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState("");
     const [openAdd, setOpenAdd] = useState(false);
+    const [alertDetails, setAlertDetails] = useState({})
     const fetchSheetData = () => {
         console.log("fetching...")
         setLoading(true);
@@ -42,6 +44,14 @@ function App() {
         }
     };
 
+    const setAlert = (severity, title, message) => {
+        setAlertDetails({
+            severity: severity,
+            title: title,
+            message: message,
+        })
+    }
+
     useEffect(() => {
         fetchSheetData();
     }, []);
@@ -62,12 +72,20 @@ function App() {
                     <div className="contentContainer">
                         <Outlet/>
                         {loading && <LoadingOverlay/>}
+                        {Object.keys(alertDetails).length > 0 &&
+                            <AlertBox
+                                severity={alertDetails.severity}
+                                title={alertDetails.title}
+                                message={alertDetails.message}
+                            />
+                        }
                         {openAdd && <Add
                             instruments={data?.instruments}
                             headerMap={data?.headerMap}
                             contentColumnMap={data?.contentColumnMap}
                             selectedMenuItem={selectedMenuItem}
                             setOpenAdd={setOpenAdd}
+                            setAlert={setAlert}
                             config={data?.config}
                         />}
                     </div>

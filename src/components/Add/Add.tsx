@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Fields from "./Fields";
 import {Select, MenuItem, FormControl, InputLabel} from '@mui/material';
-import AlertBox from "../AlertBox";
 
 const Add = ({
                  instruments,
@@ -9,12 +8,11 @@ const Add = ({
                  contentColumnMap,
                  selectedMenuItem,
                  setOpenAdd,
+                setAlert,
                 config
              }) => {
     const instrumentsConfig = config?._instruments || {};
     const [selectedInstrument, setSelectedInstrument] = useState('');
-    const [success, setSuccess] = useState(false);
-    const [failure, setFailure] = useState(false);
     let inputValues = {}
 
     useEffect(()=>{
@@ -36,6 +34,7 @@ const Add = ({
 
     const handleSubmit = () =>{
         const requiredHeaders = getRequiredHeaders(selectedInstrument)
+        setAlert("warning", "Success", "Transaction added successfully.")
         let preventSubmit = false;
         requiredHeaders.forEach((header)=>{
             if (!(header in inputValues)){
@@ -48,16 +47,14 @@ const Add = ({
         console.log(selectedInstrument)
         if (process.env.NODE_ENV == "development"){
             // setOpenAdd(false)
-            setSuccess(true);
+            setAlert("success", "Success", "Transaction added successfully.")
         }
         else{
             google.script.run.withSuccessHandler((data) => {
                 console.log("success!")
                 setOpenAdd(false)
-                setSuccess(true);
             }).withFailureHandler((error) => {
                 console.error("Error fetching data:", error);
-                setFailure(true);
             }).addRow(selectedInstrument, inputValues);
         }
     }
@@ -68,11 +65,6 @@ const Add = ({
 
     return (
         <div className="add">
-            {success ? <AlertBox
-                        severity="success"
-                        title="Success"
-                        message="Transaction added successfully"
-                        /> :
             <div className="modal">
                 <span className="close" onClick={()=>setOpenAdd(false)}>X</span>
                 <h1> Add new transaction</h1>
@@ -133,7 +125,6 @@ const Add = ({
                     }
                 </div>
             </div>
-            }
         </div>
     )
 }
