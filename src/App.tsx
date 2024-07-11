@@ -46,12 +46,13 @@ function App() {
     };
 
     const setAlert = (severity, title, message, timeout) => {
-        setAlertDetails({
-            severity: severity,
-            title: title,
-            message: message,
-            timeout: timeout,
-        })
+        setAlertDetails(prevState => ({
+            ...prevState,
+            severity,
+            title,
+            message,
+            timeout,
+        }));
     }
 
     useEffect(() => {

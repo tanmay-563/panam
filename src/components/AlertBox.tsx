@@ -10,9 +10,10 @@ const AlertBox = ({ alertDetails, setAlertDetails, ...props }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setOpen(false);
+            setAlertDetails({})
         }, (alertDetails.timeout ? alertDetails.timeout : DEFAULT_TIMEOUT)*1000);
 
-        return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
+        return () => clearTimeout(timer);
     }, [alertDetails]);
 
 

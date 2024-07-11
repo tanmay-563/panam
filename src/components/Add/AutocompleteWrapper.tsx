@@ -8,12 +8,17 @@ const MAX_SUGGESTIONS = 5;
 function AutocompleteWrapper({
                                  suggestions,
                                  column,
-                                 handleInputChange
+                                 inputValues,
+                                 handleInputChange,
+                                 error
 }) {
     const [value, setValue] = useState('')
 
     useEffect(()=>{
-        setValue('')
+        if (Object.keys(inputValues).includes(column))
+            setValue(inputValues[column])
+        else
+            setValue('')
     }, [suggestions])
 
     const filterOptions = (options, state) => {
@@ -57,7 +62,7 @@ function AutocompleteWrapper({
                     color: 'var(--ultra-soft-color)',
                 },
                 "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    borderColor: 'var(--ultra-soft-color)',
+                    borderColor: error && value == '' ? 'red' : 'var(--ultra-soft-color)',
                 },
                 '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
                     borderColor: 'var(--soft-color)',

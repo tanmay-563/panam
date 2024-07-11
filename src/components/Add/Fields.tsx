@@ -4,7 +4,9 @@ const Fields = ({
                        instrument,
                        contentColumnMap,
                        requiredHeaders,
-                       inputValues
+                        inputValues,
+                        onInputChange,
+                        error
                    }) => {
     if(!requiredHeaders)
         return <div/>
@@ -14,10 +16,6 @@ const Fields = ({
         uniqueValues[columnName] = Array.from(new Set(contentColumnMap[instrument][columnName]));
     });
 
-    const handleInputChange = (column, value) => {
-        inputValues[column] = value
-    };
-
     return (
         <div className="fields">
             {requiredHeaders.map(columnName => (
@@ -25,7 +23,9 @@ const Fields = ({
                     <AutocompleteWrapper
                         suggestions={uniqueValues[columnName]}
                         column={columnName}
-                        handleInputChange={handleInputChange}
+                        inputValues={inputValues}
+                        handleInputChange={onInputChange}
+                        error={error}
                         />
                 </div>
             ))}

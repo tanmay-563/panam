@@ -14,10 +14,12 @@ const Add = ({
              }) => {
     const instrumentsConfig = config?._instruments || {};
     const [selectedInstrument, setSelectedInstrument] = useState('');
-    let inputValues = {}
+    const [inputValues, setInputValues] = useState({})
+    const [error, setError] = useState('')
+    const [shake, setShake] = useState(false)
 
     useEffect(()=>{
-        console.log("asel " + selectedMenuItem)
+        console.log("asel " + JSON.stringify(inputValues))
         if(instruments.includes(selectedMenuItem)){
             setSelectedInstrument(selectedMenuItem)
         }
@@ -43,7 +45,9 @@ const Add = ({
             }
         })
         if(preventSubmit){
-            setAlert("warning", "Failed", "All fields are required.", 5)
+            setShake(true)
+            setTimeout(() => setShake(false), 1000);
+            setError("All fields are required.")
             return;
         }
         if (process.env.NODE_ENV == "development"){
@@ -52,10 +56,10 @@ const Add = ({
         }
         else{
             google.script.run.withSuccessHandler((data) => {
-                console.log("success!")
                 setOpenAdd(false)
                 setAlert("success", "Success", "Transaction added successfully.")
             }).withFailureHandler((error) => {
+                setOpenAdd(false)
                 setAlert("error", "Error", "Failed to add transaction.", 5)
             }).addRow(selectedInstrument, inputValues);
         }
@@ -66,9 +70,13 @@ const Add = ({
         setSelectedMenuItem(suggestion);
     };
 
+    const handleInputChange = (key, value) => {
+        setInputValues(prevData => ({ ...prevData, [key]: value }));
+    };
+
     return (
         <div className="add">
-            <div className="modal">
+            <div className={`modal ${shake ? 'shake' : ''}`}>
                 <span className="close" onClick={()=>setOpenAdd(false)}>X</span>
                 <h1> Add new transaction</h1>
                 <FormControl
@@ -119,7 +127,10 @@ const Add = ({
                     requiredHeaders={getRequiredHeaders(selectedInstrument)}
                     contentColumnMap={contentColumnMap}
                     inputValues={inputValues}
+                    onInputChange={handleInputChange}
+                    error={error}
                 />
+                {error != '' && <p className="error">{error}</p>}
                 <div className="modalFooter">
                     {selectedInstrument != '' &&
                         <div className="submit" onClick={handleSubmit}>
