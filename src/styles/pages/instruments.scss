@@ -1,3 +1,5 @@
+@import "../variables";
+
 .title{
   padding: 10px;
   font-weight: bold;
@@ -5,4 +7,10 @@
 
 .cellStyle {
   color: white;
+}
+
+.datagrid-header{
+  background-color: $dark-bg;
+  color: $ultra-soft;
+  font-weight: bold;
 }

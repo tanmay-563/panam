@@ -51,14 +51,20 @@ const Instruments = ({
             field: columnName,
             headerName: columnName,
             flex: 1,
+            headerClassName: 'datagrid-header',
     })) : [];
 
     const dataGridStyles = {
+        '& .MuiDataGrid-root':{
+            borderColor: 'var(--ultra-soft-color)',
+            borderRadius: '12px',
+        },
         '& .MuiDataGrid-toolbarContainer': {
-            backgroundColor: 'var(--soft-color)',
+            backgroundColor: 'var(--soft-bg)',
+            borderRadius: '10px',
         },
         '& .MuiInputBase-root': {
-            color: 'var(--dark-bg)',
+            color: 'var(--soft-color)',
         },
         '& .MuiTablePagination-root': {
             color: 'var(--soft-color)',
@@ -74,7 +80,13 @@ const Instruments = ({
         },
         '& .MuiDataGrid-topContainer': {
             color: 'var(--dark-color)',
-        }
+        },
+        '& .MuiDataGrid-virtualScrollerContent':{
+            backgroundColor: 'var(--soft-bg)',
+        },
+        '& .MuiSvgIcon-root': {
+            color: 'var(--ultra-soft-color)',
+        },
     };
 
     return loading ?
@@ -107,6 +119,7 @@ const Instruments = ({
                 pageSizeOptions={[5, 10, 100]}
                 sx={dataGridStyles}
                 autoHeight={true}
+                getRowClassName={(params) => 'datagrid-row'}
             />
         </div>);
 };

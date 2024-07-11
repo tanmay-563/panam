@@ -13,3 +13,4 @@
   - loading icon when submitting form
   - form validation
   - aggregation in datagrid 
+  - monthly reports and monthly reminders
