@@ -1,38 +1,35 @@
 import * as React from 'react';
 import Alert from '@mui/material/Alert';
-import {AlertTitle, Button, Stack} from "@mui/material";
+import {AlertTitle, Button, Collapse, Stack} from "@mui/material";
 import {useEffect, useState} from "react";
 
-const AlertBox = ({ severity, title, message, ...props }) => {
-    const [showAlert, setShowAlert] = useState(false)
+const DEFAULT_TIMEOUT = 3;
+const AlertBox = ({ alertDetails, setAlertDetails, ...props }) => {
+    const [open, setOpen] = useState(true);
 
-    useEffect(()=>{
-        setShowAlert(true)
-    }, [message]);
-    const onClose = () => {
-        setShowAlert(false);
-    }
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setOpen(false);
+        }, (alertDetails.timeout ? alertDetails.timeout : DEFAULT_TIMEOUT)*1000);
+
+        return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
+    }, [alertDetails]);
+
 
     return (
-        <div className="alert-box">
-            {showAlert &&
-                <Stack
-                    spacing={2}
-                >
+        <Collapse in={open}>
+            <div className="alert-box">
+                <Stack spacing={2}>
                     <Alert
-                        severity={severity} {...props}
-                        action={
-                            <Button color="inherit" size="small" onClick={()=> onClose()}>
-                                UNDO
-                            </Button>
-                        }
+                        severity={alertDetails.severity} {...props}
+                        onClose={() => {setAlertDetails({})}}
                     >
-                        {title && <AlertTitle>{title}</AlertTitle>}
-                        {message}
+                        {alertDetails.title && <AlertTitle>{alertDetails.title}</AlertTitle>}
+                        {alertDetails.message}
                     </Alert>
                 </Stack>
-            }
-        </div>
+            </div>
+        </Collapse>
     );
 };
 

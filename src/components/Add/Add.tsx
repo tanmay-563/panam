@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Fields from "./Fields";
 import {Select, MenuItem, FormControl, InputLabel} from '@mui/material';
 
@@ -7,6 +7,7 @@ const Add = ({
                  headerMap,
                  contentColumnMap,
                  selectedMenuItem,
+                 setSelectedMenuItem,
                  setOpenAdd,
                 setAlert,
                 config
@@ -16,12 +17,13 @@ const Add = ({
     let inputValues = {}
 
     useEffect(()=>{
+        console.log("asel " + selectedMenuItem)
         if(instruments.includes(selectedMenuItem)){
             setSelectedInstrument(selectedMenuItem)
         }
     }, [selectedMenuItem])
 
-    const  getRequiredHeaders = (instrument) =>{
+    const getRequiredHeaders = (instrument) =>{
         try{
             let columnConfig= config["_columns"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
             let isAutomatedColumns = columnConfig.filter(config => config.isAutomated == true).map(config => config.Column);
@@ -34,33 +36,34 @@ const Add = ({
 
     const handleSubmit = () =>{
         const requiredHeaders = getRequiredHeaders(selectedInstrument)
-        setAlert("warning", "Success", "Transaction added successfully.")
         let preventSubmit = false;
         requiredHeaders.forEach((header)=>{
             if (!(header in inputValues)){
-                console.log("required key missing");
                 preventSubmit = true;
             }
         })
-        if(preventSubmit)
+        if(preventSubmit){
+            setAlert("warning", "Failed", "All fields are required.", 5)
             return;
-        console.log(selectedInstrument)
+        }
         if (process.env.NODE_ENV == "development"){
-            // setOpenAdd(false)
+            setOpenAdd(false)
             setAlert("success", "Success", "Transaction added successfully.")
         }
         else{
             google.script.run.withSuccessHandler((data) => {
                 console.log("success!")
                 setOpenAdd(false)
+                setAlert("success", "Success", "Transaction added successfully.")
             }).withFailureHandler((error) => {
-                console.error("Error fetching data:", error);
+                setAlert("error", "Error", "Failed to add transaction.", 5)
             }).addRow(selectedInstrument, inputValues);
         }
     }
 
     const handleInstrumentSelected = (suggestion) => {
         setSelectedInstrument(suggestion);
+        setSelectedMenuItem(suggestion);
     };
 
     return (

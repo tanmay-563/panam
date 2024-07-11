@@ -3,5 +3,7 @@
   right: 0;
   display: flex;
   justify-content: right;
-  position: relative;
+  position: fixed;
+  margin: 10px;
+  z-index: 999;
 }

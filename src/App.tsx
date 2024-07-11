@@ -23,6 +23,7 @@ function App() {
     const [selectedMenuItem, setSelectedMenuItem] = useState("");
     const [openAdd, setOpenAdd] = useState(false);
     const [alertDetails, setAlertDetails] = useState({})
+    console.log("sel " + selectedMenuItem);
     const fetchSheetData = () => {
         console.log("fetching...")
         setLoading(true);
@@ -44,11 +45,12 @@ function App() {
         }
     };
 
-    const setAlert = (severity, title, message) => {
+    const setAlert = (severity, title, message, timeout) => {
         setAlertDetails({
             severity: severity,
             title: title,
             message: message,
+            timeout: timeout,
         })
     }
 
@@ -74,9 +76,8 @@ function App() {
                         {loading && <LoadingOverlay/>}
                         {Object.keys(alertDetails).length > 0 &&
                             <AlertBox
-                                severity={alertDetails.severity}
-                                title={alertDetails.title}
-                                message={alertDetails.message}
+                                alertDetails={alertDetails}
+                                setAlertDetails={setAlertDetails}
                             />
                         }
                         {openAdd && <Add
@@ -84,6 +85,7 @@ function App() {
                             headerMap={data?.headerMap}
                             contentColumnMap={data?.contentColumnMap}
                             selectedMenuItem={selectedMenuItem}
+                            setSelectedMenuItem={setSelectedMenuItem}
                             setOpenAdd={setOpenAdd}
                             setAlert={setAlert}
                             config={data?.config}
