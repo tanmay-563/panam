@@ -13,17 +13,9 @@ const Add = ({
                 config
              }) => {
     const instrumentsConfig = config?._instruments || {};
-    const [selectedInstrument, setSelectedInstrument] = useState('');
     const [inputValues, setInputValues] = useState({})
     const [error, setError] = useState('')
     const [shake, setShake] = useState(false)
-
-    useEffect(()=>{
-        console.log("asel " + JSON.stringify(inputValues))
-        if(instruments.includes(selectedMenuItem)){
-            setSelectedInstrument(selectedMenuItem)
-        }
-    }, [selectedMenuItem])
 
     const getRequiredHeaders = (instrument) =>{
         try{
@@ -37,7 +29,7 @@ const Add = ({
     }
 
     const handleSubmit = () =>{
-        const requiredHeaders = getRequiredHeaders(selectedInstrument)
+        const requiredHeaders = getRequiredHeaders(selectedMenuItem)
         let preventSubmit = false;
         requiredHeaders.forEach((header)=>{
             if (!(header in inputValues)){
@@ -61,12 +53,11 @@ const Add = ({
             }).withFailureHandler((error) => {
                 setOpenAdd(false)
                 setAlert("error", "Error", "Failed to add transaction.", 5)
-            }).addRow(selectedInstrument, inputValues);
+            }).addRow(selectedMenuItem, inputValues);
         }
     }
 
     const handleInstrumentSelected = (suggestion) => {
-        setSelectedInstrument(suggestion);
         setSelectedMenuItem(suggestion);
     };
 
@@ -84,7 +75,7 @@ const Add = ({
                 >
                     <InputLabel>Instrument Type</InputLabel>
                     <Select
-                        value={selectedInstrument}
+                        value={instruments.includes(selectedMenuItem) ? selectedMenuItem : ''}
                         onChange={(e) => handleInstrumentSelected(e.target.value)}
                         displayEmpty
                         label="Instrument Type"
@@ -123,8 +114,8 @@ const Add = ({
                     </Select>
                 </FormControl>
                 <Fields
-                    instrument={selectedInstrument}
-                    requiredHeaders={getRequiredHeaders(selectedInstrument)}
+                    instrument={selectedMenuItem}
+                    requiredHeaders={getRequiredHeaders(selectedMenuItem)}
                     contentColumnMap={contentColumnMap}
                     inputValues={inputValues}
                     onInputChange={handleInputChange}
@@ -132,7 +123,7 @@ const Add = ({
                 />
                 {error != '' && <p className="error">{error}</p>}
                 <div className="modalFooter">
-                    {selectedInstrument != '' &&
+                    {instruments.includes(selectedMenuItem) &&
                         <div className="submit" onClick={handleSubmit}>
                             SUBMIT
                         </div>

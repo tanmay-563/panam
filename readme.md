@@ -7,6 +7,9 @@
   - scriptId - id after  https://script.google.com/u/0/home/projects/ in url
   - rootDir - /Users/m.akshay/projects/personal/stonks/dist
 - to implement
-  - use column config more exctensively
+  - use column config more extensively
   - ask for password
   - in memory cache for all stuff local storage
+  - loading icon when submitting form
+  - form validation
+  - aggregation in datagrid 

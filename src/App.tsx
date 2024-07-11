@@ -23,7 +23,7 @@ function App() {
     const [selectedMenuItem, setSelectedMenuItem] = useState("");
     const [openAdd, setOpenAdd] = useState(false);
     const [alertDetails, setAlertDetails] = useState({})
-    console.log("sel " + selectedMenuItem);
+
     const fetchSheetData = () => {
         console.log("fetching...")
         setLoading(true);
