@@ -55,13 +55,15 @@ const Instruments = ({
     })) : [];
 
     const dataGridStyles = {
-        '& .MuiDataGrid-root':{
-            borderColor: 'var(--ultra-soft-color)',
-            borderRadius: '12px',
-        },
+        borderColor: 'var(--max-soft-color)',
         '& .MuiDataGrid-toolbarContainer': {
             backgroundColor: 'var(--soft-bg)',
-            borderRadius: '10px',
+            '& .MuiButtonBase-root': {
+                color: 'var(--soft-color)',
+            },
+        },
+        '& .MuiDataGrid-footerContainer':{
+            border: 'none',
         },
         '& .MuiInputBase-root': {
             color: 'var(--soft-color)',
@@ -87,6 +89,12 @@ const Instruments = ({
         '& .MuiSvgIcon-root': {
             color: 'var(--ultra-soft-color)',
         },
+        '& .MuiDataGrid-cell': {
+            borderColor: 'var(--max-soft-color)',
+        },
+        '& .MuiDataGrid-virtualScrollerRenderZone':{
+            '--DataGrid-rowBorderColor': 'red',
+        }
     };
 
     return loading ?
