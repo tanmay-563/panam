@@ -9,10 +9,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import React, { useEffect, useState } from 'react';
-import Add from "./components/Add/Add";
+import Add from "./components/add/Add";
 import devData from "./devData.json";
 import getProcessedData from "./utils/dataProcessor";
-import ReactLoading from 'react-loading';
 import LoadingOverlay from "./components/LoadingOverlay";
 import AlertBox from "./components/AlertBox";
 
@@ -30,7 +29,7 @@ function App() {
         if (process.env.NODE_ENV == "development"){
             let data = devData.data;
             setData(getProcessedData(data));
-            setTimeout(() => setLoading(false), 0)
+            setTimeout(() => setLoading(false), 500)
         }
         else{
             google.script.run.withSuccessHandler((data) => {
@@ -106,7 +105,10 @@ function App() {
                 {
                     path: "/",
                     element: (
-                        <Home/>
+                        <Home
+                            instruments={data?.instruments}
+                            contentColumnMap={data?.contentColumnMap}
+                        />
                     ),
                 },
                 {
@@ -127,7 +129,10 @@ function App() {
                 {
                     path: "*",
                     element: (
-                        <Home/>
+                        <Home
+                            instruments={data?.instruments}
+                            contentColumnMap={data?.contentColumnMap}
+                        />
                     ),
                 },
             ]

@@ -55,15 +55,20 @@ function getConfigRowMap(data){
 }
 
 function getContentColumnMap(data){
+    console.log(data["mutualfund"])
     return Object.keys(data).reduce((contentColumnMap, key) => {
         if (key[0] != '_') {
             const headers = data[key][0]
             let columnMap = {}
             headers.forEach((header, columnIndex) => {
                 const columnValues = [];
+                let sum = 0;
                 for (let rowIndex = 1; rowIndex < data[key].length; rowIndex++) {
-                    columnValues.push(data[key][rowIndex][columnIndex]);
+                    const value = data[key][rowIndex][columnIndex]
+                    columnValues.push(value);
+                    sum += (typeof value == "number")? value : 0;
                 }
+                columnValues.push(sum);
                 columnMap[header] = columnValues;
             });
             contentColumnMap[key] = columnMap

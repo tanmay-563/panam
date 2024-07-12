@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react'
 import LogoIcon from "../../public/logo_light.svg";
 import GithubIcon from "../../public/github.svg";
 import AddIcon from "../../public/add.svg";
 import RefreshIcon from "../../public/refresh.svg";
 import SettingsIcon from "../../public/settings.svg";
-import Add from "./Add/Add";
 
 const Navbar = ({onRefresh, onOpenAdd}) => {
 

@@ -1,0 +1,30 @@
+@import "../variables";
+
+.total-assets{
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+
+  h4{
+    font-weight: normal;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    color: $soft-color;
+  }
+
+  .main-box{
+    h4{
+      font-size: 26px;
+      color: #fff
+    }
+
+    h6{
+      display: flex;
+      justify-content: right;
+    }
+
+    h6::before{
+      content: attr(data-prefix);
+    }
+  }
+}

@@ -61,6 +61,7 @@ const Instruments = ({
             '& .MuiButtonBase-root': {
                 color: 'var(--soft-color)',
             },
+            flexDirection : 'row-reverse',
         },
         '& .MuiDataGrid-footerContainer':{
             border: 'none',
@@ -122,12 +123,16 @@ const Instruments = ({
                 slotProps={{
                     toolbar: {
                         showQuickFilter: true,
+                        quickFilterProps: {
+                            debounceMs: 500
+                        }
                     },
                 }}
                 pageSizeOptions={[5, 10, 100]}
                 sx={dataGridStyles}
                 autoHeight={true}
                 getRowClassName={(params) => 'datagrid-row'}
+                disableDensitySelector
             />
         </div>);
 };

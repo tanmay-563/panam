@@ -3,7 +3,7 @@
 // import {Outlet} from "react-router-dom";
 // import LoadingOverlay from "../components/LoadingOverlay";
 // import AlertBox from "../components/AlertBox";
-// import Add from "../components/Add/Add";
+// import add from "../components/add/add";
 // import Footer from "../components/Footer";
 // import React from "react";
 //
@@ -30,7 +30,7 @@
 //                             message={alertDetails.message}
 //                         />
 //                     }
-//                     {openAdd && <Add
+//                     {openAdd && <add
 //                         instruments={data?.instruments}
 //                         headerMap={data?.headerMap}
 //                         contentColumnMap={data?.contentColumnMap}
