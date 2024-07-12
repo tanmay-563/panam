@@ -3,7 +3,8 @@ let faviconUrl = "https://drive.google.com/uc?id=1aQQqYhnESMZ-ZboAs4Rdcu0x8O0ZXl
 function doGet() {
   return HtmlService.createHtmlOutputFromFile("index")
       .setFaviconUrl(faviconUrl)
-      .setTitle("Panam");
+      .setTitle("Panam")
+      .addMetaTag('viewport', 'width=device-width, initial-scale=1');;
 }
 
 function fetchData(){
