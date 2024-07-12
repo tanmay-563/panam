@@ -55,7 +55,6 @@ function getConfigRowMap(data){
 }
 
 function getContentColumnMap(data){
-    console.log(data["mutualfund"])
     return Object.keys(data).reduce((contentColumnMap, key) => {
         if (key[0] != '_') {
             const headers = data[key][0]

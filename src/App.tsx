@@ -109,11 +109,12 @@ function App() {
                             instruments={data?.instruments}
                             contentColumnMap={data?.contentColumnMap}
                             config={data?.config}
+                            setSelectedMenuItem={setSelectedMenuItem}
                         />
                     ),
                 },
                 {
-                    path: "transactions",
+                    path: "transactions/:instrumentId",
                     element: <Instruments
                         headerMap={data?.headerMap}
                         contentRowMap={data?.contentRowMap}
@@ -134,6 +135,7 @@ function App() {
                             instruments={data?.instruments}
                             contentColumnMap={data?.contentColumnMap}
                             config={data?.config}
+                            setSelectedMenuItem={setSelectedMenuItem}
                         />
                     ),
                 },

@@ -4,6 +4,7 @@ const Home = ({
                     instruments,
                     contentColumnMap,
                     config,
+                    setSelectedMenuItem,
 }) => {
     return (
         contentColumnMap ?
@@ -13,6 +14,7 @@ const Home = ({
                         contentColumnMap = {contentColumnMap}
                         instruments={instruments}
                         config={config}
+                        setSelectedMenuItem={setSelectedMenuItem}
                     />
                 </div>
                 <div className="box box2">box 2</div>

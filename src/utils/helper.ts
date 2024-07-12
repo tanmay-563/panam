@@ -28,10 +28,10 @@ export function formatToIndianCurrency(number) {
 }
 
 export function formatPercentage(number){
-    return 100*number.toFixed(3)+'%'
+    return (100*number).toFixed(1)+'%'
 }
 
-export function getMainBoxContent(contentColumnMap, instruments){
+export function getMainBoxContent(contentColumnMap, instruments, itemLimit){
     let totalInvested = 0;
     let totalCurrent = 0;
     instruments.forEach((instrument)=>{
@@ -55,14 +55,14 @@ export function getMainBoxContent(contentColumnMap, instruments){
         };
     }).sort((a, b) => b.current - a.current);
 
-    const others = sortedInstruments.slice(5).reduce((acc, instrument) => {
+    const others = sortedInstruments.slice(itemLimit-1).reduce((acc, instrument) => {
         acc.current += instrument.current;
         acc.difference += instrument.difference;
         return acc;
     }, { instrument: 'Others', current: 0, difference: 0 });
 
-    if(sortedInstruments.length > 6){
-        sortedInstruments.splice(5)
+    if(sortedInstruments.length > itemLimit){
+        sortedInstruments.splice(itemLimit-1)
         sortedInstruments.push(others);
     }
 

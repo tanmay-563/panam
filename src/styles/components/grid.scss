@@ -32,12 +32,12 @@
 
   .mini-box-container{
     display: grid;
-    gap: 4px;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(75px, auto);
 
     .mini-box{
       padding: 5px;
+      margin: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;

@@ -1,15 +1,20 @@
 import {formatPercentage, formatToIndianCurrency, getDisplayName, getMainBoxContent} from "../../utils/helper";
 import DynamicIcons from "../DynamicIcons";
-import React from "react";
+import React, {useCallback} from "react";
+import {Link} from "react-router-dom";
 
 const MAX_ITEMS = 6
 const MainBox = ({
                      contentColumnMap,
                      instruments,
-                     config
+                     config,
+                     setSelectedMenuItem
 }) => {
-    let [overallData, instrumentsData] = getMainBoxContent(contentColumnMap, instruments)
-    console.log(JSON.stringify(instrumentsData))
+    const instrumentsConfig = config?._instruments
+    let [overallData, instrumentsData] = getMainBoxContent(contentColumnMap, instruments, MAX_ITEMS)
+    const handleClick = useCallback((instrument) => {
+        setSelectedMenuItem(instrument);
+    }, [setSelectedMenuItem]);
 
     return (
         <div className="main-box">
@@ -26,25 +31,54 @@ const MainBox = ({
                 {Array.from({ length: MAX_ITEMS }).map((_, index) => {
                     if (index < instrumentsData.length) {
                         const instrument = instrumentsData[index];
-
+                        const instrumentId = instrument.instrument;
+                        const currentAmount = instrument.current;
+                        const differenceAmount = instrument.difference;
+                        const isProfitable = differenceAmount >= 0;
+                        const hasZeroDifference = differenceAmount == 0;
+                        const percentageChange = formatPercentage(differenceAmount/currentAmount)
                         return (
-                            <div className="mini-box" key={index}>
-                                <DynamicIcons name={instrument.instrument} className="icon" />
-                                <p>
-                                    {getDisplayName(config?._instruments, instrument.instrument)}
-                                </p>
-                                <div className="mini-numbers">
-                                    <h5>
-                                        {formatToIndianCurrency(instrument.current)}
-                                    </h5>
-                                    {instrument.difference == 0 ?
-                                        <h6>-</h6> :
-                                        <h6 data-prefix={instrument.difference >= 0 ? "\u25B4" : "\u25BE"} className={`${instrument.difference >= 0 ? 'green-color' : 'red-color'}`}>
-                                            {formatPercentage(instrument.difference/instrument.current)}
-                                        </h6>
-                                    }
+                            <>
+                                {instruments.includes(instrumentId) ?
+                                <Link
+                                    to={`/transactions/${instrumentId}`}
+                                    onClick={()=>handleClick(instrumentId)}
+                                    className="mini-box">
+                                    <DynamicIcons name={instrumentId} className="icon" />
+                                    <p>
+                                        {getDisplayName(instrumentsConfig, instrumentId)}
+                                    </p>
+                                    <div className="mini-numbers">
+                                        <h5>
+                                            {formatToIndianCurrency(currentAmount)}
+                                        </h5>
+                                        {hasZeroDifference ?
+                                            <h6>-</h6> :
+                                            <h6 data-prefix={isProfitable ? "\u25B4" : "\u25BE"} className={`${isProfitable ? 'green-color' : 'red-color'}`}>
+                                                {percentageChange}
+                                            </h6>
+                                        }
+                                    </div>
+                                </Link> :
+                                <div className="mini-box">
+                                    <DynamicIcons name={instrumentId} className="icon" />
+                                    <p>
+                                        {getDisplayName(instrumentsConfig, instrumentId)}
+                                    </p>
+                                    <div className="mini-numbers">
+                                        <h5>
+                                            {formatToIndianCurrency(currentAmount)}
+                                        </h5>
+                                        {hasZeroDifference ?
+                                            <h6>-</h6> :
+                                            <h6 data-prefix={isProfitable ? "\u25B4" : "\u25BE"} className={`${isProfitable ? 'green-color' : 'red-color'}`}>
+                                                {percentageChange}
+                                            </h6>
+                                        }
+                                    </div>
                                 </div>
-                            </div>
+                                }
+                            </>
                         );
                     }
 

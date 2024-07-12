@@ -13,6 +13,12 @@
     background-color: $dark-bg;
   }
 
+  .box1{
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .box3{
     grid-row: span 2;
   }

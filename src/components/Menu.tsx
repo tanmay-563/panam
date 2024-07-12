@@ -31,9 +31,9 @@ const Menu = ({
                 <span className="title">Transactions</span>
                 {instruments?.map((listItem, index) => (
                     <Link
-                        to="/transactions"
+                        to={`/transactions/${listItem}`}
+                        key={listItem}
                         className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
-                        key={index}
                         onClick={() => setSelectedMenuItem(listItem)}>
                         <DynamicIcons name={listItem}></DynamicIcons>
                         <span className="listItemTitle">{getDisplayName(instrumentConfig, listItem)}</span>

@@ -12,6 +12,7 @@ const Instruments = ({
                          config,
                          instrument
                      }) => {
+    console.log("ins " + JSON.stringify(instrument))
     if(!instrument){
         return <div></div>
     }
