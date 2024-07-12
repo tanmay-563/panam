@@ -108,6 +108,7 @@ function App() {
                         <Home
                             instruments={data?.instruments}
                             contentColumnMap={data?.contentColumnMap}
+                            config={data?.config}
                         />
                     ),
                 },
@@ -132,6 +133,7 @@ function App() {
                         <Home
                             instruments={data?.instruments}
                             contentColumnMap={data?.contentColumnMap}
+                            config={data?.config}
                         />
                     ),
                 },

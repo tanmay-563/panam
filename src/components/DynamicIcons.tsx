@@ -20,14 +20,18 @@ const iconMap = {
 };
 // TODO setup dynamic loading
 
-const DynamicIcons = ({ name: name}) => {
+const DynamicIcons = ({
+                          name,
+                          className = ''
+
+}) => {
     let Icon = iconMap[name.toLowerCase()];
 
     if (!Icon) {
         Icon = iconMap["generic"];
     }
 
-    return <Icon />;
+    return <Icon className={className}/>;
 };
 
 export default DynamicIcons;
