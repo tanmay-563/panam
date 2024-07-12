@@ -19,7 +19,7 @@ const MainBox = ({
     return (
         <div className="main-box">
             <h6> MY ASSETS </h6>
-            <div className="numbers">
+            <div className="mini-box-totals">
                 <h1>
                     {formatToIndianCurrency(overallData.current)}
                 </h1>
@@ -38,7 +38,7 @@ const MainBox = ({
                         const hasZeroDifference = differenceAmount == 0;
                         const percentageChange = formatPercentage(differenceAmount/currentAmount)
                         return (
-                            <>
+                            <div key = {index}>
                                 {instruments.includes(instrumentId) ?
                                 <Link
                                     to={`/transactions/${instrumentId}`}
@@ -60,7 +60,8 @@ const MainBox = ({
                                         }
                                     </div>
                                 </Link> :
-                                <div className="mini-box">
+                                <div
+                                    className="mini-box">
                                     <DynamicIcons name={instrumentId} className="icon" />
                                     <p>
                                         {getDisplayName(instrumentsConfig, instrumentId)}
@@ -78,7 +79,7 @@ const MainBox = ({
                                     </div>
                                 </div>
                                 }
-                            </>
+                            </div>
                         );
                     }
 
