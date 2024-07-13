@@ -138,12 +138,13 @@ const Add = ({
                 />
                 {error != '' && <p className="error">{error}</p>}
                 <div className="modalFooter">
-                    {instruments.includes(selectedMenuItem) &&
-                        loading ?
+                    {instruments.includes(selectedMenuItem) ?
+                        (loading ?
                         <Loading className="submit"/> :
                         <div className="submit" onClick={handleSubmit}>
                             SUBMIT
-                        </div>
+                        </div> ) :
+                        <div></div>
                     }
                 </div>
             </div>
