@@ -11,20 +11,20 @@ export function getDisplayName(instrumentsMetadata, instrument) {
     }
 }
 
-const truncateNumber = (number) => {
+const truncateNumber = (number, decimalCount = 2) => {
     if (number < 1000) return number.toString();
-    if (number < 100000) return `${(number / 1000).toFixed(1)}K`;
-    if (number < 10000000) return `${(number / 100000).toFixed(1)}L`;
-    return `${(number / 10000000).toFixed(1)}Cr`;
+    if (number < 100000) return `${(number / 1000).toFixed(decimalCount)}K`;
+    if (number < 10000000) return `${(number / 100000).toFixed(decimalCount)}L`;
+    return `${(number / 10000000).toFixed(decimalCount)}Cr`;
 };
 
-export function formatToIndianCurrency(number, truncate = true) {
+export function formatToIndianCurrency(number, decimalCount = 2, truncate = true) {
     const symbol = '₹';
     let value = number
     try{
         value = truncate
-            ? `${symbol}${truncateNumber(number)}`
-            : `${symbol}${Number(number.toFixed(2)).toLocaleString('en-IN')}`;
+            ? `${symbol}${truncateNumber(number, decimalCount)}`
+            : `${symbol}${Number(number.toFixed(decimalCount)).toLocaleString('en-IN')}`;
     }
     catch (e){
         return value;

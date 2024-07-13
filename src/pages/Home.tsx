@@ -19,11 +19,11 @@ const Home = ({
                         setSelectedMenuItem={setSelectedMenuItem}/>
                 </div>
                 <div className="box box2">
+                    <LineGraphBox
+                        reports={reports}/>
                 </div>
                 <div className="box box3">box 3</div>
                 <div className="box box4">
-                    <LineGraphBox
-                        reports={reports}/>
                 </div>
             </div> :
             <div/>

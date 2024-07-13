@@ -29,6 +29,19 @@
     flex-wrap: wrap;
   }
 
+  .box2{
+    padding-left: 0;
+
+    h6{
+      display: flex;
+      justify-content: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: normal;
+      color: $soft-color;
+      font-size: 10px;
+    }
+  }
+
   .box3{
     grid-row: span 2;
   }
