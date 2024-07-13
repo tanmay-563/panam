@@ -1,6 +1,6 @@
 import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid';
 import {getDisplayName} from "../utils/helper";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {useTheme} from "@mui/material";
 import {useParams} from "react-router-dom";
 
@@ -26,22 +26,22 @@ const Instruments = ({
     const [columnVisibility, setColumnVisibility] = useState({});
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
+    useMemo(() => {
         const savedVisibility = localStorage.getItem(getLocalStorageKey(instrument));
         if (savedVisibility) {
             setColumnVisibility(JSON.parse(savedVisibility));
             setLoading(false);
         }
         else{
-            let columnConfig= config["_columns"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
+            let columnConfig= config["_columns"]
             let columnVisibilityModel = {}
             columnConfig.forEach(item => {
-                columnVisibilityModel[item.Column] = item.isInitiallyVisible;
+                columnVisibilityModel[item.Column] = true;
             });
             setColumnVisibility(columnVisibilityModel)
             setLoading(false);
         }
-    }, []);
+    }, [instrument]);
 
     useEffect(() => {
         if(Object.keys(columnVisibility).length){
