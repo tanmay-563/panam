@@ -1,6 +1,7 @@
 import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid';
 import {getDisplayName} from "../utils/helper";
 import {useEffect, useState} from "react";
+import {useTheme} from "@mui/material";
 
 function getLocalStorageKey(instrument){
     return "datagrid_column_visibility_"+instrument;
@@ -16,6 +17,7 @@ const Instruments = ({
     if(!instrument){
         return <div></div>
     }
+    const theme = useTheme();
     const instrumentConfig = config?._instruments || {};
 
     const [columnVisibility, setColumnVisibility] = useState({});
@@ -52,6 +54,7 @@ const Instruments = ({
             field: columnName,
             headerName: columnName,
             flex: 1,
+            minWidth: 150,
             headerClassName: 'datagrid-header',
     })) : [];
 
@@ -59,10 +62,16 @@ const Instruments = ({
         borderColor: 'var(--max-soft-color)',
         '& .MuiDataGrid-toolbarContainer': {
             backgroundColor: 'var(--soft-bg)',
+            flexDirection : 'row-reverse',
+            [theme.breakpoints.down('sm')]: {
+                'flex-wrap': 'wrap-reverse',
+            },
             '& .MuiButtonBase-root': {
                 color: 'var(--soft-color)',
+                [theme.breakpoints.down('sm')]: {
+                    'font-size': '0',
+                },
             },
-            flexDirection : 'row-reverse',
         },
         '& .MuiDataGrid-footerContainer':{
             border: 'none',
@@ -134,6 +143,7 @@ const Instruments = ({
                 autoHeight={true}
                 getRowClassName={(params) => 'datagrid-row'}
                 disableDensitySelector
+                // checkboxSelection //TODO add selection
             />
         </div>);
 };

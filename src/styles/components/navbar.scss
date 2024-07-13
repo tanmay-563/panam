@@ -24,10 +24,6 @@
 
     .icon{
       cursor: pointer;
-
-      @include sm{
-        display: none;
-      }
     }
   }
 }
