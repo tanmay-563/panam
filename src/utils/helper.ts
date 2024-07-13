@@ -1,4 +1,5 @@
 import exp from "constants";
+import {useCallback, useRef} from "react";
 
 export function getDisplayName(instrumentsConfig, instrument) {
     try{
@@ -67,4 +68,30 @@ export function getMainBoxContent(contentColumnMap, instruments, itemLimit){
     }
 
     return [ overallData, sortedInstruments]
+}
+
+export function useInMemoryCache() {
+    const cache = useRef(new Map());
+
+    const set = useCallback((key, value) => {
+        cache.current.set(key, value);
+    }, []);
+
+    const get = useCallback((key) => {
+        return cache.current.get(key);
+    }, []);
+
+    const has = useCallback((key) => {
+        return cache.current.has(key);
+    }, []);
+
+    const remove = useCallback((key) => {
+        cache.current.delete(key);
+    }, []);
+
+    const clear = useCallback(() => {
+        cache.current.clear();
+    }, []);
+
+    return {set, get, has, remove, clear}
 }

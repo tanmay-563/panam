@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react';
 import Add from "./components/add/Add";
 import devData from "./devData.json";
 import getProcessedData from "./utils/dataProcessor";
-import LoadingOverlay from "./components/LoadingOverlay";
+import Loading from "./components/Loading";
 import AlertBox from "./components/AlertBox";
 
 function App() {
@@ -73,7 +73,7 @@ function App() {
                     </div>
                     <div className="contentContainer">
                         <Outlet/>
-                        {loading && <LoadingOverlay/>}
+                        {loading && <Loading className="loading-overlay"/>}
                         {Object.keys(alertDetails).length > 0 &&
                             <AlertBox
                                 alertDetails={alertDetails}

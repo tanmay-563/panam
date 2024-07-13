@@ -1,6 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Fields from "./Fields";
 import {Select, MenuItem, FormControl, InputLabel} from '@mui/material';
+import Loading from "../Loading";
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
 
 const Add = ({
                  instruments,
@@ -16,6 +19,7 @@ const Add = ({
     const [inputValues, setInputValues] = useState({})
     const [error, setError] = useState('')
     const [shake, setShake] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const getRequiredHeaders = (instrument) =>{
         try{
@@ -28,34 +32,45 @@ const Add = ({
         }
     }
 
-    const handleSubmit = () =>{
-        const requiredHeaders = getRequiredHeaders(selectedMenuItem)
-        let preventSubmit = false;
-        requiredHeaders.forEach((header)=>{
-            if (!(header in inputValues)){
-                preventSubmit = true;
-            }
-        })
-        if(preventSubmit){
-            setShake(true)
+    const handleSubmit = () => {
+        if (loading) return;
+
+        const requiredHeaders = getRequiredHeaders(selectedMenuItem);
+        const formInvalid = requiredHeaders.some(header => !(header in inputValues));
+
+        if (formInvalid) {
+            setShake(true);
             setTimeout(() => setShake(false), 1000);
-            setError("All fields are required.")
+            setError("All fields are required.");
             return;
         }
-        if (process.env.NODE_ENV == "development"){
-            setOpenAdd(false)
-            setAlert("success", "Success", "Transaction added successfully.")
+
+        const successHandler = () => {
+            setLoading(false);
+            setOpenAdd(false);
+            setAlert("success", "Success", "Refresh to see updated data.", 10);
+        };
+
+        const errorHandler = () => {
+            setLoading(false);
+            setOpenAdd(false);
+            setAlert("error", "Error", "Failed to add transaction.", 10);
+        };
+
+        if (process.env.NODE_ENV === "development") {
+            setLoading(true);
+            setTimeout(() => {
+                setLoading(false);
+                successHandler();
+            }, 1500);
+        } else {
+            setLoading(true);
+            google.script.run
+                .withSuccessHandler(successHandler)
+                .withFailureHandler(errorHandler)
+                .addRow(selectedMenuItem, inputValues);
         }
-        else{
-            google.script.run.withSuccessHandler((data) => {
-                setOpenAdd(false)
-                setAlert("success", "Success", "Transaction added successfully.")
-            }).withFailureHandler((error) => {
-                setOpenAdd(false)
-                setAlert("error", "Error", "Failed to add transaction.", 5)
-            }).addRow(selectedMenuItem, inputValues);
-        }
-    }
+    };
 
     const handleInstrumentSelected = (suggestion) => {
         setSelectedMenuItem(suggestion);
@@ -124,6 +139,8 @@ const Add = ({
                 {error != '' && <p className="error">{error}</p>}
                 <div className="modalFooter">
                     {instruments.includes(selectedMenuItem) &&
+                        loading ?
+                        <Loading className="submit"/> :
                         <div className="submit" onClick={handleSubmit}>
                             SUBMIT
                         </div>

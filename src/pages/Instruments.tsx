@@ -2,6 +2,7 @@ import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid'
 import {getDisplayName} from "../utils/helper";
 import {useEffect, useState} from "react";
 import {useTheme} from "@mui/material";
+import {useParams} from "react-router-dom";
 
 function getLocalStorageKey(instrument){
     return "datagrid_column_visibility_"+instrument;
@@ -13,10 +14,12 @@ const Instruments = ({
                          config,
                          instrument
                      }) => {
-    console.log("ins " + JSON.stringify(instrument))
+    const { instrumentId } = useParams();
     if(!instrument){
-        return <div></div>
+        instrument = instrumentId
     }
+    if(!contentRowMap)
+        return <div></div>
     const theme = useTheme();
     const instrumentConfig = config?._instruments || {};
 
@@ -64,12 +67,12 @@ const Instruments = ({
             backgroundColor: 'var(--soft-bg)',
             flexDirection : 'row-reverse',
             [theme.breakpoints.down('sm')]: {
-                'flex-wrap': 'wrap-reverse',
+                flexWrap: 'wrap-reverse',
             },
             '& .MuiButtonBase-root': {
                 color: 'var(--soft-color)',
                 [theme.breakpoints.down('sm')]: {
-                    'font-size': '0',
+                    fontSize: '0',
                 },
             },
         },
