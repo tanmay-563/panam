@@ -10,18 +10,18 @@ function getLocalStorageKey(instrument){
 
 const Instruments = ({
                          headerMap,
-                         contentRowMap,
-                         config,
+                         transactionsRowMap,
+                         metadata,
                          instrument
                      }) => {
     const { instrumentId } = useParams();
     if(!instrument){
         instrument = instrumentId
     }
-    if(!contentRowMap)
+    if(!transactionsRowMap)
         return <div></div>
     const theme = useTheme();
-    const instrumentConfig = config?._instruments || {};
+    const instrumentMetadata = metadata?.instrument || {};
 
     const [columnVisibility, setColumnVisibility] = useState({});
     const [loading, setLoading] = useState(true)
@@ -33,9 +33,9 @@ const Instruments = ({
             setLoading(false);
         }
         else{
-            let columnConfig= config["_columns"]
+            let columnMetadata= metadata["column"]
             let columnVisibilityModel = {}
-            columnConfig.forEach(item => {
+            columnMetadata.forEach(item => {
                 columnVisibilityModel[item.Column] = true;
             });
             setColumnVisibility(columnVisibilityModel)
@@ -49,7 +49,7 @@ const Instruments = ({
         }
     }, [columnVisibility]);
 
-    const rows: GridRowsProp[] = contentRowMap[instrument]
+    const rows: GridRowsProp[] = transactionsRowMap[instrument]
 
     const headers = headerMap[instrument]
     const columns: GridColDef[] = headers && headers.length > 0 ?
@@ -114,7 +114,7 @@ const Instruments = ({
     return loading ?
          <div/> :
         (<div>
-            <div className="title">{getDisplayName(instrumentConfig, instrument)}</div>
+            <div className="title">{getDisplayName(instrumentMetadata, instrument)}</div>
             <DataGrid
                 rows={rows}
                 columns={columns}

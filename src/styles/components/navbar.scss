@@ -8,9 +8,10 @@
   justify-content: space-between;
 
   .logoBox{
+    display: flex;
     align-items: center;
     font-weight: bold;
-    gap: 10px;
+    gap: 5px;
     .logo{
       width: 20px;
       height: 20px;

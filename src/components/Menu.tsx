@@ -5,11 +5,11 @@ import DynamicIcons from "./DynamicIcons";
 import {getDisplayName} from "../utils/helper";
 const Menu = ({
                   instruments,
-                  config,
+                  metadata: metadata,
                   selectedMenuItem,
                   setSelectedMenuItem}
 ) => {
-    const instrumentConfig = config?._instruments || {};
+    const instrumentMetadata = metadata?.instrument || {};
     return (
         <div className="menu">
             {menu.map((item) => (
@@ -36,7 +36,7 @@ const Menu = ({
                         className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
                         onClick={() => setSelectedMenuItem(listItem)}>
                         <DynamicIcons name={listItem}></DynamicIcons>
-                        <span className="listItemTitle">{getDisplayName(instrumentConfig, listItem)}</span>
+                        <span className="listItemTitle">{getDisplayName(instrumentMetadata, listItem)}</span>
                     </Link>
                 ))}
             </div>

@@ -1,3 +1,6 @@
+const METADATA_PREFIX = '_'
+const REPORTS_PREFIX = '+'
+
 function convertToJSON(array) {
     const headers = array[0];
     const rows = array.slice(1);
@@ -13,10 +16,6 @@ function convertToJSON(array) {
 
 function getInstruments(content){
     return Object.keys(content);
-}
-
-function getConfig(config, name){
-    return config["_"+name.toLowerCase()];
 }
 
 function getHeaders(content){
@@ -36,27 +35,18 @@ function getUniqueValues(jsonData, key){
     }, []);
 }
 
-function getContentRowMap(data){
-    return Object.keys(data).reduce((contentMap, key) => {
-        if (key[0] !== '_') {
-            contentMap[key] = convertToJSON(data[key]);
+function getTransactionsRowMap(data){
+    return Object.keys(data).reduce((transactionsMap, key) => {
+        if (key[0] !== METADATA_PREFIX && key[0] != REPORTS_PREFIX) {
+            transactionsMap[key] = convertToJSON(data[key]);
         }
-        return contentMap;
+        return transactionsMap;
     }, {});
 }
 
-function getConfigRowMap(data){
-    return Object.keys(data).reduce((configMap, key) => {
-        if (key[0] == '_') {
-            configMap[key] = convertToJSON(data[key]);
-        }
-        return configMap;
-    }, {});
-}
-
-function getContentColumnMap(data){
-    return Object.keys(data).reduce((contentColumnMap, key) => {
-        if (key[0] != '_') {
+function getTransactionsColumnMap(data){
+    return Object.keys(data).reduce((transactionsMap, key) => {
+        if (key[0] !== METADATA_PREFIX && key[0] != REPORTS_PREFIX) {
             const headers = data[key][0]
             let columnMap = {}
             headers.forEach((header, columnIndex) => {
@@ -70,15 +60,33 @@ function getContentColumnMap(data){
                 columnValues.push(sum);
                 columnMap[header] = columnValues;
             });
-            contentColumnMap[key] = columnMap
+            transactionsMap[key] = columnMap
         }
-        return contentColumnMap;
+        return transactionsMap;
+    }, {});
+}
+
+function getMetadataRowMap(data){
+    return Object.keys(data).reduce((metadataMap, key) => {
+        if (key[0] == METADATA_PREFIX) {
+            metadataMap[key.slice(1)] = convertToJSON(data[key]);
+        }
+        return metadataMap;
+    }, {});
+}
+
+function getReportsRowMap(data){
+    return Object.keys(data).reduce((reportsMap, key) => {
+        if (key[0] == REPORTS_PREFIX) {
+            reportsMap[key.slice(1)] = convertToJSON(data[key]);
+        }
+        return reportsMap;
     }, {});
 }
 
 function getHeaderMap(data){
     return Object.keys(data).reduce((headerMap, key) => {
-        if (key[0] != '_') {
+        if (key[0] != METADATA_PREFIX && key[0] != REPORTS_PREFIX) {
             headerMap[key] = data[key][0]
         }
         return headerMap;
@@ -87,17 +95,19 @@ function getHeaderMap(data){
 
 
 function getProcessedData(data){
-    let contentRowMap = getContentRowMap(data)
-    let config = getConfigRowMap(data)
-    let contentColumnMap = getContentColumnMap(data)
-    let instruments = getInstruments(contentRowMap)
+    let transactionsRowMap = getTransactionsRowMap(data)
+    let transactionsColumnMap = getTransactionsColumnMap(data)
+    let metadata = getMetadataRowMap(data)
+    let instruments = getInstruments(transactionsRowMap)
     let headerMap = getHeaderMap(data)
+    let reports = getReportsRowMap(data)
     return {
-        contentRowMap: contentRowMap,
-        config: config,
-        contentColumnMap: contentColumnMap,
+        transactionsRowMap: transactionsRowMap,
+        transactionsColumnMap: transactionsColumnMap,
+        metadata: metadata,
         instruments: instruments,
         headerMap: headerMap,
+        reports: reports,
     }
 }
 

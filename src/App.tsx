@@ -27,7 +27,7 @@ function App() {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
-            let data = devData.data;
+            let data = devData;
             setData(getProcessedData(data));
             setTimeout(() => setLoading(false), 500)
         }
@@ -66,7 +66,7 @@ function App() {
                     <div className="menuContainer">
                         <Menu
                             instruments={data?.instruments}
-                            config={data?.config}
+                            metadata={data?.metadata}
                             selectedMenuItem={selectedMenuItem}
                             setSelectedMenuItem={setSelectedMenuItem}
                         />
@@ -83,12 +83,12 @@ function App() {
                         {openAdd && <Add
                             instruments={data?.instruments}
                             headerMap={data?.headerMap}
-                            contentColumnMap={data?.contentColumnMap}
+                            transactionsColumnMap={data?.transactionsColumnMap}
                             selectedMenuItem={selectedMenuItem}
                             setSelectedMenuItem={setSelectedMenuItem}
                             setOpenAdd={setOpenAdd}
                             setAlert={setAlert}
-                            config={data?.config}
+                            metadata={data?.metadata}
                         />}
                     </div>
                 </div>
@@ -107,8 +107,9 @@ function App() {
                     element: (
                         <Home
                             instruments={data?.instruments}
-                            contentColumnMap={data?.contentColumnMap}
-                            config={data?.config}
+                            transactionsColumnMap={data?.transactionsColumnMap}
+                            metadata={data?.metadata}
+                            reports={data?.reports}
                             setSelectedMenuItem={setSelectedMenuItem}
                         />
                     ),
@@ -117,8 +118,8 @@ function App() {
                     path: "transactions/:instrumentId",
                     element: <Instruments
                         headerMap={data?.headerMap}
-                        contentRowMap={data?.contentRowMap}
-                        config={data?.config}
+                        transactionsRowMap={data?.transactionsRowMap}
+                        metadata={data?.metadata}
                         instrument={selectedMenuItem}
                     />,
                 },
@@ -133,8 +134,9 @@ function App() {
                     element: (
                         <Home
                             instruments={data?.instruments}
-                            contentColumnMap={data?.contentColumnMap}
-                            config={data?.config}
+                            transactionsColumnMap={data?.transactionsColumnMap}
+                            metadata={data?.metadata}
+                            reports={data?.reports}
                             setSelectedMenuItem={setSelectedMenuItem}
                         />
                     ),

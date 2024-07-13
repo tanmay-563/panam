@@ -1,6 +1,8 @@
 // BG
 $primary: rgb(18,23,39);
 $secondary: rgb(99,102,241);
+$ternary: #8b5cf6;
+$light-bg: rgb(54,69,79);
 $soft-bg: rgb(31,41,55);
 $dark-bg: rgb(21,31,45);
 $overlay-bg: rgba(0, 0, 0, 0.424);
@@ -20,4 +22,7 @@ $max-soft: rgba(228, 219, 233, 0.2);
   --dark-color: #{$dark-color};
   --ultra-soft-color: #{$ultra-soft};
   --max-soft-color: #{$max-soft};
+  --secondary: #{$secondary};
+  --ternary: #{$ternary};
+  --light-bg: #{$light-bg};
 }

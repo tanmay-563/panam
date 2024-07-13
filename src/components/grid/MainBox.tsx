@@ -5,13 +5,13 @@ import {Link} from "react-router-dom";
 
 const MAX_ITEMS = 6
 const MainBox = ({
-                     contentColumnMap,
+                     transactionsColumnMap,
                      instruments,
-                     config,
+                     metadata,
                      setSelectedMenuItem
 }) => {
-    const instrumentsConfig = config?._instruments
-    let [overallData, instrumentsData] = getMainBoxContent(contentColumnMap, instruments, MAX_ITEMS)
+    const instrumentsMetadata = metadata?.instrument
+    let [overallData, instrumentsData] = getMainBoxContent(transactionsColumnMap, instruments, MAX_ITEMS)
     const handleClick = useCallback((instrument) => {
         setSelectedMenuItem(instrument);
     }, [setSelectedMenuItem]);
@@ -46,7 +46,7 @@ const MainBox = ({
                                     className="mini-box">
                                     <DynamicIcons name={instrumentId} className="icon" />
                                     <p>
-                                        {getDisplayName(instrumentsConfig, instrumentId)}
+                                        {getDisplayName(instrumentsMetadata, instrumentId)}
                                     </p>
                                     <div className="mini-numbers">
                                         <h5>
@@ -64,7 +64,7 @@ const MainBox = ({
                                     className="mini-box">
                                     <DynamicIcons name={instrumentId} className="icon" />
                                     <p>
-                                        {getDisplayName(instrumentsConfig, instrumentId)}
+                                        {getDisplayName(instrumentsMetadata, instrumentId)}
                                     </p>
                                     <div className="mini-numbers">
                                         <h5>

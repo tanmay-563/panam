@@ -1,9 +1,9 @@
 import exp from "constants";
 import {useCallback, useRef} from "react";
 
-export function getDisplayName(instrumentsConfig, instrument) {
+export function getDisplayName(instrumentsMetadata, instrument) {
     try{
-        const entry = instrumentsConfig.find(item => item.Name.toLowerCase() === instrument.toLowerCase());
+        const entry = instrumentsMetadata.find(item => item.Name.toLowerCase() === instrument.toLowerCase());
         return entry ? entry["Display Name"] : instrument;
     }
     catch (e){
@@ -11,33 +11,37 @@ export function getDisplayName(instrumentsConfig, instrument) {
     }
 }
 
-export function formatToIndianCurrency(number) {
-    const symbol = '₹'
-    if (number < 1000) {
-        return symbol + number.toString();
-    }
+const truncateNumber = (number) => {
+    if (number < 1000) return number.toString();
+    if (number < 100000) return `${(number / 1000).toFixed(1)}K`;
+    if (number < 10000000) return `${(number / 100000).toFixed(1)}L`;
+    return `${(number / 10000000).toFixed(1)}Cr`;
+};
 
-    if (number >= 1000 && number < 100000) {
-        return symbol + (number / 1000).toFixed(1) + 'K';
+export function formatToIndianCurrency(number, truncate = true) {
+    const symbol = '₹';
+    let value = number
+    try{
+        value = truncate
+            ? `${symbol}${truncateNumber(number)}`
+            : `${symbol}${Number(number.toFixed(2)).toLocaleString('en-IN')}`;
     }
-
-    if (number >= 100000 && number < 10000000) {
-        return symbol + (number / 100000).toFixed(1) + 'L';
+    catch (e){
+        return value;
     }
-
-    return symbol + (number / 10000000).toFixed(1) + 'Cr';
+    return value;
 }
 
 export function formatPercentage(number){
     return (100*number).toFixed(1)+'%'
 }
 
-export function getMainBoxContent(contentColumnMap, instruments, itemLimit){
+export function getMainBoxContent(transactionsColumnMap, instruments, itemLimit){
     let totalInvested = 0;
     let totalCurrent = 0;
     instruments.forEach((instrument)=>{
-        totalInvested += contentColumnMap[instrument]["Invested"].slice(-1)[0]
-        totalCurrent += contentColumnMap[instrument]["Current"].slice(-1)[0]
+        totalInvested += transactionsColumnMap[instrument]["Invested"].slice(-1)[0]
+        totalCurrent += transactionsColumnMap[instrument]["Current"].slice(-1)[0]
     })
     const overallData = {
         current: totalCurrent,
@@ -45,8 +49,8 @@ export function getMainBoxContent(contentColumnMap, instruments, itemLimit){
     }
 
     const sortedInstruments = instruments.map((instrument) => {
-        const invested = contentColumnMap[instrument]["Invested"].slice(-1)[0];
-        const current = contentColumnMap[instrument]["Current"].slice(-1)[0];
+        const invested = transactionsColumnMap[instrument]["Invested"].slice(-1)[0];
+        const current = transactionsColumnMap[instrument]["Current"].slice(-1)[0];
         const difference = current - invested;
 
         return {

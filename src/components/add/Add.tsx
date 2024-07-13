@@ -8,14 +8,16 @@ import load = Simulate.load;
 const Add = ({
                  instruments,
                  headerMap,
-                 contentColumnMap,
+                 transactionsColumnMap,
                  selectedMenuItem,
                  setSelectedMenuItem,
                  setOpenAdd,
                 setAlert,
-                config
+                metadata
              }) => {
-    const instrumentsConfig = config?._instruments || {};
+    const instrumentsMetadata = metadata?.instrument;
+    if(!instrumentsMetadata)
+        return <div></div>
     const [inputValues, setInputValues] = useState({})
     const [error, setError] = useState('')
     const [shake, setShake] = useState(false)
@@ -23,8 +25,8 @@ const Add = ({
 
     const getRequiredHeaders = (instrument) =>{
         try{
-            let columnConfig= config["_columns"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
-            let isAutomatedColumns = columnConfig.filter(config => config.isAutomated == true).map(config => config.Column);
+            let columnMetadata= metadata["column"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
+            let isAutomatedColumns = columnMetadata.filter(metadata => metadata.isAutomated == true).map(metadata => metadata.Column);
             return headerMap[instrument].filter(header => !isAutomatedColumns.includes(header));
         }
         catch (e){
@@ -115,7 +117,7 @@ const Add = ({
                             },
                         }}
                     >
-                        {instrumentsConfig.map((instrument) => (
+                        {instrumentsMetadata.map((instrument) => (
                             <MenuItem
                                 key={instrument.Name.toLowerCase()}
                                 value={instrument.Name.toLowerCase()}
@@ -131,7 +133,7 @@ const Add = ({
                 <Fields
                     instrument={selectedMenuItem}
                     requiredHeaders={getRequiredHeaders(selectedMenuItem)}
-                    contentColumnMap={contentColumnMap}
+                    transactionsColumnMap={transactionsColumnMap}
                     inputValues={inputValues}
                     onInputChange={handleInputChange}
                     error={error}

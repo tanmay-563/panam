@@ -79,3 +79,42 @@
     }
   }
 }
+
+.linegraph-box{
+  .tooltip-container {
+    background-color: $light-bg;
+    border: 1px solid $max-soft;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+    max-width: 200px;
+    white-space: nowrap;
+  }
+
+  .tooltip-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 10px;
+    color: $dark-bg;
+  }
+
+  .tooltip-value-container {
+    margin-bottom: 5px;
+  }
+
+  .tooltip-value-first {
+    font-weight: bold;
+    color: $secondary;
+  }
+
+  .tooltip-value-second {
+    font-weight: bold;
+    color: $ternary;
+  }
+
+  .tooltip-value-container span {
+    margin-left: 5px;
+  }
+}

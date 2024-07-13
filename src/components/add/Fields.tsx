@@ -2,7 +2,7 @@ import AutocompleteWrapper from "./AutocompleteWrapper";
 
 const Fields = ({
                        instrument,
-                       contentColumnMap,
+                       transactionsColumnMap,
                        requiredHeaders,
                         inputValues,
                         onInputChange,
@@ -13,7 +13,7 @@ const Fields = ({
 
     let uniqueValues = {}
     requiredHeaders.forEach(columnName => {
-        uniqueValues[columnName] = Array.from(new Set(contentColumnMap[instrument][columnName]));
+        uniqueValues[columnName] = Array.from(new Set(transactionsColumnMap[instrument][columnName]));
     });
 
     return (

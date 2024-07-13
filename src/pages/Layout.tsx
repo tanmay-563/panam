@@ -33,7 +33,7 @@
 //                     {openAdd && <add
 //                         instruments={data?.instruments}
 //                         headerMap={data?.headerMap}
-//                         contentColumnMap={data?.contentColumnMap}
+//                         transactionsColumnMap={data?.transactionsColumnMap}
 //                         selectedMenuItem={selectedMenuItem}
 //                         setOpenAdd={setOpenAdd}
 //                         setAlert={setAlert}

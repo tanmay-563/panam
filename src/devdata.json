@@ -1,2703 +1,3799 @@
 {
-  "data": {
-    "mutualfund": [
-      [
-        "id",
-        "Name",
-        "Category",
-        "Date",
-        "Invested",
-        "Code",
-        "NAV",
-        "NoU",
-        "Current"
-      ],
-      [
-        1,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "08/08/2022",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        33.731,
-        296.4483709347484,
-        15566.19
-      ],
-      [
-        2,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "03/10/2022",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        33.533,
-        298.1987892523782,
-        15658.13
-      ],
-      [
-        3,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/11/2022",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        34.668,
-        288.4360216914734,
-        15145.49
-      ],
-      [
-        4,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/12/2022",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        35.642,
-        280.5538409741316,
-        14731.61
-      ],
-      [
-        5,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/01/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        34.581,
-        289.1616783783002,
-        15183.61
-      ],
-      [
-        6,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/02/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        33.988,
-        294.2067788631282,
-        15448.52
-      ],
-      [
-        7,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/03/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        34.122,
-        293.05140378641346,
-        15387.81
-      ],
-      [
-        8,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "03/04/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        33.834,
-        295.5459005733877,
-        15518.82
-      ],
-      [
-        9,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/05/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        35.131,
-        284.6346531553329,
-        14945.9
-      ],
-      [
-        10,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/06/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        36.161,
-        276.5271978097951,
-        14520.16
-      ],
-      [
-        11,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "03/07/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        37.7,
-        265.2387267904509,
-        13927.43
-      ],
-      [
-        12,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "04/09/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        40.03,
-        249.8001498875843,
-        13116.75
-      ],
-      [
-        13,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "03/10/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        39.485,
-        253.2480688869191,
-        13297.8
-      ],
-      [
-        14,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/11/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        39.323,
-        254.2913816341581,
-        13352.57
-      ],
-      [
-        15,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "04/12/2023",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        42.204,
-        236.93251824471614,
-        12441.11
-      ],
-      [
-        16,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/01/2024",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        44.725,
-        223.57741755170485,
-        11739.8
-      ],
-      [
-        17,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/02/2024",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        44.757,
-        223.41756596733472,
-        11731.46
-      ],
-      [
-        18,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "04/03/2024",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        46.119,
-        216.81953208005376,
-        11385
-      ],
-      [
-        19,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/04/2024",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        47.277,
-        211.50876747678575,
-        11106.13
-      ],
-      [
-        20,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/05/2024",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        47.411,
-        210.91097002805256,
-        11074.73
-      ],
-      [
-        21,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "03/06/2024",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        47.877,
-        208.85811558786054,
-        10966.92
-      ],
-      [
-        22,
-        "Mirae Asset ELSS Tax Saver Fund (G)\t",
-        "Large Cap",
-        "02/07/2024",
-        9999.5,
-        "MIRA_ASSE_ELSS_41CP29",
-        52.303,
-        191.18406209968836,
-        10038.88
-      ],
-      [
-        23,
-        "Nippon India Small Cap Fund (G)\t",
-        "Small Cap",
-        "26/12/2023",
-        14999.25,
-        "NIPP_INDI_SMAL_1AOBL3E",
-        151.7412,
-        98.84757732244111,
-        19365.43
-      ],
-      [
-        24,
-        "Nippon India Small Cap Fund (G)\t",
-        "Small Cap",
-        "03/01/2024",
-        14999.25,
-        "NIPP_INDI_SMAL_1AOBL3E",
-        153.7974,
-        97.52603099922365,
-        19106.44
-      ],
-      [
-        25,
-        "Nippon India Small Cap Fund (G)\t",
-        "Small Cap",
-        "02/02/2024",
-        14999.25,
-        "NIPP_INDI_SMAL_1AOBL3E",
-        159.1873,
-        94.22391107833351,
-        18459.54
-      ],
-      [
-        26,
-        "Nippon India Small Cap Fund (G)\t",
-        "Small Cap",
-        "04/03/2024",
-        14999.25,
-        "NIPP_INDI_SMAL_1AOBL3E",
-        159.9229,
-        93.79050780094659,
-        18374.71
-      ],
-      [
-        27,
-        "Nippon India Small Cap Fund (G)\t",
-        "Small Cap",
-        "03/04/2024",
-        14999.25,
-        "NIPP_INDI_SMAL_1AOBL3E",
-        162.1663,
-        92.49301488657014,
-        18120.41
-      ],
-      [
-        28,
-        "Nippon India Small Cap Fund (G)\t",
-        "Small Cap",
-        "02/05/2024",
-        14999.25,
-        "NIPP_INDI_SMAL_1AOBL3E",
-        172.0425,
-        87.18339945071712,
-        17080.13
-      ],
-      [
-        29,
-        "Nippon India Small Cap Fund (G)\t",
-        "Small Cap",
-        "04/06/2024",
-        14999.25,
-        "NIPP_INDI_SMAL_1AOBL3E",
-        165.0225,
-        90.89215107030859,
-        17806.76
-      ],
-      [
-        30,
-        "Nippon India Small Cap Fund (G)\t",
-        "Small Cap",
-        "02/07/2024",
-        14999.25,
-        "NIPP_INDI_SMAL_1AOBL3E",
-        192.1864,
-        78.04532474722457,
-        15289.89
-      ],
-      [
-        31,
-        "HDFC Corporate Bond Fund Direct Plan (G)",
-        "Debt",
-        "13/03/2024",
-        79996,
-        "HDFC_CORP_BOND_10KEXP7",
-        29.7731,
-        2686.854912656055,
-        81946.12
-      ],
-      [
-        32,
-        "HDFC Corporate Bond Fund Direct Plan (G)",
-        "Debt",
-        "29/04/2024",
-        100,
-        "HDFC_CORP_BOND_10KEXP7",
-        29.9949,
-        3.3339000963497125,
-        101.68
-      ],
-      [
-        33,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "14/08/2023",
-        19999,
-        "QUAN_MID_CAP_8O21E5",
-        59.4869,
-        336.1916657280847,
-        32883.78
-      ],
-      [
-        34,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "01/09/2023",
-        9999.5,
-        "QUAN_MID_CAP_8O21E5",
-        61.5865,
-        162.36512872139187,
-        15881.33
-      ],
-      [
-        35,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "03/10/2023",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        64.0352,
-        234.2344523012343,
-        22911.01
-      ],
-      [
-        36,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "01/11/2023",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        62.0475,
-        241.7381844554575,
-        23645
-      ],
-      [
-        37,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "01/12/2023",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        68.6376,
-        218.52818280359452,
-        21374.77
-      ],
-      [
-        38,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "01/02/2024",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        77.8095,
-        192.76887783625392,
-        18855.22
-      ],
-      [
-        39,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "01/03/2024",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        81.4192,
-        184.22251753886061,
-        18019.31
-      ],
-      [
-        40,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "02/04/2024",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        84.3855,
-        177.7467692909327,
-        17385.88
-      ],
-      [
-        41,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "02/05/2024",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        89.6384,
-        167.33063062259032,
-        16367.06
-      ],
-      [
-        42,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "03/06/2024",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        94.7646,
-        158.27904090768072,
-        15481.66
-      ],
-      [
-        43,
-        "Quant Midcap Fund DIrect IDCW (G)",
-        "Mid Cap",
-        "02/07/2024",
-        14999.25,
-        "QUAN_MID_CAP_8O21E5",
-        96.0453,
-        156.1684954911901,
-        15275.18
-      ],
-      [
-        44,
-        "ICICI Prudential Money Market Direct (G)",
-        "Debt",
-        "01/12/2023",
-        5999.7,
-        "ICIC_PRU_MONE_TV1COZ",
-        340.2927,
-        17.630998255325487,
-        6280.29
-      ],
-      [
-        45,
-        "ICICI Prudential Money Market Direct (G)",
-        "Debt",
-        "27/12/2023",
-        54997.25,
-        "ICIC_PRU_MONE_TV1COZ",
-        341.9931,
-        160.8139170059279,
-        57283.1
-      ],
-      [
-        46,
-        "ICICI Prudential Money Market Direct (G)",
-        "Debt",
-        "02/04/2024",
-        29998.5,
-        "ICIC_PRU_MONE_TV1COZ",
-        349.515,
-        85.8289343804987,
-        30572.91
-      ],
-      [
-        47,
-        "ICICI Prudential Money Market Direct (G)",
-        "Debt",
-        "24/04/2024",
-        29998.5,
-        "ICIC_PRU_MONE_TV1COZ",
-        351.081,
-        85.44609363651122,
-        30436.48
-      ],
-      [
-        48,
-        "ICICI Prudential Money Market Direct (G)",
-        "Debt",
-        "03/06/2024",
-        29998.5,
-        "ICIC_PRU_MONE_TV1COZ",
-        353.7664,
-        84.79748218033143,
-        30205.3
-      ],
-      [
-        49,
-        "ICICI Prudential Money Market Direct (G)",
-        "Debt",
-        "27/06/2024",
-        29998.5,
-        "ICIC_PRU_MONE_TV1COZ",
-        355.3911,
-        84.40982343114389,
-        30067.45
-      ],
-      [
-        50,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "07/10/2022",
-        4999.75,
-        "NAVI_US_TOTA_1AFPVJY",
-        9.2701,
-        539.3415389262252,
-        0
-      ],
-      [
-        51,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "06/02/2023",
-        4999.75,
-        "NAVI_US_TOTA_1AFPVJY",
-        10.5688,
-        473.06695178260543,
-        0
-      ],
-      [
-        52,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "02/03/2023",
-        9999.5,
-        "NAVI_US_TOTA_1AFPVJY",
-        10.2437,
-        976.1609574665404,
-        0
-      ],
-      [
-        53,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "05/04/2023",
-        4999.75,
-        "NAVI_US_TOTA_1AFPVJY",
-        10.3134,
-        484.78193418271377,
-        0
-      ],
-      [
-        54,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "02/05/2023",
-        9999.5,
-        "NAVI_US_TOTA_1AFPVJY",
-        10.3575,
-        965.4356746319093,
-        0
-      ],
-      [
-        55,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "05/06/2023",
-        9999.5,
-        "NAVI_US_TOTA_1AFPVJY",
-        10.8913,
-        918.1181309852819,
-        0
-      ],
-      [
-        56,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "04/08/2023",
-        9999.5,
-        "NAVI_US_TOTA_1AFPVJY",
-        11.4951,
-        869.8923889309357,
-        0
-      ],
-      [
-        57,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "01/09/2023",
-        9999.5,
-        "NAVI_US_TOTA_1AFPVJY",
-        11.5696,
-        864.2909002904163,
-        0
-      ],
-      [
-        58,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "03/10/2023",
-        15009.25,
-        "NAVI_US_TOTA_1AFPVJY",
-        10.8563,
-        1382.5382496799095,
-        0
-      ],
-      [
-        59,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "01/11/2023",
-        16499.18,
-        "NAVI_US_TOTA_1AFPVJY",
-        10.8561,
-        1519.8072972798705,
-        0
-      ],
-      [
-        60,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "01/12/2023",
-        14999.25,
-        "NAVI_US_TOTA_1AFPVJY",
-        11.8602,
-        1264.6709161734202,
-        0
-      ],
-      [
-        61,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "01/02/2024",
-        13499.33,
-        "NAVI_US_TOTA_1AFPVJY",
-        12.6232,
-        1069.4063311996958,
-        0
-      ],
-      [
-        62,
-        "Navi US Total Stock Market FoF Direct (G)",
-        "International Equity",
-        "12/03/2024",
-        9999.5,
-        "NAVI_US_TOTA_1AFPVJY",
-        13.2874,
-        752.5550521546728,
-        0
-      ],
-      [
-        63,
-        "Motilal Oswal Nasdaq 100 FoF (G)",
-        "International Equity",
-        "02/07/2024",
-        14999.25,
-        "MOTI_OSWA_NASD_1NOTJ6L",
-        34.9651,
-        428.9777521013811,
-        15182.13
-      ]
+  "mutualfund": [
+    [
+      "id",
+      "Name",
+      "Category",
+      "Date",
+      "Invested",
+      "Code",
+      "NAV",
+      "NoU",
+      "Current"
     ],
-    "sgb": [
-      [
-        "id",
-        "Name",
-        "Date",
-        "Quantity",
-        "Price",
-        "Invested",
-        "Current"
-      ],
-      [
-        1,
-        "SGBDE31III",
-        "2/16/2024",
-        2,
-        6181,
-        12362,
-        15472
-      ],
-      [
-        2,
-        "SGBFEB32IV",
-        "5/2/2024",
-        2,
-        7130,
-        14260,
-        15898
-      ],
-      [
-        3,
-        "SGBDE31III",
-        "6/21/2024",
-        4,
-        7469.75,
-        29879,
-        30944
-      ],
-      [
-        4,
-        "SGBDE31III",
-        "7/4/2024",
-        8,
-        7705,
-        61640,
-        61888
-      ]
+    [
+      1,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "08/08/2022",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      33.731,
+      296.4483709347484,
+      15650.97
     ],
-    "nps": [
-      [
-        "id",
-        "Name",
-        "Category",
-        "Date",
-        "Invested",
-        "Scheme Id",
-        "NAV",
-        "NoU",
-        "Current NAV",
-        "Current"
-      ],
-      [
-        1,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Voluntary Contribution",
-        "18/11/2022",
-        375,
-        "SM008001",
-        36.4644,
-        10.284003027610492,
-        "₹ 52.26",
-        537.4419982229243
-      ],
-      [
-        2,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Voluntary Contribution",
-        "18/11/2022",
-        50,
-        "SM008002",
-        23.2073,
-        2.1544944909575867,
-        "₹ 26.32",
-        56.706295002003685
-      ],
-      [
-        3,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Voluntary Contribution",
-        "18/11/2022",
-        75,
-        "SM008003",
-        22.4014,
-        3.3480050353995736,
-        "₹ 25.90",
-        86.71333041684895
-      ],
-      [
-        4,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "29/12/2022",
-        4473.45,
-        "SM008001",
-        36.3467,
-        123.07719820506401,
-        "₹ 52.26",
-        6432.014378196644
-      ],
-      [
-        5,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "29/12/2022",
-        596.46,
-        "SM008002",
-        23.3882,
-        25.50260387716883,
-        "₹ 26.32",
-        671.2285340470836
-      ],
-      [
-        6,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "29/12/2022",
-        894.69,
-        "SM008003",
-        22.5776,
-        39.62732974275388,
-        "₹ 25.90",
-        1026.3478403373254
-      ],
-      [
-        7,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        283431.9189434958,
-        "07/01/2023",
-        -46.94,
-        "SM008001",
-        35.8359,
-        -1.3098596658657937,
-        "₹ 52.26",
-        -68.45326613814638
-      ],
-      [
-        8,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Charges",
-        "07/01/2023",
-        -6.35,
-        "SM008002",
-        23.4035,
-        -0.2713269382784626,
-        "₹ 26.32",
-        -7.1413250154891355
-      ],
-      [
-        9,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Charges",
-        "07/01/2023",
-        -9.54,
-        "SM008003",
-        22.5829,
-        -0.42244353028176185,
-        "₹ 25.90",
-        -10.941287434297632
-      ],
-      [
-        10,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Voluntary Contribution",
-        "10/01/2023",
-        37500,
-        "SM008001",
-        35.9551,
-        1042.967478883385,
-        "₹ 52.26",
-        54505.4804464457
-      ],
-      [
-        11,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Voluntary Contribution",
-        "10/01/2023",
-        5000,
-        "SM008002",
-        23.4306,
-        213.39615716200186,
-        "₹ 26.32",
-        5616.586856503889
-      ],
-      [
-        12,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Voluntary Contribution",
-        "10/01/2023",
-        7500,
-        "SM008003",
-        22.6651,
-        330.9052243316818,
-        "₹ 25.90",
-        8570.445310190558
-      ],
-      [
-        13,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "23/01/2023",
-        4473.45,
-        "SM008001",
-        36.2628,
-        123.3619577087263,
-        "₹ 52.26",
-        6446.895909858036
-      ],
-      [
-        14,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "23/01/2023",
-        596.46,
-        "SM008002",
-        23.4953,
-        25.386353866517986,
-        "₹ 26.32",
-        668.1688337667534
-      ],
-      [
-        15,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "23/01/2023",
-        894.69,
-        "SM008003",
-        22.7173,
-        39.38364154190859,
-        "₹ 25.90",
-        1020.0363159354324
-      ],
-      [
-        16,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "08/02/2023",
-        4473.45,
-        "SM008001",
-        35.8742,
-        124.69825111082615,
-        "₹ 52.26",
-        6516.730603051774
-      ],
-      [
-        17,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "08/02/2023",
-        596.46,
-        "SM008002",
-        23.5348,
-        25.3437462821014,
-        "₹ 26.32",
-        667.0474021449088
-      ],
-      [
-        18,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "08/02/2023",
-        894.69,
-        "SM008003",
-        22.7661,
-        39.299221210484006,
-        "₹ 25.90",
-        1017.8498293515357
-      ],
-      [
-        19,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "10/03/2023",
-        4473.45,
-        "SM008001",
-        35.1217,
-        127.36997354911637,
-        "₹ 52.26",
-        6656.354817676821
-      ],
-      [
-        20,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "10/03/2023",
-        596.46,
-        "SM008002",
-        23.5649,
-        25.311374119983533,
-        "₹ 26.32",
-        666.1953668379666
-      ],
-      [
-        21,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "10/03/2023",
-        894.69,
-        "SM008003",
-        22.7766,
-        39.28110429124629,
-        "₹ 25.90",
-        1017.3806011432788
-      ],
-      [
-        22,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "31/03/2023",
-        4473.45,
-        "SM008001",
-        35.0627,
-        127.58429898439081,
-        "₹ 52.26",
-        6667.555464924264
-      ],
-      [
-        23,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "31/03/2023",
-        596.46,
-        "SM008002",
-        23.7373,
-        25.127541885555644,
-        "₹ 26.32",
-        661.3569024278246
-      ],
-      [
-        24,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "31/03/2023",
-        894.69,
-        "SM008003",
-        23.0853,
-        38.75583163311718,
-        "₹ 25.90",
-        1003.776039297735
-      ],
-      [
-        25,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Charges",
-        "06/04/2023",
-        -31.6,
-        "SM008001",
-        35.4604,
-        -0.8911348997755243,
-        "₹ 52.26",
-        -46.5707098622689
-      ],
-      [
-        26,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Charges",
-        "06/04/2023",
-        -4.33,
-        "SM008002",
-        23.8465,
-        -0.18157800935147717,
-        "₹ 26.32",
-        -4.779133206130879
-      ],
-      [
-        27,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Charges",
-        "06/04/2023",
-        -6.55,
-        "SM008003",
-        23.2153,
-        -0.2821415187397966,
-        "₹ 25.90",
-        -7.307465335360732
-      ],
-      [
-        28,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "23/05/2023",
-        4473.45,
-        "SM008001",
-        37.0012,
-        120.90013296866049,
-        "₹ 52.26",
-        6318.240948942197
-      ],
-      [
-        29,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "23/05/2023",
-        596.46,
-        "SM008002",
-        24.2402,
-        24.606232621843056,
-        "₹ 26.32",
-        647.6360426069092
-      ],
-      [
-        30,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "23/05/2023",
-        894.69,
-        "SM008003",
-        23.6876,
-        37.770394636856416,
-        "₹ 25.90",
-        978.2532210945811
-      ],
-      [
-        31,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "19/06/2023",
-        4473.45,
-        "SM008001",
-        38.1369,
-        117.2997805275206,
-        "₹ 52.26",
-        6130.086530368226
-      ],
-      [
-        32,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "19/06/2023",
-        596.46,
-        "SM008002",
-        24.3224,
-        24.52307338091636,
-        "₹ 26.32",
-        645.4472913857187
-      ],
-      [
-        33,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "19/06/2023",
-        894.69,
-        "SM008003",
-        23.7276,
-        37.70672128660295,
-        "₹ 25.90",
-        976.6040813230163
-      ],
-      [
-        34,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Rebalancing",
-        "07/07/2023",
-        -1004.5,
-        "SM008001",
-        39.1274,
-        -25.672546604169966,
-        "₹ 52.26",
-        -1341.6472855339223
-      ],
-      [
-        35,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Rebalancing",
-        "07/07/2023",
-        418.01,
-        "SM008002",
-        24.3715,
-        17.151590997681716,
-        "₹ 26.32",
-        451.42987505898276
-      ],
-      [
-        36,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Rebalancing",
-        "07/07/2023",
-        586.49,
-        "SM008003",
-        23.7275,
-        24.717732588768307,
-        "₹ 25.90",
-        640.1892740490991
-      ],
-      [
-        37,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Charges",
-        "14/07/2023",
-        -21.86,
-        "SM008001",
-        39.1274,
-        -0.5586877737851224,
-        "₹ 52.26",
-        -29.197023058010494
-      ],
-      [
-        38,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Charges",
-        "14/07/2023",
-        -2.93,
-        "SM008002",
-        24.3351,
-        -0.12040221737325921,
-        "₹ 26.32",
-        -3.1689863612641824
-      ],
-      [
-        39,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Charges",
-        "14/07/2023",
-        -4.41,
-        "SM008003",
-        23.6365,
-        -0.18657584667780763,
-        "₹ 25.90",
-        -4.832314428955217
-      ],
-      [
-        40,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "19/07/2023",
-        4473.45,
-        "SM008001",
-        40.0456,
-        111.70890185188884,
-        "₹ 52.26",
-        5837.90721077971
-      ],
-      [
-        41,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "19/07/2023",
-        596.46,
-        "SM008002",
-        24.458,
-        24.387112601193888,
-        "₹ 26.32",
-        641.8688036634231
-      ],
-      [
-        42,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "19/07/2023",
-        894.69,
-        "SM008003",
-        23.8297,
-        37.54516422783334,
-        "₹ 25.90",
-        972.4197535008834
-      ],
-      [
-        43,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "21/08/2023",
-        4473.45,
-        "SM008001",
-        39.5389,
-        113.14047684685208,
-        "₹ 52.26",
-        5912.72132001649
-      ],
-      [
-        44,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "21/08/2023",
-        596.46,
-        "SM008002",
-        24.5242,
-        24.32128265142186,
-        "₹ 26.32",
-        640.1361593854234
-      ],
-      [
-        45,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "21/08/2023",
-        894.69,
-        "SM008003",
-        23.7862,
-        37.61382650444376,
-        "₹ 25.90",
-        974.1981064650932
-      ],
-      [
-        46,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "12/09/2023",
-        5973.45,
-        "SM008001",
-        40.7937,
-        146.43069885791186,
-        "₹ 52.26",
-        7652.468322314474
-      ],
-      [
-        47,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "12/09/2023",
-        796.46,
-        "SM008002",
-        24.65,
-        32.31075050709939,
-        "₹ 26.32",
-        850.418953346856
-      ],
-      [
-        48,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "12/09/2023",
-        1194.69,
-        "SM008003",
-        23.8883,
-        50.011511911688984,
-        "₹ 25.90",
-        1295.2981585127445
-      ],
-      [
-        49,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Charges",
-        "07/10/2023",
-        -28.6,
-        "SM008001",
-        40.1776,
-        -0.7118394329178448,
-        "₹ 52.26",
-        -37.200728764286566
-      ],
-      [
-        50,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Charges",
-        "07/10/2023",
-        -3.8,
-        "SM008002",
-        24.6839,
-        -0.1539464995401861,
-        "₹ 26.32",
-        -4.051871867897698
-      ],
-      [
-        51,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Charges",
-        "07/10/2023",
-        -5.65,
-        "SM008003",
-        23.7476,
-        -0.23791877916084156,
-        "₹ 25.90",
-        -6.162096380265796
-      ],
-      [
-        52,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "11/10/2023",
-        5223.45,
-        "SM008001",
-        40.4787,
-        129.04194057615484,
-        "₹ 52.26",
-        6743.731814509852
-      ],
-      [
-        53,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "11/10/2023",
-        696.46,
-        "SM008002",
-        24.7033,
-        28.19299445823028,
-        "₹ 26.32",
-        742.039614140621
-      ],
-      [
-        54,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "11/10/2023",
-        1044.69,
-        "SM008003",
-        23.7984,
-        43.897488906817266,
-        "₹ 25.90",
-        1136.9449626865671
-      ],
-      [
-        55,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "16/11/2023",
-        5223.45,
-        "SM008001",
-        40.6989,
-        128.34376359066215,
-        "₹ 52.26",
-        6707.245085248003
-      ],
-      [
-        56,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "16/11/2023",
-        696.46,
-        "SM008002",
-        24.9107,
-        27.958266929472078,
-        "₹ 26.32",
-        735.861585583705
-      ],
-      [
-        57,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "16/11/2023",
-        1044.69,
-        "SM008003",
-        24.1101,
-        43.329973745442786,
-        "₹ 25.90",
-        1122.246320006968
-      ],
-      [
-        58,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "14/12/2023",
-        5223.45,
-        "SM008001",
-        43.6266,
-        119.73085227819723,
-        "₹ 52.26",
-        6257.134340058587
-      ],
-      [
-        59,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "14/12/2023",
-        696.46,
-        "SM008002",
-        25.0228,
-        27.8330162891443,
-        "₹ 26.32",
-        732.564988730278
-      ],
-      [
-        60,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "14/12/2023",
-        1044.69,
-        "SM008003",
-        24.2858,
-        43.01649523589917,
-        "₹ 25.90",
-        1114.1272266097885
-      ],
-      [
-        61,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Charges",
-        "06/01/2024",
-        -25.78,
-        "SM008001",
-        44.784,
-        -0.5756520185780636,
-        "₹ 52.26",
-        -30.083574490889603
-      ],
-      [
-        62,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Charges",
-        "06/01/2024",
-        -3.14,
-        "SM008002",
-        25.1382,
-        -0.12490950028243868,
-        "₹ 26.32",
-        -3.287618047433786
-      ],
-      [
-        63,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Charges",
-        "06/01/2024",
-        -4.71,
-        "SM008003",
-        24.3012,
-        -0.1938175892548516,
-        "₹ 25.90",
-        -5.0198755617006565
-      ],
-      [
-        64,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "08/01/2024",
-        5223.45,
-        "SM008001",
-        44.3777,
-        117.70438756402427,
-        "₹ 52.26",
-        6151.231294095908
-      ],
-      [
-        65,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "08/01/2024",
-        696.46,
-        "SM008002",
-        25.1455,
-        27.697202282714603,
-        "₹ 26.32",
-        728.9903640810484
-      ],
-      [
-        66,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "08/01/2024",
-        1044.69,
-        "SM008003",
-        24.377,
-        42.85556056938918,
-        "₹ 25.90",
-        1109.9590187471797
-      ],
-      [
-        67,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Voluntary Contribution",
-        "09/01/2024",
-        37500,
-        "SM008001",
-        44.4804,
-        843.0679580219602,
-        "₹ 52.26",
-        44058.73148622764
-      ],
-      [
-        68,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Voluntary Contribution",
-        "09/01/2024",
-        5000,
-        "SM008002",
-        25.1445,
-        198.850643281831,
-        "₹ 26.32",
-        5233.748931177792
-      ],
-      [
-        69,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Voluntary Contribution",
-        "09/01/2024",
-        7500,
-        "SM008003",
-        24.4023,
-        307.34807784512117,
-        "₹ 25.90",
-        7960.315216188638
-      ],
-      [
-        70,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "16/02/2024",
-        5223.45,
-        "SM008001",
-        46.0417,
-        113.45041560150906,
-        "₹ 52.26",
-        5928.918719334863
-      ],
-      [
-        71,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "16/02/2024",
-        696.46,
-        "SM008002",
-        25.4601,
-        27.354959328517957,
-        "₹ 26.32",
-        719.9825295265927
-      ],
-      [
-        72,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "16/02/2024",
-        1044.69,
-        "SM008003",
-        25.0306,
-        41.73651450624436,
-        "₹ 25.90",
-        1080.975725711729
-      ],
-      [
-        73,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "18/03/2024",
-        5223.45,
-        "SM008001",
-        46.0714,
-        113.37727961381682,
-        "₹ 52.26",
-        5925.096632618067
-      ],
-      [
-        74,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "18/03/2024",
-        696.46,
-        "SM008002",
-        25.7128,
-        27.086120531408483,
-        "₹ 26.32",
-        712.9066923866712
-      ],
-      [
-        75,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "18/03/2024",
-        1044.69,
-        "SM008003",
-        25.1826,
-        41.48459650711205,
-        "₹ 25.90",
-        1074.4510495342022
-      ],
-      [
-        76,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "31/03/2024",
-        5223.45,
-        "SM008001",
-        46.9278,
-        111.30822241826806,
-        "₹ 52.26",
-        5816.967703578689
-      ],
-      [
-        77,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "31/03/2024",
-        696.46,
-        "SM008002",
-        25.8173,
-        26.976484760218923,
-        "₹ 26.32",
-        710.021078888962
-      ],
-      [
-        78,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "31/03/2024",
-        1044.69,
-        "SM008003",
-        25.3121,
-        41.272355908834115,
-        "₹ 25.90",
-        1068.9540180388035
-      ],
-      [
-        79,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Charges",
-        "06/04/2024",
-        -32.53,
-        "SM008001",
-        47.4077,
-        -0.6861754525108791,
-        "₹ 52.26",
-        -35.85952914821854
-      ],
-      [
-        80,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Charges",
-        "06/04/2024",
-        -3.96,
-        "SM008002",
-        25.815,
-        -0.1533991865194654,
-        "₹ 26.32",
-        -4.03746658919233
-      ],
-      [
-        81,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Charges",
-        "06/04/2024",
-        -5.99,
-        "SM008003",
-        25.2167,
-        -0.23754099465830186,
-        "₹ 25.90",
-        -6.152311761650018
-      ],
-      [
-        82,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "16/05/2024",
-        5223.45,
-        "SM008001",
-        48.0643,
-        108.67629404776517,
-        "₹ 52.26",
-        5679.423126936207
-      ],
-      [
-        83,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "16/05/2024",
-        696.46,
-        "SM008002",
-        26.01,
-        26.776624375240292,
-        "₹ 26.32",
-        704.7607535563245
-      ],
-      [
-        84,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "16/05/2024",
-        1044.69,
-        "SM008003",
-        25.4874,
-        40.98848842957697,
-        "₹ 25.90",
-        1061.6018503260434
-      ],
-      [
-        85,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
-        "Employer Contribution",
-        "13/06/2024",
-        8760.82,
-        "SM008001",
-        50.578,
-        173.21404563248842,
-        "₹ 52.26",
-        9052.166024753844
-      ],
-      [
-        86,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
-        "Employer Contribution",
-        "13/06/2024",
-        1168.11,
-        "SM008002",
-        26.1391,
-        44.68822568489351,
-        "₹ 26.32",
-        1176.194100026397
-      ],
-      [
-        87,
-        "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
-        "Employer Contribution",
-        "13/06/2024",
-        1752.17,
-        "SM008003",
-        25.7426,
-        68.06499731961807,
-        "₹ 25.90",
-        1762.883430578108
-      ]
+    [
+      2,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "03/10/2022",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      33.533,
+      298.1987892523782,
+      15743.42
     ],
-    "epf": [
-      [
-        "id",
-        "Name",
-        "Date",
-        "Employee Share",
-        "Employer Share",
-        "Pension",
-        "Invested",
-        "Current"
-      ],
-      [
-        1,
-        "Contribution - C1",
-        "10/12/2019",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        2,
-        "Contribution - C1",
-        "10/01/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        3,
-        "Contribution - C1",
-        "10/02/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        4,
-        "Contribution - C1",
-        "10/03/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        5,
-        "Interest",
-        "31/03/2020",
-        80,
-        23,
-        0,
-        0,
-        103
-      ],
-      [
-        6,
-        "Contribution - C1",
-        "10/04/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        7,
-        "Contribution - C1",
-        "10/05/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        8,
-        "Contribution - C1",
-        "10/06/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        9,
-        "Contribution - C1",
-        "10/07/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        10,
-        "Contribution - C1",
-        "10/08/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        11,
-        "Contribution - C1",
-        "10/09/2020",
-        1872,
-        550,
-        1250,
-        3672,
-        3672
-      ],
-      [
-        12,
-        "Contribution - C1",
-        "10/10/2020",
-        802,
-        245,
-        557,
-        1604,
-        1604
-      ],
-      [
-        13,
-        "Interest",
-        "31/03/2021",
-        1348,
-        396,
-        0,
-        0,
-        1744
-      ],
-      [
-        14,
-        "Interest",
-        "31/03/2022",
-        764,
-        225,
-        0,
-        0,
-        989
-      ],
-      [
-        15,
-        "Interest",
-        "31/03/2022",
-        1697,
-        499,
-        0,
-        0,
-        2196
-      ],
-      [
-        16,
-        "Contribution - C2",
-        "10/08/2022",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        17,
-        "Contribution - C2",
-        "10/09/2022",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        18,
-        "Contribution - C2",
-        "10/10/2022",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        19,
-        "Contribution - C2",
-        "10/11/2022",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        20,
-        "Contribution - C2",
-        "10/12/2022",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        21,
-        "Contribution - C2",
-        "10/01/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        22,
-        "Contribution - C2",
-        "10/02/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        23,
-        "Contribution - C2",
-        "10/03/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        24,
-        "Interest",
-        "31/03/2023",
-        1419,
-        421,
-        1250,
-        0,
-        3090
-      ],
-      [
-        25,
-        "Contribution - C2",
-        "10/04/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        26,
-        "Contribution - C2",
-        "10/05/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        27,
-        "Contribution - C2",
-        "10/06/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        28,
-        "Contribution - C2",
-        "10/07/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        29,
-        "Contribution - C2",
-        "10/08/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        30,
-        "Contribution - C2",
-        "10/09/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        31,
-        "Contribution - C2",
-        "10/10/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        32,
-        "Contribution - C2",
-        "10/11/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        33,
-        "Contribution - C2",
-        "10/12/2023",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        34,
-        "Contribution - C2",
-        "10/01/2024",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        35,
-        "Contribution - C2",
-        "10/02/2024",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        36,
-        "Contribution - C2",
-        "10/03/2024",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        37,
-        "Contribution - C2",
-        "10/04/2024",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        38,
-        "Contribution - C2",
-        "10/05/2024",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        39,
-        "Contribution - C2",
-        "10/06/2024",
-        1800,
-        550,
-        1250,
-        3600,
-        3600
-      ],
-      [
-        40,
-        "Withdrawal",
-        "05/07/2024",
-        -66230,
-        0,
-        0,
-        -66230,
-        -66230
-      ]
+    [
+      3,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/11/2022",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      34.668,
+      288.4360216914734,
+      15227.98
     ],
-    "lic": [
-      [
-        "id",
-        "Name",
-        "Date",
-        "Invested",
-        "Policy Number",
-        "Maturity Date",
-        "Current"
-      ],
-      [
-        1,
-        "LIC\u0027s Jeevan Labh",
-        "2019-12-15T18:30:00.000Z",
-        44880,
-        318948140,
-        "12/16/2044",
-        44880
-      ],
-      [
-        2,
-        "LIC\u0027s Jeevan Labh",
-        "2020-12-15T18:30:00.000Z",
-        44880,
-        318948140,
-        "12/16/2044",
-        44880
-      ],
-      [
-        3,
-        "LIC\u0027s Jeevan Labh",
-        "2021-12-15T18:30:00.000Z",
-        44880,
-        318948140,
-        "12/16/2044",
-        44880
-      ],
-      [
-        4,
-        "LIC\u0027s Jeevan Labh",
-        "2022-12-15T18:30:00.000Z",
-        44880,
-        318948140,
-        "12/16/2044",
-        44880
-      ],
-      [
-        5,
-        "LIC\u0027s Jeevan Labh",
-        "2023-12-15T18:30:00.000Z",
-        44880,
-        318948140,
-        "12/16/2044",
-        44880
-      ]
+    [
+      4,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/12/2022",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      35.642,
+      280.5538409741316,
+      14811.85
     ],
-    "fd": [
-      [
-        "id",
-        "Name",
-        "Date",
-        "Invested",
-        "FD Account Number",
-        "Interest Rate",
-        "Maturity Date",
-        "Maturity Amount",
-        "Current"
-      ],
-      [
-        1,
-        "SBI",
-        "10/17/2022",
-        50000,
-        41356161184,
-        0.061,
-        "2025-07-12T18:30:00.000Z",
-        59016,
-        50000
-      ]
+    [
+      5,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/01/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      34.581,
+      289.1616783783002,
+      15266.31
     ],
-    "_columns": [
-      [
-        "id",
-        "Column",
-        "Instrument",
-        "isAutomated",
-        "isInitiallyVisible"
-      ],
-      [
-        1,
-        "id",
-        "MutualFund",
-        true,
-        false
-      ],
-      [
-        2,
-        "Name",
-        "MutualFund",
-        false,
-        true
-      ],
-      [
-        3,
-        "Category",
-        "MutualFund",
-        false,
-        false
-      ],
-      [
-        4,
-        "Date",
-        "MutualFund",
-        false,
-        true
-      ],
-      [
-        5,
-        "Invested",
-        "MutualFund",
-        false,
-        true
-      ],
-      [
-        6,
-        "Code",
-        "MutualFund",
-        false,
-        true
-      ],
-      [
-        7,
-        "NAV",
-        "MutualFund",
-        false,
-        false
-      ],
-      [
-        8,
-        "NoU",
-        "MutualFund",
-        true,
-        false
-      ],
-      [
-        9,
-        "Current",
-        "MutualFund",
-        true,
-        true
-      ],
-      [
-        10,
-        "id",
-        "EPF",
-        true,
-        false
-      ],
-      [
-        11,
-        "Name",
-        "EPF",
-        false,
-        true
-      ],
-      [
-        12,
-        "Date",
-        "EPF",
-        false,
-        true
-      ],
-      [
-        13,
-        "Employee Share",
-        "EPF",
-        false,
-        false
-      ],
-      [
-        14,
-        "Employer Share",
-        "EPF",
-        false,
-        false
-      ],
-      [
-        15,
-        "Pension",
-        "EPF",
-        false,
-        false
-      ],
-      [
-        16,
-        "Invested",
-        "EPF",
-        true,
-        true
-      ],
-      [
-        17,
-        "Current",
-        "EPF",
-        true,
-        true
-      ],
-      [
-        18,
-        "id",
-        "SGB",
-        true,
-        false
-      ],
-      [
-        19,
-        "Name",
-        "SGB",
-        false,
-        true
-      ],
-      [
-        20,
-        "Date",
-        "SGB",
-        false,
-        true
-      ],
-      [
-        21,
-        "Quantity",
-        "SGB",
-        false,
-        false
-      ],
-      [
-        22,
-        "Price",
-        "SGB",
-        false,
-        false
-      ],
-      [
-        23,
-        "Invested",
-        "SGB",
-        true,
-        true
-      ],
-      [
-        24,
-        "Current",
-        "SGB",
-        true,
-        true
-      ],
-      [
-        25,
-        "id",
-        "NPS",
-        true,
-        false
-      ],
-      [
-        26,
-        "Name",
-        "NPS",
-        false,
-        true
-      ],
-      [
-        27,
-        "Category",
-        "NPS",
-        false,
-        false
-      ],
-      [
-        28,
-        "Date",
-        "NPS",
-        false,
-        true
-      ],
-      [
-        29,
-        "Invested",
-        "NPS",
-        false,
-        true
-      ],
-      [
-        30,
-        "Scheme Id",
-        "NPS",
-        false,
-        true
-      ],
-      [
-        31,
-        "NAV",
-        "NPS",
-        false,
-        false
-      ],
-      [
-        32,
-        "NoU",
-        "NPS",
-        true,
-        false
-      ],
-      [
-        33,
-        "Current NAV",
-        "NPS",
-        true,
-        false
-      ],
-      [
-        34,
-        "Current",
-        "NPS",
-        true,
-        true
-      ],
-      [
-        35,
-        "id",
-        "LIC",
-        true,
-        false
-      ],
-      [
-        36,
-        "Name",
-        "LIC",
-        false,
-        true
-      ],
-      [
-        37,
-        "Date",
-        "LIC",
-        false,
-        true
-      ],
-      [
-        38,
-        "Invested",
-        "LIC",
-        false,
-        true
-      ],
-      [
-        39,
-        "Policy Number",
-        "LIC",
-        false,
-        false
-      ],
-      [
-        40,
-        "Maturity Date",
-        "LIC",
-        false,
-        false
-      ],
-      [
-        41,
-        "Current",
-        "LIC",
-        true,
-        true
-      ],
-      [
-        42,
-        "id",
-        "FD",
-        true,
-        false
-      ],
-      [
-        43,
-        "Name",
-        "FD",
-        false,
-        true
-      ],
-      [
-        44,
-        "Date",
-        "FD",
-        false,
-        true
-      ],
-      [
-        45,
-        "Invested",
-        "FD",
-        false,
-        true
-      ],
-      [
-        46,
-        "FD Account Number",
-        "FD",
-        false,
-        false
-      ],
-      [
-        47,
-        "Interest Rate",
-        "FD",
-        false,
-        false
-      ],
-      [
-        48,
-        "Maturity Date",
-        "FD",
-        false,
-        false
-      ],
-      [
-        49,
-        "Maturity Amount",
-        "FD",
-        false,
-        false
-      ],
-      [
-        50,
-        "Current",
-        "FD",
-        true,
-        true
-      ]
+    [
+      6,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/02/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      33.988,
+      294.2067788631282,
+      15532.66
     ],
-    "_instruments": [
-      [
-        "id",
-        "Name",
-        "Display Name"
-      ],
-      [
-        1,
-        "MutualFund",
-        "Mutual Fund"
-      ],
-      [
-        2,
-        "SGB",
-        "SGB"
-      ],
-      [
-        3,
-        "NPS",
-        "NPS"
-      ],
-      [
-        4,
-        "EPF",
-        "EPF"
-      ],
-      [
-        5,
-        "LIC",
-        "LIC"
-      ],
-      [
-        6,
-        "FD",
-        "Fixed Deposit"
-      ]
+    [
+      7,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/03/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      34.122,
+      293.05140378641346,
+      15471.63
+    ],
+    [
+      8,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "03/04/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      33.834,
+      295.5459005733877,
+      15603.35
+    ],
+    [
+      9,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/05/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      35.131,
+      284.6346531553329,
+      15027.3
+    ],
+    [
+      10,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/06/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      36.161,
+      276.5271978097951,
+      14599.24
+    ],
+    [
+      11,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "03/07/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      37.7,
+      265.2387267904509,
+      14003.29
+    ],
+    [
+      12,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "04/09/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      40.03,
+      249.8001498875843,
+      13188.19
+    ],
+    [
+      13,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "03/10/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      39.485,
+      253.2480688869191,
+      13370.23
+    ],
+    [
+      14,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/11/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      39.323,
+      254.2913816341581,
+      13425.29
+    ],
+    [
+      15,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "04/12/2023",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      42.204,
+      236.93251824471614,
+      12508.88
+    ],
+    [
+      16,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/01/2024",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      44.725,
+      223.57741755170485,
+      11803.75
+    ],
+    [
+      17,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/02/2024",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      44.757,
+      223.41756596733472,
+      11795.35
+    ],
+    [
+      18,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "04/03/2024",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      46.119,
+      216.81953208005376,
+      11447.01
+    ],
+    [
+      19,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/04/2024",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      47.277,
+      211.50876747678575,
+      11166.62
+    ],
+    [
+      20,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/05/2024",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      47.411,
+      210.91097002805256,
+      11135.05
+    ],
+    [
+      21,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "03/06/2024",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      47.877,
+      208.85811558786054,
+      11026.66
+    ],
+    [
+      22,
+      "Mirae Asset ELSS Tax Saver Fund (G)\t",
+      "Large Cap",
+      "02/07/2024",
+      9999.5,
+      "MIRA_ASSE_ELSS_41CP29",
+      52.303,
+      191.18406209968836,
+      10093.56
+    ],
+    [
+      23,
+      "Nippon India Small Cap Fund (G)\t",
+      "Small Cap",
+      "26/12/2023",
+      14999.25,
+      "NIPP_INDI_SMAL_1AOBL3E",
+      151.7412,
+      98.84757732244111,
+      19310
+    ],
+    [
+      24,
+      "Nippon India Small Cap Fund (G)\t",
+      "Small Cap",
+      "03/01/2024",
+      14999.25,
+      "NIPP_INDI_SMAL_1AOBL3E",
+      153.7974,
+      97.52603099922365,
+      19051.74
+    ],
+    [
+      25,
+      "Nippon India Small Cap Fund (G)\t",
+      "Small Cap",
+      "02/02/2024",
+      14999.25,
+      "NIPP_INDI_SMAL_1AOBL3E",
+      159.1873,
+      94.22391107833351,
+      18406.7
+    ],
+    [
+      26,
+      "Nippon India Small Cap Fund (G)\t",
+      "Small Cap",
+      "04/03/2024",
+      14999.25,
+      "NIPP_INDI_SMAL_1AOBL3E",
+      159.9229,
+      93.79050780094659,
+      18322.11
+    ],
+    [
+      27,
+      "Nippon India Small Cap Fund (G)\t",
+      "Small Cap",
+      "03/04/2024",
+      14999.25,
+      "NIPP_INDI_SMAL_1AOBL3E",
+      162.1663,
+      92.49301488657014,
+      18068.54
+    ],
+    [
+      28,
+      "Nippon India Small Cap Fund (G)\t",
+      "Small Cap",
+      "02/05/2024",
+      14999.25,
+      "NIPP_INDI_SMAL_1AOBL3E",
+      172.0425,
+      87.18339945071712,
+      17031.23
+    ],
+    [
+      29,
+      "Nippon India Small Cap Fund (G)\t",
+      "Small Cap",
+      "04/06/2024",
+      14999.25,
+      "NIPP_INDI_SMAL_1AOBL3E",
+      165.0225,
+      90.89215107030859,
+      17755.79
+    ],
+    [
+      30,
+      "Nippon India Small Cap Fund (G)\t",
+      "Small Cap",
+      "02/07/2024",
+      14999.25,
+      "NIPP_INDI_SMAL_1AOBL3E",
+      192.1864,
+      78.04532474722457,
+      15246.12
+    ],
+    [
+      31,
+      "HDFC Corporate Bond Fund Direct Plan (G)",
+      "Debt",
+      "13/03/2024",
+      79996,
+      "HDFC_CORP_BOND_10KEXP7",
+      29.7731,
+      2686.854912656055,
+      82091.48
+    ],
+    [
+      32,
+      "HDFC Corporate Bond Fund Direct Plan (G)",
+      "Debt",
+      "29/04/2024",
+      100,
+      "HDFC_CORP_BOND_10KEXP7",
+      29.9949,
+      3.3339000963497125,
+      101.86
+    ],
+    [
+      33,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "14/08/2023",
+      19999,
+      "QUAN_MID_CAP_8O21E5",
+      59.4869,
+      336.1916657280847,
+      32861.05
+    ],
+    [
+      34,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "01/09/2023",
+      9999.5,
+      "QUAN_MID_CAP_8O21E5",
+      61.5865,
+      162.36512872139187,
+      15870.35
+    ],
+    [
+      35,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "03/10/2023",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      64.0352,
+      234.2344523012343,
+      22895.18
+    ],
+    [
+      36,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "01/11/2023",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      62.0475,
+      241.7381844554575,
+      23628.66
+    ],
+    [
+      37,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "01/12/2023",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      68.6376,
+      218.52818280359452,
+      21360
+    ],
+    [
+      38,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "01/02/2024",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      77.8095,
+      192.76887783625392,
+      18842.19
+    ],
+    [
+      39,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "01/03/2024",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      81.4192,
+      184.22251753886061,
+      18006.86
+    ],
+    [
+      40,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "02/04/2024",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      84.3855,
+      177.7467692909327,
+      17373.86
+    ],
+    [
+      41,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "02/05/2024",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      89.6384,
+      167.33063062259032,
+      16355.75
+    ],
+    [
+      42,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "03/06/2024",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      94.7646,
+      158.27904090768072,
+      15470.97
+    ],
+    [
+      43,
+      "Quant Midcap Fund DIrect IDCW (G)",
+      "Mid Cap",
+      "02/07/2024",
+      14999.25,
+      "QUAN_MID_CAP_8O21E5",
+      96.0453,
+      156.1684954911901,
+      15264.63
+    ],
+    [
+      44,
+      "ICICI Prudential Money Market Direct (G)",
+      "Debt",
+      "01/12/2023",
+      5999.7,
+      "ICIC_PRU_MONE_TV1COZ",
+      340.2927,
+      17.630998255325487,
+      6288.98
+    ],
+    [
+      45,
+      "ICICI Prudential Money Market Direct (G)",
+      "Debt",
+      "27/12/2023",
+      54997.25,
+      "ICIC_PRU_MONE_TV1COZ",
+      341.9931,
+      160.8139170059279,
+      57362.34
+    ],
+    [
+      46,
+      "ICICI Prudential Money Market Direct (G)",
+      "Debt",
+      "02/04/2024",
+      29998.5,
+      "ICIC_PRU_MONE_TV1COZ",
+      349.515,
+      85.8289343804987,
+      30615.2
+    ],
+    [
+      47,
+      "ICICI Prudential Money Market Direct (G)",
+      "Debt",
+      "24/04/2024",
+      29998.5,
+      "ICIC_PRU_MONE_TV1COZ",
+      351.081,
+      85.44609363651122,
+      30478.58
+    ],
+    [
+      48,
+      "ICICI Prudential Money Market Direct (G)",
+      "Debt",
+      "03/06/2024",
+      29998.5,
+      "ICIC_PRU_MONE_TV1COZ",
+      353.7664,
+      84.79748218033143,
+      30247.08
+    ],
+    [
+      49,
+      "ICICI Prudential Money Market Direct (G)",
+      "Debt",
+      "27/06/2024",
+      29998.5,
+      "ICIC_PRU_MONE_TV1COZ",
+      355.3911,
+      84.40982343114389,
+      30109.04
+    ],
+    [
+      50,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "07/10/2022",
+      4999.75,
+      "NAVI_US_TOTA_1AFPVJY",
+      9.2701,
+      539.3415389262252,
+      7759.19
+    ],
+    [
+      51,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "06/02/2023",
+      4999.75,
+      "NAVI_US_TOTA_1AFPVJY",
+      10.5688,
+      473.06695178260543,
+      6805.73
+    ],
+    [
+      52,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "02/03/2023",
+      9999.5,
+      "NAVI_US_TOTA_1AFPVJY",
+      10.2437,
+      976.1609574665404,
+      14043.44
+    ],
+    [
+      53,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "05/04/2023",
+      4999.75,
+      "NAVI_US_TOTA_1AFPVJY",
+      10.3134,
+      484.78193418271377,
+      6974.27
+    ],
+    [
+      54,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "02/05/2023",
+      9999.5,
+      "NAVI_US_TOTA_1AFPVJY",
+      10.3575,
+      965.4356746319093,
+      13889.15
+    ],
+    [
+      55,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "05/06/2023",
+      9999.5,
+      "NAVI_US_TOTA_1AFPVJY",
+      10.8913,
+      918.1181309852819,
+      13208.41
+    ],
+    [
+      56,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "04/08/2023",
+      9999.5,
+      "NAVI_US_TOTA_1AFPVJY",
+      11.4951,
+      869.8923889309357,
+      12514.61
+    ],
+    [
+      57,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "01/09/2023",
+      9999.5,
+      "NAVI_US_TOTA_1AFPVJY",
+      11.5696,
+      864.2909002904163,
+      12434.04
+    ],
+    [
+      58,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "03/10/2023",
+      15009.25,
+      "NAVI_US_TOTA_1AFPVJY",
+      10.8563,
+      1382.5382496799095,
+      19889.74
+    ],
+    [
+      59,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "01/11/2023",
+      16499.18,
+      "NAVI_US_TOTA_1AFPVJY",
+      10.8561,
+      1519.8072972798705,
+      21864.55
+    ],
+    [
+      60,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "01/12/2023",
+      14999.25,
+      "NAVI_US_TOTA_1AFPVJY",
+      11.8602,
+      1264.6709161734202,
+      18194.06
+    ],
+    [
+      61,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "01/02/2024",
+      13499.33,
+      "NAVI_US_TOTA_1AFPVJY",
+      12.6232,
+      1069.4063311996958,
+      15384.9
+    ],
+    [
+      62,
+      "Navi US Total Stock Market FoF Direct (G)",
+      "International Equity",
+      "12/03/2024",
+      9999.5,
+      "NAVI_US_TOTA_1AFPVJY",
+      13.2874,
+      752.5550521546728,
+      10826.56
+    ],
+    [
+      63,
+      "Motilal Oswal Nasdaq 100 FoF (G)",
+      "International Equity",
+      "02/07/2024",
+      14999.25,
+      "MOTI_OSWA_NASD_1NOTJ6L",
+      34.9651,
+      428.9777521013811,
+      15245.71
     ]
-  }
+  ],
+  "sgb": [
+    [
+      "id",
+      "Name",
+      "Date",
+      "Quantity",
+      "Price",
+      "Invested",
+      "Current"
+    ],
+    [
+      1,
+      "SGBDE31III",
+      "2/16/2024",
+      2,
+      6181,
+      12362,
+      15676
+    ],
+    [
+      2,
+      "SGBFEB32IV",
+      "5/2/2024",
+      2,
+      7130,
+      14260,
+      15948
+    ],
+    [
+      3,
+      "SGBDE31III",
+      "6/21/2024",
+      4,
+      7469.75,
+      29879,
+      31352
+    ],
+    [
+      4,
+      "SGBDE31III",
+      "7/4/2024",
+      8,
+      7705,
+      61640,
+      62704
+    ]
+  ],
+  "nps": [
+    [
+      "id",
+      "Name",
+      "Category",
+      "Date",
+      "Invested",
+      "Scheme Id",
+      "NAV",
+      "NoU",
+      "Current NAV",
+      "Current"
+    ],
+    [
+      1,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Voluntary Contribution",
+      "18/11/2022",
+      375,
+      "SM008001",
+      36.4644,
+      10.284003027610492,
+      "₹ 52.48",
+      539.7044788889986
+    ],
+    [
+      2,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Voluntary Contribution",
+      "18/11/2022",
+      50,
+      "SM008002",
+      23.2073,
+      2.1544944909575867,
+      "₹ 26.35",
+      56.770929836732414
+    ],
+    [
+      3,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Voluntary Contribution",
+      "18/11/2022",
+      75,
+      "SM008003",
+      22.4014,
+      3.3480050353995736,
+      "₹ 25.95",
+      86.88073066861894
+    ],
+    [
+      4,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "29/12/2022",
+      4473.45,
+      "SM008001",
+      36.3467,
+      123.07719820506401,
+      "₹ 52.48",
+      6459.0913618017585
+    ],
+    [
+      5,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "29/12/2022",
+      596.46,
+      "SM008002",
+      23.3882,
+      25.50260387716883,
+      "₹ 26.35",
+      671.9936121633987
+    ],
+    [
+      6,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "29/12/2022",
+      894.69,
+      "SM008003",
+      22.5776,
+      39.62732974275388,
+      "₹ 25.95",
+      1028.3292068244632
+    ],
+    [
+      7,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Charges",
+      "07/01/2023",
+      -46.94,
+      "SM008001",
+      35.8359,
+      -1.3098596658657937,
+      "₹ 52.48",
+      -68.74143526463685
+    ],
+    [
+      8,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Charges",
+      "07/01/2023",
+      -6.35,
+      "SM008002",
+      23.4035,
+      -0.2713269382784626,
+      "₹ 26.35",
+      -7.14946482363749
+    ],
+    [
+      9,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Charges",
+      "07/01/2023",
+      -9.54,
+      "SM008003",
+      22.5829,
+      -0.42244353028176185,
+      "₹ 25.95",
+      -10.96240961081172
+    ],
+    [
+      10,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Voluntary Contribution",
+      "10/01/2023",
+      37500,
+      "SM008001",
+      35.9551,
+      1042.967478883385,
+      "₹ 52.48",
+      54734.93329180004
+    ],
+    [
+      11,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Voluntary Contribution",
+      "10/01/2023",
+      5000,
+      "SM008002",
+      23.4306,
+      213.39615716200186,
+      "₹ 26.35",
+      5622.988741218749
+    ],
+    [
+      12,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Voluntary Contribution",
+      "10/01/2023",
+      7500,
+      "SM008003",
+      22.6651,
+      330.9052243316818,
+      "₹ 25.95",
+      8586.990571407141
+    ],
+    [
+      13,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "23/01/2023",
+      4473.45,
+      "SM008001",
+      36.2628,
+      123.3619577087263,
+      "₹ 52.48",
+      6474.035540553956
+    ],
+    [
+      14,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "23/01/2023",
+      596.46,
+      "SM008002",
+      23.4953,
+      25.386353866517986,
+      "₹ 26.35",
+      668.9304243827489
+    ],
+    [
+      15,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "23/01/2023",
+      894.69,
+      "SM008003",
+      22.7173,
+      39.38364154190859,
+      "₹ 25.95",
+      1022.0054980125278
+    ],
+    [
+      16,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "08/02/2023",
+      4473.45,
+      "SM008001",
+      35.8742,
+      124.69825111082615,
+      "₹ 52.48",
+      6544.164218296156
+    ],
+    [
+      17,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "08/02/2023",
+      596.46,
+      "SM008002",
+      23.5348,
+      25.3437462821014,
+      "₹ 26.35",
+      667.807714533372
+    ],
+    [
+      18,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "08/02/2023",
+      894.69,
+      "SM008003",
+      22.7661,
+      39.299221210484006,
+      "₹ 25.95",
+      1019.8147904120599
+    ],
+    [
+      19,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "10/03/2023",
+      4473.45,
+      "SM008001",
+      35.1217,
+      127.36997354911637,
+      "₹ 52.48",
+      6684.376211857627
+    ],
+    [
+      20,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "10/03/2023",
+      596.46,
+      "SM008002",
+      23.5649,
+      25.311374119983533,
+      "₹ 26.35",
+      666.9547080615662
+    ],
+    [
+      21,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "10/03/2023",
+      894.69,
+      "SM008003",
+      22.7766,
+      39.28110429124629,
+      "₹ 25.95",
+      1019.3446563578411
+    ],
+    [
+      22,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "31/03/2023",
+      4473.45,
+      "SM008001",
+      35.0627,
+      127.58429898439081,
+      "₹ 52.48",
+      6695.62401070083
+    ],
+    [
+      23,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "31/03/2023",
+      596.46,
+      "SM008002",
+      23.7373,
+      25.127541885555644,
+      "₹ 26.35",
+      662.1107286843912
+    ],
+    [
+      24,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "31/03/2023",
+      894.69,
+      "SM008003",
+      23.0853,
+      38.75583163311718,
+      "₹ 25.95",
+      1005.7138308793909
+    ],
+    [
+      25,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Charges",
+      "06/04/2023",
+      -31.6,
+      "SM008001",
+      35.4604,
+      -0.8911348997755243,
+      "₹ 52.48",
+      -46.76675954021951
+    ],
+    [
+      26,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Charges",
+      "06/04/2023",
+      -4.33,
+      "SM008002",
+      23.8465,
+      -0.18157800935147717,
+      "₹ 26.35",
+      -4.784580546411424
+    ],
+    [
+      27,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Charges",
+      "06/04/2023",
+      -6.55,
+      "SM008003",
+      23.2153,
+      -0.2821415187397966,
+      "₹ 25.95",
+      -7.321572411297721
+    ],
+    [
+      28,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "23/05/2023",
+      4473.45,
+      "SM008001",
+      37.0012,
+      120.90013296866049,
+      "₹ 52.48",
+      6344.838978195302
+    ],
+    [
+      29,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "23/05/2023",
+      596.46,
+      "SM008002",
+      24.2402,
+      24.606232621843056,
+      "₹ 26.35",
+      648.3742295855645
+    ],
+    [
+      30,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "23/05/2023",
+      894.69,
+      "SM008003",
+      23.6876,
+      37.770394636856416,
+      "₹ 25.95",
+      980.141740826424
+    ],
+    [
+      31,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "19/06/2023",
+      4473.45,
+      "SM008001",
+      38.1369,
+      117.2997805275206,
+      "₹ 52.48",
+      6155.89248208428
+    ],
+    [
+      32,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "19/06/2023",
+      596.46,
+      "SM008002",
+      24.3224,
+      24.52307338091636,
+      "₹ 26.35",
+      646.1829835871462
+    ],
+    [
+      33,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "19/06/2023",
+      894.69,
+      "SM008003",
+      23.7276,
+      37.70672128660295,
+      "₹ 25.95",
+      978.4894173873465
+    ],
+    [
+      34,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Rebalancing",
+      "07/07/2023",
+      -1004.5,
+      "SM008001",
+      39.1274,
+      -25.672546604169966,
+      "₹ 52.48",
+      -1347.2952457868398
+    ],
+    [
+      35,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Rebalancing",
+      "07/07/2023",
+      418.01,
+      "SM008002",
+      24.3715,
+      17.151590997681716,
+      "₹ 26.35",
+      451.94442278891324
+    ],
+    [
+      36,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Rebalancing",
+      "07/07/2023",
+      586.49,
+      "SM008003",
+      23.7275,
+      24.717732588768307,
+      "₹ 25.95",
+      641.4251606785375
+    ],
+    [
+      37,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Charges",
+      "14/07/2023",
+      -21.86,
+      "SM008001",
+      39.1274,
+      -0.5586877737851224,
+      "₹ 52.48",
+      -29.31993436824322
+    ],
+    [
+      38,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Charges",
+      "14/07/2023",
+      -2.93,
+      "SM008002",
+      24.3351,
+      -0.12040221737325921,
+      "₹ 26.35",
+      -3.1725984277853803
+    ],
+    [
+      39,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Charges",
+      "14/07/2023",
+      -4.41,
+      "SM008003",
+      23.6365,
+      -0.18657584667780763,
+      "₹ 25.95",
+      -4.841643221289108
+    ],
+    [
+      40,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "19/07/2023",
+      4473.45,
+      "SM008001",
+      40.0456,
+      111.70890185188884,
+      "₹ 52.48",
+      5862.483169187126
+    ],
+    [
+      41,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "19/07/2023",
+      596.46,
+      "SM008002",
+      24.458,
+      24.387112601193888,
+      "₹ 26.35",
+      642.600417041459
+    ],
+    [
+      42,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "19/07/2023",
+      894.69,
+      "SM008003",
+      23.8297,
+      37.54516422783334,
+      "₹ 25.95",
+      974.2970117122751
+    ],
+    [
+      43,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "21/08/2023",
+      4473.45,
+      "SM008001",
+      39.5389,
+      113.14047684685208,
+      "₹ 52.48",
+      5937.6122249227965
+    ],
+    [
+      44,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "21/08/2023",
+      596.46,
+      "SM008002",
+      24.5242,
+      24.32128265142186,
+      "₹ 26.35",
+      640.8657978649661
+    ],
+    [
+      45,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "21/08/2023",
+      894.69,
+      "SM008003",
+      23.7862,
+      37.61382650444376,
+      "₹ 25.95",
+      976.0787977903154
+    ],
+    [
+      46,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "12/09/2023",
+      5973.45,
+      "SM008001",
+      40.7937,
+      146.43069885791186,
+      "₹ 52.48",
+      7684.683076063214
+    ],
+    [
+      47,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "12/09/2023",
+      796.46,
+      "SM008002",
+      24.65,
+      32.31075050709939,
+      "₹ 26.35",
+      851.388275862069
+    ],
+    [
+      48,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "12/09/2023",
+      1194.69,
+      "SM008003",
+      23.8883,
+      50.011511911688984,
+      "₹ 25.95",
+      1297.7987341083292
+    ],
+    [
+      49,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Charges",
+      "07/10/2023",
+      -28.6,
+      "SM008001",
+      40.1776,
+      -0.7118394329178448,
+      "₹ 52.48",
+      -37.357333439528496
+    ],
+    [
+      50,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Charges",
+      "07/10/2023",
+      -3.8,
+      "SM008002",
+      24.6839,
+      -0.1539464995401861,
+      "₹ 26.35",
+      -4.056490262883904
+    ],
+    [
+      51,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Charges",
+      "07/10/2023",
+      -5.65,
+      "SM008003",
+      23.7476,
+      -0.23791877916084156,
+      "₹ 25.95",
+      -6.173992319223839
+    ],
+    [
+      52,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "11/10/2023",
+      5223.45,
+      "SM008001",
+      40.4787,
+      129.04194057615484,
+      "₹ 52.48",
+      6772.121041436606
+    ],
+    [
+      53,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "11/10/2023",
+      696.46,
+      "SM008002",
+      24.7033,
+      28.19299445823028,
+      "₹ 26.35",
+      742.8854039743679
+    ],
+    [
+      54,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "11/10/2023",
+      1044.69,
+      "SM008003",
+      23.7984,
+      43.897488906817266,
+      "₹ 25.95",
+      1139.139837131908
+    ],
+    [
+      55,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "16/11/2023",
+      5223.45,
+      "SM008001",
+      40.6989,
+      128.34376359066215,
+      "₹ 52.48",
+      6735.480713237949
+    ],
+    [
+      56,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "16/11/2023",
+      696.46,
+      "SM008002",
+      24.9107,
+      27.958266929472078,
+      "₹ 26.35",
+      736.7003335915892
+    ],
+    [
+      57,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "16/11/2023",
+      1044.69,
+      "SM008003",
+      24.1101,
+      43.329973745442786,
+      "₹ 25.95",
+      1124.4128186942403
+    ],
+    [
+      58,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "14/12/2023",
+      5223.45,
+      "SM008001",
+      43.6266,
+      119.73085227819723,
+      "₹ 52.48",
+      6283.47512755979
+    ],
+    [
+      59,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "14/12/2023",
+      696.46,
+      "SM008002",
+      25.0228,
+      27.8330162891443,
+      "₹ 26.35",
+      733.3999792189524
+    ],
+    [
+      60,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "14/12/2023",
+      1044.69,
+      "SM008003",
+      24.2858,
+      43.01649523589917,
+      "₹ 25.95",
+      1116.2780513715834
+    ],
+    [
+      61,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Charges",
+      "06/01/2024",
+      -25.78,
+      "SM008001",
+      44.784,
+      -0.5756520185780636,
+      "₹ 52.48",
+      -30.210217934976775
+    ],
+    [
+      62,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Charges",
+      "06/01/2024",
+      -3.14,
+      "SM008002",
+      25.1382,
+      -0.12490950028243868,
+      "₹ 26.35",
+      -3.2913653324422594
+    ],
+    [
+      63,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Charges",
+      "06/01/2024",
+      -4.71,
+      "SM008003",
+      24.3012,
+      -0.1938175892548516,
+      "₹ 25.95",
+      -5.029566441163399
+    ],
+    [
+      64,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "08/01/2024",
+      5223.45,
+      "SM008001",
+      44.3777,
+      117.70438756402427,
+      "₹ 52.48",
+      6177.126259359993
+    ],
+    [
+      65,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "08/01/2024",
+      696.46,
+      "SM008002",
+      25.1455,
+      27.697202282714603,
+      "₹ 26.35",
+      729.8212801495298
+    ],
+    [
+      66,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "08/01/2024",
+      1044.69,
+      "SM008003",
+      24.377,
+      42.85556056938918,
+      "₹ 25.95",
+      1112.1017967756493
+    ],
+    [
+      67,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Voluntary Contribution",
+      "09/01/2024",
+      37500,
+      "SM008001",
+      44.4804,
+      843.0679580219602,
+      "₹ 52.48",
+      44244.20643699247
+    ],
+    [
+      68,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Voluntary Contribution",
+      "09/01/2024",
+      5000,
+      "SM008002",
+      25.1445,
+      198.850643281831,
+      "₹ 26.35",
+      5239.714450476247
+    ],
+    [
+      69,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Voluntary Contribution",
+      "09/01/2024",
+      7500,
+      "SM008003",
+      24.4023,
+      307.34807784512117,
+      "₹ 25.95",
+      7975.682620080894
+    ],
+    [
+      70,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "16/02/2024",
+      5223.45,
+      "SM008001",
+      46.0417,
+      113.45041560150906,
+      "₹ 52.48",
+      5953.877810767195
+    ],
+    [
+      71,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "16/02/2024",
+      696.46,
+      "SM008002",
+      25.4601,
+      27.354959328517957,
+      "₹ 26.35",
+      720.8031783064482
+    ],
+    [
+      72,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "16/02/2024",
+      1044.69,
+      "SM008003",
+      25.0306,
+      41.73651450624436,
+      "₹ 25.95",
+      1083.062551437041
+    ],
+    [
+      73,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "18/03/2024",
+      5223.45,
+      "SM008001",
+      46.0714,
+      113.37727961381682,
+      "₹ 52.48",
+      5950.039634133107
+    ],
+    [
+      74,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "18/03/2024",
+      696.46,
+      "SM008002",
+      25.7128,
+      27.086120531408483,
+      "₹ 26.35",
+      713.7192760026136
+    ],
+    [
+      75,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "18/03/2024",
+      1044.69,
+      "SM008003",
+      25.1826,
+      41.48459650711205,
+      "₹ 25.95",
+      1076.5252793595578
+    ],
+    [
+      76,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "31/03/2024",
+      5223.45,
+      "SM008001",
+      46.9278,
+      111.30822241826806,
+      "₹ 52.48",
+      5841.455512510707
+    ],
+    [
+      77,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "31/03/2024",
+      696.46,
+      "SM008002",
+      25.8173,
+      26.976484760218923,
+      "₹ 26.35",
+      710.8303734317686
+    ],
+    [
+      78,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "31/03/2024",
+      1044.69,
+      "SM008003",
+      25.3121,
+      41.272355908834115,
+      "₹ 25.95",
+      1071.0176358342453
+    ],
+    [
+      79,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Charges",
+      "06/04/2024",
+      -32.53,
+      "SM008001",
+      47.4077,
+      -0.6861754525108791,
+      "₹ 52.48",
+      -36.01048774777093
+    ],
+    [
+      80,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Charges",
+      "06/04/2024",
+      -3.96,
+      "SM008002",
+      25.815,
+      -0.1533991865194654,
+      "₹ 26.35",
+      -4.042068564787914
+    ],
+    [
+      81,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Charges",
+      "06/04/2024",
+      -5.99,
+      "SM008003",
+      25.2167,
+      -0.23754099465830186,
+      "₹ 25.95",
+      -6.1641888113829335
+    ],
+    [
+      82,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "16/05/2024",
+      5223.45,
+      "SM008001",
+      48.0643,
+      108.67629404776517,
+      "₹ 52.48",
+      5703.331911626716
+    ],
+    [
+      83,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "16/05/2024",
+      696.46,
+      "SM008002",
+      26.01,
+      26.776624375240292,
+      "₹ 26.35",
+      705.5640522875817
+    ],
+    [
+      84,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "16/05/2024",
+      1044.69,
+      "SM008003",
+      25.4874,
+      40.98848842957697,
+      "₹ 25.95",
+      1063.6512747475224
+    ],
+    [
+      85,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "13/06/2024",
+      8760.82,
+      "SM008001",
+      50.578,
+      173.21404563248842,
+      "₹ 52.48",
+      9090.273114792992
+    ],
+    [
+      86,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "13/06/2024",
+      1168.11,
+      "SM008002",
+      26.1391,
+      44.68822568489351,
+      "₹ 26.35",
+      1177.534746796944
+    ],
+    [
+      87,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "13/06/2024",
+      1752.17,
+      "SM008003",
+      25.7426,
+      68.06499731961807,
+      "₹ 25.95",
+      1766.286680444089
+    ],
+    [
+      88,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME E - TIER I",
+      "Employer Contribution",
+      "2024-12-06T18:30:00.000Z",
+      5930.92,
+      "SM008001",
+      52.7248,
+      112.48824082784571,
+      "₹ 52.48",
+      5903.382878645342
+    ],
+    [
+      89,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME C - TIER I",
+      "Employer Contribution",
+      "2024-12-06T18:30:00.000Z",
+      790.79,
+      "SM008002",
+      26.359,
+      30.000758754125723,
+      "₹ 26.35",
+      790.5199931712128
+    ],
+    [
+      90,
+      "HDFC PENSION MANAGEMENT COMPANY LIMITED SCHEME G - TIER I",
+      "Employer Contribution",
+      "2024-12-06T18:30:00.000Z",
+      1186.19,
+      "SM008003",
+      25.9501,
+      45.71042115444642,
+      "₹ 25.95",
+      1186.1854289578846
+    ]
+  ],
+  "epf": [
+    [
+      "id",
+      "Name",
+      "Date",
+      "Employee Share",
+      "Employer Share",
+      "Pension",
+      "Invested",
+      "Current"
+    ],
+    [
+      1,
+      "Contribution - C1",
+      "10/12/2019",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      2,
+      "Contribution - C1",
+      "10/01/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      3,
+      "Contribution - C1",
+      "10/02/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      4,
+      "Contribution - C1",
+      "10/03/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      5,
+      "Interest",
+      "31/03/2020",
+      80,
+      23,
+      0,
+      0,
+      103
+    ],
+    [
+      6,
+      "Contribution - C1",
+      "10/04/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      7,
+      "Contribution - C1",
+      "10/05/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      8,
+      "Contribution - C1",
+      "10/06/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      9,
+      "Contribution - C1",
+      "10/07/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      10,
+      "Contribution - C1",
+      "10/08/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      11,
+      "Contribution - C1",
+      "10/09/2020",
+      1872,
+      550,
+      1250,
+      3672,
+      3672
+    ],
+    [
+      12,
+      "Contribution - C1",
+      "10/10/2020",
+      802,
+      245,
+      557,
+      1604,
+      1604
+    ],
+    [
+      13,
+      "Interest",
+      "31/03/2021",
+      1348,
+      396,
+      0,
+      0,
+      1744
+    ],
+    [
+      14,
+      "Interest",
+      "31/03/2022",
+      764,
+      225,
+      0,
+      0,
+      989
+    ],
+    [
+      15,
+      "Interest",
+      "31/03/2022",
+      1697,
+      499,
+      0,
+      0,
+      2196
+    ],
+    [
+      16,
+      "Contribution - C2",
+      "10/08/2022",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      17,
+      "Contribution - C2",
+      "10/09/2022",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      18,
+      "Contribution - C2",
+      "10/10/2022",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      19,
+      "Contribution - C2",
+      "10/11/2022",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      20,
+      "Contribution - C2",
+      "10/12/2022",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      21,
+      "Contribution - C2",
+      "10/01/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      22,
+      "Contribution - C2",
+      "10/02/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      23,
+      "Contribution - C2",
+      "10/03/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      24,
+      "Interest",
+      "31/03/2023",
+      1419,
+      421,
+      1250,
+      0,
+      3090
+    ],
+    [
+      25,
+      "Contribution - C2",
+      "10/04/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      26,
+      "Contribution - C2",
+      "10/05/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      27,
+      "Contribution - C2",
+      "10/06/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      28,
+      "Contribution - C2",
+      "10/07/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      29,
+      "Contribution - C2",
+      "10/08/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      30,
+      "Contribution - C2",
+      "10/09/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      31,
+      "Contribution - C2",
+      "10/10/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      32,
+      "Contribution - C2",
+      "10/11/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      33,
+      "Contribution - C2",
+      "10/12/2023",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      34,
+      "Contribution - C2",
+      "10/01/2024",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      35,
+      "Contribution - C2",
+      "10/02/2024",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      36,
+      "Contribution - C2",
+      "10/03/2024",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      37,
+      "Contribution - C2",
+      "10/04/2024",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      38,
+      "Contribution - C2",
+      "10/05/2024",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      39,
+      "Contribution - C2",
+      "10/06/2024",
+      1800,
+      550,
+      1250,
+      3600,
+      3600
+    ],
+    [
+      40,
+      "Withdrawal",
+      "05/07/2024",
+      -66230,
+      0,
+      0,
+      -66230,
+      -66230
+    ]
+  ],
+  "lic": [
+    [
+      "id",
+      "Name",
+      "Date",
+      "Invested",
+      "Policy Number",
+      "Maturity Date",
+      "Current"
+    ],
+    [
+      1,
+      "LIC\u0027s Jeevan Labh",
+      "2019-12-15T18:30:00.000Z",
+      44880,
+      318948140,
+      "12/16/2044",
+      44880
+    ],
+    [
+      2,
+      "LIC\u0027s Jeevan Labh",
+      "2020-12-15T18:30:00.000Z",
+      44880,
+      318948140,
+      "12/16/2044",
+      44880
+    ],
+    [
+      3,
+      "LIC\u0027s Jeevan Labh",
+      "2021-12-15T18:30:00.000Z",
+      44880,
+      318948140,
+      "12/16/2044",
+      44880
+    ],
+    [
+      4,
+      "LIC\u0027s Jeevan Labh",
+      "2022-12-15T18:30:00.000Z",
+      44880,
+      318948140,
+      "12/16/2044",
+      44880
+    ],
+    [
+      5,
+      "LIC\u0027s Jeevan Labh",
+      "2023-12-15T18:30:00.000Z",
+      44880,
+      318948140,
+      "12/16/2044",
+      44880
+    ]
+  ],
+  "fd": [
+    [
+      "id",
+      "Name",
+      "Date",
+      "Invested",
+      "FD Account Number",
+      "Interest Rate",
+      "Maturity Date",
+      "Maturity Amount",
+      "Current"
+    ],
+    [
+      1,
+      "SBI",
+      "10/17/2022",
+      50000,
+      41356161184,
+      0.061,
+      "2025-07-12T18:30:00.000Z",
+      59016,
+      50000
+    ]
+  ],
+  "_column": [
+    [
+      "id",
+      "Column",
+      "Instrument",
+      "isAutomated",
+      "isInitiallyVisible"
+    ],
+    [
+      1,
+      "id",
+      "MutualFund",
+      true,
+      false
+    ],
+    [
+      2,
+      "Name",
+      "MutualFund",
+      false,
+      true
+    ],
+    [
+      3,
+      "Category",
+      "MutualFund",
+      false,
+      false
+    ],
+    [
+      4,
+      "Date",
+      "MutualFund",
+      false,
+      true
+    ],
+    [
+      5,
+      "Invested",
+      "MutualFund",
+      false,
+      true
+    ],
+    [
+      6,
+      "Code",
+      "MutualFund",
+      false,
+      true
+    ],
+    [
+      7,
+      "NAV",
+      "MutualFund",
+      false,
+      false
+    ],
+    [
+      8,
+      "NoU",
+      "MutualFund",
+      true,
+      false
+    ],
+    [
+      9,
+      "Current",
+      "MutualFund",
+      true,
+      true
+    ],
+    [
+      10,
+      "id",
+      "EPF",
+      true,
+      false
+    ],
+    [
+      11,
+      "Name",
+      "EPF",
+      false,
+      true
+    ],
+    [
+      12,
+      "Date",
+      "EPF",
+      false,
+      true
+    ],
+    [
+      13,
+      "Employee Share",
+      "EPF",
+      false,
+      false
+    ],
+    [
+      14,
+      "Employer Share",
+      "EPF",
+      false,
+      false
+    ],
+    [
+      15,
+      "Pension",
+      "EPF",
+      false,
+      false
+    ],
+    [
+      16,
+      "Invested",
+      "EPF",
+      true,
+      true
+    ],
+    [
+      17,
+      "Current",
+      "EPF",
+      true,
+      true
+    ],
+    [
+      18,
+      "id",
+      "SGB",
+      true,
+      false
+    ],
+    [
+      19,
+      "Name",
+      "SGB",
+      false,
+      true
+    ],
+    [
+      20,
+      "Date",
+      "SGB",
+      false,
+      true
+    ],
+    [
+      21,
+      "Quantity",
+      "SGB",
+      false,
+      false
+    ],
+    [
+      22,
+      "Price",
+      "SGB",
+      false,
+      false
+    ],
+    [
+      23,
+      "Invested",
+      "SGB",
+      true,
+      true
+    ],
+    [
+      24,
+      "Current",
+      "SGB",
+      true,
+      true
+    ],
+    [
+      25,
+      "id",
+      "NPS",
+      true,
+      false
+    ],
+    [
+      26,
+      "Name",
+      "NPS",
+      false,
+      true
+    ],
+    [
+      27,
+      "Category",
+      "NPS",
+      false,
+      false
+    ],
+    [
+      28,
+      "Date",
+      "NPS",
+      false,
+      true
+    ],
+    [
+      29,
+      "Invested",
+      "NPS",
+      false,
+      true
+    ],
+    [
+      30,
+      "Scheme Id",
+      "NPS",
+      false,
+      true
+    ],
+    [
+      31,
+      "NAV",
+      "NPS",
+      false,
+      false
+    ],
+    [
+      32,
+      "NoU",
+      "NPS",
+      true,
+      false
+    ],
+    [
+      33,
+      "Current NAV",
+      "NPS",
+      true,
+      false
+    ],
+    [
+      34,
+      "Current",
+      "NPS",
+      true,
+      true
+    ],
+    [
+      35,
+      "id",
+      "LIC",
+      true,
+      false
+    ],
+    [
+      36,
+      "Name",
+      "LIC",
+      false,
+      true
+    ],
+    [
+      37,
+      "Date",
+      "LIC",
+      false,
+      true
+    ],
+    [
+      38,
+      "Invested",
+      "LIC",
+      false,
+      true
+    ],
+    [
+      39,
+      "Policy Number",
+      "LIC",
+      false,
+      false
+    ],
+    [
+      40,
+      "Maturity Date",
+      "LIC",
+      false,
+      false
+    ],
+    [
+      41,
+      "Current",
+      "LIC",
+      true,
+      true
+    ],
+    [
+      42,
+      "id",
+      "FD",
+      true,
+      false
+    ],
+    [
+      43,
+      "Name",
+      "FD",
+      false,
+      true
+    ],
+    [
+      44,
+      "Date",
+      "FD",
+      false,
+      true
+    ],
+    [
+      45,
+      "Invested",
+      "FD",
+      false,
+      true
+    ],
+    [
+      46,
+      "FD Account Number",
+      "FD",
+      false,
+      false
+    ],
+    [
+      47,
+      "Interest Rate",
+      "FD",
+      false,
+      false
+    ],
+    [
+      48,
+      "Maturity Date",
+      "FD",
+      false,
+      false
+    ],
+    [
+      49,
+      "Maturity Amount",
+      "FD",
+      false,
+      false
+    ],
+    [
+      50,
+      "Current",
+      "FD",
+      true,
+      true
+    ]
+  ],
+  "_instrument": [
+    [
+      "id",
+      "Name",
+      "Display Name"
+    ],
+    [
+      1,
+      "mutualfund",
+      "Mutual Fund"
+    ],
+    [
+      2,
+      "sgb",
+      "SGB"
+    ],
+    [
+      3,
+      "nps",
+      "NPS"
+    ],
+    [
+      4,
+      "epf",
+      "EPF"
+    ],
+    [
+      5,
+      "lic",
+      "LIC"
+    ],
+    [
+      6,
+      "fd",
+      "Fixed Deposit"
+    ]
+  ],
+  "+dailytracker": [
+    [
+      "Date",
+      "Invested",
+      "Current"
+    ],
+    [
+      "2019-12-09T18:30:00.000Z",
+      3672,
+      3672
+    ],
+    [
+      "2019-12-15T18:30:00.000Z",
+      48552,
+      48552
+    ],
+    [
+      "2020-01-09T18:30:00.000Z",
+      52224,
+      52224
+    ],
+    [
+      "2020-02-09T18:30:00.000Z",
+      55896,
+      55896
+    ],
+    [
+      "2020-03-09T18:30:00.000Z",
+      59568,
+      59568
+    ],
+    [
+      "2020-03-30T18:30:00.000Z",
+      59568,
+      59671
+    ],
+    [
+      "2020-04-09T18:30:00.000Z",
+      63240,
+      63343
+    ],
+    [
+      "2020-05-09T18:30:00.000Z",
+      66912,
+      67015
+    ],
+    [
+      "2020-06-09T18:30:00.000Z",
+      70584,
+      70687
+    ],
+    [
+      "2020-07-09T18:30:00.000Z",
+      74256,
+      74359
+    ],
+    [
+      "2020-08-09T18:30:00.000Z",
+      77928,
+      78031
+    ],
+    [
+      "2020-09-09T18:30:00.000Z",
+      81600,
+      81703
+    ],
+    [
+      "2020-10-09T18:30:00.000Z",
+      83204,
+      83307
+    ],
+    [
+      "2020-12-15T18:30:00.000Z",
+      128084,
+      128187
+    ],
+    [
+      "2021-03-30T18:30:00.000Z",
+      128084,
+      129931
+    ],
+    [
+      "2021-12-15T18:30:00.000Z",
+      172964,
+      174811
+    ],
+    [
+      "2022-03-30T18:30:00.000Z",
+      172964,
+      175800
+    ],
+    [
+      "2022-03-30T18:30:00.000Z",
+      172964,
+      177996
+    ],
+    [
+      "2022-08-07T18:30:00.000Z",
+      182963.5,
+      193078.09
+    ],
+    [
+      "2022-08-09T18:30:00.000Z",
+      186563.5,
+      196678.09
+    ],
+    [
+      "2022-09-09T18:30:00.000Z",
+      190163.5,
+      200278.09
+    ],
+    [
+      "2022-10-02T18:30:00.000Z",
+      200163,
+      215449.26
+    ],
+    [
+      "2022-10-06T18:30:00.000Z",
+      205162.75,
+      223031.33000000002
+    ],
+    [
+      "2022-10-09T18:30:00.000Z",
+      208762.75,
+      226631.33000000002
+    ],
+    [
+      "2022-10-16T18:30:00.000Z",
+      258762.75,
+      276631.33
+    ],
+    [
+      "2022-11-01T18:30:00.000Z",
+      268762.25,
+      291305.8
+    ],
+    [
+      "2022-11-09T18:30:00.000Z",
+      272362.25,
+      294905.8
+    ],
+    [
+      "2022-11-17T18:30:00.000Z",
+      272737.25,
+      295432.34095501364
+    ],
+    [
+      "2022-11-17T18:30:00.000Z",
+      272787.25,
+      295488.9395252911
+    ],
+    [
+      "2022-11-17T18:30:00.000Z",
+      272862.25,
+      295575.58589560725
+    ],
+    [
+      "2022-12-01T18:30:00.000Z",
+      282861.75,
+      309849.0558956072
+    ],
+    [
+      "2022-12-09T18:30:00.000Z",
+      286461.75,
+      313449.0558956072
+    ],
+    [
+      "2022-12-15T18:30:00.000Z",
+      331341.75,
+      358329.0558956072
+    ],
+    [
+      "2022-12-28T18:30:00.000Z",
+      335815.2,
+      364630.6084437065
+    ],
+    [
+      "2022-12-28T18:30:00.000Z",
+      336411.66000000003,
+      365300.5618475597
+    ],
+    [
+      "2022-12-28T18:30:00.000Z",
+      337306.35000000003,
+      366326.11714130215
+    ],
+    [
+      "2023-01-01T18:30:00.000Z",
+      347305.85000000003,
+      381037.5271413021
+    ],
+    [
+      "2023-01-06T18:30:00.000Z",
+      347258.91000000003,
+      380970.4623264098
+    ],
+    [
+      "2023-01-06T18:30:00.000Z",
+      347252.56000000006,
+      380963.33456774126
+    ],
+    [
+      "2023-01-06T18:30:00.000Z",
+      347243.0200000001,
+      380952.40172917757
+    ],
+    [
+      "2023-01-09T18:30:00.000Z",
+      384743.0200000001,
+      434352.33664800687
+    ],
+    [
+      "2023-01-09T18:30:00.000Z",
+      389743.0200000001,
+      439958.25369665265
+    ],
+    [
+      "2023-01-09T18:30:00.000Z",
+      397243.0200000001,
+      448522.0809023566
+    ],
+    [
+      "2023-01-09T18:30:00.000Z",
+      400843.0200000001,
+      452122.0809023566
+    ],
+    [
+      "2023-01-22T18:30:00.000Z",
+      405316.4700000001,
+      458438.2131370434
+    ],
+    [
+      "2023-01-22T18:30:00.000Z",
+      405912.9300000001,
+      459105.1126531168
+    ],
+    [
+      "2023-01-22T18:30:00.000Z",
+      406807.6200000001,
+      460124.3612962214
+    ],
+    [
+      "2023-02-01T18:30:00.000Z",
+      416807.1200000001,
+      475092.4412962214
+    ],
+    [
+      "2023-02-05T18:30:00.000Z",
+      421806.8700000001,
+      481742.8212962214
+    ],
+    [
+      "2023-02-07T18:30:00.000Z",
+      426280.3200000001,
+      488127.3717530957
+    ],
+    [
+      "2023-02-07T18:30:00.000Z",
+      426876.78000000014,
+      488793.15196792653
+    ],
+    [
+      "2023-02-07T18:30:00.000Z",
+      427771.47000000015,
+      489810.2158128539
+    ],
+    [
+      "2023-02-09T18:30:00.000Z",
+      431371.47000000015,
+      493410.2158128539
+    ],
+    [
+      "2023-03-01T18:30:00.000Z",
+      441370.97000000015,
+      508319.4758128539
+    ],
+    [
+      "2023-03-01T18:30:00.000Z",
+      451370.47000000015,
+      522042.3458128539
+    ],
+    [
+      "2023-03-09T18:30:00.000Z",
+      455843.92000000016,
+      528563.6884585686
+    ],
+    [
+      "2023-03-09T18:30:00.000Z",
+      456440.3800000002,
+      529228.6182567006
+    ],
+    [
+      "2023-03-09T18:30:00.000Z",
+      457335.0700000002,
+      530245.213235758
+    ],
+    [
+      "2023-03-09T18:30:00.000Z",
+      460935.0700000002,
+      533845.213235758
+    ],
+    [
+      "2023-03-30T18:30:00.000Z",
+      465408.5200000002,
+      540377.5293437588
+    ],
+    [
+      "2023-03-30T18:30:00.000Z",
+      466004.9800000002,
+      541037.6298690924
+    ],
+    [
+      "2023-03-30T18:30:00.000Z",
+      466899.6700000002,
+      542040.6307917575
+    ],
+    [
+      "2023-03-30T18:30:00.000Z",
+      466899.6700000002,
+      545130.6307917575
+    ],
+    [
+      "2023-04-02T18:30:00.000Z",
+      476899.1700000002,
+      560166.8307917574
+    ],
+    [
+      "2023-04-04T18:30:00.000Z",
+      481898.9200000002,
+      566981.9007917574
+    ],
+    [
+      "2023-04-05T18:30:00.000Z",
+      481867.32000000024,
+      566936.2746848889
+    ],
+    [
+      "2023-04-05T18:30:00.000Z",
+      481862.9900000002,
+      566931.5046305832
+    ],
+    [
+      "2023-04-05T18:30:00.000Z",
+      481856.44000000024,
+      566924.2028080783
+    ],
+    [
+      "2023-04-09T18:30:00.000Z",
+      485456.44000000024,
+      570524.2028080783
+    ],
+    [
+      "2023-05-01T18:30:00.000Z",
+      495455.94000000024,
+      585005.2928080782
+    ],
+    [
+      "2023-05-01T18:30:00.000Z",
+      505455.44000000024,
+      598577.3928080782
+    ],
+    [
+      "2023-05-09T18:30:00.000Z",
+      509055.44000000024,
+      602177.3928080782
+    ],
+    [
+      "2023-05-22T18:30:00.000Z",
+      513528.89000000025,
+      608367.4796160737
+    ],
+    [
+      "2023-05-22T18:30:00.000Z",
+      514125.35000000027,
+      609013.8853470495
+    ],
+    [
+      "2023-05-22T18:30:00.000Z",
+      515020.04000000027,
+      609991.3831602513
+    ],
+    [
+      "2023-06-01T18:30:00.000Z",
+      525019.5400000003,
+      624059.9731602513
+    ],
+    [
+      "2023-06-04T18:30:00.000Z",
+      535019.0400000003,
+      636966.8731602513
+    ],
+    [
+      "2023-06-09T18:30:00.000Z",
+      538619.0400000003,
+      640566.8731602513
+    ],
+    [
+      "2023-06-18T18:30:00.000Z",
+      543092.4900000002,
+      646572.6219232604
+    ],
+    [
+      "2023-06-18T18:30:00.000Z",
+      543688.9500000002,
+      647216.8430609771
+    ],
+    [
+      "2023-06-18T18:30:00.000Z",
+      544583.6400000001,
+      648192.6930078743
+    ],
+    [
+      "2023-07-02T18:30:00.000Z",
+      554583.1400000001,
+      661686.9930078743
+    ],
+    [
+      "2023-07-06T18:30:00.000Z",
+      553578.6400000001,
+      660372.5586217409
+    ],
+    [
+      "2023-07-06T18:30:00.000Z",
+      553996.6500000001,
+      660823.13091725
+    ],
+    [
+      "2023-07-06T18:30:00.000Z",
+      554583.1400000001,
+      661462.8258366473
+    ],
+    [
+      "2023-07-09T18:30:00.000Z",
+      558183.1400000001,
+      665062.8258366473
+    ],
+    [
+      "2023-07-13T18:30:00.000Z",
+      558161.2800000001,
+      665034.2210226295
+    ],
+    [
+      "2023-07-13T18:30:00.000Z",
+      558158.3500000001,
+      665031.0580563791
+    ],
+    [
+      "2023-07-13T18:30:00.000Z",
+      558153.9400000001,
+      665026.2294734671
+    ],
+    [
+      "2023-07-18T18:30:00.000Z",
+      562627.39,
+      670745.7252482838
+    ],
+    [
+      "2023-07-18T18:30:00.000Z",
+      563223.85,
+      671386.3746963171
+    ],
+    [
+      "2023-07-18T18:30:00.000Z",
+      564118.5399999999,
+      672358.0435465334
+    ],
+    [
+      "2023-08-03T18:30:00.000Z",
+      574118.0399999999,
+      684586.9835465334
+    ],
+    [
+      "2023-08-09T18:30:00.000Z",
+      577718.0399999999,
+      688186.9835465334
+    ],
+    [
+      "2023-08-13T18:30:00.000Z",
+      597717.0399999999,
+      720051.4335465333
+    ],
+    [
+      "2023-08-20T18:30:00.000Z",
+      602190.4899999999,
+      725844.2259610922
+    ],
+    [
+      "2023-08-20T18:30:00.000Z",
+      602786.9499999998,
+      726483.146056345
+    ],
+    [
+      "2023-08-20T18:30:00.000Z",
+      603681.6399999998,
+      727456.59188628
+    ],
+    [
+      "2023-08-31T18:30:00.000Z",
+      613681.1399999998,
+      742845.63188628
+    ],
+    [
+      "2023-08-31T18:30:00.000Z",
+      623680.6399999998,
+      754995.83188628
+    ],
+    [
+      "2023-09-03T18:30:00.000Z",
+      633680.1399999998,
+      767704.6518862799
+    ],
+    [
+      "2023-09-09T18:30:00.000Z",
+      637280.1399999998,
+      771304.6518862799
+    ],
+    [
+      "2023-09-11T18:30:00.000Z",
+      643253.5899999997,
+      778801.903667805
+    ],
+    [
+      "2023-09-11T18:30:00.000Z",
+      644050.0499999997,
+      779650.7070836265
+    ],
+    [
+      "2023-09-11T18:30:00.000Z",
+      645244.7399999996,
+      780945.005011901
+    ],
+    [
+      "2023-10-02T18:30:00.000Z",
+      655244.2399999996,
+      793829.255011901
+    ],
+    [
+      "2023-10-02T18:30:00.000Z",
+      670243.4899999996,
+      816030.075011901
+    ],
+    [
+      "2023-10-02T18:30:00.000Z",
+      685252.7399999996,
+      835465.795011901
+    ],
+    [
+      "2023-10-06T18:30:00.000Z",
+      685224.1399999997,
+      835429.3488329356
+    ],
+    [
+      "2023-10-06T18:30:00.000Z",
+      685220.3399999996,
+      835425.3046583927
+    ],
+    [
+      "2023-10-06T18:30:00.000Z",
+      685214.6899999996,
+      835419.147320388
+    ],
+    [
+      "2023-10-09T18:30:00.000Z",
+      688814.6899999996,
+      839019.147320388
+    ],
+    [
+      "2023-10-10T18:30:00.000Z",
+      694038.1399999995,
+      845626.0946778872
+    ],
+    [
+      "2023-10-10T18:30:00.000Z",
+      694734.5999999995,
+      846366.7246423048
+    ],
+    [
+      "2023-10-10T18:30:00.000Z",
+      695779.2899999995,
+      847502.7916552132
+    ],
+    [
+      "2023-10-31T18:30:00.000Z",
+      710778.5399999995,
+      870414.8416552133
+    ],
+    [
+      "2023-10-31T18:30:00.000Z",
+      727277.7199999995,
+      891780.2916552132
+    ],
+    [
+      "2023-11-01T18:30:00.000Z",
+      737277.2199999995,
+      904717.6016552133
+    ],
+    [
+      "2023-11-09T18:30:00.000Z",
+      740877.2199999995,
+      908317.6016552133
+    ],
+    [
+      "2023-11-15T18:30:00.000Z",
+      746100.6699999995,
+      914888.8023510552
+    ],
+    [
+      "2023-11-15T18:30:00.000Z",
+      746797.1299999994,
+      915623.2660232924
+    ],
+    [
+      "2023-11-15T18:30:00.000Z",
+      747841.8199999994,
+      916744.6457438245
+    ],
+    [
+      "2023-11-30T18:30:00.000Z",
+      762841.0699999994,
+      937456.8357438245
+    ],
+    [
+      "2023-11-30T18:30:00.000Z",
+      768840.7699999993,
+      943720.0957438245
+    ],
+    [
+      "2023-11-30T18:30:00.000Z",
+      783840.2699999993,
+      961499.1357438245
+    ],
+    [
+      "2023-12-03T18:30:00.000Z",
+      793839.7699999993,
+      973553.3357438245
+    ],
+    [
+      "2023-12-09T18:30:00.000Z",
+      797439.7699999993,
+      977153.3357438245
+    ],
+    [
+      "2023-12-13T18:30:00.000Z",
+      802663.2199999993,
+      983283.5553804681
+    ],
+    [
+      "2023-12-13T18:30:00.000Z",
+      803359.6799999992,
+      984014.7287183839
+    ],
+    [
+      "2023-12-13T18:30:00.000Z",
+      804404.3699999992,
+      985127.995615089
+    ],
+    [
+      "2023-12-15T18:30:00.000Z",
+      849284.3699999992,
+      1030007.995615089
+    ],
+    [
+      "2023-12-25T18:30:00.000Z",
+      864283.6199999992,
+      1048622.405615089
+    ],
+    [
+      "2023-12-26T18:30:00.000Z",
+      919280.8699999992,
+      1105750.215615089
+    ],
+    [
+      "2024-01-01T18:30:00.000Z",
+      929280.3699999992,
+      1117124.915615089
+    ],
+    [
+      "2024-01-02T18:30:00.000Z",
+      944279.6199999992,
+      1135490.375615089
+    ],
+    [
+      "2024-01-05T18:30:00.000Z",
+      944253.8399999992,
+      1135460.9022317377
+    ],
+    [
+      "2024-01-05T18:30:00.000Z",
+      944250.6999999991,
+      1135457.6208591652
+    ],
+    [
+      "2024-01-05T18:30:00.000Z",
+      944245.9899999992,
+      1135452.6048599554
+    ],
+    [
+      "2024-01-07T18:30:00.000Z",
+      949469.4399999991,
+      1141479.0695032333
+    ],
+    [
+      "2024-01-07T18:30:00.000Z",
+      950165.8999999991,
+      1142206.6750072
+    ],
+    [
+      "2024-01-07T18:30:00.000Z",
+      951210.589999999,
+      1143315.7769147358
+    ],
+    [
+      "2024-01-08T18:30:00.000Z",
+      988710.589999999,
+      1186480.8563654602
+    ],
+    [
+      "2024-01-08T18:30:00.000Z",
+      993710.589999999,
+      1191704.6627644738
+    ],
+    [
+      "2024-01-08T18:30:00.000Z",
+      1001210.589999999,
+      1199658.8310191056
+    ],
+    [
+      "2024-01-09T18:30:00.000Z",
+      1004810.589999999,
+      1203258.8310191056
+    ],
+    [
+      "2024-01-31T18:30:00.000Z",
+      1019809.839999999,
+      1221529.5710191056
+    ],
+    [
+      "2024-01-31T18:30:00.000Z",
+      1033309.169999999,
+      1236563.2810191056
+    ],
+    [
+      "2024-02-01T18:30:00.000Z",
+      1043308.669999999,
+      1247929.8910191057
+    ],
+    [
+      "2024-02-01T18:30:00.000Z",
+      1058307.919999999,
+      1265673.5410191056
+    ],
+    [
+      "2024-02-09T18:30:00.000Z",
+      1061907.919999999,
+      1269273.5410191056
+    ],
+    [
+      "2024-02-15T18:30:00.000Z",
+      1067131.369999999,
+      1275082.202297903
+    ],
+    [
+      "2024-02-15T18:30:00.000Z",
+      1067827.829999999,
+      1275800.817079463
+    ],
+    [
+      "2024-02-15T18:30:00.000Z",
+      1068872.5199999989,
+      1276880.9580748847
+    ],
+    [
+      "2024-02-15T18:30:00.000Z",
+      1081234.5199999989,
+      1291840.9580748847
+    ],
+    [
+      "2024-02-29T18:30:00.000Z",
+      1096233.7699999989,
+      1309301.7080748847
+    ],
+    [
+      "2024-03-03T18:30:00.000Z",
+      1106233.2699999989,
+      1320332.6380748847
+    ],
+    [
+      "2024-03-03T18:30:00.000Z",
+      1121232.5199999989,
+      1337994.7480748848
+    ],
+    [
+      "2024-03-09T18:30:00.000Z",
+      1124832.5199999989,
+      1341594.7480748848
+    ],
+    [
+      "2024-03-11T18:30:00.000Z",
+      1134832.0199999989,
+      1352174.1680748847
+    ],
+    [
+      "2024-03-12T18:30:00.000Z",
+      1214828.0199999989,
+      1433935.9680748847
+    ],
+    [
+      "2024-03-17T18:30:00.000Z",
+      1220051.4699999988,
+      1439740.884791112
+    ],
+    [
+      "2024-03-17T18:30:00.000Z",
+      1220747.9299999988,
+      1440452.437177472
+    ],
+    [
+      "2024-03-17T18:30:00.000Z",
+      1221792.6199999987,
+      1441526.0585350762
+    ],
+    [
+      "2024-03-30T18:30:00.000Z",
+      1227016.0699999987,
+      1447225.0395228916
+    ],
+    [
+      "2024-03-30T18:30:00.000Z",
+      1227712.5299999986,
+      1447933.7117775425
+    ],
+    [
+      "2024-03-30T18:30:00.000Z",
+      1228757.2199999986,
+      1449001.840348463
+    ],
+    [
+      "2024-04-01T18:30:00.000Z",
+      1238756.7199999986,
+      1459762.570348463
+    ],
+    [
+      "2024-04-01T18:30:00.000Z",
+      1253755.9699999986,
+      1476609.520348463
+    ],
+    [
+      "2024-04-01T18:30:00.000Z",
+      1283754.4699999986,
+      1507099.540348463
+    ],
+    [
+      "2024-04-02T18:30:00.000Z",
+      1298753.7199999986,
+      1524517.220348463
+    ],
+    [
+      "2024-04-05T18:30:00.000Z",
+      1298721.1899999985,
+      1524482.0881652944
+    ],
+    [
+      "2024-04-05T18:30:00.000Z",
+      1298717.2299999986,
+      1524478.0583686645
+    ],
+    [
+      "2024-04-05T18:30:00.000Z",
+      1298711.2399999986,
+      1524471.9108077227
+    ],
+    [
+      "2024-04-09T18:30:00.000Z",
+      1302311.2399999986,
+      1528071.9108077227
+    ],
+    [
+      "2024-04-23T18:30:00.000Z",
+      1332309.7399999986,
+      1558425.8808077227
+    ],
+    [
+      "2024-04-28T18:30:00.000Z",
+      1332409.7399999986,
+      1558527.3308077226
+    ],
+    [
+      "2024-05-01T18:30:00.000Z",
+      1342409.2399999986,
+      1569257.6408077227
+    ],
+    [
+      "2024-05-01T18:30:00.000Z",
+      1357408.4899999986,
+      1585675.3808077227
+    ],
+    [
+      "2024-05-01T18:30:00.000Z",
+      1372407.7399999986,
+      1601535.1008077227
+    ],
+    [
+      "2024-05-01T18:30:00.000Z",
+      1386667.7399999986,
+      1616705.1008077227
+    ],
+    [
+      "2024-05-09T18:30:00.000Z",
+      1390267.7399999986,
+      1620305.1008077227
+    ],
+    [
+      "2024-05-15T18:30:00.000Z",
+      1395491.1899999985,
+      1625869.3270629682
+    ],
+    [
+      "2024-05-15T18:30:00.000Z",
+      1396187.6499999985,
+      1626572.7489853057
+    ],
+    [
+      "2024-05-15T18:30:00.000Z",
+      1397232.3399999985,
+      1627633.531065863
+    ],
+    [
+      "2024-06-02T18:30:00.000Z",
+      1407231.8399999985,
+      1638259.3910658632
+    ],
+    [
+      "2024-06-02T18:30:00.000Z",
+      1422231.0899999985,
+      1653261.1510658632
+    ],
+    [
+      "2024-06-02T18:30:00.000Z",
+      1452229.5899999985,
+      1683384.5610658631
+    ],
+    [
+      "2024-06-03T18:30:00.000Z",
+      1467228.8399999985,
+      1700500.751065863
+    ],
+    [
+      "2024-06-09T18:30:00.000Z",
+      1470828.8399999985,
+      1704100.751065863
+    ],
+    [
+      "2024-06-12T18:30:00.000Z",
+      1479589.6599999985,
+      1712969.3102022465
+    ],
+    [
+      "2024-06-12T18:30:00.000Z",
+      1480757.7699999986,
+      1714143.2698909887
+    ],
+    [
+      "2024-06-12T18:30:00.000Z",
+      1482509.9399999985,
+      1715904.7920216203
+    ],
+    [
+      "2024-06-20T18:30:00.000Z",
+      1512388.9399999985,
+      1745824.7920216203
+    ],
+    [
+      "2024-06-25T18:30:00.000Z",
+      1512388.94,
+      1745956.7920216215
+    ],
+    [
+      "2024-06-26T18:30:00.000Z",
+      1512388.94,
+      1749054.5477757503
+    ],
+    [
+      "2024-06-27T18:30:00.000Z",
+      1542387.44,
+      1780701.8941488764
+    ],
+    [
+      "2024-06-28T18:30:00.000Z",
+      1542387.44,
+      1781494.4828702984
+    ],
+    [
+      "2024-06-29T18:30:00.000Z",
+      1542387.44,
+      1783253.2828702983
+    ],
+    [
+      "2024-06-30T18:30:00.000Z",
+      1542387.44,
+      1783253.2828702983
+    ],
+    [
+      "2024-07-01T18:30:00.000Z",
+      1542387.44,
+      1783907.2828702983
+    ],
+    [
+      "2024-07-02T18:30:00.000Z",
+      1542387.44,
+      1789208.5928702988
+    ],
+    [
+      "2024-07-03T18:30:00.000Z",
+      1572385.94,
+      1821139.2986258196
+    ],
+    [
+      "2024-07-04T18:30:00.000Z",
+      1587384.94,
+      1844224.0989434954
+    ],
+    [
+      "2024-07-05T18:30:00.000Z",
+      1531154.44,
+      1791500.158943496
+    ],
+    [
+      "2024-07-06T18:30:00.000Z",
+      1592794.44,
+      1856279.1789434957
+    ],
+    [
+      "2024-07-07T18:30:00.000Z",
+      1592794.44,
+      1856279.1789434957
+    ],
+    [
+      "2024-07-08T18:30:00.000Z",
+      1592794.44,
+      1856279.1789434957
+    ],
+    [
+      "2024-07-09T18:30:00.000Z",
+      1592794.44,
+      1858799.0098526506
+    ],
+    [
+      "2024-07-10T18:30:00.000Z",
+      1592794.44,
+      1861273.8540159636
+    ],
+    [
+      "2024-07-11T18:30:00.000Z",
+      1592794.44,
+      1858697.7440159637
+    ],
+    [
+      "2024-07-12T18:30:00.000Z",
+      1592794.44,
+      1862820.6300047038
+    ]
+  ]
 }

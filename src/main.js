@@ -17,27 +17,6 @@ function fetchData(){
   return JSON.stringify(data)
 }
 
-
-function copyFormulasToLastRow(sheet){
-  var lastRow = sheet.getLastRow();
-  var lastColumn = sheet.getLastColumn();
-
-  var lastRowRange = sheet.getRange(lastRow, 1, 1, lastColumn);
-  var formulas = lastRowRange.getFormulas()[0];
-
-  var newRow = lastRow + 1;
-  var newRowRange = sheet.getRange(newRow, 1, 1, lastColumn);
-
-  var newFormulas = formulas.map(function(formula) {
-    if (formula) {
-      return formula.replace(new RegExp(lastRow, 'g'), newRow);
-    }
-    return formula;
-  });
-
-  newRowRange.setFormulas([newFormulas]);
-}
-
 function addRow(sheetName, rowMap){
   let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
 
