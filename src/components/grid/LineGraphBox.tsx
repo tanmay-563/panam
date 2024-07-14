@@ -58,7 +58,7 @@ const LineGraphBox = ({reports}) => {
                     <option value="monthly">Monthly</option>
                     <option value="yearly">Yearly</option>
                 </select>
-                <ResponsiveContainer width={'99%'} height={220} className="linegraph-box">
+                <ResponsiveContainer width={'99%'} height={270} className="linegraph-box">
                     <LineChart
                         width={500}
                         height={300}

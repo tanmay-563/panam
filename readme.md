@@ -7,9 +7,8 @@
   - scriptId - id after  https://script.google.com/u/0/home/projects/ in url
   - rootDir - /Users/m.akshay/projects/personal/stonks/dist
 - to implement
-  - use column metadata more extensively
+  - use column metadata more extensively - add column data type
   - ask for password
-  - cache line graph range
   - form validation
   - aggregation in datagrid 
   - monthly reports and monthly reminders

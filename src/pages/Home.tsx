@@ -1,6 +1,7 @@
 import React from 'react'
 import MainBox from "../components/grid/MainBox";
 import LineGraphBox from "../components/grid/LineGraphBox";
+import DonutChartBox from "../components/grid/DonutChartBox";
 const Home = ({
                     instruments,
                     transactionsColumnMap,
@@ -24,7 +25,9 @@ const Home = ({
                 </div>
                 <div className="box box3">box 3</div>
                 <div className="box box4">
+                    <DonutChartBox/>
                 </div>
+                <div className="box box5"></div>
             </div> :
             <div/>
     )
