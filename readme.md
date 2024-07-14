@@ -9,10 +9,10 @@
 - to implement
   - use column metadata more extensively
   - ask for password
-  - in memory cache for all stuff local storage
-  - loading icon when submitting form
+  - cache line graph range
   - form validation
   - aggregation in datagrid 
   - monthly reports and monthly reminders
   - pop submit button on hover
   - refactor all css class name casing
+  - highest value in graph

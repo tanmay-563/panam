@@ -4,7 +4,9 @@ function doGet() {
   return HtmlService.createHtmlOutputFromFile("index")
       .setFaviconUrl(faviconUrl)
       .setTitle("Panam")
-      .addMetaTag('viewport', 'width=device-width, initial-scale=1');;
+      .addMetaTag('viewport', 'width=device-width, initial-scale=1')
+      .addMetaTag('apple-mobile-web-app-capable', 'yes')
+      .addMetaTag('mobile-web-app-capable', 'yes');
 }
 
 function fetchData(){
