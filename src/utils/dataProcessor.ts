@@ -95,6 +95,7 @@ function getHeaderMap(data){
 
 
 function getProcessedData(data){
+    console.log(data)
     let transactionsRowMap = getTransactionsRowMap(data)
     let transactionsColumnMap = getTransactionsColumnMap(data)
     let metadata = getMetadataRowMap(data)

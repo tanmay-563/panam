@@ -1,5 +1,6 @@
 import exp from "constants";
 import {useCallback, useRef} from "react";
+import moment from "moment/moment";
 
 export function getDisplayName(instrumentsMetadata, instrument) {
     try{
@@ -98,4 +99,11 @@ export function useInMemoryCache() {
     }, []);
 
     return {set, get, has, remove, clear}
+}
+
+export function dateReviver(key, value) {
+    if (typeof value === 'string' && moment(value, moment.ISO_8601, true).isValid()) {
+        return moment(value).toDate();
+    }
+    return value;
 }

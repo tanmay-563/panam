@@ -14,6 +14,7 @@ import devData from "./devData.json";
 import getProcessedData from "./utils/dataProcessor";
 import Loading from "./components/Loading";
 import AlertBox from "./components/AlertBox";
+import {dateReviver} from "./utils/helper";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -27,14 +28,15 @@ function App() {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
-            let data = devData;
+            let data = JSON.parse(devData, dateReviver);
+            console.log(data)
             setData(getProcessedData(data));
             setTimeout(() => setLoading(false), 500)
         }
         else{
             google.script.run.withSuccessHandler((data) => {
-                setData(getProcessedData(JSON.parse(data)));
-                console.log("data ", JSON.parse(data))
+                setData(getProcessedData(JSON.parse(data, dateReviver)));
+                console.log("data ", data)
                 setLoading(false)
             }).withFailureHandler((error) => {
                 console.error("Error fetching data:", error);
