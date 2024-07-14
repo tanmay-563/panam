@@ -15,3 +15,14 @@
   - pop submit button on hover
   - refactor all css class name casing
   - highest value in graph
+- data manipulation for home page
+  - Overall
+    - current sum
+    - invested sum
+    - XIRR
+  - Per instrument
+    - current sum
+    - invested sum
+    - Group by name and category
+      - current sum
+      - invested sum

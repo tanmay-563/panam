@@ -5,7 +5,7 @@ import moment from "moment/moment";
 export function getDisplayName(instrumentsMetadata, instrument) {
     try{
         const entry = instrumentsMetadata.find(item => item.Name.toLowerCase() === instrument.toLowerCase());
-        return entry ? entry["Display Name"] : instrument;
+        return entry ? entry["Label"] : instrument;
     }
     catch (e){
         return instrument

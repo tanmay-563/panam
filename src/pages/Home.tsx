@@ -2,13 +2,19 @@ import React from 'react'
 import MainBox from "../components/grid/MainBox";
 import LineGraphBox from "../components/grid/LineGraphBox";
 import DonutChartBox from "../components/grid/DonutChartBox";
+import {getAggregatedData} from "../utils/home.utils";
 const Home = ({
                     instruments,
+                    transactionsRowMap,
                     transactionsColumnMap,
                     metadata,
                     reports,
                     setSelectedMenuItem,
 }) => {
+    if(!instruments)
+        return <div></div>
+
+    // getAggregatedData(transactionsRowMap, metadata);
     return (
         transactionsColumnMap ?
             <div className="home">

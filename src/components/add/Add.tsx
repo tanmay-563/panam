@@ -125,7 +125,7 @@ const Add = ({
                                     color: "var(--dark-color)",
                                 }}
                             >
-                                {instrument["Display Name"]}
+                                {instrument["Label"]}
                             </MenuItem>
                         ))}
                     </Select>

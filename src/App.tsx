@@ -110,6 +110,7 @@ function App() {
                     element: (
                         <Home
                             instruments={data?.instruments}
+                            transactionsRowMap={data?.transactionsRowMap}
                             transactionsColumnMap={data?.transactionsColumnMap}
                             metadata={data?.metadata}
                             reports={data?.reports}
@@ -137,6 +138,7 @@ function App() {
                     element: (
                         <Home
                             instruments={data?.instruments}
+                            transactionsRowMap={data?.transactionsRowMap}
                             transactionsColumnMap={data?.transactionsColumnMap}
                             metadata={data?.metadata}
                             reports={data?.reports}

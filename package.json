@@ -31,9 +31,10 @@
     "react-dom": "^18.3.1",
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.24.1",
-    "recharts": "^2.12.7",
+    "recharts": "^2.13.0-alpha.4",
     "sass": "^1.77.6",
-    "uninstall": "^0.0.0"
+    "uninstall": "^0.0.0",
+    "xirr": "^1.1.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",
