@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import React, { useEffect, useState } from 'react';
 import Add from "./components/add/Add";
-import devData from "./devData.json";
+import {devData} from "./devdata.js";
 import getProcessedData from "./utils/dataProcessor";
 import Loading from "./components/Loading";
 import AlertBox from "./components/AlertBox";
@@ -28,6 +28,7 @@ function App() {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
+            console.log(devData)
             let data = JSON.parse(devData, dateReviver);
             console.log(data)
             setData(getProcessedData(data));

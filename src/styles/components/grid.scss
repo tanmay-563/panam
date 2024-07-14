@@ -1,16 +1,20 @@
 @import "../variables";
+@import "../responsive";
 
-.main-box{
+.box1{
+  overflow: auto;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   width: 100%;
+  position: relative;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  h6{
-    font-weight: bold;
-    font-size: 10px;
-    color: $soft-color;
-  }
+  //h6{
+  //  font-weight: bold;
+  //  font-size: 10px;
+  //  color: $soft-color;
+  //}
 
   .mini-box-totals{
     width: fit-content;
@@ -81,8 +85,27 @@
   }
 }
 
-.linegraph-container{
+
+.box2{
+  padding-left: 0 !important;
   position: relative;
+
+  .linegraph-select-box{
+    background-color: rgba(0,0,0,0);
+    color: $ultra-soft;
+    font-size: 12px;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    border-color: var(--max-soft-color);
+    border-radius: 5px;
+    padding: 2px;
+
+    &:hover{
+      border-color: $max-soft;
+      cursor: pointer;
+    }
+  }
 
   .linegraph-box{
     padding-top: 10px;
@@ -124,22 +147,6 @@
 
     .tooltip-value-container span {
       margin-left: 5px;
-    }
-  }
-
-
-  .linegraph-select-box{
-    background-color: rgba(0,0,0,0);
-    border-color: transparent;
-    color: $ultra-soft;
-    font-size: 14px;
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    &:hover{
-      border-color: $max-soft;
-      cursor: pointer;
     }
   }
 }

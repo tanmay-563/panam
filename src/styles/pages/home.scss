@@ -23,25 +23,6 @@
     background-color: $dark-bg;
   }
 
-  .box1{
-    overflow: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .box2{
-    padding-left: 0;
-
-    h6{
-      display: flex;
-      justify-content: center;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-weight: normal;
-      color: $soft-color;
-      font-size: 10px;
-    }
-  }
-
   .box3{
     grid-row: span 2;
   }
@@ -52,6 +33,31 @@
     @include md{
       grid-column: span 1;
     }
+  }
+
+  .box-title{
+    display: flex;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: $soft-color;
+    font-size: 16px;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-variant: all-petite-caps;
+  }
+
+  .box-content{
+    padding-top: 20px;
+    position: relative;
+  }
+
+  hr{
+    border: 0.5px solid $max-soft;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 35px;
   }
 
   .green-color{

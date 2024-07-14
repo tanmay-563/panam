@@ -5,11 +5,12 @@ import DynamicIcons from "./DynamicIcons";
 import {getDisplayName} from "../utils/helper";
 const Menu = ({
                   instruments,
-                  metadata: metadata,
+                  metadata,
                   selectedMenuItem,
                   setSelectedMenuItem}
 ) => {
     const instrumentMetadata = metadata?.instrument || {};
+    console.log(JSON.stringify(instrumentMetadata))
     return (
         <div className="menu">
             {menu.map((item) => (

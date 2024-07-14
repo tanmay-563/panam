@@ -1,20 +1,25 @@
 import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
-import {formatToIndianCurrency} from "../../utils/helper";
+import {capitalizeFirstLetter, formatToIndianCurrency} from "../../utils/helper";
 import {timeFormat } from 'd3-time-format';
-import React, {useState} from "react";
-import fields from "../add/Fields";
-import {filterProps} from "recharts/types/util/ReactUtils";
+import React, {useMemo, useState} from "react";
 import {getFilteredData} from "../../utils/linegraph.utils";
 
 const monthFormat = timeFormat('%b %y');
 const dateFormat = timeFormat('%d %b, %y');
-
+const localStorageKey = "line_graph_granularity"
 const LineGraphBox = ({reports}) => {
     const dailyTracker = reports.dailytracker
     if(!dailyTracker)
         return <div>Daily tracker data missing</div>
 
     const [granularity, setGranularity] = useState('weekly')
+
+    useMemo(() => {
+        const savedGranularity = localStorage.getItem(localStorageKey);
+        if (savedGranularity) {
+            setGranularity(savedGranularity);
+        }
+    }, []);
 
     const filteredData = getFilteredData(dailyTracker, granularity)
 
@@ -35,47 +40,58 @@ const LineGraphBox = ({reports}) => {
     }
 
     return (
-        <div className="linegraph-container">
-            <h6> OVERALL PROGRESS </h6>
-            <label>
+        <>
+            <div>
+                <h6 className="box-title"> Overall Progress </h6>
+            </div>
+            <hr/>
+            <div className="box-content">
                 <select
                     value={granularity}
                     className="linegraph-select-box"
-                    onChange={(e) => setGranularity(e.target.value)}>
+                    onChange={(e) => {
+                        setGranularity(e.target.value);
+                        localStorage.setItem(localStorageKey, e.target.value);
+                    }}>
                     <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
                     <option value="yearly">Yearly</option>
                 </select>
-            </label>
-            <ResponsiveContainer width={'99%'} height={220} className="linegraph-box">
-                <LineChart
-                    width={500}
-                    height={300}
-                    data={filteredData}
-                >
-                    <CartesianGrid vertical={false} horizontal={true} stroke="var(--ultra-soft-color)"/>
-                    <XAxis
-                        dataKey="date"
-                        scale="time"
-                        type="number"
-                        domain={['dataMin', 'dataMax']}
-                        tickLine={false}
-                        tickFormatter={(tick) => monthFormat(new Date(tick))}
-                        tick={{ fontSize: 10, fill: 'var(--ultra-soft-color)' }}
-                        minTickGap={50}/>
-                    <YAxis tickFormatter={(value) => { return formatToIndianCurrency(value, 0, true);}}
-                           axisLine={false}
-                           tickLine={false}
-                           tick={{ fontSize: 10, fill: 'var(--ultra-soft-color)'}}
-                            />
-                    <Tooltip content={CustomTooltip} />
-                    <Legend/>
-                    <Line type="monotone" dataKey="current" stroke="var(--secondary)" dot={false} strokeWidth={2}/>
-                    <Line type="monotone" dataKey="invested" stroke="var(--ternary)" dot={false} strokeWidth={2}/>
-                </LineChart>
-            </ResponsiveContainer>
-        </div>
+                <ResponsiveContainer width={'99%'} height={220} className="linegraph-box">
+                    <LineChart
+                        width={500}
+                        height={300}
+                        data={filteredData}
+                        margin={{ top: 30}}>
+                        <CartesianGrid vertical={false} horizontal={true} stroke="var(--ultra-soft-color)"/>
+                        <XAxis
+                            dataKey="date"
+                            scale="time"
+                            type="number"
+                            domain={['dataMin', 'dataMax']}
+                            tickLine={false}
+                            tickFormatter={(tick) => monthFormat(new Date(tick))}
+                            tick={{ fontSize: 12, fill: 'var(--ultra-soft-color)', fontFamily: 'Inter, sans-serif' }}
+                            minTickGap={50}/>
+                        <YAxis tickFormatter={(value) => { return formatToIndianCurrency(value, 0, true);}}
+                               axisLine={false}
+                               tickLine={false}
+                               tick={{ fontSize: 12, fill: 'var(--ultra-soft-color)'}}
+                        />
+                        <Tooltip content={CustomTooltip} />
+                        <Legend
+                            iconSize={0}
+                            formatter={(value) => capitalizeFirstLetter(value)}
+                            wrapperStyle={{
+                                fontSize: '14px',
+                            }}/>
+                        <Line type="monotone" dataKey="current" stroke="var(--secondary)" dot={false} strokeWidth={2}/>
+                        <Line type="monotone" dataKey="invested" stroke="var(--ternary)" dot={false} strokeWidth={2}/>
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
+        </>
     )
 }
 

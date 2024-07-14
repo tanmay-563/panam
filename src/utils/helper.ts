@@ -107,3 +107,7 @@ export function dateReviver(key, value) {
     }
     return value;
 }
+
+export function capitalizeFirstLetter(label){
+    return label.charAt(0).toUpperCase() + label.slice(1);
+};
