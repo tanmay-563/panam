@@ -79,7 +79,7 @@
 }
 
 
-.box2{
+.box4{
   padding-left: 0 !important;
 
   .linegraph-select-box{
@@ -95,7 +95,7 @@
     z-index: 3;
 
     &:hover{
-      border-color: $max-soft;
+      border-color: $soft-color;
       cursor: pointer;
     }
   }

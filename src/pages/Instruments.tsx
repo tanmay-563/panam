@@ -1,5 +1,5 @@
 import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid';
-import {getDisplayName} from "../utils/helper";
+import {getDisplayName} from "../utils/common";
 import {useEffect, useMemo, useState} from "react";
 import {useTheme} from "@mui/material";
 import {useParams} from "react-router-dom";

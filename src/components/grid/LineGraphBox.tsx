@@ -1,8 +1,8 @@
 import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
-import {capitalizeFirstLetter, formatToIndianCurrency} from "../../utils/helper";
+import {capitalizeFirstLetter, formatToIndianCurrency} from "../../utils/common";
 import {timeFormat } from 'd3-time-format';
 import React, {useMemo, useState} from "react";
-import {getFilteredData} from "../../utils/linegraph.utils";
+import {getFilteredData} from "../../utils/lineGraph.utils";
 
 const monthFormat = timeFormat('%b %y');
 const dateFormat = timeFormat('%d %b, %y');

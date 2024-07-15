@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import {menu} from "../listData"
 import DynamicIcons from "./DynamicIcons";
-import {getDisplayName} from "../utils/helper";
+import {getDisplayName} from "../utils/common";
 const Menu = ({
                   instruments,
                   metadata,

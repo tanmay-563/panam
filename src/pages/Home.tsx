@@ -20,19 +20,18 @@ const Home = ({
             <div className="home">
                 <div className="box box1">
                     <MainBox
-                        transactionsColumnMap = {transactionsColumnMap}
                         instruments={instruments}
                         metadata={metadata}
                         aggregatedData={aggregatedData}
                         setSelectedMenuItem={setSelectedMenuItem}/>
                 </div>
                 <div className="box box2">
-                    <LineGraphBox
-                        reports={reports}/>
+                    <DonutChartBox aggregatedData={aggregatedData} metadata={metadata}/>
                 </div>
                 <div className="box box3">box 3</div>
                 <div className="box box4">
-                    <DonutChartBox aggregatedData={aggregatedData}/>
+                    <LineGraphBox
+                        reports={reports}/>
                 </div>
                 <div className="box box5"></div>
             </div> :

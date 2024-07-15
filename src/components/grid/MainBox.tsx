@@ -1,21 +1,24 @@
-import {formatPercentage, formatToIndianCurrency, getDisplayName, getMainBoxContent} from "../../utils/helper";
+import {
+    formatPercentage,
+    formatToIndianCurrency,
+    getDisplayName,
+    getSortedInstrumentsData
+} from "../../utils/common";
 import DynamicIcons from "../DynamicIcons";
 import React, {useCallback} from "react";
 import {Link} from "react-router-dom";
 
 const MAX_ITEMS = 6
 const MainBox = ({
-                     transactionsColumnMap,
                      instruments,
                      metadata,
                      aggregatedData,
                      setSelectedMenuItem
 }) => {
     const instrumentsMetadata = metadata?.instrument
-    // let [overallData, instrumentsData] = getMainBoxContent(transactionsColumnMap, instruments, MAX_ITEMS)
     let [overallData, instrumentsData] = aggregatedData
-    // console.log(instrumentsData)
-    // console.log(aggregatedData)
+    instrumentsData = getSortedInstrumentsData(instrumentsData, MAX_ITEMS);
+
     const handleClick = useCallback((instrument) => {
         setSelectedMenuItem(instrument);
     }, [setSelectedMenuItem]);

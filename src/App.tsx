@@ -14,7 +14,7 @@ import {devData} from "./devdata.js";
 import getProcessedData from "./utils/dataProcessor";
 import Loading from "./components/Loading";
 import AlertBox from "./components/AlertBox";
-import {dateReviver} from "./utils/helper";
+import {dateReviver} from "./utils/common";
 
 function App() {
     console.log(process.env.NODE_ENV)
