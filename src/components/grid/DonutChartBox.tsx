@@ -1,7 +1,8 @@
 import React from "react";
 import {PieChart, ResponsiveContainer} from "recharts";
 
-const DonutChartBox = ({}) => {
+const DonutChartBox = ({aggregatedData}) => {
+    console.log(JSON.stringify(aggregatedData))
     return (
         <>
             <div>

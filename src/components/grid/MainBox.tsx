@@ -8,10 +8,14 @@ const MainBox = ({
                      transactionsColumnMap,
                      instruments,
                      metadata,
+                     aggregatedData,
                      setSelectedMenuItem
 }) => {
     const instrumentsMetadata = metadata?.instrument
-    let [overallData, instrumentsData] = getMainBoxContent(transactionsColumnMap, instruments, MAX_ITEMS)
+    // let [overallData, instrumentsData] = getMainBoxContent(transactionsColumnMap, instruments, MAX_ITEMS)
+    let [overallData, instrumentsData] = aggregatedData
+    // console.log(instrumentsData)
+    // console.log(aggregatedData)
     const handleClick = useCallback((instrument) => {
         setSelectedMenuItem(instrument);
     }, [setSelectedMenuItem]);

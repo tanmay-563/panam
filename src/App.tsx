@@ -114,6 +114,7 @@ function App() {
                             transactionsColumnMap={data?.transactionsColumnMap}
                             metadata={data?.metadata}
                             reports={data?.reports}
+                            aggregatedData={data?.aggregatedData}
                             setSelectedMenuItem={setSelectedMenuItem}
                         />
                     ),
@@ -142,6 +143,7 @@ function App() {
                             transactionsColumnMap={data?.transactionsColumnMap}
                             metadata={data?.metadata}
                             reports={data?.reports}
+                            aggregatedData={data?.aggregatedData}
                             setSelectedMenuItem={setSelectedMenuItem}
                         />
                     ),

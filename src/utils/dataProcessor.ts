@@ -1,3 +1,5 @@
+import {getAggregatedData} from "./aggregator";
+
 const METADATA_PREFIX = '_'
 const REPORTS_PREFIX = '+'
 
@@ -95,13 +97,13 @@ function getHeaderMap(data){
 
 
 function getProcessedData(data){
-    console.log(data)
     let transactionsRowMap = getTransactionsRowMap(data)
     let transactionsColumnMap = getTransactionsColumnMap(data)
     let metadata = getMetadataRowMap(data)
     let instruments = getInstruments(transactionsRowMap)
     let headerMap = getHeaderMap(data)
     let reports = getReportsRowMap(data)
+    let aggregatedData = getAggregatedData(transactionsRowMap, metadata)
     return {
         transactionsRowMap: transactionsRowMap,
         transactionsColumnMap: transactionsColumnMap,
@@ -109,6 +111,7 @@ function getProcessedData(data){
         instruments: instruments,
         headerMap: headerMap,
         reports: reports,
+        aggregatedData: aggregatedData,
     }
 }
 

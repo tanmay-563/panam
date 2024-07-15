@@ -15,6 +15,7 @@
   - pop submit button on hover
   - refactor all css class name casing
   - highest value in graph
+  - create data validator
 - data manipulation for home page
   - Overall
     - current sum
