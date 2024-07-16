@@ -43,13 +43,13 @@
   .box-title{
     display: flex;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: bold;
+    font-weight: normal;
     color: $soft-color;
-    font-size: 16px;
+    font-size: 20px;
     position: absolute;
     left: 20px;
-    top: 25px;
-    font-variant: all-petite-caps;
+    top: 20px;
+    //font-variant: all-petite-caps;
   }
 
   hr{
@@ -63,6 +63,24 @@
   .box-content{
     padding-top: 50px;
     position: relative;
+
+    .box-select{
+      background-color: rgba(0,0,0,0);
+      color: $ultra-soft;
+      font-size: 12px;
+      position: absolute;
+      top: 45px;
+      right: 10px;
+      border-color: var(--max-soft-color);
+      border-radius: 5px;
+      padding: 2px;
+      z-index: 3;
+
+      &:hover{
+        border-color: $soft-color;
+        cursor: pointer;
+      }
+    }
   }
 
   .green-color{

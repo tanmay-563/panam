@@ -48,7 +48,7 @@ const LineGraphBox = ({reports}) => {
             <div className="box-content">
                 <select
                     value={granularity}
-                    className="linegraph-select-box"
+                    className="box-select"
                     onChange={(e) => {
                         setGranularity(e.target.value);
                         localStorage.setItem(localStorageKey, e.target.value);

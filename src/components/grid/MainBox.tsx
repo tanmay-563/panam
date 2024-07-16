@@ -16,6 +16,7 @@ const MainBox = ({
                      setSelectedMenuItem
 }) => {
     const instrumentsMetadata = metadata?.instrument
+    console.log(instrumentsMetadata)
     let [overallData, instrumentsData] = aggregatedData
     instrumentsData = getSortedInstrumentsData(instrumentsData, MAX_ITEMS);
 

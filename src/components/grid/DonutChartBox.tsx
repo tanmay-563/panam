@@ -6,100 +6,69 @@ import {formatToIndianCurrency, getDisplayName} from "../../utils/common";
 const MAX_ITEMS = 6;
 
 const DonutChartBox = ({aggregatedData, metadata}) => {
-    const [activeIndex, setActiveIndex] = useState(0)
-    const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
-    const containerRef = useRef(null);
+    console.log(aggregatedData)
+    if(!aggregatedData)
+        return <div></div>
+    let [_, instrumentsData] = aggregatedData
+    const [data, setData] = useState([])
 
     useEffect(() => {
-        const updateSize = () => {
-            console.log("updating")
-            if (containerRef.current) {
-                setContainerSize({
-                    width: containerRef.current.clientWidth,
-                    height: containerRef.current.clientHeight
-                });
-            }
-        };
-
-        window.addEventListener('resize', updateSize);
-        updateSize();
-
-        return () => window.removeEventListener('resize', updateSize);
+        setData(convertToDountChartData(instrumentsData, "current", MAX_ITEMS))
     }, []);
 
     const instrumentsMetadata = metadata?.instrument
-    const colors = ['rgb(99, 102, 241)', 'rgb(142, 145, 255)', 'rgb(122, 125, 255)', 'rgb(76, 77, 213)', 'rgb(59, 60, 180)', 'rgb(47, 48, 142)',];
-    const data = convertToDountChartData(aggregatedData, "current", Math.min(colors.length, MAX_ITEMS))
 
-    for(let i=0; i<data.length; i++){
-        data[i]["fill"] = colors[i]
+    const handleChange = (value) =>{
+        console.log(value)
+        if(value.toLowerCase() == "overall")
+            setData(convertToDountChartData(instrumentsData, "current", MAX_ITEMS))
+        else{
+            console.log(instrumentsData[value])
+            setData(convertToDountChartData(instrumentsData[value]["name"], "current", MAX_ITEMS))
+        }
     }
 
-    const renderActiveShape = (props) => {
-        const RADIAN = Math.PI / 180;
-        const {cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value} = props;
-
-        const { width, height } = containerSize;
-        const fontSize = Math.min(width, height) * 0.05;
-        const sin = Math.sin(-RADIAN * midAngle);
-        const cos = Math.cos(-RADIAN * midAngle);
-        const isSmallScreen = width < 400;
-
-        let sx, sy, mx, my, ex, ey;
-
-        if (isSmallScreen) {
-            const direction = midAngle > 180 ? 1 : -1; // Up or down
-            sx = cx + outerRadius * cos;
-            sy = cy + outerRadius * sin;
-            mx = cx + (outerRadius + 10) * cos;
-            my = cy + (outerRadius + 10) * sin;
-            ex = cx + (cos >= 0 ? 1 : -1) * 30;
-            ey = cy + direction * 100;
-        } else {
-            sx = cx + (outerRadius + 10) * cos;
-            sy = cy + (outerRadius + 10) * sin;
-            mx = cx + (outerRadius + 30) * cos;
-            my = cy + (outerRadius + 30) * sin;
-            ex = mx + (cos >= 0 ? 1 : -1) * 22;
-            ey = my;
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active && payload && payload.length) {
+            return (
+                <div className="custom-tooltip" style={{ backgroundColor: 'var(--soft-bg)', border: '0.5px solid var(--max-soft-color)', padding: '5px', borderRadius: "5px" }}>
+                    {payload.map((data, index) => (
+                        <div key={index}>
+                            <p style={{ fontSize: "12px", marginBottom: 3}}>
+                                {`${getDisplayName(instrumentsMetadata, data.name)}`}
+                            </p>
+                            <p style={{ fontSize: "12px", color: "var(--ultra-soft-color)" }}>
+                                {`${formatToIndianCurrency(data.value,2)} (${data.payload.perc.toFixed(2)}%)`}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            );
         }
-        const textAnchor = cos >= 0 ? 'start' : 'end';
+
+        return null;
+    };
+
+    const CustomLegend = (props) => {
+        const { payload } = props;
 
         return (
-            <g>
-                <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill} fontSize={fontSize}>
-                    {getDisplayName(instrumentsMetadata,payload.name)}
-                </text>
-                <Sector
-                    cx={cx}
-                    cy={cy}
-                    innerRadius={innerRadius}
-                    outerRadius={outerRadius}
-                    startAngle={startAngle}
-                    endAngle={endAngle}
-                    fill={fill}
-                />
-                <Sector
-                    cx={cx}
-                    cy={cy}
-                    startAngle={startAngle}
-                    endAngle={endAngle}
-                    innerRadius={outerRadius + 6}
-                    outerRadius={outerRadius + 10}
-                    fill={fill}
-                />
-                <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none"/>
-                <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none"/>
-                <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="var(--soft-color)">{`${formatToIndianCurrency(value, 2, true)}`}</text>
-                <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
-                    {`(${(percent * 100).toFixed(2)}%)`}
-                </text>
-            </g>
+            <div style={{ display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+                {payload.map((entry, index) => (
+                    <div key={`item-${index}`} style={{ display: 'flex', alignItems: 'center', marginRight: 5, flex: 1 }}>
+                        <div
+                            style={{
+                                width: 10,
+                                height: 10,
+                                backgroundColor: entry.color,
+                                marginRight: 10,
+                            }}
+                        />
+                        <span style={{fontSize: 14}}>{getDisplayName(instrumentsMetadata, entry.value)}</span>
+                    </div>
+                ))}
+            </div>
         );
-    }
-
-    const onPieEnter = (_, index) => {
-        setActiveIndex(index)
     };
 
     return (
@@ -108,14 +77,28 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
                 <h6 className="box-title"> Distribution </h6>
             </div>
             <hr/>
-            <div className="box-content" ref={containerRef}>
+            <div className="box-content" >
+                <select
+                    className="box-select"
+                    onChange={(e)=>{
+                        handleChange(e.target.value)
+                    }}>
+                    <option key="Overall" value="overall">
+                        Overall
+                    </option>
+                    {instrumentsMetadata.map((element) => (
+                        <option key={element.Name} value={element.Name}>
+                            {element.Label}
+                        </option>
+                    ))}
+                </select>
                 <ResponsiveContainer width={'99%'} height={270}>
                     <PieChart width={330} height={250}>
                         <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%"
                              innerRadius="40%" outerRadius="60%" stroke='var(--soft-bg)' strokeWidth={2}
-                             activeIndex={activeIndex}
-                             activeShape={renderActiveShape}
-                                onMouseEnter={onPieEnter}/>
+                             />
+                        <Tooltip content={CustomTooltip} />
+                        <Legend content={CustomLegend}/>
                     </PieChart>
                 </ResponsiveContainer>
             </div>
