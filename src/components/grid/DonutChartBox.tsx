@@ -70,12 +70,12 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.3;
+        const radius = outerRadius * 1.1;
         const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         return (
-            <text x={x} y={y} fill="var(--soft-color)" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" fontSize={14} className="label">
+            <text x={x} y={y} fill="var(--ultra-soft-color)" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" className="label">
                 {`${(percent * 100).toFixed(0)}%`}
             </text>
         );
@@ -148,7 +148,7 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
                 <ResponsiveContainer aspect={1.2}>
                     <PieChart width={330} height={250}>
                         <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%"
-                             innerRadius="30%" outerRadius="60%" stroke='var(--soft-bg)' strokeWidth={2}
+                             innerRadius="40%" outerRadius="60%" stroke='var(--soft-bg)' strokeWidth={2}
                              label={renderCustomizedLabel}
                              labelLine={false}
                              />

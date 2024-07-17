@@ -130,8 +130,9 @@
 
   .box-content{
     .label{
+      font-size: 14px;
       @include sm{
-        display: none;
+        font-size: 12px;
       }
     }
 
