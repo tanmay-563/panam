@@ -133,7 +133,7 @@
 
     .label{
       @include sm{
-        font-size: 10px;
+        display: none;
       }
     }
   }
@@ -156,7 +156,9 @@
     }
 
     .legend-text{
-      font-size: 16px;
+      font-size: 14px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: $soft-color;
     }
   }
 }
