@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Cell, Legend, Pie, PieChart, ResponsiveContainer, Sector, Tooltip} from "recharts";
 import convertToDountChartData from "../../utils/donutChart.utils";
-import {formatToIndianCurrency, getDisplayName} from "../../utils/common";
+import {formatPercentage, formatToIndianCurrency, getDisplayName} from "../../utils/common";
 
 const MAX_ITEMS = 6;
 
@@ -49,22 +49,26 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
         return null;
     };
 
-    const CustomLegend = (props) => {
-        const { payload } = props;
+    const RADIAN = Math.PI / 180;
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.2;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" fontSize={14} className="label">
+                {`${(percent * 100).toFixed(0)}%`}
+            </text>
+        );
+    };
+
+    const CustomLegend = ({payload}) => {
+        return (
+            <div className="legend-box" style={{}}>
                 {payload.map((entry, index) => (
-                    <div key={`item-${index}`} style={{ display: 'flex', alignItems: 'center', marginRight: 5, flex: 1 }}>
-                        <div
-                            style={{
-                                width: 10,
-                                height: 10,
-                                backgroundColor: entry.color,
-                                marginRight: 10,
-                            }}
-                        />
-                        <span style={{fontSize: 14}}>{getDisplayName(instrumentsMetadata, entry.value)}</span>
+                    <div key={`item-${index}`} className="legend-box-content">
+                        <div style={{backgroundColor: entry.fill, width: entry.perc*3}} className="legend-box-square-icon"/>
+                        <span className="legend-text">{getDisplayName(instrumentsMetadata, entry.name)} - {entry.perc.toFixed(2)}%</span>
                     </div>
                 ))}
             </div>
@@ -92,15 +96,17 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
                         </option>
                     ))}
                 </select>
-                <ResponsiveContainer width={'99%'} height={270}>
+                <ResponsiveContainer aspect={1.2} className="donutchart-box">
                     <PieChart width={330} height={250}>
                         <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%"
                              innerRadius="40%" outerRadius="60%" stroke='var(--soft-bg)' strokeWidth={2}
+                             label={renderCustomizedLabel}
+                             labelLine={false}
                              />
                         <Tooltip content={CustomTooltip} />
-                        <Legend content={CustomLegend}/>
                     </PieChart>
                 </ResponsiveContainer>
+                <CustomLegend payload={data}/>
             </div>
         </>
     )

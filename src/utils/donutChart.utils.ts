@@ -33,8 +33,6 @@ function convertToDountChartData(aggregatedData, column, itemLimit) {
             sortedData[i]["fill"] = colors[i]
         }
 
-        console.log("sort " + JSON.stringify(sortedData) )
-
         return sortedData
     }
     catch(e){

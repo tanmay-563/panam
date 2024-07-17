@@ -125,3 +125,38 @@
     }
   }
 }
+
+.box2{
+
+  .donutchart-box{
+    height: 670px;
+
+    .label{
+      @include sm{
+        font-size: 10px;
+      }
+    }
+  }
+
+  .legend-box{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    .legend-box-content{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      flex: 1;
+    }
+
+    .legend-box-square-icon{
+      height: 10px;
+      margin-bottom: 3px;
+    }
+
+    .legend-text{
+      font-size: 16px;
+    }
+  }
+}
