@@ -26,9 +26,10 @@ const Home = ({
                         setSelectedMenuItem={setSelectedMenuItem}/>
                 </div>
                 <div className="box box2">
+                </div>
+                <div className="box box3">
                     <DonutChartBox aggregatedData={aggregatedData} metadata={metadata}/>
                 </div>
-                <div className="box box3">box 3</div>
                 <div className="box box4">
                     <LineGraphBox
                         reports={reports}/>

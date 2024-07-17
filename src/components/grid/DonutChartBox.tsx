@@ -1,7 +1,8 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Cell, Legend, Pie, PieChart, ResponsiveContainer, Sector, Tooltip} from "recharts";
+import React, {useEffect, useState} from "react";
+import {Pie, PieChart, ResponsiveContainer, Tooltip} from "recharts";
 import convertToDountChartData from "../../utils/donutChart.utils";
-import {formatPercentage, formatToIndianCurrency, getDisplayName} from "../../utils/common";
+import {formatToIndianCurrency, getDisplayName} from "../../utils/common";
+import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
 
 const MAX_ITEMS = 6;
 
@@ -11,24 +12,42 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
         return <div></div>
     let [_, instrumentsData] = aggregatedData
     const [data, setData] = useState([])
+    const [dataSource, setDataSource] = useState('overall')
+    const [showRadio, setShowRadio] = useState(false)
+    const [radioValue, setRadioValue] = useState('name')
 
     useEffect(() => {
-        setData(convertToDountChartData(instrumentsData, "current", MAX_ITEMS))
+        handleChange(dataSource)
     }, []);
+
+    useEffect(() => {
+        handleChange(dataSource)
+    }, [radioValue]);
 
     const instrumentsMetadata = metadata?.instrument
 
     const handleChange = (value) =>{
-        console.log(value)
-        if(value.toLowerCase() == "overall")
-            setData(convertToDountChartData(instrumentsData, "current", MAX_ITEMS))
-        else{
-            console.log(instrumentsData[value])
-            setData(convertToDountChartData(instrumentsData[value]["name"], "current", MAX_ITEMS))
+        setDataSource(value);
+
+        let requiredData;
+        if (value.toLowerCase() === "overall") {
+            requiredData = instrumentsData;
+            setRadioValue("name");
+            setShowRadio(false);
+        } else {
+            requiredData = instrumentsData[value][radioValue];
+            if (instrumentsData[value]?.category && Object.keys(instrumentsData[value].category).length) {
+                setShowRadio(true);
+            } else {
+                setRadioValue("name");
+                setShowRadio(false);
+            }
         }
+
+        setData(convertToDountChartData(requiredData, "current", MAX_ITEMS));
     }
 
-    const CustomTooltip = ({ active, payload, label }) => {
+    const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
                 <div className="custom-tooltip" style={{ backgroundColor: 'var(--soft-bg)', border: '0.5px solid var(--max-soft-color)', padding: '5px', borderRadius: "5px" }}>
@@ -51,12 +70,12 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.2;
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.3;
         const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         return (
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" fontSize={14} className="label">
+            <text x={x} y={y} fill="var(--soft-color)" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" fontSize={14} className="label">
                 {`${(percent * 100).toFixed(0)}%`}
             </text>
         );
@@ -73,6 +92,10 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
                 ))}
             </div>
         );
+    };
+
+    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRadioValue(event.target.value);
     };
 
     return (
@@ -96,10 +119,36 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
                         </option>
                     ))}
                 </select>
-                <ResponsiveContainer aspect={1.2} className="donutchart-box">
+                {showRadio &&
+                    <div className="radio-group">
+                        <div className="radio-box">
+                            <Radio
+                                checked={radioValue === 'name'}
+                                onChange={handleRadioChange}
+                                value="name"
+                                name="radio-buttons"
+                                size="small"
+                                inputProps={{ 'aria-label': 'name' }}
+                            />
+                            <p>Name</p>
+                        </div>
+                        <div className="radio-box">
+                            <Radio
+                                checked={radioValue === 'category'}
+                                onChange={handleRadioChange}
+                                value="category"
+                                name="radio-buttons"
+                                size="small"
+                                inputProps={{ 'aria-label': 'category' }}
+                            />
+                            <p>Category</p>
+                        </div>
+                    </div>
+                }
+                <ResponsiveContainer aspect={1.2}>
                     <PieChart width={330} height={250}>
                         <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%"
-                             innerRadius="40%" outerRadius="60%" stroke='var(--soft-bg)' strokeWidth={2}
+                             innerRadius="30%" outerRadius="60%" stroke='var(--soft-bg)' strokeWidth={2}
                              label={renderCustomizedLabel}
                              labelLine={false}
                              />
