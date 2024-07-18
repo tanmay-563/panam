@@ -33,6 +33,7 @@ const Add = ({
     }
 
     const handleSubmit = () => {
+        console.log(inputValues)
         if (loading) return;
 
         const requiredHeaders = getRequiredHeaders(selectedMenuItem);
@@ -77,6 +78,7 @@ const Add = ({
     };
 
     const handleInputChange = (key, value) => {
+        console.log("vals " + value)
         setInputValues(prevData => ({ ...prevData, [key]: value }));
     };
 
