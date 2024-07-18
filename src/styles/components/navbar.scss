@@ -25,6 +25,12 @@
 
     .icon{
       cursor: pointer;
+
+      &:hover{
+        background-color: $light-bg;
+        border-radius: 50%;
+        outline: 8px solid $light-bg;
+      }
     }
   }
 }

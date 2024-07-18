@@ -66,7 +66,7 @@ export function getFilteredData(dailyTracker, granularity){
         return formatDataForRecharts(filteredData);
     }
     catch (e){
-        console.log(e)
+        console.error(e)
         return {}
     }
 }

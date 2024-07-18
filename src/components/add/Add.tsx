@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Fields from "./Fields";
 import {FormControl, InputLabel, MenuItem, Select} from '@mui/material';
 import Loading from "../Loading";
+import CloseIcon from '@mui/icons-material/Close';
 
 const Add = ({
                  instruments,
@@ -13,7 +14,6 @@ const Add = ({
                 metadata
              }) => {
     const instrumentsMetadata = metadata?.instrument;
-    const columnMetadata = metadata?.column?.filter(item => item.Instrument.toLowerCase() === selectedMenuItem.toLowerCase()) || {};
     if(!instrumentsMetadata)
         return <div></div>
 
@@ -21,9 +21,19 @@ const Add = ({
     const [error, setError] = useState('')
     const [shake, setShake] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [columnMetadata, setColumnMetadata] = useState({})
 
-    const getRequiredHeaders = (instrument) =>{
+    useEffect(() => {
+        if(selectedMenuItem in instruments)
+            setColumnMetadata(metadata?.column?.filter(item => item.Instrument.toLowerCase() === selectedMenuItem.toLowerCase()));
+        else
+            setColumnMetadata({});
+    }, [selectedMenuItem]);
+
+    const getRequiredHeaders = () =>{
         try{
+            console.log("ins " + selectedMenuItem)
+            console.log(columnMetadata)
             return columnMetadata.filter(metadata => metadata.IsAutomated != true).map(metadata => metadata.Column);
         }
         catch (e){
@@ -33,7 +43,6 @@ const Add = ({
     }
 
     const handleSubmit = () => {
-        console.log(inputValues)
         if (loading) return;
 
         const requiredHeaders = getRequiredHeaders(selectedMenuItem);
@@ -78,14 +87,15 @@ const Add = ({
     };
 
     const handleInputChange = (key, value) => {
-        console.log("vals " + value)
         setInputValues(prevData => ({ ...prevData, [key]: value }));
     };
 
     return (
         <div className="add">
             <div className={`modal ${shake ? 'shake' : ''}`}>
-                <span className="close" onClick={()=>setOpenAdd(false)}>X</span>
+                <span className="close" onClick={()=>setOpenAdd(false)}>
+                    <CloseIcon className="close-icon"/>
+                </span>
                 <h1> Add new transaction</h1>
                 <FormControl
                     fullWidth

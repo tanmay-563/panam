@@ -10,7 +10,7 @@ const Menu = ({
                   setSelectedMenuItem}
 ) => {
     const instrumentMetadata = metadata?.instrument || {};
-    console.log(JSON.stringify(instrumentMetadata))
+
     return (
         <div className="menu">
             {menu.map((item) => (

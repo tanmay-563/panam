@@ -18,7 +18,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@mui/material": "^5.16.0",
+    "@mui/icons-material": "^5.16.4",
+    "@mui/material": "^5.16.4",
     "@mui/x-data-grid": "^7.9.0",
     "dotenv": "^16.4.5",
     "formik": "^2.4.6",
