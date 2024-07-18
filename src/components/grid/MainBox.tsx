@@ -16,7 +16,6 @@ const MainBox = ({
                      setSelectedMenuItem
 }) => {
     const instrumentsMetadata = metadata?.instrument
-    console.log(instrumentsMetadata)
     let [overallData, instrumentsData] = aggregatedData
     instrumentsData = getSortedInstrumentsData(instrumentsData, MAX_ITEMS);
 
@@ -68,7 +67,7 @@ const MainBox = ({
                                                 {hasZeroDifference ?
                                                     <h6>-</h6> :
                                                     <h6 data-prefix={isProfitable ? "\u25B4" : "\u25BE"} className={`${isProfitable ? 'green-color' : 'red-color'}`}>
-                                                        {percentageChange}
+                                                        {formatToIndianCurrency(differenceAmount)}
                                                     </h6>
                                                 }
                                             </div>
@@ -86,7 +85,7 @@ const MainBox = ({
                                                 {hasZeroDifference ?
                                                     <h6>-</h6> :
                                                     <h6 data-prefix={isProfitable ? "\u25B4" : "\u25BE"} className={`${isProfitable ? 'green-color' : 'red-color'}`}>
-                                                        {percentageChange}
+                                                        {formatToIndianCurrency(differenceAmount)}
                                                     </h6>
                                                 }
                                             </div>

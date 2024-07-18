@@ -1,8 +1,9 @@
 import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid';
-import {getDisplayName} from "../utils/common";
+import {formatPercentage, formatToIndianCurrency, getDisplayName} from "../utils/common";
 import {useEffect, useMemo, useState} from "react";
 import {useTheme} from "@mui/material";
 import {useParams} from "react-router-dom";
+import moment from "moment/moment";
 
 function getLocalStorageKey(instrument){
     return "datagrid_column_visibility_"+instrument;
@@ -20,8 +21,10 @@ const Instruments = ({
     }
     if(!transactionsRowMap)
         return <div></div>
+
     const theme = useTheme();
     const instrumentMetadata = metadata?.instrument || {};
+    const columnMetadata = metadata?.column?.filter((item) => item.Instrument.toLowerCase() == instrument.toLowerCase()) || {};
 
     const [columnVisibility, setColumnVisibility] = useState({});
     const [loading, setLoading] = useState(true)
@@ -49,6 +52,11 @@ const Instruments = ({
         }
     }, [columnVisibility]);
 
+    const dataTypeMap = columnMetadata.reduce((acc, item)=>{
+        acc[item.Column] = item.DataType
+        return acc;
+    }, {});
+
     const rows: GridRowsProp[] = transactionsRowMap[instrument]
 
     const headers = headerMap[instrument]
@@ -59,6 +67,32 @@ const Instruments = ({
             flex: 1,
             minWidth: 150,
             headerClassName: 'datagrid-header',
+            valueFormatter: (params) =>{
+                if(columnName in dataTypeMap){
+                    if(dataTypeMap[columnName].toLowerCase() == "date"){
+                        return moment(params).format("DD/MM/YYYY")
+                    }
+                    else if(dataTypeMap[columnName].toLowerCase() == "float"){
+                        return params?.toFixed(2)
+                    }
+                    else if(dataTypeMap[columnName].toLowerCase() == "currency"){
+                        return formatToIndianCurrency(params, 2, false);
+                    }else if(dataTypeMap[columnName].toLowerCase() == "percent"){
+                        return formatPercentage(params);
+                    }
+                }
+                else if(columnName.toLowerCase() == "xirr"){
+                    return formatPercentage(params);
+                }
+            },
+            cellClassName: (params) => {
+                if(params.field.toLowerCase() == "current"){
+                    return (params.row.Invested < params.value) ? 'green-color' : (params.row.Invested > params.value) ? 'red-color' : '';
+                }
+                if(params.field.toLowerCase() == "gains"){
+                    return params.row.Gains > 0 ? 'green-color' : params.row.Gains < 1 ? 'red-color' : '';
+                }
+            }
     })) : [];
 
     const dataGridStyles = {

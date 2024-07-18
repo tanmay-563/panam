@@ -34,7 +34,6 @@ const Home = ({
                     <LineGraphBox
                         reports={reports}/>
                 </div>
-                <div className="box box5"></div>
             </div> :
             <div/>
     )

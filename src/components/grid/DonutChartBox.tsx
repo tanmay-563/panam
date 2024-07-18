@@ -2,12 +2,11 @@ import React, {useEffect, useState} from "react";
 import {Pie, PieChart, ResponsiveContainer, Tooltip} from "recharts";
 import convertToDountChartData from "../../utils/donutChart.utils";
 import {formatToIndianCurrency, getDisplayName} from "../../utils/common";
-import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import {Radio} from "@mui/material";
 
 const MAX_ITEMS = 6;
 
 const DonutChartBox = ({aggregatedData, metadata}) => {
-    console.log(aggregatedData)
     if(!aggregatedData)
         return <div></div>
     let [_, instrumentsData] = aggregatedData
@@ -26,7 +25,7 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
 
     const instrumentsMetadata = metadata?.instrument
 
-    const handleChange = (value) =>{
+    const handleChange = (value) => {
         setDataSource(value);
 
         let requiredData;
@@ -45,6 +44,14 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
         }
 
         setData(convertToDountChartData(requiredData, "current", MAX_ITEMS));
+    }
+
+    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRadioValue(event.target.value);
+    };
+
+    const handleRadioLabelClick = (event, value) => {
+        setRadioValue(value);
     }
 
     const CustomTooltip = ({ active, payload }) => {
@@ -76,7 +83,7 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
 
         return (
             <text x={x} y={y} fill="var(--ultra-soft-color)" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" className="label">
-                {`${(percent * 100).toFixed(0)}%`}
+                {`${(percent * 100).toFixed(1)}%`}
             </text>
         );
     };
@@ -92,10 +99,6 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
                 ))}
             </div>
         );
-    };
-
-    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setRadioValue(event.target.value);
     };
 
     return (
@@ -126,22 +129,20 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
                                 checked={radioValue === 'name'}
                                 onChange={handleRadioChange}
                                 value="name"
-                                name="radio-buttons"
                                 size="small"
                                 inputProps={{ 'aria-label': 'name' }}
                             />
-                            <p>Name</p>
+                            <p onClick={(event)=>{handleRadioLabelClick(event, 'name')}}>Name</p>
                         </div>
                         <div className="radio-box">
                             <Radio
                                 checked={radioValue === 'category'}
                                 onChange={handleRadioChange}
                                 value="category"
-                                name="radio-buttons"
                                 size="small"
                                 inputProps={{ 'aria-label': 'category' }}
                             />
-                            <p>Category</p>
+                            <p onClick={(event)=>{handleRadioLabelClick(event, 'category')}}>Category</p>
                         </div>
                     </div>
                 }

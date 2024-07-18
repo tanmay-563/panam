@@ -26,7 +26,7 @@ const Add = ({
     const getRequiredHeaders = (instrument) =>{
         try{
             let columnMetadata= metadata["column"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
-            let isAutomatedColumns = columnMetadata.filter(metadata => metadata.isAutomated == true).map(metadata => metadata.Column);
+            let isAutomatedColumns = columnMetadata.filter(metadata => metadata.IsAutomated == true).map(metadata => metadata.Column);
             return headerMap[instrument].filter(header => !isAutomatedColumns.includes(header));
         }
         catch (e){

@@ -1,4 +1,5 @@
 import {getAggregatedData} from "./aggregator";
+import getXirr from 'xirr';
 
 const METADATA_PREFIX = '_'
 const REPORTS_PREFIX = '+'
@@ -37,13 +38,37 @@ function getUniqueValues(jsonData, key){
     }, []);
 }
 
-function getTransactionsRowMap(data){
-    return Object.keys(data).reduce((transactionsMap, key) => {
+function processRowWise(data){
+    let headerMap = {}
+    let transactionsRowMap = Object.keys(data).reduce((transactionsMap, key) => {
         if (key[0] !== METADATA_PREFIX && key[0] != REPORTS_PREFIX) {
-            transactionsMap[key] = convertToJSON(data[key]);
+            const headers = data[key][0];
+            const rows = data[key].slice(1);
+            headerMap[key] = headers
+            headerMap[key].push("xirr")
+
+            transactionsMap[key] = rows.map(row => {
+                let obj = {};
+                row.forEach((value, index) => {
+                    obj[headers[index]] = value;
+                });
+                let cashFlows = [
+                    { amount: -obj.Invested, when: obj.Date },
+                    { amount: obj.Current, when: new Date() }
+                ];
+                try{
+                    obj["xirr"] = getXirr(cashFlows)
+                }
+                catch (e){
+                    obj["xirr"] = 0.0
+                }
+                return obj;
+            });
         }
         return transactionsMap;
     }, {});
+
+    return [transactionsRowMap, headerMap];
 }
 
 function getTransactionsColumnMap(data){
@@ -97,11 +122,10 @@ function getHeaderMap(data){
 
 
 function getProcessedData(data){
-    let transactionsRowMap = getTransactionsRowMap(data)
+    let [transactionsRowMap, headerMap] = processRowWise(data)
     let transactionsColumnMap = getTransactionsColumnMap(data)
     let metadata = getMetadataRowMap(data)
     let instruments = getInstruments(transactionsRowMap)
-    let headerMap = getHeaderMap(data)
     let reports = getReportsRowMap(data)
     let aggregatedData = getAggregatedData(transactionsRowMap, metadata)
     return {

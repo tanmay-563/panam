@@ -18,13 +18,22 @@ const truncateNumber = (number, decimalCount = 2) => {
     return `${(number / 10000000).toFixed(decimalCount)}Cr`;
 };
 
+function formatNumberWithLocale(number, symbol = '', decimalCount = 2) {
+    const fixedNumber = number.toFixed(decimalCount);
+    const parts = fixedNumber.split('.');
+    const integerPart = Number(parts[0]).toLocaleString('en-IN');
+    const decimalPart = parts[1];
+
+    return `${symbol}${integerPart}.${decimalPart}`;
+}
+
 export function formatToIndianCurrency(number, decimalCount = 2, truncate = true) {
     const symbol = '₹';
     let value = number
     try{
         value = truncate
             ? `${symbol}${truncateNumber(number, decimalCount)}`
-            : `${symbol}${Number(number.toFixed(decimalCount)).toLocaleString('en-IN')}`;
+            : `${formatNumberWithLocale(number, symbol, decimalCount)}`;
     }
     catch (e){
         return value;

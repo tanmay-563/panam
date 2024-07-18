@@ -160,6 +160,8 @@
           vertical-align: center;
           font-size: 12px;
           color: $ultra-soft;
+          z-index: 3;
+          cursor: pointer;
         }
       }
     }
