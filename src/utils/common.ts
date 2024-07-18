@@ -90,4 +90,11 @@ export function dateReviver(key, value) {
 
 export function capitalizeFirstLetter(label){
     return label.charAt(0).toUpperCase() + label.slice(1);
-};
+}
+
+export function getDataTypeMap(columnMetadata){
+    return columnMetadata.reduce((acc, item)=>{
+        acc[item.Column] = item.DataType
+        return acc;
+    }, {});
+}

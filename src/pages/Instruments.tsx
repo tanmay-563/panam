@@ -1,5 +1,5 @@
 import {DataGrid, GridRowsProp, GridColDef, GridToolbar} from '@mui/x-data-grid';
-import {formatPercentage, formatToIndianCurrency, getDisplayName} from "../utils/common";
+import {formatPercentage, formatToIndianCurrency, getDataTypeMap, getDisplayName} from "../utils/common";
 import {useEffect, useMemo, useState} from "react";
 import {useTheme} from "@mui/material";
 import {useParams} from "react-router-dom";
@@ -52,10 +52,7 @@ const Instruments = ({
         }
     }, [columnVisibility]);
 
-    const dataTypeMap = columnMetadata.reduce((acc, item)=>{
-        acc[item.Column] = item.DataType
-        return acc;
-    }, {});
+    const dataTypeMap = getDataTypeMap(columnMetadata)
 
     const rows: GridRowsProp[] = transactionsRowMap[instrument]
 

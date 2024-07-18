@@ -1,13 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useState} from 'react'
 import Fields from "./Fields";
-import {Select, MenuItem, FormControl, InputLabel} from '@mui/material';
+import {FormControl, InputLabel, MenuItem, Select} from '@mui/material';
 import Loading from "../Loading";
-import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
 
 const Add = ({
                  instruments,
-                 headerMap,
                  transactionsColumnMap,
                  selectedMenuItem,
                  setSelectedMenuItem,
@@ -16,8 +13,10 @@ const Add = ({
                 metadata
              }) => {
     const instrumentsMetadata = metadata?.instrument;
+    const columnMetadata = metadata?.column?.filter(item => item.Instrument.toLowerCase() === selectedMenuItem.toLowerCase()) || {};
     if(!instrumentsMetadata)
         return <div></div>
+
     const [inputValues, setInputValues] = useState({})
     const [error, setError] = useState('')
     const [shake, setShake] = useState(false)
@@ -25,12 +24,11 @@ const Add = ({
 
     const getRequiredHeaders = (instrument) =>{
         try{
-            let columnMetadata= metadata["column"].filter(item => item.Instrument.toLowerCase() === instrument.toLowerCase());
-            let isAutomatedColumns = columnMetadata.filter(metadata => metadata.IsAutomated == true).map(metadata => metadata.Column);
-            return headerMap[instrument].filter(header => !isAutomatedColumns.includes(header));
+            return columnMetadata.filter(metadata => metadata.IsAutomated != true).map(metadata => metadata.Column);
         }
         catch (e){
-            return headerMap[instrument]
+            console.error(e)
+            return []
         }
     }
 
@@ -136,6 +134,7 @@ const Add = ({
                     transactionsColumnMap={transactionsColumnMap}
                     inputValues={inputValues}
                     onInputChange={handleInputChange}
+                    columnMetadata={columnMetadata}
                     error={error}
                 />
                 {error != '' && <p className="error">{error}</p>}

@@ -86,6 +86,21 @@
 
       .field{
         padding: 10px;
+
+        .text-field{
+          width: 200px;
+          color: $ultra-soft;
+
+          input{
+            color: $soft-color;
+          }
+
+          fieldset{
+            &:hover{
+              border-color: $ultra-soft !important;
+            }
+          }
+        }
       }
     }
 

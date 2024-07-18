@@ -85,7 +85,6 @@ function App() {
                         }
                         {openAdd && <Add
                             instruments={data?.instruments}
-                            headerMap={data?.headerMap}
                             transactionsColumnMap={data?.transactionsColumnMap}
                             selectedMenuItem={selectedMenuItem}
                             setSelectedMenuItem={setSelectedMenuItem}

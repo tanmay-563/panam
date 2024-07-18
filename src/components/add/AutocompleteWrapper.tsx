@@ -40,6 +40,7 @@ function AutocompleteWrapper({
             onInputChange={onInputChange}
             filterOptions={filterOptions}
             options={suggestions}
+            getOptionLabel={(option) => option || ""}
             renderInput={(params) =>
                 <TextField
                     {...params}
