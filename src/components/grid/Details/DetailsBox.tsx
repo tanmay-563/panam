@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {formatPercentage, formatToIndianCurrency, getDisplayName} from "../../../utils/common";
 import InstrumentDetails from "./InstrumentDetails";
 
@@ -9,11 +9,17 @@ const ValueCard = ({ label, value, valueClass = ''}) => (
     </div>
 );
 
-const DetailsBox = ({aggregatedData, metadata}) => {
-    const [overallData, instrumentsData] = aggregatedData
+const DetailsBox = ({aggregatedData, metadata, instruments}) => {
+    const [overallData, _] = aggregatedData
+    const [dataSource, setDataSource] = useState("overall")
 
     const overallReturns = overallData.current - overallData.invested;
     const overallReturnsPerc = overallReturns/overallData.current;
+
+    const handleDataSourceChange = (value) => {
+        if(instruments.includes(value) || value == "overall")
+            setDataSource(value);
+    }
 
     return (
         <>
@@ -45,7 +51,11 @@ const DetailsBox = ({aggregatedData, metadata}) => {
                         />
                     </div>
                 </div>
-                <InstrumentDetails data={instrumentsData} metadata={metadata}/>
+                <InstrumentDetails
+                    aggregatedData={aggregatedData}
+                    metadata={metadata}
+                    dataSource={dataSource}
+                    onChange={handleDataSourceChange}/>
             </div>
         </>
     )

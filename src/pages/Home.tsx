@@ -27,7 +27,7 @@ const Home = ({
                         setSelectedMenuItem={setSelectedMenuItem}/>
                 </div>
                 <div className="box box2">
-                    <DetailsBox aggregatedData={aggregatedData} metadata={metadata}/>
+                    <DetailsBox aggregatedData={aggregatedData} metadata={metadata} instruments={instruments}/>
                 </div>
                 <div className="box box3">
                     <DonutChartBox aggregatedData={aggregatedData} metadata={metadata}/>
