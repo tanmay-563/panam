@@ -32,17 +32,17 @@ const DetailsBox = ({aggregatedData, metadata, instruments}) => {
                     <div>
                         <ValueCard
                             label="Current"
-                            value={formatToIndianCurrency(overallData.current, 2, false)}
+                            value={formatToIndianCurrency(overallData.current, 0, false)}
                         />
                         <ValueCard
                             label="Invested"
-                            value={formatToIndianCurrency(overallData.invested, 2, false)}
+                            value={formatToIndianCurrency(overallData.invested, 0, false)}
                         />
                     </div>
                     <div>
                         <ValueCard
                             label="Total Returns"
-                            value={`${formatToIndianCurrency(overallReturns, 2, false)} (${formatPercentage(overallReturnsPerc)})`}
+                            value={`${formatToIndianCurrency(overallReturns, 0, false)} (${formatPercentage(overallReturnsPerc)})`}
                             valueClass={overallReturns > 0 ? 'green-color' : overallReturns < 0 ? 'red-color' : ''}
                         />
                         <ValueCard

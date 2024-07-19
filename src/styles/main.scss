@@ -47,6 +47,10 @@ a {
   @include lg{
     width: max-content;
   }
+
+  @include sm{
+    display: none;
+  }
 }
 
 .contentContainer {
@@ -89,7 +93,7 @@ html {
 }
 
 .green-color{
-  color: limegreen;
+  color: #00b386;
 }
 
 .red-color{

@@ -24,7 +24,7 @@ function formatNumberWithLocale(number, symbol = '', decimalCount = 2) {
     const integerPart = Number(parts[0]).toLocaleString('en-IN');
     const decimalPart = parts[1];
 
-    return `${symbol}${integerPart}.${decimalPart}`;
+    return `${symbol}${integerPart} ${decimalCount > 0 ? '.'+decimalPart : ''}`;
 }
 
 export function formatToIndianCurrency(number, decimalCount = 2, truncate = true) {
