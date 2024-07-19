@@ -78,50 +78,38 @@
   }
 }
 
-
-.box4{
-  padding-left: 0 !important;
-
-  .linegraph-box{
-    padding-top: 10px;
-
-    .tooltip-container {
-      background-color: $light-bg;
-      border: 1px solid $max-soft;
+.box2{
+  .box-content{
+    .overall-card{
+      padding: 10px;
+      border: 0.5px solid $max-soft;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      padding: 5px;
-      font-size: 14px;
-      color: #333;
-      max-width: 200px;
-      white-space: nowrap;
-    }
+      display: flex;
+      justify-content: space-between;
 
-    .tooltip-label {
-      font-weight: bold;
-      margin-bottom: 5px;
-      font-size: 10px;
-      color: $ultra-soft;
-    }
+      div{
+        display: flex;
+        flex-direction: column;
 
-    .tooltip-value-container {
-      margin-bottom: 5px;
-    }
+        div{
+          padding: 10px;
 
-    .tooltip-value-first {
-      font-weight: bold;
-      font-size: 12px;
-      color: $secondary;
-    }
+          span{
+            font-size: 12px;
+            color: $soft-color;
+          }
 
-    .tooltip-value-second {
-      font-weight: bold;
-      font-size: 12px;
-      color: $ternary;
-    }
+          p{
+            font-size: 14px;
+          }
+        }
+      }
 
-    .tooltip-value-container span {
-      margin-left: 5px;
+      &:last-child{
+        *{
+          align-items: end;
+        }
+      }
     }
   }
 }
@@ -188,6 +176,53 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: $soft-color;
       }
+    }
+  }
+}
+
+.box4{
+  padding-left: 0 !important;
+
+  .linegraph-box{
+    padding-top: 10px;
+
+    .tooltip-container {
+      background-color: $light-bg;
+      border: 1px solid $max-soft;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      padding: 5px;
+      font-size: 14px;
+      color: #333;
+      max-width: 200px;
+      white-space: nowrap;
+    }
+
+    .tooltip-label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 10px;
+      color: $ultra-soft;
+    }
+
+    .tooltip-value-container {
+      margin-bottom: 5px;
+    }
+
+    .tooltip-value-first {
+      font-weight: bold;
+      font-size: 12px;
+      color: $secondary;
+    }
+
+    .tooltip-value-second {
+      font-weight: bold;
+      font-size: 12px;
+      color: $ternary;
+    }
+
+    .tooltip-value-container span {
+      margin-left: 5px;
     }
   }
 }

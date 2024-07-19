@@ -64,23 +64,25 @@ const Instruments = ({
             flex: 1,
             minWidth: 150,
             headerClassName: 'datagrid-header',
-            valueFormatter: (params) =>{
-                if(columnName in dataTypeMap){
-                    if(dataTypeMap[columnName].toLowerCase() == "date"){
-                        return moment(params).format("DD/MM/YYYY")
+            renderCell: (params) => {
+                const columnName = params.field;
+                const value = params.value;
+
+                if (columnName in dataTypeMap) {
+                    if (dataTypeMap[columnName].toLowerCase() === 'date') {
+                        return moment(value).format('DD/MM/YYYY');
+                    } else if (dataTypeMap[columnName].toLowerCase() === 'float') {
+                        return value?.toFixed(2);
+                    } else if (dataTypeMap[columnName].toLowerCase() === 'currency') {
+                        return formatToIndianCurrency(value, 2, false);
+                    } else if (dataTypeMap[columnName].toLowerCase() === 'percent') {
+                        return formatPercentage(value);
                     }
-                    else if(dataTypeMap[columnName].toLowerCase() == "float"){
-                        return params?.toFixed(2)
-                    }
-                    else if(dataTypeMap[columnName].toLowerCase() == "currency"){
-                        return formatToIndianCurrency(params, 2, false);
-                    }else if(dataTypeMap[columnName].toLowerCase() == "percent"){
-                        return formatPercentage(params);
-                    }
+                } else if (columnName.toLowerCase() === 'xirr') {
+                    return formatPercentage(value);
                 }
-                else if(columnName.toLowerCase() == "xirr"){
-                    return formatPercentage(params);
-                }
+
+                return value;
             },
             cellClassName: (params) => {
                 if(params.field.toLowerCase() == "current"){
