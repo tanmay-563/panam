@@ -11,7 +11,6 @@ const Fields = ({       instrument,
                         columnMetadata,
                         error
                    }) => {
-    console.log(requiredHeaders)
     if(!requiredHeaders || requiredHeaders.length == 0)
         return <div/>
 

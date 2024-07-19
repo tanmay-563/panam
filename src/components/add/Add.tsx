@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useMemo, useState} from 'react'
 import Fields from "./Fields";
 import {FormControl, InputLabel, MenuItem, Select} from '@mui/material';
 import Loading from "../Loading";
@@ -22,30 +22,28 @@ const Add = ({
     const [shake, setShake] = useState(false)
     const [loading, setLoading] = useState(false)
     const [columnMetadata, setColumnMetadata] = useState({})
+    const [requiredHeaders, setRequiredHeaders] = useState([])
 
-    useEffect(() => {
-        if(selectedMenuItem in instruments)
-            setColumnMetadata(metadata?.column?.filter(item => item.Instrument.toLowerCase() === selectedMenuItem.toLowerCase()));
+    useMemo(() => {
+        if(instruments.includes(selectedMenuItem)){
+            try{
+                const colData = metadata?.column?.filter(item => item.Instrument.toLowerCase() === selectedMenuItem.toLowerCase());
+                setColumnMetadata(colData);
+                setRequiredHeaders(colData.filter(metadata => metadata.IsAutomated != true).map(metadata => metadata.Column));
+            }
+            catch (e){
+                console.error(e)
+                setColumnMetadata({})
+                setRequiredHeaders([])
+            }
+        }
         else
             setColumnMetadata({});
-    }, [selectedMenuItem]);
-
-    const getRequiredHeaders = () =>{
-        try{
-            console.log("ins " + selectedMenuItem)
-            console.log(columnMetadata)
-            return columnMetadata.filter(metadata => metadata.IsAutomated != true).map(metadata => metadata.Column);
-        }
-        catch (e){
-            console.error(e)
-            return []
-        }
-    }
+    }, [selectedMenuItem, instruments, metadata?.column]);
 
     const handleSubmit = () => {
         if (loading) return;
 
-        const requiredHeaders = getRequiredHeaders(selectedMenuItem);
         const formInvalid = requiredHeaders.some(header => !(header in inputValues));
 
         if (formInvalid) {
@@ -142,7 +140,7 @@ const Add = ({
                 </FormControl>
                 <Fields
                     instrument={selectedMenuItem}
-                    requiredHeaders={getRequiredHeaders(selectedMenuItem)}
+                    requiredHeaders={requiredHeaders}
                     transactionsColumnMap={transactionsColumnMap}
                     inputValues={inputValues}
                     onInputChange={handleInputChange}
