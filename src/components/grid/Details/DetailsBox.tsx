@@ -1,5 +1,6 @@
 import React from "react";
-import {formatPercentage, formatToIndianCurrency} from "../../utils/common";
+import {formatPercentage, formatToIndianCurrency, getDisplayName} from "../../../utils/common";
+import InstrumentDetails from "./InstrumentDetails";
 
 const ValueCard = ({ label, value, valueClass = ''}) => (
     <div>
@@ -8,7 +9,7 @@ const ValueCard = ({ label, value, valueClass = ''}) => (
     </div>
 );
 
-const DetailsBox = ({aggregatedData}) => {
+const DetailsBox = ({aggregatedData, metadata}) => {
     const [overallData, instrumentsData] = aggregatedData
 
     const overallReturns = overallData.current - overallData.invested;
@@ -44,6 +45,7 @@ const DetailsBox = ({aggregatedData}) => {
                         />
                     </div>
                 </div>
+                <InstrumentDetails data={instrumentsData} metadata={metadata}/>
             </div>
         </>
     )

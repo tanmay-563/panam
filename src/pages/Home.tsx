@@ -3,7 +3,7 @@ import MainBox from "../components/grid/MainBox";
 import LineGraphBox from "../components/grid/LineGraphBox";
 import DonutChartBox from "../components/grid/DonutChartBox";
 import {getAggregatedData} from "../utils/aggregator";
-import DetailsBox from "../components/grid/DetailsBox";
+import DetailsBox from "../components/grid/Details/DetailsBox";
 const Home = ({
                     instruments,
                     transactionsRowMap,
@@ -27,7 +27,7 @@ const Home = ({
                         setSelectedMenuItem={setSelectedMenuItem}/>
                 </div>
                 <div className="box box2">
-                    <DetailsBox aggregatedData={aggregatedData}/>
+                    <DetailsBox aggregatedData={aggregatedData} metadata={metadata}/>
                 </div>
                 <div className="box box3">
                     <DonutChartBox aggregatedData={aggregatedData} metadata={metadata}/>

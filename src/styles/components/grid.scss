@@ -111,6 +111,36 @@
         }
       }
     }
+
+    .instruments-card{
+      overflow: auto;
+      padding: 10px;
+
+      .instrument{
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        border-bottom: 0.5px solid $max-soft;
+
+        .instrument-value{
+          display: flex;
+          flex-direction: column;
+          align-items: end;
+
+          div{
+            &:first-child{
+              font-size: 14px;
+            }
+            &:last-child{
+              font-size: 12px;
+              color: $soft-color;
+              padding-top: 5px;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
