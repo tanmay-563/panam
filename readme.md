@@ -7,15 +7,12 @@
   - scriptId - id after  https://script.google.com/u/0/home/projects/ in url
   - rootDir - /Users/m.akshay/projects/personal/stonks/dist
 - to implement
-  - use column metadata more extensively - add column data type
   - ask for password
-  - form validation
-  - aggregation in datagrid 
   - monthly reports and monthly reminders
-  - pop submit button on hover
   - refactor all css class name casing
   - highest value in graph
   - edit, delete transactions
+  - mobile menu 
 - data manipulation for home page
   - Overall
     - current sum

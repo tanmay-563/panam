@@ -1,4 +1,11 @@
 let faviconUrl = "https://drive.google.com/uc?id=1aQQqYhnESMZ-ZboAs4Rdcu0x8O0ZXlvo&export=download&format=png"
+const DAILY_CRON_HOUR = 6
+const METADATA_PREFIX = '_'
+const REPORTS_PREFIX = '+'
+
+function setupTriggers(){
+  setupDailyCronTrigger()
+}
 
 function doGet() {
   return HtmlService.createHtmlOutputFromFile("index")
@@ -34,4 +41,61 @@ function addRow(sheetName, rowMap){
   });
 
   sheet.appendRow(newRowData);
+}
+
+function setupDailyCronTrigger() {
+  deleteTriggers();
+
+  ScriptApp.newTrigger('dailyCron')
+      .timeBased()
+      .everyDays(1)
+      .atHour(DAILY_CRON_HOUR)
+      .create();
+
+  Logger.log('Daily trigger set for ' + DAILY_CRON_HOUR + ' hour');
+}
+
+function deleteTriggers() {
+  var triggers = ScriptApp.getProjectTriggers();
+
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === 'dailyCron') {
+      ScriptApp.deleteTrigger(triggers[i]);
+    }
+  }
+}
+
+function dailyCron(){
+  updateDailyTracker();
+}
+
+const updateDailyTracker = () =>{
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let currentTotal = 0, investedTotal =  0;
+  ss.getSheets().forEach((sheet)=>{
+    let sheetName = sheet.getSheetName().toLowerCase()
+    if(sheetName[0] !== METADATA_PREFIX && sheetName[0] !== REPORTS_PREFIX){
+      const data  = sheet.getDataRange().getValues();
+      const headers = data[0];
+      const rows = data.slice(1);
+      let instrumentCurrentTotal = 0.0, instrumentInvestedTotal = 0.0;
+
+      rows.forEach(row => {
+        row.forEach((value, index) => {
+          const header = headers[index].toLowerCase();
+          if (header === "current") instrumentCurrentTotal += value;
+          if (header === "invested") instrumentInvestedTotal += value;
+        });
+      });
+
+      currentTotal += instrumentCurrentTotal
+      investedTotal += instrumentInvestedTotal
+    }
+  })
+
+  let outputSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("+dailytracker");
+  let lastRow = outputSheet.getLastRow();
+  outputSheet.getRange(lastRow + 1, 1).setValue(new Date());
+  outputSheet.getRange(lastRow + 1, 2).setValue(investedTotal);
+  outputSheet.getRange(lastRow + 1, 3).setValue(currentTotal);
 }

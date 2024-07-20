@@ -8,7 +8,7 @@ const Navbar = ({onRefresh, onOpenAdd}) => {
 
     return (
         <div className="navbar">
-            <div className="logoBox">
+            <div className="logo-box">
                 <LogoIcon className="logo"/>
                 <span>
                     Panam

@@ -7,14 +7,18 @@
   align-items: center;
   justify-content: space-between;
 
-  .logoBox{
+  .logo-box{
     display: flex;
     align-items: center;
     font-weight: bold;
     gap: 5px;
+
     .logo{
       width: 20px;
       height: 20px;
+      @include sm{
+        display: none;
+      }
     }
   }
 

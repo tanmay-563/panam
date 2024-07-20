@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {getInstrumentDetailsData} from "../../../utils/detailsBox.utils";
 
 const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => {
-    const [sortValue, setSortValue] = useState("current")
+    const [sortValue, setSortValue] = useState("")
     const data = getInstrumentDetailsData(aggregatedData, dataSource, sortValue);
     if(!data || Object.keys(data).length == 0)
         return <div></div>
@@ -27,11 +27,12 @@ const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => 
                 <div className="sort-box">
                     <select
                         name="Sort"
-                        className="box-select value-sorter"
+                        className={`box-select value-sorter ${sortValue !== '' ? 'fit-content' : ''}`}
+                        defaultValue="sort"
                         onChange={(e)=>{
                             setSortValue(e.target.value)
                         }}>
-                        <option value="current" disabled defaultValue style={{color: 'red'}}>
+                        <option value="sort" disabled style={{color: 'red'}}>
                             Sort
                         </option>
                         <option value="current">

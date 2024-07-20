@@ -1,4 +1,4 @@
-export function getInstrumentDetailsData(aggregatedData, dataSource, sortValue){
+export function getInstrumentDetailsData(aggregatedData, dataSource, sortValue = "current"){
     try{
         const [_, instrumentsData] = aggregatedData
         let data = instrumentsData
