@@ -13,21 +13,20 @@ const Instruments = ({
                          headerMap,
                          transactionsRowMap,
                          metadata,
-                         instrument
+                         instrument,
+                        setSelectedMenuItem
                      }) => {
+    const [columnVisibility, setColumnVisibility] = useState({});
+    const [loading, setLoading] = useState(true)
+
     const { instrumentId } = useParams();
     if(!instrument){
         instrument = instrumentId && instrumentId[0] == ':' ? instrumentId.substring(1) : instrumentId
     }
-    if(!transactionsRowMap)
-        return <div></div>
 
     const theme = useTheme();
     const instrumentMetadata = metadata?.instrument || {};
     const columnMetadata = metadata?.column?.filter((item) => item.Instrument.toLowerCase() == instrument.toLowerCase()) || {};
-
-    const [columnVisibility, setColumnVisibility] = useState({});
-    const [loading, setLoading] = useState(true)
 
     useMemo(() => {
         const savedVisibility = localStorage.getItem(getLocalStorageKey(instrument));
@@ -44,13 +43,20 @@ const Instruments = ({
             setColumnVisibility(columnVisibilityModel)
             setLoading(false);
         }
-    }, [instrument]);
+    }, [instrument, metadata]);
 
     useEffect(() => {
         if(Object.keys(columnVisibility).length){
             localStorage.setItem(getLocalStorageKey(instrument), JSON.stringify(columnVisibility));
         }
     }, [columnVisibility]);
+
+    useEffect(()=> {
+        setSelectedMenuItem(instrument)
+    }, [instrument])
+
+    if(!transactionsRowMap)
+        return <div></div>
 
     const dataTypeMap = getDataTypeMap(columnMetadata)
 

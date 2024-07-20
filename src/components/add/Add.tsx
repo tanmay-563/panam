@@ -93,7 +93,7 @@ const Add = ({
 
     return (
         <div className="add">
-            <div className={`modal ${shake ? 'shake' : ''}`}>
+            <div className={`modal ${shake ? 'shake' : ''}`} >
                 <span className="close" onClick={()=>setOpenAdd(false)}>
                     <CloseIcon className="close-icon"/>
                 </span>

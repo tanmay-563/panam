@@ -80,6 +80,7 @@ function App() {
                         transactionsRowMap={data?.transactionsRowMap}
                         metadata={data?.metadata}
                         instrument={selectedMenuItem}
+                        setSelectedMenuItem={setSelectedMenuItem}
                     />,
                 },
             ],

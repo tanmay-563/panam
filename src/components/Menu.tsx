@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {Link} from "react-router-dom";
 import {menu} from "../listData"
 import DynamicIcons from "./DynamicIcons";
@@ -11,10 +11,26 @@ const Menu = ({
                 hamburgerToggle}
 ) => {
     const instrumentMetadata = metadata?.instrument || {};
+    const menuRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                handleMenuClick(selectedMenuItem);
+            }
+        };
+
+        if(hamburgerToggle)
+            document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [hamburgerToggle])
 
     return (
         <div className={`menu-container ${hamburgerToggle ? 'expand': 'collapse'}`}>
-            <div className="menu">
+            <div className="menu" ref={menuRef}>
                 {menu.map((item) => (
                     <div className="item" key={item.id}>
                         <span className="title">{item.title}</span>

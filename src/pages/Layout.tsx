@@ -21,6 +21,7 @@ const Layout = ({ data,
 
     const changeHamburgerToggle = () => {
         setHamburgerToggle(prevState => !prevState)
+        console.log(hamburgerToggle)
     }
 
     const handleMenuClick = (value) => {
@@ -38,11 +39,12 @@ const Layout = ({ data,
         }));
     }
 
-
     return (
         <div className="main">
             <Navbar onRefresh={fetchSheetData}
+                    openAdd={openAdd}
                     onOpenAdd={setOpenAdd}
+                    hamburgerToggle={hamburgerToggle}
                     setHamburgerToggle={changeHamburgerToggle}/>
             <div className="container">
                 <Menu

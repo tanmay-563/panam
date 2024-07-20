@@ -5,7 +5,7 @@
   width: 250px;
   border-right: 2px solid $soft-bg;
   position: relative;
-  transition: transform 0.9s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 
   @include lg{
     width: max-content;
@@ -13,10 +13,11 @@
 
   @include md {
     position: absolute;
-    top: 64px;
+    top: 0;
+    width: 100vw;
     height: 100vh;
     z-index: 1000;
-    background-color: $primary;
+    overflow-y: auto;
   }
 
   &.expand {
@@ -27,7 +28,7 @@
 
   &.collapse {
     @include md{
-      transform: translateX(-250px);
+      transform: translateX(-100vw);
     }
   }
 }
@@ -35,6 +36,8 @@
 .menu {
   padding: 5px 20px;
   background-color: $primary;
+  width: fit-content;
+  height: 100%;
 
   .item {
     display: flex;
