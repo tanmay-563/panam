@@ -2,7 +2,6 @@ import React from 'react'
 import MainBox from "../components/grid/MainBox";
 import LineGraphBox from "../components/grid/LineGraphBox";
 import DonutChartBox from "../components/grid/DonutChartBox";
-import {getAggregatedData} from "../utils/aggregator";
 import DetailsBox from "../components/grid/Details/DetailsBox";
 const Home = ({
                     instruments,

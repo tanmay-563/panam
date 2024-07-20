@@ -13,15 +13,10 @@ const MainBox = ({
                      instruments,
                      metadata,
                      aggregatedData,
-                     setSelectedMenuItem
 }) => {
     const instrumentsMetadata = metadata?.instrument
     let [overallData, instrumentsData] = aggregatedData
     instrumentsData = getSortedInstrumentsData(instrumentsData, MAX_ITEMS);
-
-    const handleClick = useCallback((instrument) => {
-        setSelectedMenuItem(instrument);
-    }, [setSelectedMenuItem]);
 
     return (
         <>
@@ -52,10 +47,7 @@ const MainBox = ({
                             return (
                                 <div key = {index}>
                                     {instruments.includes(instrumentId) ?
-                                        <Link
-                                            to={`/transactions/${instrumentId}`}
-                                            onClick={()=>handleClick(instrumentId)}
-                                            className="mini-box">
+                                        <div className="mini-box">
                                             <DynamicIcons name={instrumentId} className="icon" />
                                             <p>
                                                 {getDisplayName(instrumentsMetadata, instrumentId)}
@@ -71,7 +63,7 @@ const MainBox = ({
                                                     </h6>
                                                 }
                                             </div>
-                                        </Link> :
+                                        </div> :
                                         <div
                                             className="mini-box">
                                             <DynamicIcons name={instrumentId} className="icon" />

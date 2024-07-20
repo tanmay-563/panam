@@ -1,8 +1,9 @@
-import React, {useEffect, useMemo, useState} from 'react'
+import React, {useMemo, useState} from 'react'
 import Fields from "./Fields";
 import {FormControl, InputLabel, MenuItem, Select} from '@mui/material';
 import Loading from "../Loading";
 import CloseIcon from '@mui/icons-material/Close';
+import { useNavigate } from 'react-router-dom';
 
 const Add = ({
                  instruments,
@@ -17,6 +18,7 @@ const Add = ({
     if(!instrumentsMetadata)
         return <div></div>
 
+    const navigate = useNavigate();
     const [inputValues, setInputValues] = useState({})
     const [error, setError] = useState('')
     const [shake, setShake] = useState(false)
@@ -82,6 +84,7 @@ const Add = ({
 
     const handleInstrumentSelected = (suggestion) => {
         setSelectedMenuItem(suggestion);
+        navigate('transactions/:'+suggestion)
     };
 
     const handleInputChange = (key, value) => {

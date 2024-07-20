@@ -4,9 +4,8 @@
 .menu-container {
   width: 250px;
   border-right: 2px solid $soft-bg;
-  transition: transform 0.5s ease-in-out;
   position: relative;
-  left: 0;
+  transition: transform 0.9s ease-in-out;
 
   @include lg{
     width: max-content;
@@ -20,14 +19,19 @@
     background-color: $primary;
   }
 
-  &.menu-expand {
-    transform: translateX(0px);
+  &.expand {
+    @include md{
+      transform: translateX(0px);
+    }
   }
 
-  &.menu-collapse {
-    transform: translateX(-250px);
+  &.collapse {
+    @include md{
+      transform: translateX(-250px);
+    }
   }
 }
+
 .menu {
   padding: 5px 20px;
   background-color: $primary;

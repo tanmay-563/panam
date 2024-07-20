@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import {menu} from "../listData"
 import DynamicIcons from "./DynamicIcons";
@@ -10,11 +10,10 @@ const Menu = ({
                   handleMenuClick,
                 hamburgerToggle}
 ) => {
-    console.log("here")
     const instrumentMetadata = metadata?.instrument || {};
 
     return (
-        <div className={`menu-container ${hamburgerToggle ? 'menu-expand': 'menu-collapse'}`}>
+        <div className={`menu-container ${hamburgerToggle ? 'expand': 'collapse'}`}>
             <div className="menu">
                 {menu.map((item) => (
                     <div className="item" key={item.id}>
@@ -24,7 +23,7 @@ const Menu = ({
                                 to={listItem.url}
                                 className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
                                 key={listItem.id}
-                                onClick={() => handleMenuClick(listItem)}>
+                                onClick={() => {handleMenuClick(listItem);}}>
                                 <DynamicIcons name={listItem.icon}></DynamicIcons>
                                 <span className="listItemTitle">{listItem.title}</span>
                             </Link>

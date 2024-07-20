@@ -23,7 +23,6 @@ function App() {
     const [selectedMenuItem, setSelectedMenuItem] = useState("");
     const [openAdd, setOpenAdd] = useState(false);
     const [alertDetails, setAlertDetails] = useState({})
-    const [hamburgerToggle, setHamburgerToggle] = useState(false);
 
     const fetchSheetData = () => {
         console.log("fetching...")
@@ -57,20 +56,22 @@ function App() {
         }));
     }
 
-    const changeHamburgerToggle = () => {
-        setHamburgerToggle(!hamburgerToggle)
-    }
-
-    const handleMenuClick = (value) => {
-        setSelectedMenuItem(value)
-        setHamburgerToggle(!hamburgerToggle)
-    }
-
     useEffect(() => {
         fetchSheetData();
     }, []);
 
     let Layout = () =>{
+        const [hamburgerToggle, setHamburgerToggle] = useState(false);
+
+        const changeHamburgerToggle = () => {
+            setHamburgerToggle(prevState => !prevState)
+        }
+
+        const handleMenuClick = (value) => {
+            setSelectedMenuItem(value)
+            setHamburgerToggle(!hamburgerToggle)
+        }
+
         return (
             <div className="main">
                 <Navbar onRefresh={fetchSheetData}
@@ -123,7 +124,6 @@ function App() {
                             metadata={data?.metadata}
                             reports={data?.reports}
                             aggregatedData={data?.aggregatedData}
-                            setSelectedMenuItem={setSelectedMenuItem}
                         />
                     ),
                 },
@@ -151,7 +151,6 @@ function App() {
                             metadata={data?.metadata}
                             reports={data?.reports}
                             aggregatedData={data?.aggregatedData}
-                            setSelectedMenuItem={setSelectedMenuItem}
                         />
                     ),
                 },
