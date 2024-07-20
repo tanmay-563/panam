@@ -16,11 +16,11 @@ const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => 
     return (
         <div className="instruments-card">
             <div className='instruments-card-top'>
-                <span onClick={() => onChange("overall")} className={dataSource != "overall" ? "overall-button" : "overall"}>
-                    Overall
-                </span>
                 <span>
-                    {dataSource != "overall" ? "  " + getDisplayName(instrumentsMetadata, dataSource) : " "}
+                    {dataSource != "overall" ? "  " + getDisplayName(instrumentsMetadata, dataSource) : "  Overall"}
+                </span>
+                <span onClick={() => onChange("overall")} className={dataSource != "overall" ? "back-button" : ""}>
+                    {dataSource != "overall" && "\u00AB Back"}
                 </span>
             </div>
             <div className="instruments-card-options">
@@ -31,7 +31,7 @@ const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => 
                         onChange={(e)=>{
                             setSortValue(e.target.value)
                         }}>
-                        <option value="current" disabled selected style={{color: 'red'}}>
+                        <option value="current" disabled defaultValue style={{color: 'red'}}>
                             Sort
                         </option>
                         <option value="current">
@@ -46,7 +46,7 @@ const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => 
                     </select>
                 </div>
                 <div className="value-selector" onClick={()=> setValueTypeIndex((valueTypeIndex+1)%valuesTypes.length)}>
-                    ↕{valuesTypes[valueTypeIndex]}
+                    {valuesTypes[valueTypeIndex]}
                 </div>
             </div>
             {Object.keys(data).map((key) => (
@@ -55,7 +55,7 @@ const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => 
                         {getDisplayName(instrumentsMetadata, key)}
                     </div>
                     {   valueTypeIndex == 0 ?
-                        <div className="instrument-value">
+                        <div className="instrument-value" onClick={()=> setValueTypeIndex((valueTypeIndex+1)%valuesTypes.length)}>
                             <div className={data[key].current > data[key].invested ? 'green-color' : data[key].current < data[key].invested ? 'red-color': ''}>
                                 {formatToIndianCurrency(data[key].current, 0, false)}
                             </div>
@@ -63,16 +63,16 @@ const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => 
                                 {formatToIndianCurrency(data[key].invested, 0, false)}
                             </div>
                         </div> : valueTypeIndex == 1 ?
-                        <div className="instrument-value">
-                            <div className={data[key].current-data[key].invested > 0 ?
-                                'green-color' : data[key].current-data[key].invested < 0 ? 'red-color': ''}>
-                                {formatToIndianCurrency(data[key].current-data[key].invested, 0, false)}
+                        <div className="instrument-value" onClick={()=> setValueTypeIndex((valueTypeIndex+1)%valuesTypes.length)}>
+                            <div className={data[key].returns > 0 ?
+                                'green-color' : data[key].returns < 0 ? 'red-color': ''}>
+                                {formatToIndianCurrency(data[key].returns, 0, false)}
                             </div>
                             <div>
-                                {formatPercentage((data[key].current-data[key].invested)/data[key].current)}
+                                {formatPercentage(data[key].returns/data[key].current)}
                             </div>
                         </div> :
-                        <div className="instrument-value">
+                        <div className="instrument-value" onClick={()=> setValueTypeIndex((valueTypeIndex+1)%valuesTypes.length)}>
                             <div className={data[key].xirr > 0 ? 'green-color' : data[key].xirr < 0 ? 'red-color' : ''}>
                                 {formatPercentage(data[key].xirr)}
                             </div>

@@ -1,6 +1,5 @@
 export function getInstrumentDetailsData(aggregatedData, dataSource, sortValue){
     try{
-        console.log(sortValue)
         const [_, instrumentsData] = aggregatedData
         let data = instrumentsData
         if(dataSource.toLowerCase() != "overall")

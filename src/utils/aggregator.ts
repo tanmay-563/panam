@@ -11,6 +11,7 @@ import getXirr from 'xirr';
 function updateMap(map, currentAmount, investedAmount, date, calculateXirr) {
     map.current += currentAmount;
     map.invested += investedAmount;
+    map.returns += (currentAmount-investedAmount)
     if (calculateXirr) {
         map.cashflows.push({ amount: -investedAmount, when: date });
     }
@@ -48,11 +49,11 @@ function finalizeCashflows(map, key, currentAmount, investedAmount, calculateXir
 export function getAggregatedData(transactionsRowMap, metadata) {
     try {
         const instrumentsMetadata = metadata ? metadata.instrument : {};
-        const overallMap = { current: 0, invested: 0, cashflows: [] };
+        const overallMap = { current: 0, invested: 0, returns: 0, cashflows: [] };
         const instrumentsDataMap = {};
 
         for (const k in transactionsRowMap) {
-            instrumentsDataMap[k] = { current: 0, invested: 0, name: {}, category: {}, cashflows: [] };
+            instrumentsDataMap[k] = { current: 0, invested: 0, returns: 0, name: {}, category: {}, cashflows: [] };
             const calculateXirr = instrumentsMetadata.find(
                 (instrument) => instrument.Name.toLowerCase() === k.toLowerCase()
             )?.CalculateXirr;
@@ -64,14 +65,14 @@ export function getAggregatedData(transactionsRowMap, metadata) {
 
                 if (name) {
                     if (!(name in instrumentsDataMap[k].name)) {
-                        instrumentsDataMap[k].name[name] = { current: 0, invested: 0, cashflows: [] };
+                        instrumentsDataMap[k].name[name] = { current: 0, invested: 0, returns: 0, cashflows: [] };
                     }
                     updateMap(instrumentsDataMap[k].name[name], currentAmount, investedAmount, date, calculateXirr);
                 }
 
                 if (category) {
                     if (!(category in instrumentsDataMap[k].category)) {
-                        instrumentsDataMap[k].category[category] = { current: 0, invested: 0, cashflows: [] };
+                        instrumentsDataMap[k].category[category] = { current: 0, invested: 0, returns: 0, cashflows: [] };
                     }
                     updateMap(instrumentsDataMap[k].category[category], currentAmount, investedAmount, date, calculateXirr);
                 }

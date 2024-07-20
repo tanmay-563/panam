@@ -126,24 +126,27 @@
       .instruments-card-top{
         border-top: 0.5px solid $max-soft;
         border-bottom: 0.5px solid $max-soft;
-        padding: 15px 15px 15px 0px;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
 
         span{
+          padding: 10px;
           font-variant: all-petite-caps;
 
-          &:last-child{
-            padding-left: 10px;
+          &:first-child{
+            padding-right: 10px;
           }
         }
 
-        .overall{
-          padding: 10px;
-        }
-
-        .overall-button{
-          border-right: 0.5px solid $max-soft;
+        .back-button{
+          padding: 5px;
+          border: 0.5px solid $max-soft;
           cursor: pointer;
-          padding: 10px;
+          position: absolute;
+          top: 10%;
+          right: 0;
 
           &:hover{
             background-color: $max-soft;
@@ -165,6 +168,7 @@
             left: 0;
             width: fit-content;
             top: 10px;
+            padding-left: 2px;
           }
         }
 
@@ -176,6 +180,10 @@
           color: $soft-color;
           font-size: 12px;
           padding-top: 10px;
+
+          &:hover {
+            border-bottom: 0.5px solid $max-soft;
+          }
         }
       }
 
@@ -190,12 +198,18 @@
         .instrument-name{
           cursor: pointer;
           font-size: 14px;
+          height: fit-content;
+
+          &:hover {
+            border-bottom: 0.5px solid $max-soft;
+          }
         }
 
         .instrument-value{
           display: flex;
           flex-direction: column;
           align-items: end;
+          cursor: pointer;
 
           div{
             &:first-child{
