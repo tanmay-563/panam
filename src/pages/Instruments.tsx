@@ -17,7 +17,7 @@ const Instruments = ({
                      }) => {
     const { instrumentId } = useParams();
     if(!instrument){
-        instrument = instrumentId
+        instrument = instrumentId && instrumentId[0] == ':' ? instrumentId.substring(1) : instrumentId
     }
     if(!transactionsRowMap)
         return <div></div>

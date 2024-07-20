@@ -2,19 +2,13 @@ import Home from "./pages/Home";
 import {
     createBrowserRouter,
     RouterProvider,
-    Outlet,
 } from "react-router-dom";
 import Instruments from "./pages/Instruments";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Menu from "./components/Menu";
 import React, { useEffect, useState } from 'react';
-import Add from "./components/add/Add";
 import {devData} from "./devdata.js";
 import getProcessedData from "./utils/dataProcessor";
-import Loading from "./components/Loading";
-import AlertBox from "./components/AlertBox";
 import {dateReviver} from "./utils/common";
+import Layout from "./pages/Layout";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -46,74 +40,26 @@ function App() {
         }
     };
 
-    const setAlert = (severity, title, message, timeout) => {
-        setAlertDetails(prevState => ({
-            ...prevState,
-            severity,
-            title,
-            message,
-            timeout,
-        }));
-    }
-
     useEffect(() => {
         fetchSheetData();
     }, []);
 
-    let Layout = () =>{
-        const [hamburgerToggle, setHamburgerToggle] = useState(false);
-
-        const changeHamburgerToggle = () => {
-            setHamburgerToggle(prevState => !prevState)
-        }
-
-        const handleMenuClick = (value) => {
-            setSelectedMenuItem(value)
-            setHamburgerToggle(!hamburgerToggle)
-        }
-
-        return (
-            <div className="main">
-                <Navbar onRefresh={fetchSheetData}
-                        onOpenAdd={setOpenAdd}
-                        setHamburgerToggle={changeHamburgerToggle}/>
-                <div className="container">
-                    <Menu
-                        instruments={data?.instruments}
-                        metadata={data?.metadata}
-                        selectedMenuItem={selectedMenuItem}
-                        handleMenuClick={handleMenuClick}
-                        hamburgerToggle={hamburgerToggle}
-                    />
-                    <div className="content-container">
-                        <Outlet/>
-                        {loading && <Loading className="loading-overlay"/>}
-                        {Object.keys(alertDetails).length > 0 &&
-                            <AlertBox
-                                alertDetails={alertDetails}
-                                setAlertDetails={setAlertDetails}
-                            />
-                        }
-                        {openAdd && <Add
-                            instruments={data?.instruments}
-                            transactionsColumnMap={data?.transactionsColumnMap}
-                            selectedMenuItem={selectedMenuItem}
-                            setSelectedMenuItem={setSelectedMenuItem}
-                            setOpenAdd={setOpenAdd}
-                            setAlert={setAlert}
-                            metadata={data?.metadata}
-                        />}
-                    </div>
-                </div>
-                <Footer/>
-            </div>
-        )
-    }
-
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <Layout/>,
+            element: (
+                <Layout
+                    data={data}
+                    fetchSheetData={fetchSheetData}
+                    setSelectedMenuItem={setSelectedMenuItem}
+                    selectedMenuItem={selectedMenuItem}
+                    setOpenAdd={setOpenAdd}
+                    openAdd={openAdd}
+                    setAlertDetails={setAlertDetails}
+                    alertDetails={alertDetails}
+                    loading={loading}
+                />
+            ),
             children: [
                 {
                     path: "/",
@@ -140,7 +86,17 @@ function App() {
         },
         {
             path: "*",
-            element: <Layout/>,
+            element: <Layout
+                data={data}
+                fetchSheetData={fetchSheetData}
+                setSelectedMenuItem={setSelectedMenuItem}
+                selectedMenuItem={selectedMenuItem}
+                setOpenAdd={setOpenAdd}
+                openAdd={openAdd}
+                setAlertDetails={setAlertDetails}
+                alertDetails={alertDetails}
+                loading={loading}
+            />,
             children: [
                 {
                     path: "*",

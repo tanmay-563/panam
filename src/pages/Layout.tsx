@@ -1,49 +1,80 @@
-// import Navbar from "../components/Navbar";
-// import Menu from "../components/Menu";
-// import {Outlet} from "react-router-dom";
-// import LoadingOverlay from "../components/LoadingOverlay";
-// import AlertBox from "../components/AlertBox";
-// import add from "../components/add/add";
-// import Footer from "../components/Footer";
-// import React from "react";
-//
-// const Layout = () => {
-//     return (
-//         <div className="main">
-//             <Navbar onRefresh={fetchSheetData} onOpenAdd={setOpenAdd}/>
-//             <div className="container">
-//                 <div className="menuContainer">
-//                     <Menu
-//                         instruments={data?.instruments}
-//                         config={data?.config}
-//                         selectedMenuItem={selectedMenuItem}
-//                         setSelectedMenuItem={setSelectedMenuItem}
-//                     />
-//                 </div>
-//                 <div className="contentContainer">
-//                     <Outlet/>
-//                     {loading && <LoadingOverlay/>}
-//                     {Object.keys(alertDetails).length &&
-//                         <AlertBox
-//                             severity={alertDetails.severity}
-//                             title={alertDetails.title}
-//                             message={alertDetails.message}
-//                         />
-//                     }
-//                     {openAdd && <add
-//                         instruments={data?.instruments}
-//                         headerMap={data?.headerMap}
-//                         transactionsColumnMap={data?.transactionsColumnMap}
-//                         selectedMenuItem={selectedMenuItem}
-//                         setOpenAdd={setOpenAdd}
-//                         setAlert={setAlert}
-//                         config={data?.config}
-//                     />}
-//                 </div>
-//             </div>
-//             <Footer/>
-//         </div>
-//     )
-// }
-//
-// export default Layout
+import Navbar from "../components/Navbar";
+import Menu from "../components/Menu";
+import {Outlet} from "react-router-dom";
+import AlertBox from "../components/AlertBox";
+import Footer from "../components/Footer";
+import React, {useState} from "react";
+import Loading from "../components/Loading";
+import Add from "../components/add/add";
+
+const Layout = ({ data,
+    fetchSheetData,
+    setSelectedMenuItem,
+    selectedMenuItem,
+    setOpenAdd,
+    openAdd,
+    setAlertDetails,
+    alertDetails,
+    loading,
+}) =>{
+    const [hamburgerToggle, setHamburgerToggle] = useState(false);
+
+    const changeHamburgerToggle = () => {
+        setHamburgerToggle(prevState => !prevState)
+    }
+
+    const handleMenuClick = (value) => {
+        setSelectedMenuItem(value)
+        setHamburgerToggle(!hamburgerToggle)
+    }
+
+    const setAlert = (severity, title, message, timeout) => {
+        setAlertDetails(prevState => ({
+            ...prevState,
+            severity,
+            title,
+            message,
+            timeout,
+        }));
+    }
+
+
+    return (
+        <div className="main">
+            <Navbar onRefresh={fetchSheetData}
+                    onOpenAdd={setOpenAdd}
+                    setHamburgerToggle={changeHamburgerToggle}/>
+            <div className="container">
+                <Menu
+                    instruments={data?.instruments}
+                    metadata={data?.metadata}
+                    selectedMenuItem={selectedMenuItem}
+                    handleMenuClick={handleMenuClick}
+                    hamburgerToggle={hamburgerToggle}
+                />
+                <div className="content-container">
+                    <Outlet/>
+                    {loading && <Loading className="loading-overlay"/>}
+                    {Object.keys(alertDetails).length > 0 &&
+                        <AlertBox
+                            alertDetails={alertDetails}
+                            setAlertDetails={setAlertDetails}
+                        />
+                    }
+                    {openAdd && <Add
+                        instruments={data?.instruments}
+                        transactionsColumnMap={data?.transactionsColumnMap}
+                        selectedMenuItem={selectedMenuItem}
+                        setSelectedMenuItem={setSelectedMenuItem}
+                        setOpenAdd={setOpenAdd}
+                        setAlert={setAlert}
+                        metadata={data?.metadata}
+                    />}
+                </div>
+            </div>
+            <Footer/>
+        </div>
+    )
+}
+
+export default Layout
