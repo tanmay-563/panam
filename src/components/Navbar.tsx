@@ -3,8 +3,11 @@ import GithubIcon from "../../public/github.svg";
 import AddIcon from "../../public/add.svg";
 import RefreshIcon from "../../public/refresh.svg";
 import SettingsIcon from "../../public/settings.svg";
+import MenuIcon from '@mui/icons-material/Menu';
 
-const Navbar = ({onRefresh, onOpenAdd}) => {
+const Navbar = ({onRefresh,
+                    onOpenAdd,
+                    setHamburgerToggle}) => {
 
     return (
         <div className="navbar">
@@ -13,6 +16,12 @@ const Navbar = ({onRefresh, onOpenAdd}) => {
                 <span>
                     Panam
                 </span>
+            </div>
+            <div className="hamburger" onClick={() => {
+                setHamburgerToggle()}
+            }
+            >
+                <MenuIcon/>
             </div>
             <div className="icons">
                 <AddIcon className="icon" onClick={()=>onOpenAdd(true)}/>

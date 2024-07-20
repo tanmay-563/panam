@@ -7,39 +7,43 @@ const Menu = ({
                   instruments,
                   metadata,
                   selectedMenuItem,
-                  setSelectedMenuItem}
+                  handleMenuClick,
+                hamburgerToggle}
 ) => {
+    console.log("here")
     const instrumentMetadata = metadata?.instrument || {};
 
     return (
-        <div className="menu">
-            {menu.map((item) => (
-                <div className="item" key={item.id}>
-                    <span className="title">{item.title}</span>
-                    {item.listItems.map((listItem) => (
+        <div className={`menu-container ${hamburgerToggle ? 'menu-expand': 'menu-collapse'}`}>
+            <div className="menu">
+                {menu.map((item) => (
+                    <div className="item" key={item.id}>
+                        <span className="title">{item.title}</span>
+                        {item.listItems.map((listItem) => (
+                            <Link
+                                to={listItem.url}
+                                className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
+                                key={listItem.id}
+                                onClick={() => handleMenuClick(listItem)}>
+                                <DynamicIcons name={listItem.icon}></DynamicIcons>
+                                <span className="listItemTitle">{listItem.title}</span>
+                            </Link>
+                        ))}
+                    </div>
+                ))}
+                <div className="item">
+                    <span className="title">Transactions</span>
+                    {instruments?.map((listItem, index) => (
                         <Link
-                            to={listItem.url}
+                            to={`/transactions/${listItem}`}
+                            key={listItem}
                             className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
-                            key={listItem.id}
-                            onClick={() => setSelectedMenuItem(listItem)}>
-                            <DynamicIcons name={listItem.icon}></DynamicIcons>
-                            <span className="listItemTitle">{listItem.title}</span>
+                            onClick={() => handleMenuClick(listItem)}>
+                            <DynamicIcons name={listItem}></DynamicIcons>
+                            <span className="listItemTitle">{getDisplayName(instrumentMetadata, listItem)}</span>
                         </Link>
                     ))}
                 </div>
-            ))}
-            <div className="item">
-                <span className="title">Transactions</span>
-                {instruments?.map((listItem, index) => (
-                    <Link
-                        to={`/transactions/${listItem}`}
-                        key={listItem}
-                        className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
-                        onClick={() => setSelectedMenuItem(listItem)}>
-                        <DynamicIcons name={listItem}></DynamicIcons>
-                        <span className="listItemTitle">{getDisplayName(instrumentMetadata, listItem)}</span>
-                    </Link>
-                ))}
             </div>
         </div>
     )

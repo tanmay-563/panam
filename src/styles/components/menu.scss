@@ -1,7 +1,37 @@
 @import "../variables";
 @import "../responsive";
 
+.menu-container {
+  width: 250px;
+  border-right: 2px solid $soft-bg;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+  left: 0;
+
+  @include lg{
+    width: max-content;
+  }
+
+  @include md {
+    position: absolute;
+    top: 64px;
+    height: 100vh;
+    z-index: 1000;
+    background-color: $primary;
+  }
+
+  &.menu-expand {
+    transform: translateX(0px);
+  }
+
+  &.menu-collapse {
+    transform: translateX(-250px);
+  }
+}
 .menu {
+  padding: 5px 20px;
+  background-color: $primary;
+
   .item {
     display: flex;
     flex-direction: column;
@@ -13,10 +43,6 @@
       font-weight: 200;
       color: $soft-color;
       text-transform: uppercase;
-
-      @include lg{
-        display: none;
-      }
     }
 
     .listItem {
@@ -27,9 +53,6 @@
       border-radius: 5px;
 
       .listItemTitle{
-        @include lg{
-          display: none;
-        }
       }
 
       &:hover {

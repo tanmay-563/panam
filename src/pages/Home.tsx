@@ -6,7 +6,6 @@ import {getAggregatedData} from "../utils/aggregator";
 import DetailsBox from "../components/grid/Details/DetailsBox";
 const Home = ({
                     instruments,
-                    transactionsRowMap,
                     transactionsColumnMap,
                     metadata,
                     reports,

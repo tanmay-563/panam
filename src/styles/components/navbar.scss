@@ -16,9 +16,19 @@
     .logo{
       width: 20px;
       height: 20px;
-      @include sm{
-        display: none;
-      }
+    }
+
+    @include md{
+      display: none;
+    }
+  }
+
+  .hamburger{
+    display: none;
+
+    @include md{
+      display: flex;
+      cursor: pointer;
     }
   }
 

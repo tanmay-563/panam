@@ -23,14 +23,14 @@ function App() {
     const [selectedMenuItem, setSelectedMenuItem] = useState("");
     const [openAdd, setOpenAdd] = useState(false);
     const [alertDetails, setAlertDetails] = useState({})
+    const [hamburgerToggle, setHamburgerToggle] = useState(false);
 
     const fetchSheetData = () => {
         console.log("fetching...")
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
-            console.log(devData)
             let data = JSON.parse(devData, dateReviver);
-            console.log(data)
+            // console.log(data)
             setData(getProcessedData(data));
             setTimeout(() => setLoading(false), 500)
         }
@@ -57,6 +57,15 @@ function App() {
         }));
     }
 
+    const changeHamburgerToggle = () => {
+        setHamburgerToggle(!hamburgerToggle)
+    }
+
+    const handleMenuClick = (value) => {
+        setSelectedMenuItem(value)
+        setHamburgerToggle(!hamburgerToggle)
+    }
+
     useEffect(() => {
         fetchSheetData();
     }, []);
@@ -64,17 +73,18 @@ function App() {
     let Layout = () =>{
         return (
             <div className="main">
-                <Navbar onRefresh={fetchSheetData} onOpenAdd={setOpenAdd}/>
+                <Navbar onRefresh={fetchSheetData}
+                        onOpenAdd={setOpenAdd}
+                        setHamburgerToggle={changeHamburgerToggle}/>
                 <div className="container">
-                    <div className="menuContainer">
-                        <Menu
-                            instruments={data?.instruments}
-                            metadata={data?.metadata}
-                            selectedMenuItem={selectedMenuItem}
-                            setSelectedMenuItem={setSelectedMenuItem}
-                        />
-                    </div>
-                    <div className="contentContainer">
+                    <Menu
+                        instruments={data?.instruments}
+                        metadata={data?.metadata}
+                        selectedMenuItem={selectedMenuItem}
+                        handleMenuClick={handleMenuClick}
+                        hamburgerToggle={hamburgerToggle}
+                    />
+                    <div className="content-container">
                         <Outlet/>
                         {loading && <Loading className="loading-overlay"/>}
                         {Object.keys(alertDetails).length > 0 &&
@@ -109,7 +119,6 @@ function App() {
                     element: (
                         <Home
                             instruments={data?.instruments}
-                            transactionsRowMap={data?.transactionsRowMap}
                             transactionsColumnMap={data?.transactionsColumnMap}
                             metadata={data?.metadata}
                             reports={data?.reports}
@@ -138,7 +147,6 @@ function App() {
                     element: (
                         <Home
                             instruments={data?.instruments}
-                            transactionsRowMap={data?.transactionsRowMap}
                             transactionsColumnMap={data?.transactionsColumnMap}
                             metadata={data?.metadata}
                             reports={data?.reports}
