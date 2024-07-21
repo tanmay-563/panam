@@ -5,7 +5,6 @@ import DonutChartBox from "../components/grid/DonutChartBox";
 import DetailsBox from "../components/grid/Details/DetailsBox";
 const Home = ({
                     instruments,
-                    transactionsColumnMap,
                     metadata,
                     reports,
                     aggregatedData,
@@ -15,27 +14,25 @@ const Home = ({
         return <div></div>
 
     return (
-        transactionsColumnMap ?
-            <div className="home">
-                <div className="box box1">
-                    <MainBox
-                        instruments={instruments}
-                        metadata={metadata}
-                        aggregatedData={aggregatedData}
-                        setSelectedMenuItem={setSelectedMenuItem}/>
-                </div>
-                <div className="box box2">
-                    <DetailsBox aggregatedData={aggregatedData} metadata={metadata} instruments={instruments}/>
-                </div>
-                <div className="box box3">
-                    <DonutChartBox aggregatedData={aggregatedData} metadata={metadata}/>
-                </div>
-                <div className="box box4">
-                    <LineGraphBox
-                        reports={reports}/>
-                </div>
-            </div> :
-            <div/>
+        <div className="home">
+            <div className="box box1">
+                <MainBox
+                    instruments={instruments}
+                    metadata={metadata}
+                    aggregatedData={aggregatedData}
+                    setSelectedMenuItem={setSelectedMenuItem}/>
+            </div>
+            <div className="box box2">
+                <DetailsBox aggregatedData={aggregatedData} metadata={metadata} instruments={instruments}/>
+            </div>
+            <div className="box box3">
+                <DonutChartBox aggregatedData={aggregatedData} metadata={metadata}/>
+            </div>
+            <div className="box box4">
+                <LineGraphBox
+                    reports={reports}/>
+            </div>
+        </div>
     )
 }
 

@@ -66,7 +66,6 @@ function App() {
                     element: (
                         <Home
                             instruments={data?.instruments}
-                            transactionsColumnMap={data?.transactionsColumnMap}
                             metadata={data?.metadata}
                             reports={data?.reports}
                             aggregatedData={data?.aggregatedData}
@@ -104,7 +103,6 @@ function App() {
                     element: (
                         <Home
                             instruments={data?.instruments}
-                            transactionsColumnMap={data?.transactionsColumnMap}
                             metadata={data?.metadata}
                             reports={data?.reports}
                             aggregatedData={data?.aggregatedData}

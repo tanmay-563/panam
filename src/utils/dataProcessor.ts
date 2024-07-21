@@ -4,6 +4,62 @@ import getXirr from 'xirr';
 const METADATA_PREFIX = '_'
 const REPORTS_PREFIX = '+'
 
+/**
+ * Processes data and extracts various maps and instruments.
+ *
+ * @param {Object} data - The data to be processed.
+ * @returns {Array} An array containing transactionsMap, reportsMap, metadataMap, headerMap, and instruments.
+ */
+function processData(data){
+    try{
+        let headerMap = {}
+        let transactionsMap = {}
+        let metadataMap = {}
+        let reportsMap = {}
+        let instruments = []
+
+        Object.keys(data).forEach((key) => {
+            if (key[0] == REPORTS_PREFIX) {
+                reportsMap[key.slice(1)] = convertToJSON(data[key]);
+            }
+            else if (key[0] == METADATA_PREFIX) {
+                metadataMap[key.slice(1)] = convertToJSON(data[key]);
+            }
+            else {
+                instruments.push(key)
+                const headers = data[key][0];
+                const rows = data[key].slice(1);
+                headerMap[key] = headers
+                headerMap[key].push("XIRR")
+
+                transactionsMap[key] = rows.map(row => {
+                    let obj = {};
+                    row.forEach((value, index) => {
+                        obj[headers[index]] = value;
+                    });
+                    let cashFlows = [
+                        { amount: -obj["Invested"], when: obj["Date"] },
+                        { amount: obj["Current"], when: new Date() }
+                    ];
+                    try{
+                        obj["XIRR"] = getXirr(cashFlows)
+                    }
+                    catch (e){
+                        obj["XIRR"] = 0.0
+                    }
+                    return obj;
+                });
+            }
+        });
+
+        return [transactionsMap, reportsMap, metadataMap, headerMap, instruments];
+    }
+    catch (e){
+        console.error(e)
+        return [{}, {}];
+    }
+}
+
 function convertToJSON(array) {
     const headers = array[0];
     const rows = array.slice(1);
@@ -17,58 +73,22 @@ function convertToJSON(array) {
     });
 }
 
-function getInstruments(content){
-    return Object.keys(content);
-}
-
-function getHeaders(content){
-    return content[0];
-}
-
-function getValues(content){
-    return content.slice(1);
-}
-
-function getUniqueValues(jsonData, key){
-    return jsonData.reduce((uniqueValues, item) => {
-        if (!uniqueValues.includes(item[key])) {
-            uniqueValues.push(item[key]);
+function getMetadataRowMap(data){
+    return Object.keys(data).reduce((metadataMap, key) => {
+        if (key[0] == METADATA_PREFIX) {
+            metadataMap[key.slice(1)] = convertToJSON(data[key]);
         }
-        return uniqueValues;
-    }, []);
-}
-
-function processRowWise(data){
-    let headerMap = {}
-    let transactionsRowMap = Object.keys(data).reduce((transactionsMap, key) => {
-        if (key[0] !== METADATA_PREFIX && key[0] != REPORTS_PREFIX) {
-            const headers = data[key][0];
-            const rows = data[key].slice(1);
-            headerMap[key] = headers
-            headerMap[key].push("xirr")
-
-            transactionsMap[key] = rows.map(row => {
-                let obj = {};
-                row.forEach((value, index) => {
-                    obj[headers[index]] = value;
-                });
-                let cashFlows = [
-                    { amount: -obj.Invested, when: obj.Date },
-                    { amount: obj.Current, when: new Date() }
-                ];
-                try{
-                    obj["xirr"] = getXirr(cashFlows)
-                }
-                catch (e){
-                    obj["xirr"] = 0.0
-                }
-                return obj;
-            });
-        }
-        return transactionsMap;
+        return metadataMap;
     }, {});
+}
 
-    return [transactionsRowMap, headerMap];
+function getReportsRowMap(data){
+    return Object.keys(data).reduce((reportsMap, key) => {
+        if (key[0] == REPORTS_PREFIX) {
+            reportsMap[key.slice(1)] = convertToJSON(data[key]);
+        }
+        return reportsMap;
+    }, {});
 }
 
 function getTransactionsColumnMap(data){
@@ -93,44 +113,12 @@ function getTransactionsColumnMap(data){
     }, {});
 }
 
-function getMetadataRowMap(data){
-    return Object.keys(data).reduce((metadataMap, key) => {
-        if (key[0] == METADATA_PREFIX) {
-            metadataMap[key.slice(1)] = convertToJSON(data[key]);
-        }
-        return metadataMap;
-    }, {});
-}
-
-function getReportsRowMap(data){
-    return Object.keys(data).reduce((reportsMap, key) => {
-        if (key[0] == REPORTS_PREFIX) {
-            reportsMap[key.slice(1)] = convertToJSON(data[key]);
-        }
-        return reportsMap;
-    }, {});
-}
-
-function getHeaderMap(data){
-    return Object.keys(data).reduce((headerMap, key) => {
-        if (key[0] != METADATA_PREFIX && key[0] != REPORTS_PREFIX) {
-            headerMap[key] = data[key][0]
-        }
-        return headerMap;
-    }, {});
-}
-
-
 function getProcessedData(data){
-    let [transactionsRowMap, headerMap] = processRowWise(data)
-    let transactionsColumnMap = getTransactionsColumnMap(data)
-    let metadata = getMetadataRowMap(data)
-    let instruments = getInstruments(transactionsRowMap)
-    let reports = getReportsRowMap(data)
+    let [transactionsRowMap, reports, metadata, headerMap, instruments] = processData(data)
     let aggregatedData = getAggregatedData(transactionsRowMap, metadata)
+
     return {
         transactionsRowMap: transactionsRowMap,
-        transactionsColumnMap: transactionsColumnMap,
         metadata: metadata,
         instruments: instruments,
         headerMap: headerMap,
