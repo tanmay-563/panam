@@ -45,9 +45,8 @@ export function formatPercentage(number){
     return (100*number).toFixed(1)+'%'
 }
 
-export function getSortedInstrumentsData(instrumentsAggregatedData, itemLimit){
+export function getMainBoxData(instrumentsAggregatedData, itemLimit){
     try{
-
         const sortedInstruments = Object.keys(instrumentsAggregatedData).map((instrument) => {
             const current = instrumentsAggregatedData[instrument]["current"];
             const invested = instrumentsAggregatedData[instrument]["invested"];

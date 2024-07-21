@@ -2,7 +2,7 @@ import {
     formatPercentage,
     formatToIndianCurrency,
     getDisplayName,
-    getSortedInstrumentsData
+    getMainBoxData
 } from "../../utils/common";
 import DynamicIcons from "../DynamicIcons";
 import React, {useCallback} from "react";
@@ -10,13 +10,13 @@ import {Link} from "react-router-dom";
 
 const MAX_ITEMS = 6
 const MainBox = ({
-                     instruments,
                      metadata,
                      aggregatedData,
+                     reports
 }) => {
     const instrumentsMetadata = metadata?.instrument
     let [overallData, instrumentsData] = aggregatedData
-    instrumentsData = getSortedInstrumentsData(instrumentsData, MAX_ITEMS);
+    let sortedInstruments = getMainBoxData(instrumentsData, MAX_ITEMS);
 
     return (
         <>
@@ -25,8 +25,7 @@ const MainBox = ({
             </div>
             <hr/>
             <div className="box-content">
-
-                <div className="mini-box-totals">
+                <div className="mini-box-totals" title={formatToIndianCurrency(overallData.current, 0, false)}>
                     <h1>
                         {formatToIndianCurrency(overallData.current)}
                     </h1>
@@ -36,8 +35,8 @@ const MainBox = ({
                 </div>
                 <div className="mini-box-container">
                     {Array.from({ length: MAX_ITEMS }).map((_, index) => {
-                        if (index < instrumentsData.length) {
-                            const instrument = instrumentsData[index];
+                        if (sortedInstruments && index < sortedInstruments.length) {
+                            const instrument = sortedInstruments[index];
                             const instrumentId = instrument.instrument;
                             const currentAmount = instrument.current;
                             const differenceAmount = instrument.difference;
@@ -46,43 +45,23 @@ const MainBox = ({
                             const percentageChange = formatPercentage(differenceAmount/currentAmount)
                             return (
                                 <div key = {index}>
-                                    {instruments.includes(instrumentId) ?
-                                        <div className="mini-box">
-                                            <DynamicIcons name={instrumentId} className="icon" />
-                                            <p>
-                                                {getDisplayName(instrumentsMetadata, instrumentId)}
-                                            </p>
-                                            <div className="mini-numbers">
-                                                <h5>
-                                                    {formatToIndianCurrency(currentAmount)}
-                                                </h5>
-                                                {hasZeroDifference ?
-                                                    <h6>-</h6> :
-                                                    <h6 data-prefix={isProfitable ? "\u25B4" : "\u25BE"} className={`${isProfitable ? 'green-color' : 'red-color'}`}>
-                                                        {formatToIndianCurrency(differenceAmount)}
-                                                    </h6>
-                                                }
-                                            </div>
-                                        </div> :
-                                        <div
-                                            className="mini-box">
-                                            <DynamicIcons name={instrumentId} className="icon" />
-                                            <p>
-                                                {getDisplayName(instrumentsMetadata, instrumentId)}
-                                            </p>
-                                            <div className="mini-numbers">
-                                                <h5>
-                                                    {formatToIndianCurrency(currentAmount)}
-                                                </h5>
-                                                {hasZeroDifference ?
-                                                    <h6>-</h6> :
-                                                    <h6 data-prefix={isProfitable ? "\u25B4" : "\u25BE"} className={`${isProfitable ? 'green-color' : 'red-color'}`}>
-                                                        {formatToIndianCurrency(differenceAmount)}
-                                                    </h6>
-                                                }
-                                            </div>
+                                    <div className="mini-box">
+                                        <DynamicIcons name={instrumentId} className="icon" />
+                                        <p>
+                                            {getDisplayName(instrumentsMetadata, instrumentId)}
+                                        </p>
+                                        <div className="mini-numbers">
+                                            <h5>
+                                                {formatToIndianCurrency(currentAmount)}
+                                            </h5>
+                                            {hasZeroDifference ?
+                                                <h6>-</h6> :
+                                                <h6 data-prefix={isProfitable ? "\u25B4" : "\u25BE"} className={`${isProfitable ? 'green-color' : 'red-color'}`}>
+                                                    {formatToIndianCurrency(differenceAmount)}
+                                                </h6>
+                                            }
                                         </div>
-                                    }
+                                    </div>
                                 </div>
                             );
                         }

@@ -40,7 +40,8 @@ const Menu = ({
                                 to={listItem.url}
                                 className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
                                 key={listItem.id}
-                                onClick={() => {handleMenuClick(listItem);}}>
+                                onClick={() => {handleMenuClick(listItem);}}
+                                title={listItem.title}>
                                 <DynamicIcons name={listItem.icon}></DynamicIcons>
                                 <span className="listItemTitle">{listItem.title}</span>
                             </Link>

@@ -17,10 +17,9 @@ const Home = ({
         <div className="home">
             <div className="box box1">
                 <MainBox
-                    instruments={instruments}
                     metadata={metadata}
                     aggregatedData={aggregatedData}
-                    setSelectedMenuItem={setSelectedMenuItem}/>
+                    reports={reports}/>
             </div>
             <div className="box box2">
                 <DetailsBox aggregatedData={aggregatedData} metadata={metadata} instruments={instruments}/>
