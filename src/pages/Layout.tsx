@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import React, {useState} from "react";
 import Loading from "../components/Loading";
 import Add from "../components/add/add";
+import Settings from "../components/Settings";
 
 const Layout = ({ data,
     fetchSheetData,
@@ -18,10 +19,10 @@ const Layout = ({ data,
     loading,
 }) =>{
     const [hamburgerToggle, setHamburgerToggle] = useState(false);
+    const [showSettings, setShowSettings] = useState(false)
 
     const changeHamburgerToggle = () => {
         setHamburgerToggle(prevState => !prevState)
-        console.log(hamburgerToggle)
     }
 
     const handleMenuClick = (value) => {
@@ -41,10 +42,12 @@ const Layout = ({ data,
 
     return (
         <div className="main">
-            <Navbar onRefresh={fetchSheetData}
+            <Navbar
+                    onRefresh={fetchSheetData}
                     openAdd={openAdd}
                     onOpenAdd={setOpenAdd}
-                    hamburgerToggle={hamburgerToggle}
+                    showSettings={showSettings}
+                    onShowSettings={setShowSettings}
                     setHamburgerToggle={changeHamburgerToggle}/>
             <div className="container">
                 <Menu
@@ -74,6 +77,11 @@ const Layout = ({ data,
                     />}
                 </div>
             </div>
+            <Settings
+                data={data}
+                showSettings={showSettings}
+                setShowSettings={setShowSettings}
+            />
             <Footer/>
         </div>
     )

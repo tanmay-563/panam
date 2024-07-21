@@ -19,6 +19,7 @@ function doGet() {
 function fetchData(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let data = {}
+  data["_sheetMetadata"] = getSheetMetadata(ss)
   ss.getSheets().forEach((sheet)=>{
     let sheetName = sheet.getSheetName().toLowerCase()
     data[sheetName]  = sheet.getDataRange().getValues();
@@ -98,4 +99,16 @@ const updateDailyTracker = () =>{
   outputSheet.getRange(lastRow + 1, 1).setValue(new Date());
   outputSheet.getRange(lastRow + 1, 2).setValue(investedTotal);
   outputSheet.getRange(lastRow + 1, 3).setValue(currentTotal);
+}
+
+function getSheetMetadata(spreadsheet){
+  let metadata = [["name", "value"]];
+  metadata.push(["sheetUrl", getSheetUrl(spreadsheet)]);
+  return metadata;
+}
+
+function getSheetUrl(spreadsheet) {
+  let sheet = spreadsheet.getActiveSheet();
+  let sheetId = sheet.getSheetId();
+  return spreadsheet.getUrl() + '#gid=' + sheetId;
 }

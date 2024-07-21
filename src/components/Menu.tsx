@@ -15,7 +15,8 @@ const Menu = ({
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
+            if (menuRef.current && !menuRef.current.contains(event.target) &&
+                event.target.getAttribute('data-testid') != "MenuIcon") {
                 handleMenuClick(selectedMenuItem);
             }
         };

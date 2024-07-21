@@ -29,8 +29,8 @@ function App() {
         }
         else{
             google.script.run.withSuccessHandler((data) => {
+                console.log("data "+ data)
                 setData(getProcessedData(JSON.parse(data, dateReviver)));
-                console.log("data ", data)
                 setLoading(false)
             }).withFailureHandler((error) => {
                 console.error("Error fetching data:", error);

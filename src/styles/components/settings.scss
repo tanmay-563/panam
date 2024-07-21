@@ -1,0 +1,47 @@
+.settings-container{
+  background-color: $soft-bg;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 250px;
+  height: fit-content;
+  padding: 15px;
+  transition: transform 0.2s ease-in-out;
+  border-bottom-left-radius: 30px;
+
+  &.show{
+    transform: translateX(0px);
+  }
+
+  &.hide{
+    transform: translateX(250px);
+  }
+
+  .settings-top-box{
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    border-bottom: 0.5px solid $max-soft;
+    padding-bottom: 5px;
+    align-items: center;
+
+    .back{
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+
+  .settings-content{
+    padding-top: 10px;
+    .sheets-link{
+      color: $soft-color;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .sheets-link-icon{
+        filter: brightness(0) saturate(100%) invert(96%) sepia(0%) saturate(283%) hue-rotate(153deg) brightness(94%) contrast(91%);
+      }
+    }
+  }
+}

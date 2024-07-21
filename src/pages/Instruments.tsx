@@ -147,7 +147,10 @@ const Instruments = ({
         },
         '& .MuiDataGrid-virtualScrollerRenderZone':{
             '--DataGrid-rowBorderColor': 'red',
-        }
+        },
+        '& .MuiDataGrid-columnHeaderCheckbox':{
+            backgroundColor: 'var(--dark-bg)',
+        },
     };
 
     return loading ?
@@ -185,7 +188,7 @@ const Instruments = ({
                 autoHeight={true}
                 getRowClassName={(params) => 'datagrid-row'}
                 disableDensitySelector
-                // checkboxSelection //TODO add selection
+                // checkboxSelection
             />
         </div>);
 };
