@@ -1,46 +1,43 @@
 .settings-container{
-  background-color: $soft-bg;
+  background-color: $primary;
   position: absolute;
-  right: 0;
+  right: 20px;
   top: 0;
-  width: 250px;
+  width: 150px;
   height: fit-content;
   padding: 15px;
   transition: transform 0.2s ease-in-out;
-  border-bottom-left-radius: 30px;
+  box-shadow: -1px 1px 10px black;
+  z-index: 3;
 
   &.show{
-    transform: translateX(0px);
+    transform: translateY(0px);
   }
 
   &.hide{
-    transform: translateX(250px);
-  }
-
-  .settings-top-box{
-    display: flex;
-    justify-content: space-between;
-    height: fit-content;
-    border-bottom: 0.5px solid $max-soft;
-    padding-bottom: 5px;
-    align-items: center;
-
-    .back{
-      cursor: pointer;
-      font-size: 20px;
-    }
+    transform: translateY(-250px);
   }
 
   .settings-content{
     padding-top: 10px;
+    padding-bottom: 10px;
+    width: fit-content;
+
+    div{
+      display: flex;
+      align-items: center;
+    }
+
     .sheets-link{
       color: $soft-color;
       display: flex;
       align-items: center;
       cursor: pointer;
+      padding-left: 5px;
+      font-size: 14px;
 
-      .sheets-link-icon{
-        filter: brightness(0) saturate(100%) invert(96%) sepia(0%) saturate(283%) hue-rotate(153deg) brightness(94%) contrast(91%);
+      &:hover{
+        color: $main-color;
       }
     }
   }

@@ -33,7 +33,11 @@ const Navbar = ({   onRefresh,
             <div className="icons">
                 <AddIcon className="icon" onClick={()=> onOpenAdd(true)}/>
                 <RefreshIcon className="icon" onClick={()=> onRefresh()}/>
-                <SettingsIcon className="icon" onClick={()=> onShowSettings(true)}/>
+                <div className="settings-icon">
+                    <SettingsIcon id="settings-icon" className="icon" onClick={()=> {
+                        onShowSettings(!showSettings)
+                    }}/>
+                </div>
             </div>
 
         </div>

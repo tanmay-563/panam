@@ -1,5 +1,4 @@
 import {useEffect, useRef} from "react";
-import SettingsIcon from "../../public/settings.svg";
 import ExternalLinkIcon from "../../public/external_link.svg";
 
 const Settings = ({   data,
@@ -16,7 +15,9 @@ const Settings = ({   data,
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (settingsRef.current && !settingsRef.current.contains(event.target) ) {
+            let settingsIconElement = document.getElementById("settings-icon");
+            if (settingsRef.current && !settingsRef.current.contains(event.target)
+                && !settingsIconElement.contains(event.target)) {
                 setShowSettings(false);
             }
         };
@@ -29,16 +30,12 @@ const Settings = ({   data,
 
     return (
         <div className={`settings-container ${showSettings ? 'show': 'hide'}`} ref={settingsRef}>
-            <div className="settings-top-box">
-                <SettingsIcon/>
-                <div className="back" onClick={() => setShowSettings(!showSettings)}>
-                    &rarr;
-                </div>
-            </div>
             <div className="settings-content">
-                <div onClick={() => window.open(sheetUrl, "_blank")} className="sheets-link">
-                    Go to sheets
-                    <ExternalLinkIcon className="sheets-link-icon"/>
+                <div>
+                    <ExternalLinkIcon/>
+                    <div onClick={() => window.open(sheetUrl, "_blank")} className="sheets-link">
+                        Open sheets
+                    </div>
                 </div>
             </div>
         </div>

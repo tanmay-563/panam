@@ -172,6 +172,10 @@
             width: 50px;
             color: $soft-color;
 
+            &:hover {
+              color: white;
+            }
+
             &:focus {
               width: fit-content;
             }
@@ -192,7 +196,7 @@
           padding-top: 10px;
 
           &:hover {
-            border-bottom: 0.5px solid $max-soft;
+            color: white;
           }
         }
       }
@@ -206,12 +210,15 @@
         border-bottom: 0.5px solid $max-soft;
         
         .instrument-name{
-          cursor: pointer;
           font-size: 14px;
           height: fit-content;
 
-          &:hover {
-            border-bottom: 0.5px solid $max-soft;
+          &.clickable{
+            cursor: pointer;
+
+            &:hover {
+              color: $soft-color;
+            }
           }
         }
 

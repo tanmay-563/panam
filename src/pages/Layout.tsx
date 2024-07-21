@@ -57,6 +57,11 @@ const Layout = ({ data,
                     handleMenuClick={handleMenuClick}
                     hamburgerToggle={hamburgerToggle}
                 />
+                <Settings
+                    data={data}
+                    showSettings={showSettings}
+                    setShowSettings={setShowSettings}
+                />
                 <div className="content-container">
                     <Outlet/>
                     {loading && <Loading className="loading-overlay"/>}
@@ -77,11 +82,6 @@ const Layout = ({ data,
                     />}
                 </div>
             </div>
-            <Settings
-                data={data}
-                showSettings={showSettings}
-                setShowSettings={setShowSettings}
-            />
             <Footer/>
         </div>
     )

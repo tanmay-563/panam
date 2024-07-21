@@ -52,7 +52,7 @@ const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => 
             </div>
             {Object.keys(data).map((key) => (
                 <div className="instrument" key={key}>
-                    <div className="instrument-name" onClick={() => onChange(key)}>
+                    <div className={`instrument-name ${dataSource === "overall" ? 'clickable': ''}`} onClick={() => onChange(key)}>
                         {getDisplayName(instrumentsMetadata, key)}
                     </div>
                     {   valueTypeIndex == 0 ?
