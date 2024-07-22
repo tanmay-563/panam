@@ -84,33 +84,6 @@ function App() {
                 },
             ],
         },
-        {
-            path: "*",
-            element: <Layout
-                data={data}
-                fetchSheetData={fetchSheetData}
-                setSelectedMenuItem={setSelectedMenuItem}
-                selectedMenuItem={selectedMenuItem}
-                setOpenAdd={setOpenAdd}
-                openAdd={openAdd}
-                setAlertDetails={setAlertDetails}
-                alertDetails={alertDetails}
-                loading={loading}
-            />,
-            children: [
-                {
-                    path: "*",
-                    element: (
-                        <Home
-                            instruments={data?.instruments}
-                            metadata={data?.metadata}
-                            reports={data?.reports}
-                            aggregatedData={data?.aggregatedData}
-                        />
-                    ),
-                },
-            ]
-        }
     ]);
     return (
         <RouterProvider router={router} />

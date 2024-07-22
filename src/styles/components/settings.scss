@@ -23,21 +23,22 @@
     padding-bottom: 10px;
     width: fit-content;
 
-    div{
+    .settings-lineitem{
       display: flex;
       align-items: center;
-    }
+      padding-bottom: 10px;
 
-    .sheets-link{
-      color: $soft-color;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      padding-left: 5px;
-      font-size: 14px;
+      .settings-label{
+        color: $soft-color;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding-left: 5px;
+        font-size: 14px;
 
-      &:hover{
-        color: $main-color;
+        &:hover{
+          color: $main-color;
+        }
       }
     }
   }

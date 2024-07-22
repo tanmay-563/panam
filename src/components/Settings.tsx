@@ -1,5 +1,6 @@
 import {useEffect, useRef} from "react";
 import ExternalLinkIcon from "../../public/external_link.svg";
+import AddIcon from "../../public/add.svg";
 
 const Settings = ({   data,
                       showSettings,
@@ -31,10 +32,16 @@ const Settings = ({   data,
     return (
         <div className={`settings-container ${showSettings ? 'show': 'hide'}`} ref={settingsRef}>
             <div className="settings-content">
-                <div>
+                <div className="settings-lineitem">
                     <ExternalLinkIcon/>
-                    <div onClick={() => window.open(sheetUrl, "_blank")} className="sheets-link">
+                    <div onClick={() => window.open(sheetUrl, "_blank")} className="settings-label">
                         Open sheets
+                    </div>
+                </div>
+                <div className="settings-lineitem">
+                    <AddIcon/>
+                    <div onClick={() => window.open(sheetUrl, "_blank")} className="settings-label">
+                        Add Instrument
                     </div>
                 </div>
             </div>

@@ -25,15 +25,18 @@ const Navbar = ({   onRefresh,
                 </span>
             </div>
             <div className="hamburger" onClick={() => {
-                setHamburgerToggle()
-            }}
+                setHamburgerToggle()}}
             >
                 <MenuIcon/>
             </div>
             <div className="icons">
-                <AddIcon className="icon" onClick={()=> onOpenAdd(true)}/>
-                <RefreshIcon className="icon" onClick={()=> onRefresh()}/>
-                <div id="settings-icon">
+                <div title="AddTransaction transaction">
+                    <AddIcon className="icon" onClick={()=> onOpenAdd(true)}/>
+                </div>
+                <div title="Refresh data">
+                    <RefreshIcon className="icon" onClick={()=> onRefresh()}/>
+                </div>
+                <div id="settings-icon" title="Settings">
                     <SettingsIcon className="icon" onClick={()=> {
                         onShowSettings(!showSettings)
                     }}/>

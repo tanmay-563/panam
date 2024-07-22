@@ -3,8 +3,8 @@ import getXirr from 'xirr';
 /**
  * Adds cashflows to the specified map and updates the current and invested amounts.
  * @param {Object} map - The map to update.
- * @param {number} currentAmount - The current amount to add.
- * @param {number} investedAmount - The invested amount to add.
+ * @param {number} currentAmount - The current amount to addTransactions.
+ * @param {number} investedAmount - The invested amount to addTransactions.
  * @param {Date} date - The date of the transaction.
  * @param {boolean} calculateXirr - Whether to calculate XIRR.
  */
@@ -21,7 +21,7 @@ function updateMap(map, currentAmount, investedAmount, date, calculateXirr) {
  * Adds current cashflows and difference b/w current and invested to the specified map.
  * @param {Object} map - The map to update.
  * @param {string} key - The key to check.
- * @param {number} currentAmount - The current amount to add.
+ * @param {number} currentAmount - The current amount to addTransactions.
  * @param {number} investedAmount - The investedAmount.
  * @param {boolean} calculateXirr - Whether to calculate XIRR.
  */

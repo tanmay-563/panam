@@ -116,6 +116,7 @@ function getTransactionsColumnMap(data){
 function getProcessedData(data){
     let [transactionsRowMap, reports, metadata, headerMap, instruments] = processData(data)
     let aggregatedData = getAggregatedData(transactionsRowMap, metadata)
+    let transactionsColumnMap = getTransactionsColumnMap(data);
 
     return {
         transactionsRowMap: transactionsRowMap,
@@ -124,6 +125,7 @@ function getProcessedData(data){
         headerMap: headerMap,
         reports: reports,
         aggregatedData: aggregatedData,
+        transactionsColumnMap: transactionsColumnMap,
     }
 }
 

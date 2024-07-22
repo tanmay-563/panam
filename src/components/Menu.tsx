@@ -32,10 +32,10 @@ const Menu = ({
     return (
         <div className={`menu-container ${hamburgerToggle ? 'expand': 'collapse'}`}>
             <div className="menu" ref={menuRef}>
-                {menu.map((item) => (
+                {menu && menu.map((item) => (
                     <div className="item" key={item.id}>
                         <span className="title">{item.title}</span>
-                        {item.listItems.map((listItem) => (
+                        {item.listItems && item.listItems.map((listItem) => (
                             <Link
                                 to={listItem.url}
                                 className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
@@ -50,12 +50,13 @@ const Menu = ({
                 ))}
                 <div className="item">
                     <span className="title">Instruments</span>
-                    {instruments?.map((listItem, index) => (
+                    {instruments?.map((listItem, _) => (
                         <Link
                             to={`/transactions/${listItem}`}
                             key={listItem}
                             className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
-                            onClick={() => handleMenuClick(listItem)}>
+                            onClick={() => handleMenuClick(listItem)}
+                            title={getDisplayName(instrumentMetadata, listItem)}>
                             <DynamicIcons name={listItem}></DynamicIcons>
                             <span className="listItemTitle">{getDisplayName(instrumentMetadata, listItem)}</span>
                         </Link>

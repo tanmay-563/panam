@@ -5,7 +5,7 @@ import AlertBox from "../components/AlertBox";
 import Footer from "../components/Footer";
 import React, {useState} from "react";
 import Loading from "../components/Loading";
-import Add from "../components/add/add";
+import AddTransaction from "../components/addTransactions/AddTransaction";
 import Settings from "../components/Settings";
 
 const Layout = ({ data,
@@ -71,7 +71,7 @@ const Layout = ({ data,
                             setAlertDetails={setAlertDetails}
                         />
                     }
-                    {openAdd && <Add
+                    {openAdd && <AddTransaction
                         instruments={data?.instruments}
                         transactionsColumnMap={data?.transactionsColumnMap}
                         selectedMenuItem={selectedMenuItem}

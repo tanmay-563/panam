@@ -69,7 +69,7 @@ const LineGraphBox = ({reports}) => {
             <div className="box-content">
                 <div className="max-amount">
                     Max:
-                    <span>
+                    <span title={formatToIndianCurrency(maxCurrentEntry.current, 0, false)}>
                         {formatToIndianCurrency(maxCurrentEntry.current)}
                     </span>
                     <span>
