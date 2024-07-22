@@ -1,4 +1,14 @@
-import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {
+    CartesianGrid,
+    Legend,
+    Line,
+    LineChart,
+    ReferenceLine,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis,
+    YAxis
+} from "recharts";
 import {capitalizeFirstLetter, formatToIndianCurrency} from "../../utils/common";
 import {timeFormat } from 'd3-time-format';
 import React, {useMemo, useState} from "react";
@@ -7,6 +17,17 @@ import {getFilteredData} from "../../utils/lineGraph.utils";
 const monthFormat = timeFormat('%b %y');
 const dateFormat = timeFormat('%d %b, %y');
 const localStorageKey = "line_graph_granularity"
+
+const formatDate = (timestamp) => {
+    const date = new Date(timestamp);
+
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'short' });
+    const year = date.getFullYear();
+
+    return `${day} ${month}, ${year}`;
+}
+
 const LineGraphBox = ({reports}) => {
     const dailyTracker = reports.dailytracker
     if(!dailyTracker)
@@ -21,7 +42,7 @@ const LineGraphBox = ({reports}) => {
         }
     }, []);
 
-    const filteredData = getFilteredData(dailyTracker, granularity)
+    const [filteredData, maxCurrentEntry] = getFilteredData(dailyTracker, granularity)
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
@@ -46,6 +67,15 @@ const LineGraphBox = ({reports}) => {
             </div>
             <hr/>
             <div className="box-content">
+                <div className="max-amount">
+                    Max:
+                    <span>
+                        {formatToIndianCurrency(maxCurrentEntry.current)}
+                    </span>
+                    <span>
+                        ({formatDate(maxCurrentEntry.date)})
+                    </span>
+                </div>
                 <select
                     value={granularity}
                     className="box-select"

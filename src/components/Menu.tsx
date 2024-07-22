@@ -49,7 +49,7 @@ const Menu = ({
                     </div>
                 ))}
                 <div className="item">
-                    <span className="title">Transactions</span>
+                    <span className="title">Instruments</span>
                     {instruments?.map((listItem, index) => (
                         <Link
                             to={`/transactions/${listItem}`}

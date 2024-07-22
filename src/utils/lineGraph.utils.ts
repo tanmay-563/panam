@@ -1,4 +1,3 @@
-import { timeParse } from 'd3-time-format';
 
 const parseAndSortData = (data) => {
     return data.map(d => ({
@@ -49,6 +48,12 @@ const formatDataForRecharts = (data) => {
     }));
 };
 
+const findMaxEntry = (data, key) => {
+    return data.reduce((maxEntry, currentEntry) => {
+        return currentEntry[key] > (maxEntry[key] || 0) ? currentEntry : maxEntry;
+    }, {});
+};
+
 
 export function getFilteredData(dailyTracker, granularity){
     try{
@@ -57,16 +62,18 @@ export function getFilteredData(dailyTracker, granularity){
             current: d.Current,
             invested: d.Invested,
         }));
+        const maxCurrentEntry = findMaxEntry(formattedReport, 'current');
 
         const parsedData = parseAndSortData(formattedReport);
         const groupedData = groupData(parsedData, granularity);
         const threshold = 1;
         let filteredData = filterByEntriesCount(groupedData, threshold);
+        let formattedData = formatDataForRecharts(filteredData);
 
-        return formatDataForRecharts(filteredData);
+        return [formattedData, maxCurrentEntry];
     }
     catch (e){
         console.error(e)
-        return {}
+        return []
     }
 }
