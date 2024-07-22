@@ -1,0 +1,33 @@
+.add-instrument{
+  padding: 10px;
+
+  .form{
+    padding: 10px;
+
+    .form-field{
+      display: flex;
+      padding: 10px;
+      height: 50px;
+      border-bottom: 0.5px solid $max-soft;
+
+      .field-label{
+        width: 150px;
+        margin-right: 50px;
+      }
+
+      .field-value{
+        display: flex;
+        flex-direction: column;
+
+        .helper-text{
+          font-size: 12px;
+        }
+
+        .error-text{
+          font-size: 12px;
+          color: red;
+        }
+      }
+    }
+  }
+}

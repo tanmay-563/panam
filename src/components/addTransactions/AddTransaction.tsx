@@ -76,6 +76,7 @@ const AddTransaction = ({
             }, 1500);
         } else {
             setLoading(true);
+            // @ts-ignore
             google.script.run
                 .withSuccessHandler(successHandler)
                 .withFailureHandler(errorHandler)

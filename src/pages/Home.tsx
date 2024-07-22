@@ -8,7 +8,6 @@ const Home = ({
                     metadata,
                     reports,
                     aggregatedData,
-                    setSelectedMenuItem,
 }) => {
     if(!instruments)
         return <div></div>

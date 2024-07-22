@@ -9,6 +9,7 @@ import {devData} from "./devdata.js";
 import getProcessedData from "./utils/dataProcessor";
 import {dateReviver} from "./utils/common";
 import Layout from "./pages/Layout";
+import AddInstrument from "./pages/AddInstrument";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -28,6 +29,7 @@ function App() {
             setTimeout(() => setLoading(false), 500)
         }
         else{
+            // @ts-ignore
             google.script.run.withSuccessHandler((data) => {
                 console.log("data "+ data)
                 setData(getProcessedData(JSON.parse(data, dateReviver)));
@@ -81,6 +83,10 @@ function App() {
                         instrument={selectedMenuItem}
                         setSelectedMenuItem={setSelectedMenuItem}
                     />,
+                },
+                {
+                    path: "add/instrument",
+                    element: <AddInstrument/>,
                 },
             ],
         },
