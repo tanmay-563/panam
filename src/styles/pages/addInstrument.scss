@@ -1,33 +1,76 @@
 .add-instrument{
   padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+
+  .add-instrument-title{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: $soft-color;
+    font-size: 28px;
+    font-variant: all-petite-caps;
+  }
 
   .form{
-    padding: 10px;
+    flex: 1;
+    background-color: $soft-bg;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: auto;
+
+    .form-top{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      border-bottom: 0.5px solid $max-soft;
+      padding-bottom: 15px;
+    }
 
     .form-field{
       display: flex;
       padding: 10px;
-      height: 50px;
-      border-bottom: 0.5px solid $max-soft;
+      height: 90px;
+      flex-direction: column;
+      justify-content: end;
+      position: relative;;
 
-      .field-label{
-        width: 150px;
-        margin-right: 50px;
+      .error-text{
+        font-size: 12px;
+        color: red;
+        padding-bottom: 5px;
+        position: absolute;
+        margin-right: -50px;
+        bottom: -10px;
       }
 
-      .field-value{
+      .boolean-field-label{
+        color: $soft-color;
+        font-weight: lighter;
+      }
+
+      span{
         display: flex;
-        flex-direction: column;
+        align-items: center;
 
-        .helper-text{
-          font-size: 12px;
-        }
-
-        .error-text{
-          font-size: 12px;
-          color: red;
+        label{
+          font-size: 14px;
         }
       }
+
+      .select-field{
+        display: flex;
+      }
+    }
+
+    .submit{
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
     }
   }
 }
