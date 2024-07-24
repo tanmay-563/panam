@@ -313,23 +313,73 @@
 .box4{
   padding-left: 0 !important;
 
-  .max-amount{
-    padding-left: 20px;
-    font-size: 14px;
-    color: $soft-color;
-    align-items: center;
+  .box-top{
     display: flex;
+    justify-content: space-between;
 
-    span{
-      &:first-child{
-        margin-left: 5px;
+    .max-amount{
+      padding-left: 20px;
+      font-size: 14px;
+      color: $soft-color;
+      align-items: baseline;
+      display: flex;
+
+      @include lg{
+        flex-direction: column;
       }
 
-      &:last-child{
-        font-size: 12px;
-        color: $ultra-soft;
+      div{
+        display: flex;
+        flex-direction: column;
+
+        span{
+          &:first-child{
+            margin-left: 5px;
+
+            @include lg{
+              margin-left: 0;
+            }
+
+          }
+
+          &:last-child{
+            font-size: 12px;
+            color: $ultra-soft;
+          }
+        }
       }
     }
+
+    .range-picker{
+      display: flex;
+
+      .datepicker-field{
+        width: 120px;
+        color: $ultra-soft;
+        border-color: red;
+
+        label{
+          color: $ultra-soft;
+        }
+
+        input{
+          color: $soft-color;
+          font-size: 12px;
+        }
+
+        fieldset{
+          border-color: $ultra-soft !important;
+          &:hover{
+            border-color: white !important;
+          }
+        }
+      }
+    }
+  }
+
+  .linegraph-select{
+    bottom: 0;
+    top: auto !important;
   }
 
   .linegraph-box{

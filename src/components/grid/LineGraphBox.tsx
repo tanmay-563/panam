@@ -3,7 +3,6 @@ import {
     Legend,
     Line,
     LineChart,
-    ReferenceLine,
     ResponsiveContainer,
     Tooltip,
     XAxis,
@@ -11,21 +10,33 @@ import {
 } from "recharts";
 import {capitalizeFirstLetter, formatToIndianCurrency} from "../../utils/common";
 import {timeFormat } from 'd3-time-format';
-import React, {useMemo, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {getFilteredData} from "../../utils/lineGraph.utils";
+import TextField from "@mui/material/TextField";
 
 const monthFormat = timeFormat('%b %y');
-const dateFormat = timeFormat('%d %b, %y');
+const dateFormatForDisplay = timeFormat('%d %b, %y');
+const formatDateForInput = timeFormat('%Y-%m-%d');
 const localStorageKey = "line_graph_granularity"
 
-const formatDate = (timestamp) => {
-    const date = new Date(timestamp);
-
-    const day = date.getDate();
-    const month = date.toLocaleString('default', { month: 'short' });
-    const year = date.getFullYear();
-
-    return `${day} ${month}, ${year}`;
+const DatePicker = ({label, date, setDate}) => {
+    return (
+        <TextField
+            label={label}
+            type="date"
+            className="datepicker-field"
+            size="small"
+            value={formatDateForInput(date)}
+            onChange={(event) => {
+                setDate(new Date(event.target.value));
+            }}
+            sx={{
+                '& input[type="date"]::-webkit-calendar-picker-indicator': {
+                    filter: 'invert(1)'
+                },
+            }}
+        />
+    )
 }
 
 const LineGraphBox = ({reports}) => {
@@ -33,7 +44,11 @@ const LineGraphBox = ({reports}) => {
     if(!dailyTracker)
         return <div>Daily tracker data missing</div>
 
+    dailyTracker.sort((a, b) => a.date - b.date);
+
     const [granularity, setGranularity] = useState('weekly')
+    const [startDate, setStartDate] = useState(new Date("2010-01-01"));
+    const [endDate, setEndDate] = useState(new Date());
 
     useMemo(() => {
         const savedGranularity = localStorage.getItem(localStorageKey);
@@ -42,13 +57,20 @@ const LineGraphBox = ({reports}) => {
         }
     }, []);
 
-    const [filteredData, maxCurrentEntry] = getFilteredData(dailyTracker, granularity)
+    useEffect(()=>{
+        if(dailyTracker.length && dailyTracker[0].Date &&
+            Object.prototype.toString.call(dailyTracker[0].Date) === '[object Date]'){
+            setStartDate(dailyTracker[0].Date)
+        }
+    }, [dailyTracker])
+
+    const [filteredData, maxCurrentEntry] = getFilteredData(dailyTracker, granularity, startDate, endDate)
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             return (
                 <div className="tooltip-container">
-                    <p className="tooltip-label">{dateFormat(label)}</p>
+                    <p className="tooltip-label">{dateFormatForDisplay(label)}</p>
                     <p className="tooltip-value-container">
                         <span className="tooltip-value-first">{formatToIndianCurrency(payload[0].value, 2,false)}</span>
                     </p>
@@ -67,27 +89,31 @@ const LineGraphBox = ({reports}) => {
             </div>
             <hr/>
             <div className="box-content">
-                <div className="max-amount">
-                    Max:
-                    <span title={formatToIndianCurrency(maxCurrentEntry.current, 0, false)}>
-                        {formatToIndianCurrency(maxCurrentEntry.current)}
-                    </span>
-                    <span>
-                        ({formatDate(maxCurrentEntry.date)})
-                    </span>
+                <div className="box-top">
+                    <div className="max-amount">
+                        Max:
+                        <div>
+                            <span title={formatToIndianCurrency(maxCurrentEntry.current, 0, false)}>
+                                {formatToIndianCurrency(maxCurrentEntry.current)}
+                            </span>
+                                <span>
+                                ({dateFormatForDisplay(maxCurrentEntry.date)})
+                            </span>
+                        </div>
+                    </div>
+                    <div className="range-picker">
+                        <DatePicker
+                            label="Start Date"
+                            date={startDate}
+                            setDate={setStartDate}
+                        />
+                        <DatePicker
+                            label="End Date"
+                            date={endDate}
+                            setDate={setEndDate}
+                        />
+                    </div>
                 </div>
-                <select
-                    value={granularity}
-                    className="box-select"
-                    onChange={(e) => {
-                        setGranularity(e.target.value);
-                        localStorage.setItem(localStorageKey, e.target.value);
-                    }}>
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                </select>
                 <ResponsiveContainer width={'99%'} height={270} className="linegraph-box">
                     <LineChart
                         width={500}
@@ -101,7 +127,7 @@ const LineGraphBox = ({reports}) => {
                             type="number"
                             domain={['dataMin', 'dataMax']}
                             tickLine={false}
-                            tickFormatter={(tick) => monthFormat(new Date(tick))}
+                            tickFormatter={(tick) => dateFormatForDisplay(new Date(tick))}
                             tick={{ fontSize: 12, fill: 'var(--ultra-soft-color)', fontFamily: 'Inter, sans-serif' }}
                             minTickGap={50}/>
                         <YAxis tickFormatter={(value) => { return formatToIndianCurrency(value, 0, true);}}
@@ -120,6 +146,18 @@ const LineGraphBox = ({reports}) => {
                         <Line type="monotone" dataKey="invested" stroke="var(--ternary)" dot={false} strokeWidth={2}/>
                     </LineChart>
                 </ResponsiveContainer>
+                <select
+                    value={granularity}
+                    className="linegraph-select box-select"
+                    onChange={(e) => {
+                        setGranularity(e.target.value);
+                        localStorage.setItem(localStorageKey, e.target.value);
+                    }}>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
             </div>
         </>
     )

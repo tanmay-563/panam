@@ -1,9 +1,9 @@
 
-const parseAndSortData = (data) => {
+const parseData = (data) => {
     return data.map(d => ({
         ...d,
         date: new Date(d.date),
-    })).sort((a, b) => a.date - b.date);
+    }));
 };
 
 const groupData = (data, granularity) => {
@@ -55,16 +55,18 @@ const findMaxEntry = (data, key) => {
 };
 
 
-export function getFilteredData(dailyTracker, granularity){
+export function getFilteredData(dailyTracker, granularity, startDate, endDate){
     try{
-        const formattedReport = dailyTracker.map(d => ({
+        const formattedReport = dailyTracker
+            .filter(d => d.Date >= startDate && d.Date <= endDate)
+            .map(d => ({
             date: d.Date.getTime(),
             current: d.Current,
             invested: d.Invested,
         }));
         const maxCurrentEntry = findMaxEntry(formattedReport, 'current');
 
-        const parsedData = parseAndSortData(formattedReport);
+        const parsedData = parseData(formattedReport);
         const groupedData = groupData(parsedData, granularity);
         const threshold = 1;
         let filteredData = filterByEntriesCount(groupedData, threshold);

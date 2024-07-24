@@ -18,13 +18,18 @@ const truncateNumber = (number, decimalCount = 2) => {
     return `${(number / 10000000).toFixed(decimalCount)}Cr`;
 };
 
-function formatNumberWithLocale(number, symbol = '', decimalCount = 2) {
-    const fixedNumber = number.toFixed(decimalCount);
-    const parts = fixedNumber.split('.');
-    const integerPart = Number(parts[0]).toLocaleString('en-IN');
-    const decimalPart = parts[1];
+function formatNumberWithLocale(number, symbol = '', decimalCount = 2){
+    try{
+        const fixedNumber = number.toFixed(decimalCount);
+        const parts = fixedNumber.split('.');
+        const integerPart = Number(parts[0]).toLocaleString('en-IN');
+        const decimalPart = parts[1];
 
-    return `${symbol}${integerPart} ${decimalCount > 0 ? '.'+decimalPart : ''}`;
+        return `${symbol}${integerPart} ${decimalCount > 0 ? '.'+decimalPart : ''}`;
+    }
+    catch (e){
+        return 0;
+    }
 }
 
 export function formatToIndianCurrency(number, decimalCount = 2, truncate = true) {
@@ -36,13 +41,18 @@ export function formatToIndianCurrency(number, decimalCount = 2, truncate = true
             : `${formatNumberWithLocale(number, symbol, decimalCount)}`;
     }
     catch (e){
-        return value;
+        return 0;
     }
     return value;
 }
 
 export function formatPercentage(number){
-    return (100*number).toFixed(1)+'%'
+    try {
+        return (100 * number).toFixed(1) + '%'
+    }
+    catch (e){
+        return 0 + '%';
+    }
 }
 
 export function getMainBoxData(instrumentsAggregatedData, itemLimit){
