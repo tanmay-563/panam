@@ -24,7 +24,7 @@ function App() {
         setLoading(true);
         if (process.env.NODE_ENV == "development"){
             let data = JSON.parse(devData, dateReviver);
-            // console.log(data)
+            console.log(data)
             setData(getProcessedData(data));
             setTimeout(() => setLoading(false), 500)
         }
@@ -86,7 +86,8 @@ function App() {
                 },
                 {
                     path: "add/instrument",
-                    element: <AddInstrument/>,
+                    element: <AddInstrument
+                                metadata={data?.metadata}/>,
                 },
             ],
         },

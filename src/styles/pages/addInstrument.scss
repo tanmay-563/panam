@@ -31,13 +31,32 @@
       padding-bottom: 15px;
     }
 
+    .form-fields{
+      padding-top: 15px;
+
+      h4{
+        font-weight: normal;
+        color: $soft-color;
+      }
+
+      p{
+        color: $ultra-soft;
+        font-size: 10px;
+      }
+    }
+
     .form-field{
       display: flex;
       padding: 10px;
       height: 90px;
       flex-direction: column;
       justify-content: end;
-      position: relative;;
+      position: relative;
+      width: 200px;
+
+      @include lg{
+        width: 120px;
+      }
 
       .error-text{
         font-size: 12px;
@@ -59,11 +78,46 @@
 
         label{
           font-size: 14px;
+          width: 100%;
         }
       }
 
-      .select-field{
-        display: flex;
+      .select-container{
+        position: relative;
+        display: inline-block;
+        width: 100%;
+
+        &::after{
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          width: 0;
+          height: 0;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-top: 6px solid $soft-color;
+          pointer-events: none;
+          transform: translateY(-50%);
+        }
+
+        .select{
+          width: 100%;
+          padding: 10px 40px 10px 10px;
+          border: 1px solid $max-soft;
+          border-radius: 4px;
+          appearance: none;
+          font-size: 16px;
+          color: $soft-color;
+          cursor: pointer;
+          background-color: transparent;
+
+          &:hover{
+            outline: none;
+            border-color: $soft-color;
+            box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+          }
+        }
       }
     }
 

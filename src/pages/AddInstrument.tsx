@@ -22,10 +22,10 @@ const MuiTextField = ({ field, form, ...props }) => {
             autoComplete='off'
             sx={{
                 borderRadius: '5px',
-                width: '200px',
+                width: '100%',
                 '& .MuiOutlinedInput-root': {
                     '& fieldset':{
-                        borderColor: 'var(--ultra-soft-color)'
+                        borderColor: 'var(--max-soft-color)'
                     },
                     '&:hover fieldset': {
                         borderColor: 'var(--soft-color)'
@@ -45,10 +45,29 @@ const MuiTextField = ({ field, form, ...props }) => {
         />;
 };
 
-const AddInstrument = ({}) => {
+const AddInstrument = ({metadata}) => {
+    if(!metadata)
+        return <div></div>
+    let sheetMetadata = metadata.sheet
+    try{
+        sheetMetadata = sheetMetadata.filter((item) => item.Key.toLowerCase() == "datatypeselectoptions")[0].Value.split(",");
+    }
+    catch (e){
+        sheetMetadata = ['text']
+    }
+
     const initialValues = {
         name: '',
-        email: '',
+        label: '',
+        calculateXirr: true,
+        iconUrl: '',
+        fields: [
+            {
+                name: '',
+                dataType: sheetMetadata[0],
+                isAutomated: false,
+            }
+        ]
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
@@ -91,7 +110,6 @@ const AddInstrument = ({}) => {
                                        }}/>
                                 <ErrorMessage name="label" component="div" className="error-text"/>
                             </div>
-
                             <div className="form-field">
                                 <span>
                                     <InputLabel className="boolean-field-label">Calculate XIRR</InputLabel>
@@ -103,32 +121,12 @@ const AddInstrument = ({}) => {
                                         </Tooltip>
                                     </FormHelperText>
                                 </span>
-                                <Select
-                                    label="Calculate XIRR"
-                                    name="booleanField"
-                                    value={values.booleanField || "true"}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    size="small"
-                                    sx={{
-                                        width: "200px",
-                                        '& .MuiSelect-select': {
-                                            color: 'var(--soft-color)',
-                                        },
-                                        '& .MuiOutlinedInput-notchedOutline': {
-                                            borderColor: 'var(--ultra-soft-color)',
-                                        },
-                                        '&:hover .MuiOutlinedInput-notchedOutline': {
-                                            borderColor: 'var(--soft-color)',
-                                        },
-                                        '& .MuiSvgIcon-root': {
-                                            color: 'var(--soft-color)',
-                                        }
-                                    }}
-                                >
-                                    <MenuItem value="true">True</MenuItem>
-                                    <MenuItem value="false">False</MenuItem>
-                                </Select>
+                                <div className="select-container">
+                                    <Field as="select" name="calculateXirr" className="select">
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </Field>
+                                </div>
                             </div>
 
                             <div className="form-field">
@@ -146,7 +144,12 @@ const AddInstrument = ({}) => {
                                        }}/>
                                 <ErrorMessage name="iconUrl" component="div" className="error-text"/>
                             </div>
-
+                        </div>
+                        <div className="form-fields">
+                            <h4>
+                                Fields
+                            </h4>
+                            <p>Note: The fields "Name," "Date," "Invested," and "Current" are mandatory fields that are added by default.</p>
                         </div>
 
                         <button type="submit" disabled={isSubmitting} className="submit">

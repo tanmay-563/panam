@@ -7,3 +7,4 @@ index.html
 .clasp.json
 dist
 .DS_Store
+./src/devdata.js

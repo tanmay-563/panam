@@ -7,10 +7,10 @@ const Settings = ({   data,
                       showSettings,
                       setShowSettings
 }) => {
-    const sheetMetadata = data?.metadata?.sheetMetadata;
+    const sheetMetadata = data?.metadata?.sheet;
     let sheetUrl = "";
     try{
-        sheetUrl = sheetMetadata.filter((item) => item.name = "sheetUrl")[0].value
+        sheetUrl = sheetMetadata.filter((item) => item.Key.toLowerCase() == "sheeturl")[0].Value
     }
     catch (e){}
     const settingsRef = useRef(null);

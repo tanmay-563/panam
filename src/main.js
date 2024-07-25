@@ -19,10 +19,12 @@ function doGet() {
 function fetchData(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let data = {}
-  data["_sheetMetadata"] = getSheetMetadata(ss)
   ss.getSheets().forEach((sheet)=>{
     let sheetName = sheet.getSheetName().toLowerCase()
     data[sheetName]  = sheet.getDataRange().getValues();
+    if(sheetName === "_sheet"){
+      data[sheetName].push(["sheetUrl", getSheetUrl(ss, sheet)]);
+    }
   })
   return JSON.stringify(data)
 }
@@ -101,14 +103,7 @@ const updateDailyTracker = () =>{
   outputSheet.getRange(lastRow + 1, 3).setValue(currentTotal);
 }
 
-function getSheetMetadata(spreadsheet){
-  let metadata = [["name", "value"]];
-  metadata.push(["sheetUrl", getSheetUrl(spreadsheet)]);
-  return metadata;
-}
-
-function getSheetUrl(spreadsheet) {
-  let sheet = spreadsheet.getActiveSheet();
+function getSheetUrl(spreadsheet, sheet) {
   let sheetId = sheet.getSheetId();
   return spreadsheet.getUrl() + '#gid=' + sheetId;
 }
