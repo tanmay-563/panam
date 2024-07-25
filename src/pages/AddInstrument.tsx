@@ -1,9 +1,10 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {Formik, Form, Field, ErrorMessage, FieldArray} from 'formik';
 import * as Yup from 'yup';
 import TextField from "@mui/material/TextField";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {FormHelperText, IconButton, InputAdornment, InputLabel, MenuItem, Select, Tooltip} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase English alphabets allowed').required('Name is required'),
@@ -48,12 +49,13 @@ const MuiTextField = ({ field, form, ...props }) => {
 const AddInstrument = ({metadata}) => {
     if(!metadata)
         return <div></div>
-    let sheetMetadata = metadata.sheet
+    const sheetMetadata = metadata.sheet
+    let dataTypeOptions = []
     try{
-        sheetMetadata = sheetMetadata.filter((item) => item.Key.toLowerCase() == "datatypeselectoptions")[0].Value.split(",");
+        dataTypeOptions = sheetMetadata.filter((item) => item.Key.toLowerCase() == "datatypeselectoptions")[0].Value.split(",");
     }
     catch (e){
-        sheetMetadata = ['text']
+        dataTypeOptions = ['text']
     }
 
     const initialValues = {
@@ -68,6 +70,22 @@ const AddInstrument = ({metadata}) => {
                 isAutomated: false,
             }
         ]
+    };
+
+    const removeField = (i, values, setValues) => {
+        const fields = [...values.fields];
+        fields.splice(i, 1);
+        setValues({ ...values, fields });
+    };
+
+    const addField = (values, setValues) => {
+        const fields = [...values.fields];
+        fields.push({
+            name: '',
+            dataType: sheetMetadata[0],
+            isAutomated: false,
+        });
+        setValues({ ...values, fields });
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
@@ -87,7 +105,7 @@ const AddInstrument = ({metadata}) => {
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
-                {({ values, handleChange, handleBlur, isSubmitting }) => (
+                {({ values, setValues, handleChange, handleBlur, isSubmitting }) => (
                     <Form className="form">
                         <div className="form-top">
                             <div className="form-field">
@@ -111,21 +129,25 @@ const AddInstrument = ({metadata}) => {
                                 <ErrorMessage name="label" component="div" className="error-text"/>
                             </div>
                             <div className="form-field">
-                                <span>
-                                    <InputLabel className="boolean-field-label">Calculate XIRR</InputLabel>
-                                    <FormHelperText sx={{ display: 'flex', alignItems: 'center' }}>
-                                        <Tooltip title="Set to true if XIRR should be calculated for this instrument.">
-                                            <IconButton>
-                                                <HelpOutlineIcon sx={{ color: 'var(--ultra-soft-color)', fontSize: "16px"}}/>
-                                            </IconButton>
-                                        </Tooltip>
-                                    </FormHelperText>
-                                </span>
                                 <div className="select-container">
-                                    <Field as="select" name="calculateXirr" className="select">
-                                        <option value="true">True</option>
-                                        <option value="false">False</option>
-                                    </Field>
+                                    <div className="select-label-container">
+                                        <span>
+                                            <InputLabel className="select-label">Calculate XIRR</InputLabel>
+                                            <FormHelperText sx={{ display: 'flex', alignItems: 'center' }}>
+                                                <Tooltip title="Set to true if XIRR should be calculated for this instrument.">
+                                                    <IconButton>
+                                                        <HelpOutlineIcon sx={{ color: 'var(--ultra-soft-color)', fontSize: "16px"}}/>
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </FormHelperText>
+                                        </span>
+                                    </div>
+                                    <div className="select-field">
+                                        <Field as="select" name="calculateXirr" className="select">
+                                            <option value="true">True</option>
+                                            <option value="false">False</option>
+                                        </Field>
+                                    </div>
                                 </div>
                             </div>
 
@@ -145,11 +167,69 @@ const AddInstrument = ({metadata}) => {
                                 <ErrorMessage name="iconUrl" component="div" className="error-text"/>
                             </div>
                         </div>
+
                         <div className="form-fields">
                             <h4>
                                 Fields
                             </h4>
                             <p>Note: The fields "Name," "Date," "Invested," and "Current" are mandatory fields that are added by default.</p>
+
+                            <FieldArray name="info">
+                                {() =>
+                                    values.fields.map((item, i) => {
+                                        return (
+                                            <div key={i}>
+                                                {values.fields.length > 1 && (
+                                                    <button
+                                                        className="pointer"
+                                                        onClick={() => removeField(i, values, setValues)}
+                                                    >
+                                                        <CloseIcon />
+                                                    </button>
+                                                )}
+
+                                                <div className="fields-item">
+                                                    <Field component={MuiTextField} type="text" name={`fields.${i}.name`} size="small" label="Name"/>
+                                                    <ErrorMessage name={`fields.${i}.name`} component="div" className="error-text"/>
+                                                    <div className="select-container">
+                                                        <div className="select-label-container">
+                                                            <InputLabel className="select-label">Is Automated</InputLabel>
+                                                        </div>
+                                                        <div className="select-field">
+                                                            <Field as="select" name={`fields.${i}.isAutomated`} className="select">
+                                                                <option value="true">True</option>
+                                                                <option value="false">False</option>
+                                                            </Field>
+                                                        </div>
+                                                    </div>
+                                                    <div className="select-container">
+                                                        <div className="select-label-container">
+                                                            <InputLabel className="select-label">Data Type</InputLabel>
+                                                        </div>
+                                                        <div className="select-field">
+                                                            <Field as="select" name={`fields.${i}.datatType`} className="select">
+                                                                {dataTypeOptions.map((item) => (
+                                                                    <option key={item} value={item}>
+                                                                        {item}
+                                                                    </option>
+                                                                ))}
+                                                            </Field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                }
+                            </FieldArray>
+                            <button
+                                style={{ margin: "25px 10px 10px 0" }}
+                                className="pointer"
+                                type="button"
+                                onClick={(e) => addField(values, setValues)}
+                            >
+                                Click to add information
+                            </button>
                         </div>
 
                         <button type="submit" disabled={isSubmitting} className="submit">

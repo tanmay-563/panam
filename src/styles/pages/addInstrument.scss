@@ -43,6 +43,11 @@
         color: $ultra-soft;
         font-size: 10px;
       }
+
+      .fields-item{
+        display: flex;
+        align-items: end;
+      }
     }
 
     .form-field{
@@ -67,11 +72,6 @@
         bottom: -10px;
       }
 
-      .boolean-field-label{
-        color: $soft-color;
-        font-weight: lighter;
-      }
-
       span{
         display: flex;
         align-items: center;
@@ -81,50 +81,58 @@
           width: 100%;
         }
       }
-
-      .select-container{
-        position: relative;
-        display: inline-block;
-        width: 100%;
-
-        &::after{
-          content: '';
-          position: absolute;
-          top: 50%;
-          right: 10px;
-          width: 0;
-          height: 0;
-          border-left: 6px solid transparent;
-          border-right: 6px solid transparent;
-          border-top: 6px solid $soft-color;
-          pointer-events: none;
-          transform: translateY(-50%);
-        }
-
-        .select{
-          width: 100%;
-          padding: 10px 40px 10px 10px;
-          border: 1px solid $max-soft;
-          border-radius: 4px;
-          appearance: none;
-          font-size: 16px;
-          color: $soft-color;
-          cursor: pointer;
-          background-color: transparent;
-
-          &:hover{
-            outline: none;
-            border-color: $soft-color;
-            box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
-          }
-        }
-      }
     }
 
     .submit{
       position: absolute;
       bottom: 10px;
       left: 50%;
+    }
+  }
+}
+
+.select-container{
+  .select-label{
+    color: $soft-color;
+    font-weight: lighter;
+  }
+
+  .select-field{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    align-items: end;
+
+    &::after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid $soft-color;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .select{
+      width: 100%;
+      padding: 10px 40px 10px 10px;
+      border: 1px solid $max-soft;
+      border-radius: 4px;
+      appearance: none;
+      font-size: 16px;
+      color: $soft-color;
+      cursor: pointer;
+      background-color: transparent;
+
+      &:hover{
+        outline: none;
+        border-color: $soft-color;
+        box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+      }
     }
   }
 }
