@@ -8,7 +8,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ErrorFocus from "../components/external/ErrorFocus"
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase English alphabets allowed').required('Name is required'),
+    name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase english alphabets allowed').required('Name is required'),
     label: Yup.string().required("Label is required"),
     iconUrl: Yup.string().matches(
         /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
@@ -86,11 +86,16 @@ const AddInstrument = ({metadata}) => {
     };
 
     const handleSubmit = (values, { setSubmitting }) => {
-        setTimeout(() => {
-            console.log('Form submitted:', values);
-            setSubmitting(false);
-        }, 400);
-    };
+        if (process.env.NODE_ENV == "development"){
+            setTimeout(() => {
+                console.log('Form submitted:', values);
+                setSubmitting(false);
+            }, 400);
+        }
+        else{
+
+        }
+    }
 
     return (
         <div className="add-instrument">

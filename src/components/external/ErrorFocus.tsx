@@ -22,6 +22,7 @@ class ErrorFocus extends React.Component {
             const selector = `[id="${selectorKey}"], [name="${selectorKey}"] `;
             const errorElement = document.querySelector(selector);
             if(errorElement){
+                // @ts-ignore
                 errorElement.focus();
             }
         }
@@ -30,4 +31,5 @@ class ErrorFocus extends React.Component {
         return null;
     }
 }
+// @ts-ignore
 export default connect(ErrorFocus);
