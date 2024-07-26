@@ -50,19 +50,6 @@ function updateInstrumentMetadata(data, sheet){
   try{
     let headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
 
-    if(checkValueExistsInColumn(sheet, "Name", data.name) || SpreadsheetApp.getActiveSpreadsheet().getSheetByName(data.name)){
-      return {
-        statusCode: 400,
-        status: "Instrument with same name already exists",
-      }
-    }
-    if(checkValueExistsInColumn(sheet, "Label", data.label)){
-      return {
-        statusCode: 400,
-        status: "Instrument with same label already exists",
-      }
-    }
-
     let newInstrumentRow = headers.map(header => {
       let key = Object.keys(data).find(key => key.toLowerCase() === header.toLowerCase())
       if (key) {
@@ -88,7 +75,7 @@ function updateInstrumentMetadata(data, sheet){
   }
 }
 
-function updateColumnMetadata(data, columnSheet, instrumentSheet){
+function updateColumnMetadata(data, columnSheet){
   try{
     let lastRow = columnSheet.getLastRow();
     columnSheet.appendRow([lastRow++, "id", data.name, true, "int"])
@@ -98,7 +85,7 @@ function updateColumnMetadata(data, columnSheet, instrumentSheet){
 
     if(data.hasOwnProperty("fields")){
       data.fields.forEach((field)=>{
-        if(field.name != ""){
+        if(field.name !== ""){
           columnSheet.appendRow([lastRow++, field.name, data.name, field.isAutomated, field.dataType])
         }
       })
@@ -117,17 +104,22 @@ function updateColumnMetadata(data, columnSheet, instrumentSheet){
   }
 }
 
-function addInstrumentSheet(data, columnSheet, instrumentSheet){
+function addInstrumentSheet(data){
   try{
     let ss = SpreadsheetApp.getActiveSpreadsheet();
     let newSheet = ss.insertSheet();
     newSheet.setName(data.name)
 
     let headerRow = ["id", "Name", "Invested"]
-    headerRow.push(...data.fields.map(item => item.name));
+    if(data.fields){
+      headerRow.push(...data.fields
+          .map(item => item.name)
+          .filter(name => name && name.trim() !== ""));
+    }
     headerRow.push("Current")
 
     newSheet.appendRow(headerRow);
+
     return {
       statusCode: 200,
       status: "Success",
@@ -149,43 +141,53 @@ function addInstrument(data){
     }
   }
 
-  let instrumentMetadataSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("_instrument");
-  let columnMetadataSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("_column");
+  try{
+    let instrumentMetadataSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("_instrument");
+    let columnMetadataSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("_column");
 
-  let resp = updateInstrumentMetadata(data, instrumentMetadataSheet);
-  if(resp.statusCode !== 200){
-    return resp;
-  }
-  resp = updateColumnMetadata(data, columnMetadataSheet, instrumentMetadataSheet);
-  if(resp.statusCode !== 200){
-    return resp;
-  }
-  resp = addInstrumentSheet(data, columnMetadataSheet, instrumentMetadataSheet);
-  if(resp.statusCode !== 200){
-    return resp;
-  }
-
-  return{
-    statusCode: 200,
-    status: "Success",
-  }
-}
-
-function test(){
-  data = {
-    "name": "test",
-    "label": "Test",
-    "calculateXirr": true,
-    "iconUrl": "",
-    "fields": [
-      {
-        "name": "when",
-        "dataType": "date",
-        "isAutomated": false
+    if(checkValueExistsInColumn(instrumentMetadataSheet, "Name", data.name) || SpreadsheetApp.getActiveSpreadsheet().getSheetByName(data.name)){
+      return {
+        statusCode: 400,
+        status: "Instrument with same name already exists",
       }
-    ]
+    }
+    if(checkValueExistsInColumn(instrumentMetadataSheet, "Label", data.label)){
+      return {
+        statusCode: 400,
+        status: "Instrument with same label already exists",
+      }
+    }
+
+    let resp = updateInstrumentMetadata(data, instrumentMetadataSheet);
+    if(resp.statusCode !== 200){
+      deleteRowsWithValue(instrumentMetadataSheet, "Name", data.name)
+      return resp;
+    }
+    resp = updateColumnMetadata(data, columnMetadataSheet, instrumentMetadataSheet);
+    if(resp.statusCode !== 200){
+      deleteRowsWithValue(columnMetadataSheet, "Instrument", data.name)
+      deleteRowsWithValue(instrumentMetadataSheet, "Name", data.name)
+      return resp;
+    }
+    resp = addInstrumentSheet(data, columnMetadataSheet, instrumentMetadataSheet);
+    if(resp.statusCode !== 200){
+      deleteRowsWithValue(columnMetadataSheet, "Instrument", data.name)
+      deleteRowsWithValue(instrumentMetadataSheet, "Name", data.name)
+      SpreadsheetApp.getActiveSpreadsheet().deleteSheet(SpreadsheetApp.getActiveSpreadsheet().getSheetByName(data.name))
+      return resp;
+    }
+
+    return{
+      statusCode: 200,
+      status: "Success",
+    }
   }
-  addInstrument(data);
+  catch(e){
+    return{
+      statusCode: 400,
+      status: "Something went wrong",
+    }
+  }
 }
 
 function setupDailyCronTrigger() {
@@ -201,9 +203,9 @@ function setupDailyCronTrigger() {
 }
 
 function deleteTriggers() {
-  var triggers = ScriptApp.getProjectTriggers();
+  let triggers = ScriptApp.getProjectTriggers();
 
-  for (var i = 0; i < triggers.length; i++) {
+  for (let i = 0; i < triggers.length; i++) {
     if (triggers[i].getHandlerFunction() === 'dailyCron') {
       ScriptApp.deleteTrigger(triggers[i]);
     }
@@ -251,19 +253,48 @@ function getSheetUrl(spreadsheet, sheet) {
 }
 
 function checkValueExistsInColumn(sheet, headerName, valueToCheck) {
-  var data = sheet.getDataRange().getValues();
+  let data = sheet.getDataRange().getValues();
 
-  var headerRow = data[0];
-  var columnIndex = headerRow.indexOf(headerName);
+  let headerRow = data[0];
+  let columnIndex = headerRow.indexOf(headerName);
   if (columnIndex === -1) {
     throw new Error("Header not found: " + headerName);
   }
 
-  for (var i = 1; i < data.length; i++) {
-    if (data[i][columnIndex] == valueToCheck) {
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][columnIndex] === valueToCheck) {
       return true;
     }
   }
 
   return false;
+}
+
+function deleteRowsWithValue(sheet, headerName, valueToDelete) {
+  if (!sheet) {
+    return;
+  }
+
+  let dataRange = sheet.getDataRange();
+  let data = dataRange.getValues();
+
+  let headerRow = data[0];
+  let columnIndex = headerRow.indexOf(headerName);
+
+  if (columnIndex === -1) {
+    Logger.log('Header not found: ' + headerName);
+    return;
+  }
+
+  let rowsToDelete = [];
+
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][columnIndex] === valueToDelete) {
+      rowsToDelete.push(i + 1);
+    }
+  }
+
+  for (let j = rowsToDelete.length - 1; j >= 0; j--) {
+    sheet.deleteRow(rowsToDelete[j]);
+  }
 }

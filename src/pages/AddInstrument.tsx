@@ -6,6 +6,8 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {FormHelperText, IconButton, InputAdornment, InputLabel, MenuItem, Select, Tooltip} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ErrorFocus from "../components/external/ErrorFocus"
+import getProcessedData from "../utils/dataProcessor";
+import {dateReviver} from "../utils/common";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase english alphabets allowed').required('Name is required'),
@@ -93,7 +95,13 @@ const AddInstrument = ({metadata}) => {
             }, 400);
         }
         else{
-
+            // @ts-ignore
+            google.script.run.withSuccessHandler((response) => {
+                console.log("submit success ")
+                setSubmitting(false);
+            }).withFailureHandler((error) => {
+                console.error("Error fetching data:", error);
+            }).addInstrument(values);
         }
     }
 
