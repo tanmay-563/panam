@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {FormHelperText, IconButton, InputAdornment, InputLabel, MenuItem, Select, Tooltip} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import ErrorFocus from "../components/external/ErrorFocus"
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase English alphabets allowed').required('Name is required'),
@@ -58,18 +59,18 @@ const AddInstrument = ({metadata}) => {
         dataTypeOptions = ['text']
     }
 
+    const fieldsInitialValue = {
+        name: '',
+        dataType: dataTypeOptions[0],
+        isAutomated: false,
+    }
+
     const initialValues = {
         name: '',
         label: '',
         calculateXirr: true,
         iconUrl: '',
-        fields: [
-            {
-                name: '',
-                dataType: sheetMetadata[0],
-                isAutomated: false,
-            }
-        ]
+        fields: [fieldsInitialValue]
     };
 
     const removeField = (i, values, setValues) => {
@@ -80,11 +81,7 @@ const AddInstrument = ({metadata}) => {
 
     const addField = (values, setValues) => {
         const fields = [...values.fields];
-        fields.push({
-            name: '',
-            dataType: sheetMetadata[0],
-            isAutomated: false,
-        });
+        fields.push(fieldsInitialValue);
         setValues({ ...values, fields });
     };
 
@@ -105,7 +102,7 @@ const AddInstrument = ({metadata}) => {
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
-                {({ values, setValues, handleChange, handleBlur, isSubmitting }) => (
+                {({ values, setValues, dirty, errors, isSubmitting }) => (
                     <Form className="form">
                         <div className="form-top">
                             <div className="form-field">
@@ -129,26 +126,19 @@ const AddInstrument = ({metadata}) => {
                                 <ErrorMessage name="label" component="div" className="error-text"/>
                             </div>
                             <div className="form-field">
-                                <div className="select-container">
-                                    <div className="select-label-container">
-                                        <span>
-                                            <InputLabel className="select-label">Calculate XIRR</InputLabel>
-                                            <FormHelperText sx={{ display: 'flex', alignItems: 'center' }}>
-                                                <Tooltip title="Set to true if XIRR should be calculated for this instrument.">
-                                                    <IconButton>
-                                                        <HelpOutlineIcon sx={{ color: 'var(--ultra-soft-color)', fontSize: "16px"}}/>
-                                                    </IconButton>
-                                                </Tooltip>
-                                            </FormHelperText>
-                                        </span>
+                                <span className="checkbox-field">
+                                    <div className="checkbox-label-container">
+                                        <InputLabel className="form-label">Calculate XIRR</InputLabel>
+                                        <FormHelperText sx={{ display: 'flex', alignItems: 'center', marginTop: 0 }}>
+                                            <Tooltip title="Enable if XIRR should be calculated for this instrument.">
+                                                <IconButton>
+                                                    <HelpOutlineIcon sx={{ color: 'var(--ultra-soft-color)', fontSize: "16px"}}/>
+                                                </IconButton>
+                                            </Tooltip>
+                                        </FormHelperText>
                                     </div>
-                                    <div className="select-field">
-                                        <Field as="select" name="calculateXirr" className="select">
-                                            <option value="true">True</option>
-                                            <option value="false">False</option>
-                                        </Field>
-                                    </div>
-                                </div>
+                                    <Field type="checkbox" name="calculateXirr"/>
+                                </span>
                             </div>
 
                             <div className="form-field">
@@ -172,51 +162,49 @@ const AddInstrument = ({metadata}) => {
                             <h4>
                                 Fields
                             </h4>
-                            <p>Note: The fields "Name," "Date," "Invested," and "Current" are mandatory fields that are added by default.</p>
+                            <p>
+                                Note:
+                                <br/> • The fields "Name," "Date," "Invested," and "Current" are mandatory fields that are added by default.
+                                <br/> • Enable "Is Automated" if the field's value will be calculated using excel formula.
+                                <br/> • Fields with empty "Name" value will be ignored.
+                            </p>
 
-                            <FieldArray name="info">
+                            <FieldArray name="fields">
                                 {() =>
                                     values.fields.map((item, i) => {
                                         return (
-                                            <div key={i}>
-                                                {values.fields.length > 1 && (
-                                                    <button
-                                                        className="pointer"
-                                                        onClick={() => removeField(i, values, setValues)}
-                                                    >
-                                                        <CloseIcon />
-                                                    </button>
-                                                )}
-
+                                            <div key={i} className="fields-container">
                                                 <div className="fields-item">
-                                                    <Field component={MuiTextField} type="text" name={`fields.${i}.name`} size="small" label="Name"/>
-                                                    <ErrorMessage name={`fields.${i}.name`} component="div" className="error-text"/>
-                                                    <div className="select-container">
-                                                        <div className="select-label-container">
-                                                            <InputLabel className="select-label">Is Automated</InputLabel>
-                                                        </div>
-                                                        <div className="select-field">
-                                                            <Field as="select" name={`fields.${i}.isAutomated`} className="select">
-                                                                <option value="true">True</option>
-                                                                <option value="false">False</option>
-                                                            </Field>
-                                                        </div>
+                                                    <div className="form-field fields-item-text">
+                                                        <Field component={MuiTextField} type="text" name={`fields.${i}.name`} size="small" label="Name"/>
                                                     </div>
                                                     <div className="select-container">
-                                                        <div className="select-label-container">
-                                                            <InputLabel className="select-label">Data Type</InputLabel>
-                                                        </div>
                                                         <div className="select-field">
-                                                            <Field as="select" name={`fields.${i}.datatType`} className="select">
+                                                            <Field as="select" name={`fields.${i}.dataType`} id={`fields.${i}.dataType`} className="select">
+                                                                <option value="" disabled>Data Type</option>
                                                                 {dataTypeOptions.map((item) => (
                                                                     <option key={item} value={item}>
                                                                         {item}
                                                                     </option>
                                                                 ))}
                                                             </Field>
+                                                            <div className="select-label-container">
+                                                                <label htmlFor={`fields.${i}.dataType`} className="select-label">
+                                                                    Data Type
+                                                                </label>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <span className="checkbox-field">
+                                                        <div className="checkbox-label-container">
+                                                            <InputLabel className="form-label">Is Automated</InputLabel>
+                                                        </div>
+                                                        <Field type="checkbox" name={`fields.${i}.isAutomated`}/>
+                                                    </span>
                                                 </div>
+                                                <span className="close" onClick={() => removeField(i, values, setValues)}>
+                                                    <CloseIcon className="close-icon"/>
+                                                </span>
                                             </div>
                                         );
                                     })
@@ -224,16 +212,16 @@ const AddInstrument = ({metadata}) => {
                             </FieldArray>
                             <button
                                 style={{ margin: "25px 10px 10px 0" }}
-                                className="pointer"
+                                className="add-field-button"
                                 type="button"
                                 onClick={(e) => addField(values, setValues)}
                             >
-                                Click to add information
+                                + Add Field
                             </button>
                         </div>
-
+                        <ErrorFocus />
                         <button type="submit" disabled={isSubmitting} className="submit">
-                            Submit
+                            SUBMIT
                         </button>
                     </Form>
                 )}

@@ -126,10 +126,11 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      background-color: $soft-bg;
+      background-color: $dark-bg;
+      box-shadow: 1px 1px 6px black;
 
       &:hover{
-        background-color: $light-bg;
+        background-color: $soft-bg;
       }
     }
 

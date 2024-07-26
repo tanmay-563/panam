@@ -22,6 +22,8 @@
     padding: 20px;
     position: relative;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 
     .form-top{
       display: flex;
@@ -33,6 +35,7 @@
 
     .form-fields{
       padding-top: 15px;
+      flex: 1;
 
       h4{
         font-weight: normal;
@@ -42,11 +45,48 @@
       p{
         color: $ultra-soft;
         font-size: 10px;
+        padding-bottom: 10px;
       }
 
-      .fields-item{
+      .fields-container {
         display: flex;
-        align-items: end;
+        align-items: center;
+
+        .fields-item {
+          display: flex;
+          align-items: end;
+          justify-content: space-between;
+          border: 0.5px solid $max-soft;
+          padding: 10px;
+          height: fit-content;
+          flex: 1;
+
+          .fields-item-text {
+            padding: 0;
+            height: 0;
+          }
+
+          .form-field {
+            width: 150px;
+          }
+        }
+
+        .close {
+          cursor: pointer;
+
+          .close-icon {
+            border-radius: 50%;
+
+            &:hover {
+              background-color: $max-soft;
+            }
+          }
+        }
+      }
+
+      .add-field-button{
+        padding: 7px;
+        cursor: pointer;
       }
     }
 
@@ -72,6 +112,8 @@
         bottom: -10px;
       }
 
+
+
       span{
         display: flex;
         align-items: center;
@@ -84,17 +126,43 @@
     }
 
     .submit{
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
+      width: 100%;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-color: $soft-bg;
+      color: $soft-color;
+      border: none;
+      box-shadow: 1px 1px 6px black;
+
+      &:hover{
+        background-color: $dark-bg;
+      }
     }
   }
 }
 
 .select-container{
-  .select-label{
-    color: $soft-color;
-    font-weight: lighter;
+  .select-label-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+
+    .select-label {
+      color: $soft-color;
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      transition: all 0.2s ease;
+      background-color: $soft-bg;
+      padding: 0 4px;
+    }
   }
 
   .select-field{
@@ -102,6 +170,7 @@
     display: inline-block;
     width: 100%;
     align-items: end;
+
 
     &::after{
       content: '';
@@ -125,6 +194,7 @@
       appearance: none;
       font-size: 16px;
       color: $soft-color;
+      font-weight: lighter;
       cursor: pointer;
       background-color: transparent;
 
@@ -133,6 +203,39 @@
         border-color: $soft-color;
         box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
       }
+    }
+  }
+}
+
+.checkbox-field{
+  display: flex;
+  justify-content: space-between;
+  border: 0.5px solid $ultra-soft;
+  padding: 10px;
+  border-radius: 5px;
+  height: 40px;
+  align-items: center;
+
+  &:hover{
+    input{
+      outline: 0.5px solid $ultra-soft;
+    }
+  }
+
+  input{
+    height: fit-content;
+    cursor: pointer;
+  }
+
+  .checkbox-label-container{
+    display: flex;
+    align-items: center;
+
+    .form-label{
+      color: $soft-color;
+      font-weight: lighter;
+      padding-right: 5px;
+      font-size: 14px;
     }
   }
 }
