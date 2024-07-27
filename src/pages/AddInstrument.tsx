@@ -3,11 +3,10 @@ import {Formik, Form, Field, ErrorMessage, FieldArray} from 'formik';
 import * as Yup from 'yup';
 import TextField from "@mui/material/TextField";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import {FormHelperText, IconButton, InputAdornment, InputLabel, MenuItem, Select, Tooltip} from "@mui/material";
+import {FormHelperText, IconButton, InputAdornment, InputLabel, Tooltip} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ErrorFocus from "../components/external/ErrorFocus"
-import getProcessedData from "../utils/dataProcessor";
-import {dateReviver} from "../utils/common";
+import Loading from "../components/Loading";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase english alphabets allowed').required('Name is required'),
@@ -49,7 +48,7 @@ const MuiTextField = ({ field, form, ...props }) => {
         />;
 };
 
-const AddInstrument = ({metadata}) => {
+const AddInstrument = ({metadata, setAlert}) => {
     if(!metadata)
         return <div></div>
     const sheetMetadata = metadata.sheet
@@ -87,20 +86,29 @@ const AddInstrument = ({metadata}) => {
         setValues({ ...values, fields });
     };
 
-    const handleSubmit = (values, { setSubmitting }) => {
+    const handleSubmit = (values, { setSubmitting, setValues }) => {
         if (process.env.NODE_ENV == "development"){
             setTimeout(() => {
                 console.log('Form submitted:', values);
+                setAlert("success", "Success", `At least one entry must be manually added to the sheet. Opening <a href="www.google.com">sheet</a> in 5 seconds.`, 10);
                 setSubmitting(false);
             }, 400);
         }
         else{
             // @ts-ignore
             google.script.run.withSuccessHandler((response) => {
-                console.log("submit success ")
+                if(response.statusCode >= 200 && response.statusCode < 300){
+                    console.log("submit success ")
+                    console.log(response)
+                    setAlert("success", "Success", "At least one entry must be manually added to the sheet. Opening sheet in 5 seconds.", 10);
+                }
+                else{
+                    setAlert("error", "Error", response.status, 10);
+                }
                 setSubmitting(false);
             }).withFailureHandler((error) => {
                 console.error("Error fetching data:", error);
+                setAlert("error", "Error", "Failed to add instrument.", 10);
             }).addInstrument(values);
         }
     }
@@ -233,9 +241,12 @@ const AddInstrument = ({metadata}) => {
                             </button>
                         </div>
                         <ErrorFocus />
-                        <button type="submit" disabled={isSubmitting} className="submit">
-                            SUBMIT
-                        </button>
+                        {isSubmitting ?
+                            <Loading className="submit"/> :
+                            <button type="submit" disabled={isSubmitting} className="submit">
+                                SUBMIT
+                            </button>
+                        }
                     </Form>
                 )}
             </Formik>

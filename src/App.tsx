@@ -46,6 +46,16 @@ function App() {
         fetchSheetData();
     }, []);
 
+    const setAlert = (severity, title, message, timeout) => {
+        setAlertDetails(prevState => ({
+            ...prevState,
+            severity,
+            title,
+            message,
+            timeout,
+        }));
+    }
+
     const router = createBrowserRouter([
         {
             path: "/",
@@ -58,6 +68,7 @@ function App() {
                     setOpenAdd={setOpenAdd}
                     openAdd={openAdd}
                     setAlertDetails={setAlertDetails}
+                    setAlert={setAlert}
                     alertDetails={alertDetails}
                     loading={loading}
                 />
@@ -87,7 +98,8 @@ function App() {
                 {
                     path: "add/instrument",
                     element: <AddInstrument
-                                metadata={data?.metadata}/>,
+                                metadata={data?.metadata}
+                                setAlert={setAlert}/>,
                 },
             ],
         },
@@ -101,6 +113,7 @@ function App() {
                 setOpenAdd={setOpenAdd}
                 openAdd={openAdd}
                 setAlertDetails={setAlertDetails}
+                setAlert={setAlert}
                 alertDetails={alertDetails}
                 loading={loading}
             />,

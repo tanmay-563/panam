@@ -26,7 +26,10 @@ const AlertBox = ({ alertDetails, setAlertDetails, ...props }) => {
                         onClose={() => {setAlertDetails({})}}
                     >
                         {alertDetails.title && <AlertTitle>{alertDetails.title}</AlertTitle>}
-                        {alertDetails.message}
+                        <div
+                            className="alert"
+                            dangerouslySetInnerHTML={{ __html: alertDetails.message }}
+                        />
                     </Alert>
                 </Stack>
             </div>

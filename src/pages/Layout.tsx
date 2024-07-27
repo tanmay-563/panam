@@ -15,6 +15,7 @@ const Layout = ({ data,
     setOpenAdd,
     openAdd,
     setAlertDetails,
+    setAlert,
     alertDetails,
     loading,
 }) =>{
@@ -28,16 +29,6 @@ const Layout = ({ data,
     const handleMenuClick = (value) => {
         setSelectedMenuItem(value)
         setHamburgerToggle(!hamburgerToggle)
-    }
-
-    const setAlert = (severity, title, message, timeout) => {
-        setAlertDetails(prevState => ({
-            ...prevState,
-            severity,
-            title,
-            message,
-            timeout,
-        }));
     }
 
     return (

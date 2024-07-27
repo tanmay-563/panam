@@ -65,7 +65,7 @@ const AddTransaction = ({
         const errorHandler = () => {
             setLoading(false);
             setOpenAdd(false);
-            setAlert("error", "Error", "Failed to addTransactions transaction.", 10);
+            setAlert("error", "Error", "Failed to add transaction.", 10);
         };
 
         if (process.env.NODE_ENV === "development") {

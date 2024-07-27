@@ -23,7 +23,7 @@ function fetchData(){
     let sheetName = sheet.getSheetName().toLowerCase()
     data[sheetName]  = sheet.getDataRange().getValues();
     if(sheetName === "_sheet"){
-      data[sheetName].push(["sheetUrl", getSheetUrl(ss, sheet)]);
+      data[sheetName].push(["sheetUrl", getSheetUrl(ss, null)]);
     }
   })
   return JSON.stringify(data)
@@ -85,7 +85,7 @@ function updateColumnMetadata(data, columnSheet){
 
     if(data.hasOwnProperty("fields")){
       data.fields.forEach((field)=>{
-        if(field.name !== ""){
+        if(field.name != ""){
           columnSheet.appendRow([lastRow++, field.name, data.name, field.isAutomated, field.dataType])
         }
       })
@@ -142,10 +142,11 @@ function addInstrument(data){
   }
 
   try{
-    let instrumentMetadataSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("_instrument");
-    let columnMetadataSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("_column");
+    let ss = SpreadsheetApp.getActiveSpreadsheet()
+    let instrumentMetadataSheet = ss.getSheetByName("_instrument");
+    let columnMetadataSheet = ss.getSheetByName("_column");
 
-    if(checkValueExistsInColumn(instrumentMetadataSheet, "Name", data.name) || SpreadsheetApp.getActiveSpreadsheet().getSheetByName(data.name)){
+    if(checkValueExistsInColumn(instrumentMetadataSheet, "Name", data.name) || ss.getSheetByName(data.name)){
       return {
         statusCode: 400,
         status: "Instrument with same name already exists",
@@ -173,13 +174,14 @@ function addInstrument(data){
     if(resp.statusCode !== 200){
       deleteRowsWithValue(columnMetadataSheet, "Instrument", data.name)
       deleteRowsWithValue(instrumentMetadataSheet, "Name", data.name)
-      SpreadsheetApp.getActiveSpreadsheet().deleteSheet(SpreadsheetApp.getActiveSpreadsheet().getSheetByName(data.name))
+      ss.deleteSheet(ss.getSheetByName(data.name))
       return resp;
     }
 
     return{
       statusCode: 200,
       status: "Success",
+      instrumentSheetUrl: getSheetUrl(ss, ss.getSheetByName(data.name))
     }
   }
   catch(e){
@@ -248,8 +250,8 @@ const updateDailyTracker = () =>{
 }
 
 function getSheetUrl(spreadsheet, sheet) {
-  let sheetId = sheet.getSheetId();
-  return spreadsheet.getUrl() + '#gid=' + sheetId;
+  let sheetId = sheet? sheet.getSheetId() : "";
+  return spreadsheet.getUrl() + '#gid=' + (sheetId ? sheetId : "");
 }
 
 function checkValueExistsInColumn(sheet, headerName, valueToCheck) {
@@ -262,7 +264,7 @@ function checkValueExistsInColumn(sheet, headerName, valueToCheck) {
   }
 
   for (let i = 1; i < data.length; i++) {
-    if (data[i][columnIndex] === valueToCheck) {
+    if (data[i][columnIndex] == valueToCheck) {
       return true;
     }
   }

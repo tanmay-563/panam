@@ -78,12 +78,21 @@ export function getAggregatedData(transactionsRowMap, metadata) {
                 }
             }
 
-            finalizeCashflows(instrumentsDataMap[k], k, instrumentsDataMap[k].current, instrumentsDataMap[k].invested, calculateXirr);
+            if(instrumentsDataMap[k].current > 1)
+                finalizeCashflows(instrumentsDataMap[k], k, instrumentsDataMap[k].current, instrumentsDataMap[k].invested, calculateXirr);
+            else
+                delete instrumentsDataMap[k]
             for (const nameKey in instrumentsDataMap[k].name) {
-                finalizeCashflows(instrumentsDataMap[k].name[nameKey], nameKey, instrumentsDataMap[k].name[nameKey].current, instrumentsDataMap[k].name[nameKey].invested, calculateXirr);
+                if(instrumentsDataMap[k].name[nameKey].current > 1)
+                    finalizeCashflows(instrumentsDataMap[k].name[nameKey], nameKey, instrumentsDataMap[k].name[nameKey].current, instrumentsDataMap[k].name[nameKey].invested, calculateXirr);
+                else
+                    delete instrumentsDataMap[k].name[nameKey]
             }
             for (const categoryKey in instrumentsDataMap[k].category) {
-                finalizeCashflows(instrumentsDataMap[k].category[categoryKey], categoryKey, instrumentsDataMap[k].category[categoryKey].current, instrumentsDataMap[k].category[categoryKey].invested, calculateXirr);
+                if(instrumentsDataMap[k].category[categoryKey].current > 1)
+                    finalizeCashflows(instrumentsDataMap[k].category[categoryKey], categoryKey, instrumentsDataMap[k].category[categoryKey].current, instrumentsDataMap[k].category[categoryKey].invested, calculateXirr);
+                else
+                    delete instrumentsDataMap[k].category[categoryKey]
             }
         }
 
