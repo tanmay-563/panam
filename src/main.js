@@ -30,9 +30,20 @@ function fetchData(){
 }
 
 function addRow(sheetName, rowMap){
-  let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+  let ss = SpreadsheetApp.getActiveSpreadsheet()
+  let sheet = ss.getSheetByName(sheetName);
+  let numRows = sheet.getLastRow();
+  let firstCell = numRows > 0 ? sheet.getRange('A2').getValue() : '';
+  if ((numRows < 2) || (firstCell === '')) {
+    return {
+      statusCode: 400,
+      status: (numRows === 1 && firstCell === '') ? "At least one entry must be manually added to the sheet." : "Header column missing from sheet.",
+      instrumentSheetUrl: getSheetUrl(ss, sheet)
+    }
+  }
 
   let headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+
   let newRowData = headers.map(header => {
     if (rowMap.hasOwnProperty(header)) {
       return rowMap[header];
@@ -44,6 +55,11 @@ function addRow(sheetName, rowMap){
   });
 
   sheet.appendRow(newRowData);
+
+  return {
+    statusCode: 200,
+    status: "Success"
+  }
 }
 
 function updateInstrumentMetadata(data, sheet){
@@ -80,6 +96,7 @@ function updateColumnMetadata(data, columnSheet){
     let lastRow = columnSheet.getLastRow();
     columnSheet.appendRow([lastRow++, "id", data.name, true, "int"])
     columnSheet.appendRow([lastRow++, "Name", data.name, false, "text"])
+    columnSheet.appendRow([lastRow++, "Date", data.name, false, "date"])
     columnSheet.appendRow([lastRow++, "Invested", data.name, false, "currency"])
     columnSheet.appendRow([lastRow++, "Current", data.name, true, "currency"])
 

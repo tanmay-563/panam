@@ -25,7 +25,7 @@ function formatNumberWithLocale(number, symbol = '', decimalCount = 2){
         const integerPart = Number(parts[0]).toLocaleString('en-IN');
         const decimalPart = parts[1];
 
-        return `${symbol}${integerPart} ${decimalCount > 0 ? '.'+decimalPart : ''}`;
+        return `${symbol}${integerPart}${decimalCount > 0 ? '.'+decimalPart : ''}`;
     }
     catch (e){
         return 0;

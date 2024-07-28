@@ -7,6 +7,7 @@ import {FormHelperText, IconButton, InputAdornment, InputLabel, Tooltip} from "@
 import CloseIcon from "@mui/icons-material/Close";
 import ErrorFocus from "../components/external/ErrorFocus"
 import Loading from "../components/Loading";
+import {formatToIndianCurrency} from "../utils/common";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase english alphabets allowed').required('Name is required'),
@@ -221,7 +222,7 @@ const AddInstrument = ({metadata, setAlert}) => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <span className="checkbox-field">
+                                                    <span className="checkbox-field fields-item-checkbox">
                                                         <div className="checkbox-label-container">
                                                             <InputLabel className="form-label">Is Automated</InputLabel>
                                                         </div>

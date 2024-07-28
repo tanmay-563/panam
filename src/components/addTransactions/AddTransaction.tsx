@@ -56,10 +56,15 @@ const AddTransaction = ({
             return;
         }
 
-        const successHandler = () => {
+        const successHandler = (response) => {
             setLoading(false);
-            setOpenAdd(false);
-            setAlert("success", "Success", "Refresh to see updated data.", 10);
+            if(response.statusCode >= 200 && response.statusCode < 300){
+                setOpenAdd(false);
+                setAlert("success", "Success", "Refresh to see updated data.", 10);
+            }
+            else{
+                setAlert("error", "Error", `${response.status} Click <a href=${response.instrumentSheetUrl} target="_blank"><b>here</b></a> to open the sheet.`, 15);
+            }
         };
 
         const errorHandler = () => {
@@ -78,7 +83,7 @@ const AddTransaction = ({
             setLoading(true);
             // @ts-ignore
             google.script.run
-                .withSuccessHandler(successHandler)
+                .withSuccessHandler((response) => {successHandler(response)})
                 .withFailureHandler(errorHandler)
                 .addRow(selectedMenuItem, inputValues);
         }

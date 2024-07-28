@@ -4,6 +4,10 @@
   justify-content: space-evenly;
   height: 100%;
 
+  @include sm{
+    flex-direction: column;
+  }
+
   .add-instrument-title{
     flex: 1;
     display: flex;
@@ -13,16 +17,25 @@
     color: $soft-color;
     font-size: 28px;
     font-variant: all-petite-caps;
+
+    @include sm{
+      height: fit-content;
+      flex: none;
+    }
   }
 
   .form{
-    flex: 1;
+    width: 500px;
     background-color: $soft-bg;
     border-radius: 10px;
     position: relative;
     overflow: auto;
     display: flex;
     flex-direction: column;
+
+    @include sm{
+      width: 100%;
+    }
 
     .form-top{
       display: flex;
@@ -59,10 +72,17 @@
           padding: 10px;
           height: fit-content;
           flex: 1;
+          flex-wrap: wrap;
 
           .fields-item-text {
             padding: 0;
-            height: 0;
+            height: fit-content;
+            width: 120px;
+          }
+
+          .fields-item-checkbox{
+            width: 120px;
+            margin-top: 10px;
           }
 
           .form-field {
@@ -98,8 +118,8 @@
       position: relative;
       width: 200px;
 
-      @include lg{
-        width: 120px;
+      @include sm{
+        height: 70px;
       }
 
       .error-text{
@@ -144,6 +164,9 @@
 }
 
 .select-container{
+  width: 120px;
+  margin-top: 10px;
+
   .select-label-container {
     position: absolute;
     top: 0;
@@ -209,7 +232,7 @@
 .checkbox-field{
   display: flex;
   justify-content: space-between;
-  border: 0.5px solid $ultra-soft;
+  border: 0.5px solid $max-soft;
   padding: 10px;
   border-radius: 5px;
   height: 40px;
@@ -217,7 +240,7 @@
 
   &:hover{
     input{
-      outline: 0.5px solid $ultra-soft;
+      outline: 0.5px solid $soft-color;
     }
   }
 

@@ -11,6 +11,7 @@
   - monthly reports and monthly reminders
   - refactor all css class name casing
   - delete instrument
+  - icon using url
 - data manipulation for home page
   - Overall
     - current sum
