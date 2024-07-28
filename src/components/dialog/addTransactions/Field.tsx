@@ -64,9 +64,6 @@ function Field({
                     '& .MuiAutocomplete-listbox': {
                         fontSize: '14px',
                     },
-                    '& .MuiAutocomplete-input': {
-                        color: 'var(--ultra-soft-color)',
-                    },
                     "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
                         borderColor: error && value == '' ? 'red' : 'var(--ultra-soft-color)',
                     },

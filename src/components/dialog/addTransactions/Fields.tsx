@@ -1,5 +1,5 @@
 import Field from "./Field";
-import {getDataTypeMap} from "../../utils/common";
+import {getDataTypeMap} from "../../../utils/common";
 import * as React from "react";
 
 const Fields = ({       instrument,

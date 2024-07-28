@@ -16,7 +16,7 @@ function App() {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState("");
-    const [openAdd, setOpenAdd] = useState(false);
+    const [dialogType, setDialogType] = useState('');
     const [alertDetails, setAlertDetails] = useState({})
 
     const fetchSheetData = () => {
@@ -65,8 +65,8 @@ function App() {
                     fetchSheetData={fetchSheetData}
                     setSelectedMenuItem={setSelectedMenuItem}
                     selectedMenuItem={selectedMenuItem}
-                    setOpenAdd={setOpenAdd}
-                    openAdd={openAdd}
+                    setDialogType={setDialogType}
+                    dialogType={dialogType}
                     setAlertDetails={setAlertDetails}
                     setAlert={setAlert}
                     alertDetails={alertDetails}
@@ -110,8 +110,8 @@ function App() {
                 fetchSheetData={fetchSheetData}
                 setSelectedMenuItem={setSelectedMenuItem}
                 selectedMenuItem={selectedMenuItem}
-                setOpenAdd={setOpenAdd}
-                openAdd={openAdd}
+                setDialogType={setDialogType}
+                dialogType={dialogType}
                 setAlertDetails={setAlertDetails}
                 setAlert={setAlert}
                 alertDetails={alertDetails}

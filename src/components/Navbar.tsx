@@ -5,16 +5,16 @@ import SettingsIcon from "../../public/settings.svg";
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = ({   onRefresh,
-                    openAdd,
-                    onOpenAdd,
+                    dialogType,
+                    setDialogType,
                     showSettings,
                     onShowSettings,
                     setHamburgerToggle}) => {
 
     return (
         <div className="navbar" onClick={() => {
-            if(openAdd)
-                onOpenAdd(false)
+            if(dialogType)
+                setDialogType('')
             if(showSettings)
                 onShowSettings(false)
         }}>
@@ -31,7 +31,7 @@ const Navbar = ({   onRefresh,
             </div>
             <div className="icons">
                 <div title="AddTransaction transaction">
-                    <AddIcon className="icon" onClick={()=> onOpenAdd(true)}/>
+                    <AddIcon className="icon" onClick={()=> setDialogType('addTransaction')}/>
                 </div>
                 <div title="Refresh data">
                     <RefreshIcon className="icon" onClick={()=> onRefresh()}/>

@@ -37,7 +37,7 @@ function addRow(sheetName, rowMap){
   if ((numRows < 2) || (firstCell === '')) {
     return {
       statusCode: 400,
-      status: (numRows === 1 && firstCell === '') ? "At least one entry must be manually added to the sheet." : "Header column missing from sheet.",
+      status: (numRows === 1 && firstCell === '') ? "At least one entry must be manually added to the sheet" : "Header column missing from sheet",
       instrumentSheetUrl: getSheetUrl(ss, sheet)
     }
   }
@@ -154,7 +154,7 @@ function addInstrument(data){
   if(!data.hasOwnProperty("name") || !data.hasOwnProperty("label")){
     return {
       statusCode: 400,
-      status: "Mandatory data missing."
+      status: "Mandatory data missing"
     }
   }
 

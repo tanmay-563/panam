@@ -5,15 +5,15 @@ import AlertBox from "../components/AlertBox";
 import Footer from "../components/Footer";
 import React, {useState} from "react";
 import Loading from "../components/Loading";
-import AddTransaction from "../components/addTransactions/AddTransaction";
 import Settings from "../components/Settings";
+import Dialog from "../components/dialog/Dialog";
 
 const Layout = ({ data,
     fetchSheetData,
     setSelectedMenuItem,
     selectedMenuItem,
-    setOpenAdd,
-    openAdd,
+    setDialogType,
+    dialogType,
     setAlertDetails,
     setAlert,
     alertDetails,
@@ -35,8 +35,8 @@ const Layout = ({ data,
         <div className="main">
             <Navbar
                     onRefresh={fetchSheetData}
-                    openAdd={openAdd}
-                    onOpenAdd={setOpenAdd}
+                    dialogType={dialogType}
+                    setDialogType={setDialogType}
                     showSettings={showSettings}
                     onShowSettings={setShowSettings}
                     setHamburgerToggle={changeHamburgerToggle}/>
@@ -62,15 +62,25 @@ const Layout = ({ data,
                             setAlertDetails={setAlertDetails}
                         />
                     }
-                    {openAdd && <AddTransaction
+                    {dialogType != '' && <Dialog
+                        dialogType={dialogType}
+                        setDialogType={setDialogType}
                         instruments={data?.instruments}
                         transactionsColumnMap={data?.transactionsColumnMap}
                         selectedMenuItem={selectedMenuItem}
                         setSelectedMenuItem={setSelectedMenuItem}
-                        setOpenAdd={setOpenAdd}
                         setAlert={setAlert}
                         metadata={data?.metadata}
                     />}
+                    {/*{showDialog && <AddTransaction*/}
+                    {/*    instruments={data?.instruments}*/}
+                    {/*    transactionsColumnMap={data?.transactionsColumnMap}*/}
+                    {/*    selectedMenuItem={selectedMenuItem}*/}
+                    {/*    setSelectedMenuItem={setSelectedMenuItem}*/}
+                    {/*    setShowDialog={setShowDialog}*/}
+                    {/*    setAlert={setAlert}*/}
+                    {/*    metadata={data?.metadata}*/}
+                    {/*/>}*/}
                 </div>
             </div>
             <Footer/>
