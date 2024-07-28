@@ -9,8 +9,8 @@ import getXirr from 'xirr';
  * @param {boolean} calculateXirr - Whether to calculate XIRR.
  */
 function updateMap(map, currentAmount, investedAmount, date, calculateXirr) {
-    map.current += currentAmount;
-    map.invested += investedAmount;
+    map.current += currentAmount ? currentAmount : 0;
+    map.invested += investedAmount ? investedAmount : 0;
     map.returns += (currentAmount-investedAmount)
     if (calculateXirr) {
         map.cashflows.push({ amount: -investedAmount, when: date });
@@ -78,26 +78,28 @@ export function getAggregatedData(transactionsRowMap, metadata) {
                 }
             }
 
-            if(instrumentsDataMap[k].current > 1)
+            if(instrumentsDataMap[k].current > 1){
                 finalizeCashflows(instrumentsDataMap[k], k, instrumentsDataMap[k].current, instrumentsDataMap[k].invested, calculateXirr);
+                for (const nameKey in instrumentsDataMap[k].name) {
+                    if(instrumentsDataMap[k].name[nameKey].current > 1)
+                        finalizeCashflows(instrumentsDataMap[k].name[nameKey], nameKey, instrumentsDataMap[k].name[nameKey].current, instrumentsDataMap[k].name[nameKey].invested, calculateXirr);
+                    else
+                        delete instrumentsDataMap[k].name[nameKey]
+                }
+                for (const categoryKey in instrumentsDataMap[k].category) {
+                    if(instrumentsDataMap[k].category[categoryKey].current > 1)
+                        finalizeCashflows(instrumentsDataMap[k].category[categoryKey], categoryKey, instrumentsDataMap[k].category[categoryKey].current, instrumentsDataMap[k].category[categoryKey].invested, calculateXirr);
+                    else
+                        delete instrumentsDataMap[k].category[categoryKey]
+                }
+            }
             else
                 delete instrumentsDataMap[k]
-            for (const nameKey in instrumentsDataMap[k].name) {
-                if(instrumentsDataMap[k].name[nameKey].current > 1)
-                    finalizeCashflows(instrumentsDataMap[k].name[nameKey], nameKey, instrumentsDataMap[k].name[nameKey].current, instrumentsDataMap[k].name[nameKey].invested, calculateXirr);
-                else
-                    delete instrumentsDataMap[k].name[nameKey]
-            }
-            for (const categoryKey in instrumentsDataMap[k].category) {
-                if(instrumentsDataMap[k].category[categoryKey].current > 1)
-                    finalizeCashflows(instrumentsDataMap[k].category[categoryKey], categoryKey, instrumentsDataMap[k].category[categoryKey].current, instrumentsDataMap[k].category[categoryKey].invested, calculateXirr);
-                else
-                    delete instrumentsDataMap[k].category[categoryKey]
-            }
         }
 
         finalizeCashflows(overallMap, 'overall', overallMap.current, overallMap.invested, true);
 
+        console.log(overallMap)
         return [overallMap, instrumentsDataMap];
     } catch (error) {
         console.error(error);

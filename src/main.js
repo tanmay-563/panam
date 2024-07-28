@@ -178,6 +178,14 @@ function addInstrument(data){
       return resp;
     }
 
+    let sheet = ss.getSheetByName(data.name)
+    let lastRow = sheet.getLastRow();
+    sheet.getRange(lastRow+1, 2).setValue("Manually add entry in this row.");
+
+    let lastColumn = sheet.getLastColumn();
+    let range = sheet.getRange(1, 1, 1, lastColumn);
+    range.setFontWeight('bold');
+
     return{
       statusCode: 200,
       status: "Success",

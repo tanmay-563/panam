@@ -89,8 +89,13 @@ const AddInstrument = ({metadata, setAlert}) => {
     const handleSubmit = (values, { setSubmitting, setValues }) => {
         if (process.env.NODE_ENV == "development"){
             setTimeout(() => {
-                console.log('Form submitted:', values);
-                setAlert("success", "Success", `At least one entry must be manually added to the sheet. Opening <a href="www.google.com">sheet</a> in 5 seconds.`, 10);
+                let response = {
+                    "instrumentSheetUrl": "https://docs.google.com/spreadsheets/d/11wPJM1iRc6HLmI11pQIzIhhUuyy9KgmWxCyOtETILqE/edit#gid=1536483209",
+                    "statusCode": 200,
+                    "status": "Success"
+                }
+                setValues(initialValues)
+                setAlert("success", "Success", `At least one entry must be manually added to the sheet. Click <a href=${response.instrumentSheetUrl} target="_blank"><b>here</b></a> to open the sheet.`, 15);
                 setSubmitting(false);
             }, 400);
         }
@@ -98,9 +103,8 @@ const AddInstrument = ({metadata, setAlert}) => {
             // @ts-ignore
             google.script.run.withSuccessHandler((response) => {
                 if(response.statusCode >= 200 && response.statusCode < 300){
-                    console.log("submit success ")
-                    console.log(response)
-                    setAlert("success", "Success", "At least one entry must be manually added to the sheet. Opening sheet in 5 seconds.", 10);
+                    setValues(initialValues)
+                    setAlert("success", "Success", `At least one entry must be manually added to the sheet. Click <a href=${response.instrumentSheetUrl} target="_blank"><b>here</b></a> to open the sheet.`, 15);
                 }
                 else{
                     setAlert("error", "Error", response.status, 10);
@@ -122,6 +126,7 @@ const AddInstrument = ({metadata, setAlert}) => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
+                validateOnChange={false}
             >
                 {({ values, setValues, dirty, errors, isSubmitting }) => (
                     <Form className="form">

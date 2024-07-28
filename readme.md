@@ -10,9 +10,7 @@
   - ask for password
   - monthly reports and monthly reminders
   - refactor all css class name casing
-  - highest value in graph
-  - edit, delete transactions
-  - mobile menu 
+  - delete instrument
 - data manipulation for home page
   - Overall
     - current sum
