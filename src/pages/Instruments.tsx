@@ -4,6 +4,7 @@ import {useEffect, useMemo, useState} from "react";
 import {useTheme} from "@mui/material";
 import {useParams} from "react-router-dom";
 import moment from "moment/moment";
+import DeleteIcon from "../../public/delete.svg";
 
 function getLocalStorageKey(instrument){
     return "datagrid_column_visibility_"+instrument;
@@ -156,7 +157,12 @@ const Instruments = ({
     return loading ?
          <div/> :
         (<div>
-            <div className="title">{getDisplayName(instrumentMetadata, instrument)}</div>
+            <div className="title-box">
+                <div className="title">
+                    {getDisplayName(instrumentMetadata, instrument)}
+                </div>
+                <DeleteIcon className="delete-icon"/>
+            </div>
             <DataGrid
                 rows={rows}
                 columns={columns}

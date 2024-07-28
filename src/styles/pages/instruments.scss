@@ -1,8 +1,21 @@
 @import "../variables";
 
-.title{
-  padding: 10px;
-  font-weight: bold;
+.title-box{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  *{
+    margin: 10px;
+  }
+
+  .title{
+    font-weight: bold;
+  }
+  
+  .delete-icon{
+    cursor: pointer;
+  }
 }
 
 .cellStyle {
