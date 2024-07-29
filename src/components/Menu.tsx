@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Link} from "react-router-dom";
 import {menu} from "../listData"
-import DynamicIcons from "./DynamicIcons";
-import {getDisplayName} from "../utils/common";
-import ListIcon from "../../public/list.svg"
+import DynamicIcons from "./icons/DynamicIcons";
+import {convertToJson} from "../utils/common";
+
 const Menu = ({
                   instruments,
                   metadata,
@@ -13,6 +13,7 @@ const Menu = ({
 ) => {
     const instrumentMetadata = metadata?.instrument || {};
     const menuRef = useRef(null);
+    const instrumentsMetadataJson = convertToJson(instrumentMetadata)
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -57,9 +58,9 @@ const Menu = ({
                             key={listItem}
                             className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
                             onClick={() => handleMenuClick(listItem)}
-                            title={getDisplayName(instrumentMetadata, listItem)}>
-                            <DynamicIcons name={listItem}></DynamicIcons>
-                            <span className="listItemTitle">{getDisplayName(instrumentMetadata, listItem)}</span>
+                            title={instrumentsMetadataJson[listItem]["Label"]}>
+                            <DynamicIcons name={instrumentsMetadataJson[listItem]["Icon"]}></DynamicIcons>
+                            <span className="listItemTitle">{instrumentsMetadataJson[listItem]["Label"]}</span>
                         </Link>
                     ))}
                 </div>

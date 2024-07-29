@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Formik, Form, Field, ErrorMessage, FieldArray} from 'formik';
 import * as Yup from 'yup';
 import TextField from "@mui/material/TextField";
@@ -7,6 +7,7 @@ import {FormHelperText, IconButton, InputAdornment, InputLabel, Tooltip} from "@
 import CloseIcon from "@mui/icons-material/Close";
 import ErrorFocus from "../components/external/ErrorFocus"
 import Loading from "../components/Loading";
+import IconSelector from "../components/icons/IconSelector";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase english alphabets allowed').required('Name is required'),
@@ -52,6 +53,7 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
     if(!metadata)
         return <div></div>
     const sheetMetadata = metadata.sheet
+    const [selectedIcon, setSelectedIcon] = useState(null);
     let dataTypeOptions = []
     try{
         dataTypeOptions = sheetMetadata.filter((item) => item.Key.toLowerCase() == "datatypeselectoptions")[0].Value.split(",");
@@ -118,6 +120,10 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
         }
     }
 
+    const handleIconSelect = (icon) => {
+        setSelectedIcon(icon);
+    };
+
     return (
         <div className="add-instrument">
             <div className="add-instrument-title">
@@ -169,19 +175,20 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
                             </div>
 
                             <div className="form-field">
-                                <Field component={MuiTextField} type="text" name="iconUrl" size="small" label="Icon URL"
-                                       InputProps={{
-                                           endAdornment: (
-                                               <InputAdornment position="end">
-                                                   <Tooltip title="URL for an icon to be used for display. Leave blank to use default icon.">
-                                                       <IconButton>
-                                                           <HelpOutlineIcon sx={{ color: 'var(--ultra-soft-color)', fontSize: "16px"}}/>
-                                                       </IconButton>
-                                                   </Tooltip>
-                                               </InputAdornment>
-                                           ),
-                                       }}/>
-                                <ErrorMessage name="iconUrl" component="div" className="error-text"/>
+                                <IconSelector onSelect={handleIconSelect}/>
+                                {/*<Field component={MuiTextField} type="text" name="iconUrl" size="small" label="Icon URL"*/}
+                                {/*       InputProps={{*/}
+                                {/*           endAdornment: (*/}
+                                {/*               <InputAdornment position="end">*/}
+                                {/*                   <Tooltip title="URL for an icon to be used for display. Leave blank to use default icon.">*/}
+                                {/*                       <IconButton>*/}
+                                {/*                           <HelpOutlineIcon sx={{ color: 'var(--ultra-soft-color)', fontSize: "16px"}}/>*/}
+                                {/*                       </IconButton>*/}
+                                {/*                   </Tooltip>*/}
+                                {/*               </InputAdornment>*/}
+                                {/*           ),*/}
+                                {/*       }}/>*/}
+                                {/*<ErrorMessage name="iconUrl" component="div" className="error-text"/>*/}
                             </div>
                         </div>
 

@@ -4,7 +4,7 @@ import {
     getDisplayName,
     getMainBoxData
 } from "../../utils/common";
-import DynamicIcons from "../DynamicIcons";
+import DynamicIcons from "../icons/DynamicIcons";
 import React, {useCallback} from "react";
 import {Link} from "react-router-dom";
 

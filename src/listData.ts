@@ -7,7 +7,7 @@ export const menu = [
                 id: 1,
                 title: "Overview",
                 url: "/",
-                icon: "overview",
+                icon: "_overview",
             }
         ],
     },

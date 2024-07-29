@@ -11,6 +11,14 @@ export function getDisplayName(instrumentsMetadata, instrument) {
     }
 }
 
+export function convertToJson(dataArray){
+    return dataArray && Object.keys(dataArray).length ? dataArray.reduce((acc, item) => {
+        const { Name, ...rest } = item;
+        acc[Name] = rest;
+        return acc;
+    }, {}) : {};
+}
+
 const truncateNumber = (number, decimalCount = 2) => {
     if (number < 1000) return number.toString();
     if (number < 100000) return `${(number / 1000).toFixed(decimalCount)}K`;

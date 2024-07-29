@@ -1,0 +1,28 @@
+.icon-selector {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  flex-wrap: wrap;
+
+  .icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border-color 0.3s;
+    font-size: 20px;
+
+    &.selected {
+      color: $secondary;
+    }
+
+    &:hover {
+      border-color: #007bff;
+    }
+
+    p {
+      margin: 5px 0 0 0;
+    }
+  }
+}
