@@ -20,9 +20,9 @@ function App() {
     const [dialogProps, setDialogProps] = useState({})
     const [alertDetails, setAlertDetails] = useState({})
 
-    const fetchSheetData = () => {
+    const fetchSheetData = (enableLoading = true) => {
         console.log("fetching...")
-        setLoading(true);
+        setLoading(enableLoading);
         if (process.env.NODE_ENV == "development"){
             let data = JSON.parse(devData, dateReviver);
             console.log(data)
@@ -74,8 +74,9 @@ function App() {
                 google.script.run
                     .withSuccessHandler((response) => {
                         if (response.statusCode >= 200 && response.statusCode < 300) {
-                            setAlert("success", "Success", "Deleted " + instrument, 10);
+                            setAlert("success", "Success", "Deleted successfully.", 10);
                             setDialogType('');
+                            fetchSheetData(false);
                             resolve(response);
                         } else {
                             setAlert("error", "Error", response.status, 10);
@@ -139,7 +140,8 @@ function App() {
                     path: "add/instrument",
                     element: <AddInstrument
                                 metadata={data?.metadata}
-                                setAlert={setAlert}/>,
+                                setAlert={setAlert}
+                                fetchSheetData={fetchSheetData}/>,
                 },
             ],
         },

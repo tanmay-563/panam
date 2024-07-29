@@ -7,7 +7,6 @@ import {FormHelperText, IconButton, InputAdornment, InputLabel, Tooltip} from "@
 import CloseIcon from "@mui/icons-material/Close";
 import ErrorFocus from "../components/external/ErrorFocus"
 import Loading from "../components/Loading";
-import {formatToIndianCurrency} from "../utils/common";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase english alphabets allowed').required('Name is required'),
@@ -49,7 +48,7 @@ const MuiTextField = ({ field, form, ...props }) => {
         />;
 };
 
-const AddInstrument = ({metadata, setAlert}) => {
+const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
     if(!metadata)
         return <div></div>
     const sheetMetadata = metadata.sheet
@@ -111,6 +110,7 @@ const AddInstrument = ({metadata, setAlert}) => {
                     setAlert("error", "Error", response.status, 10);
                 }
                 setSubmitting(false);
+                fetchSheetData(false);
             }).withFailureHandler((error) => {
                 console.error("Error fetching data:", error);
                 setAlert("error", "Error", "Failed to add instrument.", 10);

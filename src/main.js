@@ -197,7 +197,7 @@ function addInstrument(data){
 
     let sheet = ss.getSheetByName(data.name)
     let lastRow = sheet.getLastRow();
-    sheet.getRange(lastRow+1, 2).setValue("Manually add entry in this row.");
+    sheet.getRange(lastRow+1, 2).setValue("Manually add entry in this row and then refresh the app.");
 
     let lastColumn = sheet.getLastColumn();
     let range = sheet.getRange(1, 1, 1, lastColumn);

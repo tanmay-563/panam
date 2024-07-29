@@ -52,7 +52,8 @@ const AddTransaction = ({...props}) => {
             setLoading(false);
             if(response.statusCode >= 200 && response.statusCode < 300){
                 props.setDialogType('');
-                props.setAlert("success", "Success", "Refresh to see updated data.", 10);
+                props.setAlert("success", "Success", "Transaction added successfully.", 10);
+                props.fetchSheetData(false);
             }
             else{
                 const message = response.instrumentSheetUrl

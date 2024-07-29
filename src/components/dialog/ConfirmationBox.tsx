@@ -6,9 +6,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import Loading from "../Loading";
+import {useNavigate} from "react-router-dom";
 
 const ConfirmationBox = ({ dialogType, setDialogType, ...props}) => {
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
     const onClose = () => {
         setDialogType('');
     }
@@ -18,9 +20,10 @@ const ConfirmationBox = ({ dialogType, setDialogType, ...props}) => {
         try {
             await props.dialogProps.onConfirm();
         } catch (error) {
-            console.error('Error during confirmation:', error);
+            console.error('Error:', error);
         } finally {
             setLoading(false);
+            navigate("/")
         }
     };
 

@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {menu} from "../listData"
 import DynamicIcons from "./DynamicIcons";
 import {getDisplayName} from "../utils/common";
+import ListIcon from "../../public/list.svg"
 const Menu = ({
                   instruments,
                   metadata,

@@ -73,6 +73,7 @@ const Layout = ({ data,
                         setSelectedMenuItem={setSelectedMenuItem}
                         setAlert={setAlert}
                         metadata={data?.metadata}
+                        fetchSheetData={fetchSheetData}
                         dialogProps={dialogProps}
                         setDialogProps={setDialogProps}
                     />}
