@@ -58,19 +58,38 @@ function App() {
     }
 
     const handleInstrumentDelete = (instrument) => {
-        // @ts-ignore
-        google.script.run.withSuccessHandler((response) => {
-            if(response.statusCode >= 200 && response.statusCode < 300){
-                setAlert("success", "Success", "Deleted "+instrument, 10);
-                setDialogType('');
+        return new Promise((resolve, reject) => {
+            if (process.env.NODE_ENV === "development") {
+                setTimeout(() => {
+                    let response = {
+                        statusCode: 200,
+                        status: "Success"
+                    };
+                    setAlert("success", "Success", "Deleted " + instrument, 10);
+                    setDialogType('')
+                    resolve(response);
+                }, 2000);
+            } else {
+                // @ts-ignore
+                google.script.run
+                    .withSuccessHandler((response) => {
+                        if (response.statusCode >= 200 && response.statusCode < 300) {
+                            setAlert("success", "Success", "Deleted " + instrument, 10);
+                            setDialogType('');
+                            resolve(response);
+                        } else {
+                            setAlert("error", "Error", response.status, 10);
+                            reject(response);
+                        }
+                    })
+                    .withFailureHandler((error) => {
+                        setAlert("error", "Error", error, 10);
+                        reject(error);
+                    })
+                    .deleteInstrument(instrument);
             }
-            else{
-                setAlert("error", "Error", response.status, 10);
-            }
-        }).withFailureHandler((error) => {
-            setAlert("error", "Error", error, 10);
-        }).deleteInstrument(instrument);
-    }
+        });
+    };
 
     const router = createBrowserRouter([
         {
