@@ -6,25 +6,32 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 
-const ConfirmationBox = ({ open, onClose, onConfirm, title, content }) => {
+const ConfirmationBox = ({ dialogType, setDialogType, ...props}) => {
+    const onClose = () => {
+        setDialogType('');
+    }
+
     return (
         <Dialog
-            open={open}
+            open={dialogType !== ''}
             onClose={onClose}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
+            className="confirmation-box"
         >
-            <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+            <DialogTitle id="alert-dialog-title" className="dialog-title">
+                {props.dialogProps.title}
+            </DialogTitle>
             <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    {content}
+                <DialogContentText id="alert-dialog-description" className="dialog-content-text">
+                    {props.dialogProps.content}
                 </DialogContentText>
             </DialogContent>
-            <DialogActions>
-                <Button onClick={onClose} color="primary">
+            <DialogActions className="dialog-actions">
+                <Button onClick={onClose} color="primary" className="dialog-button">
                     Cancel
                 </Button>
-                <Button onClick={onConfirm} color="primary" autoFocus>
+                <Button onClick={props.dialogProps.onConfirm} color="primary" autoFocus className="dialog-button">
                     Confirm
                 </Button>
             </DialogActions>

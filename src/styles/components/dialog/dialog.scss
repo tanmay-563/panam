@@ -10,3 +10,39 @@
   justify-content: center;
   overflow: auto;
 }
+
+.confirmation-box{
+
+  .MuiPaper-root {
+    border-radius: 8px;
+    padding: 20px;
+    background-color: $soft-bg;
+  }
+
+  .dialog-title {
+    background-color: $soft-bg;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 16px 24px;
+    color: white;
+  }
+
+  .dialog-content {
+    padding: 16px 24px;
+  }
+
+  .dialog-content-text {
+    font-size: 1rem;
+    color: $soft-color;
+  }
+
+  .dialog-actions {
+    padding: 8px 24px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .dialog-button {
+    text-transform: none;
+  }
+}

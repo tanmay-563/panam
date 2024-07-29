@@ -217,6 +217,25 @@ function addInstrument(data){
   }
 }
 
+function deleteInstrument(instrument){
+  try{
+    let ss = SpreadsheetApp.getActiveSpreadsheet()
+    ss.deleteSheet(ss.getSheetByName(instrument))
+    deleteRowsWithValue(ss.getSheetByName('_column'), "Instrument", instrument)
+    deleteRowsWithValue(ss.getSheetByName('_instrument'), "Name", instrument)
+    return{
+      statusCode: 200,
+      status: "Success"
+    }
+  }
+  catch (e){
+    return{
+      statusCode: 400,
+      status: e
+    }
+  }
+}
+
 function setupDailyCronTrigger() {
   deleteTriggers();
 

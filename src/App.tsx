@@ -17,6 +17,7 @@ function App() {
     const [loading, setLoading] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState("");
     const [dialogType, setDialogType] = useState('');
+    const [dialogProps, setDialogProps] = useState({})
     const [alertDetails, setAlertDetails] = useState({})
 
     const fetchSheetData = () => {
@@ -56,6 +57,21 @@ function App() {
         }));
     }
 
+    const handleInstrumentDelete = (instrument) => {
+        // @ts-ignore
+        google.script.run.withSuccessHandler((response) => {
+            if(response.statusCode >= 200 && response.statusCode < 300){
+                setAlert("success", "Success", "Deleted "+instrument, 10);
+                setDialogType('');
+            }
+            else{
+                setAlert("error", "Error", response.status, 10);
+            }
+        }).withFailureHandler((error) => {
+            setAlert("error", "Error", error, 10);
+        }).deleteInstrument(instrument);
+    }
+
     const router = createBrowserRouter([
         {
             path: "/",
@@ -71,6 +87,8 @@ function App() {
                     setAlert={setAlert}
                     alertDetails={alertDetails}
                     loading={loading}
+                    dialogProps={dialogProps}
+                    setDialogProps={setDialogProps}
                 />
             ),
             children: [
@@ -93,6 +111,9 @@ function App() {
                         metadata={data?.metadata}
                         instrument={selectedMenuItem}
                         setSelectedMenuItem={setSelectedMenuItem}
+                        setDialogType={setDialogType}
+                        setDialogProps={setDialogProps}
+                        handleInstrumentDelete={handleInstrumentDelete}
                     />,
                 },
                 {
@@ -116,6 +137,8 @@ function App() {
                 setAlert={setAlert}
                 alertDetails={alertDetails}
                 loading={loading}
+                dialogProps={dialogProps}
+                setDialogProps={setDialogProps}
             />,
             children: [
                 {

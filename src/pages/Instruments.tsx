@@ -15,7 +15,10 @@ const Instruments = ({
                          transactionsRowMap,
                          metadata,
                          instrument,
-                        setSelectedMenuItem
+                         setSelectedMenuItem,
+                         setDialogType,
+                         setDialogProps,
+                         handleInstrumentDelete
                      }) => {
     const [columnVisibility, setColumnVisibility] = useState({});
     const [loading, setLoading] = useState(true)
@@ -161,7 +164,15 @@ const Instruments = ({
                 <div className="title">
                     {getDisplayName(instrumentMetadata, instrument)}
                 </div>
-                <DeleteIcon className="delete-icon"/>
+                <DeleteIcon className="delete-icon" onClick={()=>{
+                    setDialogType("deleteConfirmation")
+                    setDialogProps({
+                        title: "Delete Instrument",
+                        content: "Are you certain you wish to delete the instrument " + getDisplayName(instrumentMetadata, instrument) + "? " +
+                            "This action will result in the deletion of all data associated with the instrument.",
+                        onConfirm: ()=>handleInstrumentDelete(instrument)
+                    })
+                }}/>
             </div>
             <DataGrid
                 rows={rows}

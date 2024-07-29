@@ -12,6 +12,7 @@
   - refactor all css class name casing
   - delete instrument
   - icon using url
+  - autoincrement id
 - data manipulation for home page
   - Overall
     - current sum

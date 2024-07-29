@@ -18,6 +18,8 @@ const Layout = ({ data,
     setAlert,
     alertDetails,
     loading,
+    dialogProps,
+    setDialogProps
 }) =>{
     const [hamburgerToggle, setHamburgerToggle] = useState(false);
     const [showSettings, setShowSettings] = useState(false)
@@ -71,16 +73,9 @@ const Layout = ({ data,
                         setSelectedMenuItem={setSelectedMenuItem}
                         setAlert={setAlert}
                         metadata={data?.metadata}
+                        dialogProps={dialogProps}
+                        setDialogProps={setDialogProps}
                     />}
-                    {/*{showDialog && <AddTransaction*/}
-                    {/*    instruments={data?.instruments}*/}
-                    {/*    transactionsColumnMap={data?.transactionsColumnMap}*/}
-                    {/*    selectedMenuItem={selectedMenuItem}*/}
-                    {/*    setSelectedMenuItem={setSelectedMenuItem}*/}
-                    {/*    setShowDialog={setShowDialog}*/}
-                    {/*    setAlert={setAlert}*/}
-                    {/*    metadata={data?.metadata}*/}
-                    {/*/>}*/}
                 </div>
             </div>
             <Footer/>

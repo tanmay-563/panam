@@ -1,24 +1,26 @@
-import ConfirmationBox from "./ConifrmationBox";
+import ConfirmationBox from "./ConfirmationBox";
 import AddTransaction from "./addTransactions/AddTransaction";
 
 const Dialog = ({dialogType, setDialogType, ...props}) =>{
     if(!dialogType || dialogType === '')
         return <div></div>
-
     let dialogContent;
 
     switch (dialogType.toLowerCase()) {
         case "addtransaction":
-            dialogContent = (<AddTransaction
+            dialogContent = <AddTransaction
                                 dialogType={dialogType}
                                 setDialogType={setDialogType}
-                                {...props}/>);
+                                {...props}/>;
             break;
         case "deleteconfirmation":
-            dialogContent = (<div></div>);
+            dialogContent = <ConfirmationBox
+                                dialogType={dialogType}
+                                setDialogType={setDialogType}
+                                {...props}/>;
             break;
         default:
-            dialogContent = (<div></div>);
+            return <div></div>;
     }
 
     return (
