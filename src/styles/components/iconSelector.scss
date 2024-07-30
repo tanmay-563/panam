@@ -1,8 +1,21 @@
 .icon-selector {
   display: flex;
   justify-content: space-around;
-  padding: 10px;
   flex-wrap: wrap;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  background-color: $soft-color;
+  top: 40px;
+  left: 0;
+  border-radius: 3px;
+
+  &.expand{
+    height: fit-content;
+    padding: 10px;
+    overflow: auto;
+  }
 
   .icon-item {
     display: flex;
@@ -12,6 +25,9 @@
     border: 1px solid transparent;
     transition: border-color 0.3s;
     font-size: 20px;
+    color: $primary;
+    flex: 1 1 calc(20%);
+    height: fit-content;
 
     &.selected {
       color: $secondary;

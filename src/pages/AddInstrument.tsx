@@ -8,14 +8,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import ErrorFocus from "../components/external/ErrorFocus"
 import Loading from "../components/Loading";
 import IconSelector from "../components/icons/IconSelector";
+import {iconMap} from "../components/icons/Icons";
+import FormikIconSelector from '../components/icons/IconSelector';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase english alphabets allowed').required('Name is required'),
     label: Yup.string().required("Label is required"),
-    iconUrl: Yup.string().matches(
-        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-        'Invalid URL'
-    ),
+    // iconUrl: Yup.string().matches(
+    //     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+    //     'Invalid URL'
+    // ),
 });
 
 const MuiTextField = ({ field, form, ...props }) => {
@@ -54,6 +56,7 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
         return <div></div>
     const sheetMetadata = metadata.sheet
     const [selectedIcon, setSelectedIcon] = useState(null);
+    const [showIconSelector, setShowIconSelector] = useState(false);
     let dataTypeOptions = []
     try{
         dataTypeOptions = sheetMetadata.filter((item) => item.Key.toLowerCase() == "datatypeselectoptions")[0].Value.split(",");
@@ -72,7 +75,7 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
         name: '',
         label: '',
         calculateXirr: true,
-        iconUrl: '',
+        icon: '',
         fields: [fieldsInitialValue]
     };
 
@@ -90,6 +93,7 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
 
     const handleSubmit = (values, { setSubmitting, setValues }) => {
         if (process.env.NODE_ENV == "development"){
+            console.log(values)
             setTimeout(() => {
                 let response = {
                     "instrumentSheetUrl": "https://docs.google.com/spreadsheets/d/11wPJM1iRc6HLmI11pQIzIhhUuyy9KgmWxCyOtETILqE/edit#gid=1536483209",
@@ -175,7 +179,20 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
                             </div>
 
                             <div className="form-field">
-                                <IconSelector onSelect={handleIconSelect}/>
+                                <span className="checkbox-field position-relative pointer" onClick={() => setShowIconSelector(!showIconSelector)}>
+                                    <div className="checkbox-label-container pointer">
+                                        <InputLabel className="form-label pointer">Select Icon</InputLabel>
+                                        <FormHelperText sx={{ display: 'flex', alignItems: 'center', marginTop: 0 }}>
+                                            <Tooltip title="Instrument icon to be used for display.">
+                                                <IconButton>
+                                                    <HelpOutlineIcon sx={{ color: 'var(--ultra-soft-color)', fontSize: "16px"}}/>
+                                                </IconButton>
+                                            </Tooltip>
+                                        </FormHelperText>
+                                    </div>
+                                    {selectedIcon&& iconMap[selectedIcon]}
+                                    <IconSelector onSelect={handleIconSelect} expand={showIconSelector} />
+                                </span>
                                 {/*<Field component={MuiTextField} type="text" name="iconUrl" size="small" label="Icon URL"*/}
                                 {/*       InputProps={{*/}
                                 {/*           endAdornment: (*/}

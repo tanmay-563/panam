@@ -1,15 +1,15 @@
-import {GiPlantWatering, GiReceiveMoney} from "react-icons/gi";
-import {GrOverview} from "react-icons/gr";
+import {GiReceiveMoney, GiMoneyStack} from "react-icons/gi";
+import {GrOverview, GrGrow} from "react-icons/gr";
 import { FaSackDollar } from "react-icons/fa6";
-import {FaLock, FaPiggyBank, FaShieldAlt, FaMoneyBill} from "react-icons/fa";
-import {AiFillGold} from "react-icons/ai";
+import {FaLock, FaPiggyBank, FaShieldAlt, FaMoneyBill, FaHome, FaHandHoldingMedical} from "react-icons/fa";
+import {AiFillGold, AiFillDollarCircle} from "react-icons/ai";
 import { CgEditBlackPoint } from "react-icons/cg";
 import { RiMoneyRupeeCircleFill } from "react-icons/ri";
 import { MdOutlineStackedLineChart } from "react-icons/md";
+import { MdElderly } from "react-icons/md";
 import React from "react";
 
 export const iconMap = {
-    "plant": <GiPlantWatering/>,
     "_overview": <GrOverview/>,
     "piggy": <FaPiggyBank />,
     "shield": <FaShieldAlt/>,
@@ -21,4 +21,10 @@ export const iconMap = {
     "lines": <MdOutlineStackedLineChart/>,
     "moneybill": <FaMoneyBill/>,
     "dollarsack": <FaSackDollar/>,
+    "dollarcircle": <AiFillDollarCircle/>,
+    "moneystack": <GiMoneyStack/>,
+    "plant": <GrGrow/>,
+    "home": <FaHome/>,
+    "elderly": <MdElderly/>,
+    "medical": <FaHandHoldingMedical/>,
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {iconMap} from "./Icons";
-const IconSelector = ({ onSelect }) => {
+import {useField} from "formik";
+const IconSelector = ({ onSelect, expand }) => {
     const [selectedIcon, setSelectedIcon] = useState(null);
 
     const handleIconClick = (icon) => {
@@ -9,12 +10,12 @@ const IconSelector = ({ onSelect }) => {
     };
 
     return (
-        <div className="icon-selector">
+        <div className={`icon-selector ${expand ? 'expand': ''}`}>
             {Object.keys(iconMap).filter(key => !key.startsWith('_')).map((key) => (
                 <div
                     key={key}
-                    className={`icon-item ${selectedIcon === iconMap[key] ? 'selected' : ''}`}
-                    onClick={() => handleIconClick(iconMap[key])}
+                    className={`icon-item ${selectedIcon === key ? 'selected' : ''}`}
+                    onClick={() => handleIconClick(key)}
                 >
                     {iconMap[key]}
                 </div>
