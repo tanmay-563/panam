@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {iconMap} from "./Icons";
 import {useField} from "formik";
-const IconSelector = ({ onSelect, expand }) => {
+const IconSelector = ({ expand, values }) => {
     const [selectedIcon, setSelectedIcon] = useState(null);
 
     const handleIconClick = (icon) => {
         setSelectedIcon(icon);
-        onSelect(icon);
+        values.icon = icon;
     };
 
     return (

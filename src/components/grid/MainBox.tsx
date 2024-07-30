@@ -1,22 +1,21 @@
 import {
+    convertToJson,
     formatPercentage,
     formatToIndianCurrency,
-    getDisplayName,
     getMainBoxData
 } from "../../utils/common";
 import DynamicIcons from "../icons/DynamicIcons";
-import React, {useCallback} from "react";
-import {Link} from "react-router-dom";
+import React from "react";
 
 const MAX_ITEMS = 6
 const MainBox = ({
                      metadata,
                      aggregatedData,
-                     reports
 }) => {
     const instrumentsMetadata = metadata?.instrument
     let [overallData, instrumentsData] = aggregatedData
     let sortedInstruments = getMainBoxData(instrumentsData, MAX_ITEMS);
+    const instrumentsMetadataJson = convertToJson(instrumentsMetadata)
 
     return (
         <>
@@ -46,9 +45,9 @@ const MainBox = ({
                             return (
                                 <div key = {index}>
                                     <div className="mini-box">
-                                        <DynamicIcons name={instrumentId} className="icon" />
+                                        <DynamicIcons name={instrumentsMetadataJson[instrumentId]["Icon"]} className="icon" />
                                         <p>
-                                            {getDisplayName(instrumentsMetadata, instrumentId)}
+                                            {instrumentsMetadataJson[instrumentId]["Label"]}
                                         </p>
                                         <div className="mini-numbers">
                                             <h5>

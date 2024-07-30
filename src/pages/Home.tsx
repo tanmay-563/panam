@@ -17,8 +17,7 @@ const Home = ({
             <div className="box box1">
                 <MainBox
                     metadata={metadata}
-                    aggregatedData={aggregatedData}
-                    reports={reports}/>
+                    aggregatedData={aggregatedData}/>
             </div>
             <div className="box box2">
                 <DetailsBox aggregatedData={aggregatedData} metadata={metadata} instruments={instruments}/>
