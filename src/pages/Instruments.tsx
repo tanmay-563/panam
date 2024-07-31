@@ -4,7 +4,7 @@ import {useEffect, useMemo, useState} from "react";
 import {useTheme} from "@mui/material";
 import {useParams} from "react-router-dom";
 import moment from "moment/moment";
-import DeleteIcon from "../../public/delete.svg";
+import AddIcon from "../../public/add.svg";
 
 function getLocalStorageKey(instrument){
     return "datagrid_column_visibility_"+instrument;
@@ -17,8 +17,6 @@ const Instruments = ({
                          instrument,
                          setSelectedMenuItem,
                          setDialogType,
-                         setDialogProps,
-                         handleInstrumentDelete
                      }) => {
     const [columnVisibility, setColumnVisibility] = useState({});
     const [loading, setLoading] = useState(true)
@@ -164,15 +162,10 @@ const Instruments = ({
                 <div className="title">
                     {getDisplayName(instrumentMetadata, instrument)}
                 </div>
-                <DeleteIcon className="delete-icon" onClick={()=>{
-                    setDialogType("deleteConfirmation")
-                    setDialogProps({
-                        title: "Delete Instrument",
-                        content: "Are you certain you wish to delete the instrument " + getDisplayName(instrumentMetadata, instrument) + "? " +
-                            "This action will result in the deletion of all data associated with the instrument.",
-                        onConfirm: ()=>handleInstrumentDelete(instrument)
-                    })
-                }}/>
+                <div className="add-transaction-box" onClick={()=>setDialogType('addTransaction')}>
+                    <AddIcon/>
+                    Add Transaction
+                </div>
             </div>
             <DataGrid
                 rows={rows}

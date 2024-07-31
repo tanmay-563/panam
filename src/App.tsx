@@ -10,6 +10,7 @@ import getProcessedData from "./utils/dataProcessor";
 import {dateReviver} from "./utils/common";
 import Layout from "./pages/Layout";
 import AddInstrument from "./pages/AddInstrument";
+import DeleteInstrument from "./pages/DeleteInstrument";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -142,6 +143,16 @@ function App() {
                                 metadata={data?.metadata}
                                 setAlert={setAlert}
                                 fetchSheetData={fetchSheetData}/>,
+                },
+                {
+                    path: "delete/instrument",
+                    element: <DeleteInstrument
+                        metadata={data?.metadata}
+                        setAlert={setAlert}
+                        fetchSheetData={fetchSheetData}
+                        setDialogType={setDialogType}
+                        setDialogProps={setDialogProps}
+                        handleInstrumentDelete={handleInstrumentDelete}/>,
                 },
             ],
         },

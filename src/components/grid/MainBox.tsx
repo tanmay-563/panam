@@ -14,8 +14,8 @@ const MainBox = ({
 }) => {
     const instrumentsMetadata = metadata?.instrument
     let [overallData, instrumentsData] = aggregatedData
-    let sortedInstruments = getMainBoxData(instrumentsData, MAX_ITEMS);
     const instrumentsMetadataJson = convertToJson(instrumentsMetadata)
+    let sortedInstruments = getMainBoxData(instrumentsData, MAX_ITEMS, instrumentsMetadataJson);
 
     return (
         <>

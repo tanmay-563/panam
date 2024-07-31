@@ -1,0 +1,29 @@
+.delete-instrument{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .delete-card{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    padding: 50px;
+    background-color: $soft-bg;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 10px black;
+    border-radius: 5px;
+
+    .label{
+      color: $soft-color;
+      padding-bottom: 30px;
+    }
+
+    .placeholder{
+      color: $ultra-soft;
+      background-color: $soft-bg;
+    }
+  }
+}

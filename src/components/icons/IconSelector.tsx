@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {iconMap} from "./Icons";
-import {useField} from "formik";
-const IconSelector = ({ expand, values }) => {
+
+const IconSelector = ({ expand, values, setShowIconSelector, iconSelectorRef }) => {
     const [selectedIcon, setSelectedIcon] = useState(null);
 
     const handleIconClick = (icon) => {
         setSelectedIcon(icon);
         values.icon = icon;
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (iconSelectorRef.current && !iconSelectorRef.current.contains(event.target)) {
+                setShowIconSelector('');
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [expand])
+
+    useEffect(()=>{
+        setSelectedIcon('')
+    }, [values])
 
     return (
         <div className={`icon-selector ${expand ? 'expand': ''}`}>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Formik, Form, Field, ErrorMessage, FieldArray} from 'formik';
 import * as Yup from 'yup';
 import TextField from "@mui/material/TextField";
@@ -9,15 +9,10 @@ import ErrorFocus from "../components/external/ErrorFocus"
 import Loading from "../components/Loading";
 import IconSelector from "../components/icons/IconSelector";
 import {iconMap} from "../components/icons/Icons";
-import FormikIconSelector from '../components/icons/IconSelector';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().matches(/^[a-z]+$/, 'Only lowercase english alphabets allowed').required('Name is required'),
     label: Yup.string().required("Label is required"),
-    // iconUrl: Yup.string().matches(
-    //     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-    //     'Invalid URL'
-    // ),
 });
 
 const MuiTextField = ({ field, form, ...props }) => {
@@ -56,6 +51,8 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
         return <div></div>
     const sheetMetadata = metadata.sheet
     const [showIconSelector, setShowIconSelector] = useState(false);
+    const iconSelectorRef = useRef(null);
+
     let dataTypeOptions = []
     try{
         dataTypeOptions = sheetMetadata.filter((item) => item.Key.toLowerCase() == "datatypeselectoptions")[0].Value.split(",");
@@ -174,7 +171,7 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
                             </div>
 
                             <div className="form-field">
-                                <span className="checkbox-field position-relative pointer" onClick={() => setShowIconSelector(!showIconSelector)}>
+                                <span className="checkbox-field position-relative pointer" onClick={() => setShowIconSelector(!showIconSelector)} ref={iconSelectorRef}>
                                     <div className="checkbox-label-container pointer">
                                         <InputLabel className="form-label pointer">Select Icon</InputLabel>
                                         <FormHelperText sx={{ display: 'flex', alignItems: 'center', marginTop: 0 }}>
@@ -186,7 +183,8 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
                                         </FormHelperText>
                                     </div>
                                     {values.icon != '' && iconMap[values.icon]}
-                                    <IconSelector expand={showIconSelector} values={values} />
+                                    <IconSelector expand={showIconSelector} values={values} setShowIconSelector={setShowIconSelector}
+                                                  iconSelectorRef={iconSelectorRef}/>
                                 </span>
                             </div>
                         </div>

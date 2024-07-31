@@ -30,7 +30,7 @@ const Navbar = ({   onRefresh,
                 <MenuIcon/>
             </div>
             <div className="icons">
-                <div title="AddTransaction transaction">
+                <div title="Add Transaction">
                     <AddIcon className="icon" onClick={()=> setDialogType('addTransaction')}/>
                 </div>
                 <div title="Refresh data">

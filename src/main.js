@@ -49,6 +49,9 @@ function addRow(sheetName, rowMap){
       return rowMap[header];
     } else {
       let lastRow = sheet.getLastRow();
+      if(header.toLowerCase() === "id"){
+        return lastRow;
+      }
       let formula = sheet.getRange(lastRow, headers.indexOf(header) + 1).getFormula();
       return formula.replace(new RegExp(lastRow, 'g'), lastRow+1).replace(new RegExp(lastRow-1, 'g'), lastRow);
     }
@@ -127,7 +130,7 @@ function addInstrumentSheet(data){
     let newSheet = ss.insertSheet();
     newSheet.setName(data.name)
 
-    let headerRow = ["id", "Name", "Invested"]
+    let headerRow = ["id", "Name", "Date", "Invested"]
     if(data.fields){
       headerRow.push(...data.fields
           .map(item => item.name)

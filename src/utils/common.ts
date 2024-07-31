@@ -63,7 +63,7 @@ export function formatPercentage(number){
     }
 }
 
-export function getMainBoxData(instrumentsAggregatedData, itemLimit){
+export function getMainBoxData(instrumentsAggregatedData, itemLimit, instrumentsMetadataJson){
     try{
         const sortedInstruments = Object.keys(instrumentsAggregatedData).map((instrument) => {
             const current = instrumentsAggregatedData[instrument]["current"];
@@ -88,6 +88,10 @@ export function getMainBoxData(instrumentsAggregatedData, itemLimit){
         if(sortedInstruments.length > itemLimit){
             sortedInstruments.splice(itemLimit-1)
             sortedInstruments.push(others);
+            instrumentsMetadataJson["Others"] = {
+                Label: "Others",
+                Icon: "_genericn"
+            }
         }
 
         return sortedInstruments

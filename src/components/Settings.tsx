@@ -1,7 +1,6 @@
 import {useEffect, useRef} from "react";
-import ExternalLinkIcon from "../../public/external_link.svg";
-import AddIcon from "../../public/add.svg";
 import {Link} from "react-router-dom";
+import {iconMap} from "./icons/Icons";
 
 const Settings = ({   data,
                       showSettings,
@@ -34,18 +33,28 @@ const Settings = ({   data,
         <div className={`settings-container ${showSettings ? 'show': 'hide'}`} ref={settingsRef}>
             <div className="settings-content">
                 <div className="settings-lineitem" onClick={()=>setShowSettings(!showSettings)}>
-                    <ExternalLinkIcon/>
+                    {iconMap["_link"]}
                     <div onClick={() => window.open(sheetUrl, "_blank")} className="settings-label">
                         Open sheets
                     </div>
                 </div>
                 <div className="settings-lineitem" onClick={()=>setShowSettings(!showSettings)}>
-                    <AddIcon/>
+                    {iconMap["_postadd"]}
                     <Link
                         to="add/instrument"
                     >
                         <div className="settings-label">
                             Add Instrument
+                        </div>
+                    </Link>
+                </div>
+                <div className="settings-lineitem" onClick={()=>setShowSettings(!showSettings)}>
+                    {iconMap["_delete"]}
+                    <Link
+                        to="delete/instrument"
+                    >
+                        <div className="settings-label">
+                            Delete Instrument
                         </div>
                     </Link>
                 </div>

@@ -54,7 +54,7 @@
 
     .listItem {
       display: flex;
-      align-items: center;
+      align-items: end;
       gap: 10px;
       padding: 10px;
       border-radius: 5px;
@@ -69,6 +69,15 @@
 
     .selected {
       background-color: $soft-bg;
+    }
+
+    .menu-icon{
+      height: 20px;
+
+      svg{
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 }
