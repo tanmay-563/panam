@@ -1,0 +1,20 @@
+.calculator-form-top{
+  height: 70%;
+  position: relative;
+  overflow: auto;
+  flex: 1;
+  flex-direction: column;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  border: none !important;;
+
+  .calculator-field{
+    width: 180px !important;
+  }
+}
+
+.calculated-data{
+  background-color: $primary;
+  border: 0.5px solid $max-soft;
+  height: 40%;
+}

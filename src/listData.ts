@@ -17,5 +17,17 @@ export const menu = [
             }
         ],
     },
+    {
+        id: 2,
+        title: "Calculators",
+        listItems: [
+            {
+                id: 1,
+                title: "Capital Gains",
+                url: "/calculator/capitalgains",
+                icon: "_uparrowright",
+            },
+        ],
+    },
 ];
 

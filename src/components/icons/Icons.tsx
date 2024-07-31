@@ -1,6 +1,6 @@
 import {GiReceiveMoney, GiMoneyStack} from "react-icons/gi";
 import {GrOverview, GrGrow} from "react-icons/gr";
-import { FaSackDollar } from "react-icons/fa6";
+import { FaSackDollar, FaArrowUpRightDots } from "react-icons/fa6";
 import {FaLock, FaPiggyBank, FaShieldAlt, FaMoneyBill, FaHome, FaHandHoldingMedical, FaExternalLinkAlt, FaFolderPlus} from "react-icons/fa";
 import {AiFillGold, AiFillDollarCircle} from "react-icons/ai";
 import { CgEditBlackPoint } from "react-icons/cg";
@@ -15,6 +15,7 @@ export const iconMap = {
     "_postadd": <FaFolderPlus/>,
     "_link": <FaExternalLinkAlt/>,
     "_delete": <MdDelete/>,
+    "_uparrowright": <FaArrowUpRightDots/>,
     "piggy": <FaPiggyBank />,
     "shield": <FaShieldAlt/>,
     "gold": <AiFillGold />,

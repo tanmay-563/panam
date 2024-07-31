@@ -11,6 +11,7 @@ import {dateReviver} from "./utils/common";
 import Layout from "./pages/Layout";
 import AddInstrument from "./pages/AddInstrument";
 import DeleteInstrument from "./pages/DeleteInstrument";
+import CapitalGains from "./pages/calculators/CapitalGains";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -28,6 +29,7 @@ function App() {
             let data = JSON.parse(devData, dateReviver);
             console.log(data)
             setData(getProcessedData(data));
+            console.log(getProcessedData(data))
             setTimeout(() => setLoading(false), 500)
         }
         else{
@@ -133,8 +135,6 @@ function App() {
                         instrument={selectedMenuItem}
                         setSelectedMenuItem={setSelectedMenuItem}
                         setDialogType={setDialogType}
-                        setDialogProps={setDialogProps}
-                        handleInstrumentDelete={handleInstrumentDelete}
                     />,
                 },
                 {
@@ -153,6 +153,12 @@ function App() {
                         setDialogType={setDialogType}
                         setDialogProps={setDialogProps}
                         handleInstrumentDelete={handleInstrumentDelete}/>,
+                },
+                {
+                    path: "calculator/capitalgains",
+                    element: <CapitalGains
+                                metadata={data?.metadata}
+                                transactionsRowMap={data?.transactionsRowMap}/>
                 },
             ],
         },

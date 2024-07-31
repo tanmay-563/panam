@@ -1,4 +1,4 @@
-.add-instrument{
+.form-page{
   padding: 10px;
   display: flex;
   justify-content: space-evenly;
@@ -8,7 +8,7 @@
     flex-direction: column;
   }
 
-  .add-instrument-title{
+  .form-page-title{
     flex: 1;
     display: flex;
     align-items: center;
@@ -23,142 +23,140 @@
       flex: none;
     }
   }
+}
 
-  .form{
-    width: 500px;
-    background-color: $soft-bg;
-    border-radius: 10px;
-    position: relative;
-    overflow: auto;
+.form{
+  width: 500px;
+  background-color: $soft-bg;
+  border-radius: 10px;
+  position: relative;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+  @include sm{
+    width: 100%;
+  }
+
+  .form-top{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-bottom: 0.5px solid $max-soft;
+    padding-bottom: 15px;
+  }
 
-    @include sm{
-      width: 100%;
+  .form-fields{
+    padding: 15px;
+    flex: 1;
+
+    h4{
+      font-weight: normal;
+      color: $soft-color;
     }
 
-    .form-top{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      border-bottom: 0.5px solid $max-soft;
-      padding-bottom: 15px;
+    p{
+      color: $ultra-soft;
+      font-size: 10px;
+      padding-bottom: 10px;
     }
 
-    .form-fields{
-      padding: 15px;
-      flex: 1;
-
-      h4{
-        font-weight: normal;
-        color: $soft-color;
-      }
-
-      p{
-        color: $ultra-soft;
-        font-size: 10px;
-        padding-bottom: 10px;
-      }
-
-      .fields-container {
-        display: flex;
-        align-items: center;
-
-        .fields-item {
-          display: flex;
-          align-items: end;
-          justify-content: space-between;
-          border: 0.5px solid $max-soft;
-          padding: 10px;
-          height: fit-content;
-          flex: 1;
-          flex-wrap: wrap;
-
-          .fields-item-text {
-            padding: 0;
-            height: fit-content;
-            width: 120px;
-          }
-
-          .fields-item-checkbox{
-            width: 120px;
-            margin-top: 10px;
-          }
-
-          .form-field {
-            width: 150px;
-          }
-        }
-
-        .close {
-          cursor: pointer;
-
-          .close-icon {
-            border-radius: 50%;
-
-            &:hover {
-              background-color: $max-soft;
-            }
-          }
-        }
-      }
-
-      .add-field-button{
-        padding: 7px;
-        cursor: pointer;
-      }
-    }
-
-    .form-field{
-      display: flex;
-      padding: 10px;
-      height: 90px;
-      flex-direction: column;
-      justify-content: end;
-      position: relative;
-      width: 200px;
-
-      @include sm{
-        height: 70px;
-      }
-
-      .error-text{
-        font-size: 12px;
-        color: red;
-        padding-bottom: 5px;
-        position: absolute;
-        margin-right: -50px;
-        bottom: -10px;
-      }
-
-
-
-      span{
-        display: flex;
-        align-items: center;
-
-        label{
-          font-size: 14px;
-          width: 100%;
-        }
-      }
-    }
-
-    .submit{
-      width: 100%;
-      min-height: 60px;
+    .fields-container {
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      background-color: $soft-bg;
-      color: $soft-color;
-      border: none;
-      box-shadow: 1px 1px 6px black;
 
-      &:hover{
-        background-color: $dark-bg;
+      .fields-item {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        border: 0.5px solid $max-soft;
+        padding: 10px;
+        height: fit-content;
+        flex: 1;
+        flex-wrap: wrap;
+
+        .fields-item-text {
+          padding: 0;
+          height: fit-content;
+          width: 120px;
+        }
+
+        .fields-item-checkbox{
+          width: 120px;
+          margin-top: 10px;
+        }
+
+        .form-field {
+          width: 150px;
+        }
       }
+
+      .close {
+        cursor: pointer;
+
+        .close-icon {
+          border-radius: 50%;
+
+          &:hover {
+            background-color: $max-soft;
+          }
+        }
+      }
+    }
+
+    .add-field-button{
+      padding: 7px;
+      cursor: pointer;
+    }
+  }
+
+  .form-field{
+    display: flex;
+    padding: 10px;
+    height: 90px;
+    flex-direction: column;
+    justify-content: end;
+    position: relative;
+    width: 200px;
+
+    @include sm{
+      height: 70px;
+    }
+
+    .error-text{
+      font-size: 12px;
+      color: red;
+      padding-bottom: 5px;
+      position: absolute;
+      margin-right: -50px;
+      bottom: -10px;
+    }
+
+    span{
+      display: flex;
+      align-items: center;
+
+      label{
+        font-size: 14px;
+        width: 100%;
+      }
+    }
+  }
+
+  .submit{
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: $soft-bg;
+    color: $soft-color;
+    border: none;
+    box-shadow: 1px 1px 6px black;
+
+    &:hover{
+      background-color: $dark-bg;
     }
   }
 }

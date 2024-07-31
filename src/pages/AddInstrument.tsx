@@ -121,8 +121,8 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
     }
 
     return (
-        <div className="add-instrument">
-            <div className="add-instrument-title">
+        <div className="form-page">
+            <div className="form-page-title">
                 Add Instrument
             </div>
             <Formik
@@ -131,7 +131,7 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
                 onSubmit={handleSubmit}
                 validateOnChange={false}
             >
-                {({ values, setValues, dirty, errors, isSubmitting }) => (
+                {({ values, setValues, isSubmitting }) => (
                     <Form className="form">
                         <div className="form-top">
                             <div className="form-field">
