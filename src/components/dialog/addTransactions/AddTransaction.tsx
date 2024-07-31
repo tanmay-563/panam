@@ -4,11 +4,12 @@ import {FormControl, InputLabel, MenuItem, Select} from '@mui/material';
 import Loading from "../../Loading";
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
+import InstrumentSelector from "../../InstrumentSelector";
 
 const AddTransaction = ({...props}) => {
-    const instrumentsMetadata = props.metadata?.instrument;
+    const instrumentMetadata = props.metadata?.instrument;
 
-    if(!instrumentsMetadata)
+    if(!instrumentMetadata)
         return <div></div>
 
     const navigate = useNavigate();
@@ -105,46 +106,11 @@ const AddTransaction = ({...props}) => {
                 <CloseIcon className="close-icon"/>
             </span>
             <h1> Add new transaction</h1>
-            <FormControl
-                fullWidth
-            >
-                <InputLabel>Instrument Type</InputLabel>
-                <Select
-                    value={props.instruments.includes(props.selectedMenuItem) ? props.selectedMenuItem : ''}
-                    onChange={(e) => handleInstrumentSelected(e.target.value)}
-                    displayEmpty
-                    label="Instrument Type"
-                    sx = {{
-                        '& .modal .MuiFormControl-root .MuiFormLabel-root': {
-                            color: 'var(--ultra-soft-color)',
-                        },
-                        '& .MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'var(--ultra-soft-color)',
-                        },
-                        '&:hover .MuiOutlinedInput-notchedOutline': {
-                            borderColor: 'var(--soft-color)',
-                        },
-                        '&:not(.Mui-disabled):hover::before': {
-                            borderColor: 'white',
-                        },
-                        '& .MuiSvgIcon-root': {
-                            color: 'var(--soft-color)',
-                        },
-                    }}
-                >
-                    {instrumentsMetadata.map((instrument) => (
-                        <MenuItem
-                            key={instrument.Name.toLowerCase()}
-                            value={instrument.Name.toLowerCase()}
-                            sx={{
-                                color: "var(--dark-color)",
-                            }}
-                        >
-                            {instrument["Label"]}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+            <InstrumentSelector
+                selectedInstrument={props.instruments.includes(props.selectedMenuItem) ? props.selectedMenuItem : ''}
+                onChange={handleInstrumentSelected}
+                instrumentMetadata={instrumentMetadata}
+            />
             <Fields
                 instrument={props.selectedMenuItem}
                 requiredHeaders={requiredHeaders}

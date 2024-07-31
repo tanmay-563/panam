@@ -37,18 +37,6 @@
     }
   }
 
-  .MuiFormLabel-root{
-    color: $soft-color;
-  }
-
-  .MuiSelect-select{
-    color: $soft-color;
-  }
-
-  .MuiInputBase-input{
-    font-size: 14px;
-  }
-
   .MuiAutocomplete-listbox{
     font-size: 14px;
   }
@@ -61,17 +49,6 @@
     color:$soft-color;
   }
 
-  .MuiOutlinedInput-notchedOutline{
-    border-color: $ultra-soft;
-
-    &:hover{
-      border-color: $ultra-soft;
-    }
-
-    &.Mui-focused{
-      border-color: $ultra-soft;
-    }
-  }
   .fields{
     display: flex;
     flex-wrap: wrap;

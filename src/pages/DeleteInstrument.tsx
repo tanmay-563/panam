@@ -1,6 +1,7 @@
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import React, {useState} from "react";
 import {getDisplayName} from "../utils/common";
+import InstrumentSelector from "../components/InstrumentSelector";
 
 const DeleteInstrument = ({   metadata,
                               setAlert,
@@ -33,47 +34,11 @@ const DeleteInstrument = ({   metadata,
         <div className="delete-instrument">
             <div className="delete-card">
                 <span className="label">Select Instrument to delete</span>
-                <FormControl>
-                    <InputLabel className="placeholder">Instrument Type</InputLabel>
-                    <Select
-                        value={instrumentToDelete}
-                        displayEmpty
-                        onChange={(e) => handleInstrumentSelected(e.target.value)}
-                        sx = {{
-                            width: '200px',
-                            '& .MuiFormControl-root .MuiFormLabel-root': {
-                                color: 'var(--ultra-soft-color)',
-                            },
-                            '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'var(--ultra-soft-color)',
-                            },
-                            '&:hover .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'var(--soft-color)',
-                            },
-                            '&:not(.Mui-disabled):hover::before': {
-                                borderColor: 'white',
-                            },
-                            '& .MuiSvgIcon-root': {
-                                color: 'var(--soft-color)',
-                            },
-                            '& .MuiSelect-select':{
-                                color: 'var(--soft-color)',
-                            }
-                        }}
-                    >
-                        {instrumentMetadata.map((instrument) => (
-                            <MenuItem
-                                key={instrument.Name.toLowerCase()}
-                                value={instrument.Name.toLowerCase()}
-                                sx={{
-                                    color: "var(--dark-color)",
-                                }}
-                            >
-                                {instrument["Label"]}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
+                <InstrumentSelector
+                    selectedInstrument={instrumentToDelete}
+                    onChange={handleInstrumentSelected}
+                    instrumentMetadata={instrumentMetadata}
+                />
             </div>
         </div>
     )

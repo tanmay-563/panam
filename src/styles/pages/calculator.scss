@@ -1,16 +1,5 @@
-.calculator-form-top{
-  height: 70%;
-  position: relative;
-  overflow: auto;
-  flex: 1;
-  flex-direction: column;
-  flex-wrap: nowrap !important;
-  align-items: center;
-  border: none !important;;
-
-  .calculator-field{
-    width: 180px !important;
-  }
+.calculator-form{
+  padding: 20px;
 }
 
 .calculated-data{
