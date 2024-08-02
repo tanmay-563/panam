@@ -17,10 +17,17 @@
     color: $soft-color;
     font-size: 28px;
     font-variant: all-petite-caps;
+    flex-direction: column;
 
     @include sm{
       height: fit-content;
       flex: none;
+    }
+
+    p{
+      color: $ultra-soft;
+      font-size: 10px;
+      font-variant: none;
     }
   }
 }

@@ -1,7 +1,14 @@
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import React from "react";
 
-const InstrumentSelector = ({selectedInstrument, onChange, instrumentMetadata}) => {
+const DynamicSelect = ({
+                           selectedValue,
+                           onSelectionChange,
+                           data,
+                           valueField,
+                           labelField,
+                           uniqueId,
+                           inputLabel}) => {
     return (
         <FormControl
             fullWidth
@@ -13,11 +20,11 @@ const InstrumentSelector = ({selectedInstrument, onChange, instrumentMetadata}) 
                         color: 'var(--soft-color)',
                     },
                 }}>
-                Instrument Type
+                {inputLabel}
             </InputLabel>
             <Select
-                value={selectedInstrument ? selectedInstrument : ''}
-                onChange={(e) => onChange(e.target.value)}
+                value={selectedValue ? selectedValue : ''}
+                onChange={(e) => onSelectionChange(e.target.value)}
                 displayEmpty
                 label="Instrument Type"
                 sx = {{
@@ -38,15 +45,15 @@ const InstrumentSelector = ({selectedInstrument, onChange, instrumentMetadata}) 
                     }
                 }}
             >
-                {instrumentMetadata.map((instrument) => (
+                {data && data.map((item) => (
                     <MenuItem
-                        key={instrument.Name.toLowerCase()}
-                        value={instrument.Name.toLowerCase()}
+                        key={uniqueId + item[valueField].toLowerCase()}
+                        value={item[valueField]}
                         sx={{
                             color: "var(--dark-color)",
                         }}
                     >
-                        {instrument["Label"]}
+                        {item[labelField]}
                     </MenuItem>
                 ))}
             </Select>
@@ -54,4 +61,4 @@ const InstrumentSelector = ({selectedInstrument, onChange, instrumentMetadata}) 
     )
 }
 
-export default InstrumentSelector;
+export default DynamicSelect;

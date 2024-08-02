@@ -77,7 +77,7 @@ function Field({
                         type="date"
                         className="text-field"
                         value={value}
-                        onChange={()=>onInputChange(event, event.target.value)}
+                        onChange={(event)=>onInputChange(event, event.target.value)}
                         InputLabelProps={{
                             style: { color: 'var(--ultra-soft-color)' },
                             shrink: true,
@@ -101,7 +101,7 @@ function Field({
                         required
                         value={value}
                         type="number"
-                        onChange={()=>onInputChange(event, event.target.value)}
+                        onChange={(event)=>onInputChange(event, event.target.value)}
                         className="text-field"
                         InputLabelProps={{
                             style: { color: 'var(--ultra-soft-color)' },

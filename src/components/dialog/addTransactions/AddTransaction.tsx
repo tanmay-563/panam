@@ -1,10 +1,9 @@
 import React, {useMemo, useState} from 'react'
 import Fields from "./Fields";
-import {FormControl, InputLabel, MenuItem, Select} from '@mui/material';
 import Loading from "../../Loading";
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
-import InstrumentSelector from "../../InstrumentSelector";
+import DynamicSelect from "../../DynamicSelect";
 
 const AddTransaction = ({...props}) => {
     const instrumentMetadata = props.metadata?.instrument;
@@ -106,10 +105,14 @@ const AddTransaction = ({...props}) => {
                 <CloseIcon className="close-icon"/>
             </span>
             <h1> Add new transaction</h1>
-            <InstrumentSelector
-                selectedInstrument={props.instruments.includes(props.selectedMenuItem) ? props.selectedMenuItem : ''}
-                onChange={handleInstrumentSelected}
-                instrumentMetadata={instrumentMetadata}
+            <DynamicSelect
+                selectedValue={props.instruments.includes(props.selectedMenuItem) ? props.selectedMenuItem : ''}
+                onSelectionChange={handleInstrumentSelected}
+                data={instrumentMetadata}
+                valueField="Name"
+                labelField="Label"
+                uniqueId="addTransaction"
+                inputLabel="Instrument Type"
             />
             <Fields
                 instrument={props.selectedMenuItem}

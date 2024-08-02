@@ -1,9 +1,83 @@
 .calculator-form{
   padding: 20px;
+
+  .calculator-form-top-field{
+    padding: 10px;
+  }
 }
 
 .calculated-data{
-  background-color: $primary;
-  border: 0.5px solid $max-soft;
-  height: 40%;
+  flex: 1;
+  overflow: auto;
+
+  .calculated-data-row{
+    display: flex;
+    margin-top: 15px;
+    border: 0.5px solid $max-soft;
+
+    .calculated-data-options{
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 15px 10px 10px 10px;
+      
+      .field-name{
+        position: absolute;
+        top: -10px;
+        left: 5px;
+      }
+
+      .input-field{
+        display: flex;
+        align-items: center;
+        height: fit-content;
+        font-size: 12px;
+      }
+    }
+
+    .calculated-value-box-container{
+
+      .calculated-data-values{
+        display: flex;
+        flex-direction: column;
+        border-left: 0.5px solid $max-soft;
+        padding: 10px;
+        gap: 10px;
+
+        .label{
+          font-size: 16px;
+          display: flex;
+          align-items: baseline;
+          gap: 5px;
+
+          hr{
+            display: inline-block;
+            color: $secondary;
+            background-color: $secondary;
+            border: none;
+            height: 9px;
+          }
+          p{
+            font-size: 10px;
+          }
+        }
+
+        .value-minibox{
+          display: flex;
+          align-items: baseline;
+          gap: 5px;
+
+          .value-main{
+            font-size: 14px;
+            color: $soft-color;
+          }
+
+          .value-sub{
+            font-size: 12px;
+            color: $ultra-soft;
+          }
+        }
+      }
+    }
+  }
 }

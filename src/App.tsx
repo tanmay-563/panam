@@ -158,7 +158,8 @@ function App() {
                     path: "calculator/capitalgains",
                     element: <CapitalGains
                                 metadata={data?.metadata}
-                                transactionsRowMap={data?.transactionsRowMap}/>
+                                transactionsRowMap={data?.transactionsRowMap}
+                                aggregatedData={data?.aggregatedData}/>
                 },
             ],
         },

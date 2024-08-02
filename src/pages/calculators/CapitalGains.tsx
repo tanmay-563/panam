@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import Loading from "../../components/Loading";
@@ -7,83 +7,101 @@ import {FormControl, InputAdornment, InputLabel, MenuItem, Select} from "@mui/ma
 import {getCapitalGainsData} from "../../utils/calculator.utils";
 import {Simulate} from "react-dom/test-utils";
 import select = Simulate.select;
-import InstrumentSelector from "../../components/InstrumentSelector";
-
-const validationSchema = Yup.object().shape({
-    instrument: Yup.string().required('Instrument is required'),
-    shortTermPeriod: Yup.number().min(0, 'Minimum 0').required("Short Term Period is required"),
-    shortTermTax: Yup.number().min(0, 'Minimum 0').max(100, 'Maximum 100').required("Short Term Tax is required"),
-    longTermTax: Yup.number().min(0, 'Minimum 0').max(100, 'Maximum 100').required("Long Term Tax is required"),
-});
-
-const MuiTextField = ({ field, form, ...props }) => {
-    return <TextField
-        {...field}
-        {...props}
-        variant="outlined"
-        autoComplete='off'
-        sx={{
-            borderRadius: '5px',
-            width: '100%',
-            '& .MuiOutlinedInput-root': {
-                '& fieldset':{
-                    borderColor: 'var(--max-soft-color)'
-                },
-                '&:hover fieldset': {
-                    borderColor: 'var(--soft-color)'
-                }
-            },
-            '& .MuiInputBase-root': {
-                color: 'var(--soft-color)'
-            },
-            '& .MuiFormLabel-root': {
-                color: 'var(--soft-color)',
-                fontWeight: 'lighter',
-            },
-            "& .MuiFilledInput-root": {
-                background: 'red',
-            },
-            '& .MuiTypography-root':{
-                color: 'var(--ultra-soft-color)',
-                fontWeight: 'ligher',
-                fontSize: '12px',
-            }
-        }}
-    />;
-};
+import DynamicSelect from "../../components/DynamicSelect";
+import CapitalGainsField from "./CapitalGainsField";
 
 const CapitalGains = ({   metadata,
-                          transactionsRowMap}) => {
+                          transactionsRowMap,
+                          aggregatedData,
+}) => {
     if(!metadata)
         return <div></div>
 
     const [selectedInstrument, setSelectedInstrument] = useState('')
-    getCapitalGainsData(transactionsRowMap, "mutualfund", 12)
+    const [selectedUnitField, setSelectedUnitField] = useState('')
+    const [selectedNavField, setSelectedNavField] = useState('')
+    const [columnMetadata, setColumnMetadata] = useState([])
+    const [instrumentUniqueNames, setInstrumentUniqueNames] = useState([]);
     const instrumentMetadata = metadata.instrument
-    const initialValues = {
-        instrument: '',
-        shortTermPeriod: 12,
-        shortTermTax: 20,
-        longTermTax: 12.5,
-    };
 
-    const handleChange = (value) => {
-        console.log("here")
-        console.log(value)
+    useEffect(()=>{
+        try{
+            setColumnMetadata(metadata.column.filter((item)=>
+                    item.Instrument.toLowerCase() === selectedInstrument.toLowerCase()
+                    && item.DataType.toLowerCase() !== "text"
+                    && item.DataType.toLowerCase() !== "date"
+                    && (item.Column.toLowerCase() !== "id")
+                ));
+            setInstrumentUniqueNames(Object.keys(aggregatedData[1][selectedInstrument]["name"]))
+            // setInstrumentUniqueNames(Array.from(new Set(transactionsColumnMap[selectedInstrument]["Name"])))
+        }
+        catch (e){
+            setColumnMetadata([])
+        }
+    }, [selectedInstrument])
+
+    const handleInstrumentChange = (value) => {
         setSelectedInstrument(value)
+        setSelectedNavField('')
+        setSelectedUnitField('')
     }
 
     return (
         <div className="form-page">
             <div className="form-page-title">
                 Capital Gains Calculator
+                <p>
+                    *Unrealized gains only
+                </p>
             </div>
             <div className="form calculator-form">
-                <InstrumentSelector
-                    selectedInstrument={selectedInstrument}
-                    onChange={handleChange}
-                    instrumentMetadata={instrumentMetadata}
-                />
+                <div className="calculator-form-top-field">
+                    <DynamicSelect
+                        selectedValue={selectedInstrument}
+                        onSelectionChange={handleInstrumentChange}
+                        data={instrumentMetadata}
+                        valueField="Name"
+                        labelField="Label"
+                        uniqueId="capitalGainsInstrumentSelector"
+                        inputLabel="Instrument Type"
+                    />
+                </div>
+                <div className="calculator-form-top-field">
+                    <DynamicSelect
+                        selectedValue={selectedUnitField}
+                        onSelectionChange={setSelectedUnitField}
+                        data={columnMetadata}
+                        valueField="Column"
+                        labelField="Column"
+                        uniqueId="capitalGainsUnitsFieldSelector"
+                        inputLabel="Units Field"
+                    />
+                </div>
+                <div className="calculator-form-top-field">
+                    <DynamicSelect
+                        selectedValue={selectedNavField}
+                        onSelectionChange={setSelectedNavField}
+                        data={columnMetadata}
+                        valueField="Column"
+                        labelField="Column"
+                        uniqueId="capitalGainsNavFieldSelector"
+                        inputLabel="Current NAV Field"
+                    />
+                </div>
+                <div className="calculated-data">
+                    {selectedInstrument != '' &&
+                        instrumentUniqueNames.length > 0 &&
+                        instrumentUniqueNames.map((key, index) => (
+                            <CapitalGainsField
+                                selectedInstrument={selectedInstrument}
+                                selectedUnitField={selectedUnitField}
+                                selectedNavField={selectedNavField}
+                                transactionsRowMap={transactionsRowMap}
+                                fieldName={key}
+                            />
+                        ))
+                    }
+                </div>
             </div>
         </div>
     )

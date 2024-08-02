@@ -65,6 +65,7 @@ const Instruments = ({
     const rows: GridRowsProp[] = transactionsRowMap[instrument]
 
     const headers = headerMap[instrument]
+
     const columns: GridColDef[] = headers && headers.length > 0 ?
         headers.map((columnName) => ({
             field: columnName,

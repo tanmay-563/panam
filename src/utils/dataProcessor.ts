@@ -27,7 +27,7 @@ function processData(data){
             }
             else {
                 instruments.push(key)
-                const headers = data[key][0];
+                const headers = [...data[key][0]];
                 const rows = data[key].slice(1);
                 headerMap[key] = headers
                 headerMap[key].push("XIRR")
@@ -102,9 +102,7 @@ function getTransactionsColumnMap(data){
                 for (let rowIndex = 1; rowIndex < data[key].length; rowIndex++) {
                     const value = data[key][rowIndex][columnIndex]
                     columnValues.push(value);
-                    sum += (typeof value == "number")? value : 0;
                 }
-                columnValues.push(sum);
                 columnMap[header] = columnValues;
             });
             transactionsMap[key] = columnMap

@@ -1,7 +1,7 @@
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import React, {useState} from "react";
 import {getDisplayName} from "../utils/common";
-import InstrumentSelector from "../components/InstrumentSelector";
+import DynamicSelect from "../components/DynamicSelect";
 
 const DeleteInstrument = ({   metadata,
                               setAlert,
@@ -34,10 +34,14 @@ const DeleteInstrument = ({   metadata,
         <div className="delete-instrument">
             <div className="delete-card">
                 <span className="label">Select Instrument to delete</span>
-                <InstrumentSelector
-                    selectedInstrument={instrumentToDelete}
-                    onChange={handleInstrumentSelected}
-                    instrumentMetadata={instrumentMetadata}
+                <DynamicSelect
+                    selectedValue={instrumentToDelete}
+                    onSelectionChange={handleInstrumentSelected}
+                    data={instrumentMetadata}
+                    valueField="Name"
+                    labelField="Label"
+                    uniqueId="deleteInstrument"
+                    inputLabel="Instrument Type"
                 />
             </div>
         </div>

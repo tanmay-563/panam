@@ -114,8 +114,14 @@ export function capitalizeFirstLetter(label){
 }
 
 export function getDataTypeMap(columnMetadata){
+    if(!columnMetadata || Object.keys(columnMetadata).length === 0)
+        return {}
     return columnMetadata.reduce((acc, item)=>{
         acc[item.Column] = item.DataType
         return acc;
     }, {});
+}
+
+export function objHasKey(object, key){
+    return Object.keys(object).find(item => item.toLowerCase() === key.toLowerCase());
 }
