@@ -2,6 +2,7 @@ let faviconUrl = "https://drive.google.com/uc?id=1aQQqYhnESMZ-ZboAs4Rdcu0x8O0ZXl
 const DAILY_CRON_HOUR = 6
 const METADATA_PREFIX = '_'
 const REPORTS_PREFIX = '+'
+const IGNORE_PREFIX = '*'
 
 function setupTriggers(){
   setupDailyCronTrigger()
@@ -21,9 +22,11 @@ function fetchData(){
   let data = {}
   ss.getSheets().forEach((sheet)=>{
     let sheetName = sheet.getSheetName().toLowerCase()
-    data[sheetName]  = sheet.getDataRange().getValues();
-    if(sheetName === "_sheet"){
-      data[sheetName].push(["sheetUrl", getSheetUrl(ss, null)]);
+    if(sheetName[0] !== IGNORE_PREFIX){
+      data[sheetName]  = sheet.getDataRange().getValues();
+      if(sheetName === "_sheet"){
+        data[sheetName].push(["sheetUrl", getSheetUrl(ss, null)]);
+      }
     }
   })
   return JSON.stringify(data)
