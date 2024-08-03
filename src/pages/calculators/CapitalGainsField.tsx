@@ -9,7 +9,6 @@ const MuiTextField = ({value, setValue}) => {
         value={value}
         onChange={(event) => {
             setValue(event.target.value)
-            console.log(value)
         }}
         InputProps={{ inputProps: { min: 0} }}
         InputLabelProps={{
@@ -65,11 +64,11 @@ const CalculatedValueBox = ({label, percentageShare, amount, taxPercentage}) => 
                     }
                 </div>
                 <div className="value-minibox">
-                    <div className="value-main">
-                        {formatToIndianCurrency(amount, 2, false)}
+                    <div className={`${amount > 0 ? 'green-color' : amount < 0 ? 'red-color' : ''} value-main`}>
+                        {formatToIndianCurrency(amount, 0, false)}
                     </div>
                     <div className="value-sub">
-                        {formatToIndianCurrency((amount*taxPercentage)/100, 2, false)} tax
+                        {formatToIndianCurrency((Math.max(0,amount*taxPercentage))/100, 0, false)} tax
                     </div>
                 </div>
             </div>
@@ -81,7 +80,8 @@ const CalculatedValueBox = ({label, percentageShare, amount, taxPercentage}) => 
 const CapitalGainsField = ({
                                selectedInstrument,
                                selectedUnitField,
-                               selectedNavField,
+                               selectedBuyNavField,
+                               selectedCurrentNavField,
                                transactionsRowMap,
                                fieldName,
 }) => {
@@ -92,16 +92,16 @@ const CapitalGainsField = ({
     const [shortTermTax, setShortTermTax] = useState(20);
     const [longTermTax, setLongTermTax] = useState(12.5);
 
-    const [totalValue, longTermValue, shortTermValue, withdrawnValue] =
+    const [longTermValue, shortTermValue] =
         getCapitalGainsData(transactionsRowMap, selectedInstrument, fieldName,
-            selectedUnitField, selectedNavField,
-            shortTermPeriod, shortTermTax, longTermTax)
+            selectedUnitField, selectedBuyNavField, selectedCurrentNavField,
+            shortTermPeriod)
 
     const shortTermPercentage = shortTermValue/(shortTermValue+longTermValue)
     const longTermPercentage = longTermValue/(shortTermValue+longTermValue)
 
     return (
-        <div key={fieldName} className="calculated-data-row">
+        <div className="calculated-data-row">
             <div className="calculated-data-options">
                 <div className="field-name">
                     {fieldName}

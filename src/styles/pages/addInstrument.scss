@@ -4,7 +4,7 @@
   justify-content: space-evenly;
   height: 100%;
 
-  @include sm{
+  @include md{
     flex-direction: column;
   }
 
@@ -19,7 +19,7 @@
     font-variant: all-petite-caps;
     flex-direction: column;
 
-    @include sm{
+    @include md{
       height: fit-content;
       flex: none;
     }

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import Autocomplete, {createFilterOptions} from '@mui/material/Autocomplete';
 import {useEffect, useState} from "react";
 
 const MAX_SUGGESTIONS = 5;
+const defaultFilterOptions = createFilterOptions();
 
 function Field({
                  suggestions,
@@ -25,7 +26,7 @@ function Field({
     }, [suggestions])
 
     const filterOptions = (options, state) => {
-        return options.slice(0, MAX_SUGGESTIONS);
+        return defaultFilterOptions(options, state).slice(0, MAX_SUGGESTIONS);
     };
 
     const onInputChange = (event, value) => {

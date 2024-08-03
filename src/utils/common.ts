@@ -42,6 +42,15 @@ function formatNumberWithLocale(number, symbol = '', decimalCount = 2){
 
 export function formatToIndianCurrency(number, decimalCount = 2, truncate = true) {
     const symbol = '₹';
+    if(typeof number !== "number"){
+        try{
+            console.log(number)
+            number = parseInt(number);
+        }
+        catch (e){
+            console.error(e);
+        }
+    }
     let value = number
     try{
         value = truncate

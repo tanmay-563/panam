@@ -4,8 +4,8 @@ import { FaSackDollar, FaArrowUpRightDots } from "react-icons/fa6";
 import {FaLock, FaPiggyBank, FaShieldAlt, FaMoneyBill, FaHome, FaHandHoldingMedical, FaExternalLinkAlt, FaFolderPlus} from "react-icons/fa";
 import {AiFillGold, AiFillDollarCircle} from "react-icons/ai";
 import { CgEditBlackPoint } from "react-icons/cg";
-import { RiMoneyRupeeCircleFill } from "react-icons/ri";
-import { MdOutlineStackedLineChart, MdDelete } from "react-icons/md";
+import { RiMoneyRupeeCircleFill, RiDeleteBin2Fill } from "react-icons/ri";
+import { MdOutlineStackedLineChart } from "react-icons/md";
 import { MdElderly } from "react-icons/md";
 import React from "react";
 
@@ -14,7 +14,7 @@ export const iconMap = {
     "_generic": <CgEditBlackPoint/>,
     "_postadd": <FaFolderPlus/>,
     "_link": <FaExternalLinkAlt/>,
-    "_delete": <MdDelete/>,
+    "_delete": <RiDeleteBin2Fill/>,
     "_uparrowright": <FaArrowUpRightDots/>,
     "piggy": <FaPiggyBank />,
     "shield": <FaShieldAlt/>,

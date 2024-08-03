@@ -1,8 +1,18 @@
 .calculator-form{
   padding: 20px;
 
-  .calculator-form-top-field{
-    padding: 10px;
+  .calculator-form-top{
+    display: flex;
+    flex-wrap: wrap;
+
+    .calculator-form-top-field{
+      padding: 10px;
+      width: 50%;
+
+      @include sm{
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -69,7 +79,6 @@
 
           .value-main{
             font-size: 14px;
-            color: $soft-color;
           }
 
           .value-sub{

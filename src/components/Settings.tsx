@@ -32,32 +32,35 @@ const Settings = ({   data,
     return (
         <div className={`settings-container ${showSettings ? 'show': 'hide'}`} ref={settingsRef}>
             <div className="settings-content">
-                <div className="settings-lineitem" onClick={()=>setShowSettings(!showSettings)}>
+                <div className="settings-lineitem" onClick={()=> {
+                    setShowSettings(!showSettings);
+                    window.open(sheetUrl, "_blank");
+                }}>
                     {iconMap["_link"]}
-                    <div onClick={() => window.open(sheetUrl, "_blank")} className="settings-label">
+                    <div className="settings-label">
                         Open sheets
                     </div>
                 </div>
-                <div className="settings-lineitem" onClick={()=>setShowSettings(!showSettings)}>
-                    {iconMap["_postadd"]}
-                    <Link
-                        to="add/instrument"
-                    >
+                <Link
+                    to="add/instrument"
+                >
+                    <div className="settings-lineitem" onClick={()=>setShowSettings(!showSettings)}>
+                        {iconMap["_postadd"]}
                         <div className="settings-label">
                             Add Instrument
                         </div>
-                    </Link>
-                </div>
-                <div className="settings-lineitem" onClick={()=>setShowSettings(!showSettings)}>
-                    {iconMap["_delete"]}
-                    <Link
-                        to="delete/instrument"
-                    >
-                        <div className="settings-label">
-                            Delete Instrument
-                        </div>
-                    </Link>
-                </div>
+                    </div>
+                </Link>
+                <Link
+                    to="delete/instrument"
+                >
+                    <div className="settings-lineitem" onClick={()=>setShowSettings(!showSettings)}>
+                        {iconMap["_delete"]}
+                            <div className="settings-label">
+                                Delete Instrument
+                            </div>
+                    </div>
+                </Link>
             </div>
         </div>
     )

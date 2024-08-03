@@ -22,19 +22,21 @@
     padding-top: 10px;
     padding-bottom: 10px;
     width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     .settings-lineitem{
       display: flex;
       align-items: center;
       padding-bottom: 10px;
+      cursor: pointer;
 
       .settings-label{
         color: $soft-color;
         display: flex;
         align-items: center;
-        cursor: pointer;
         padding-left: 5px;
-        font-size: 14px;
 
         &:hover{
           color: $main-color;

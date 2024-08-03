@@ -23,6 +23,7 @@
   &.expand {
     @include md{
       transform: translateX(0px);
+      width: fit-content;
     }
   }
 
