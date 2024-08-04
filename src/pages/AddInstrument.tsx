@@ -89,7 +89,6 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
 
     const handleSubmit = (values, { setSubmitting, setValues }) => {
         if (process.env.NODE_ENV == "development"){
-            console.log(values)
             setTimeout(() => {
                 let response = {
                     "instrumentSheetUrl": "https://docs.google.com/spreadsheets/d/11wPJM1iRc6HLmI11pQIzIhhUuyy9KgmWxCyOtETILqE/edit#gid=1536483209",

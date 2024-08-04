@@ -7,23 +7,36 @@ export function getDisplayName(instrumentsMetadata, instrument) {
         return entry ? entry["Label"] : instrument;
     }
     catch (e){
+        console.error(e)
         return instrument
     }
 }
 
 export function convertToJson(dataArray){
-    return dataArray && Object.keys(dataArray).length ? dataArray.reduce((acc, item) => {
-        const { Name, ...rest } = item;
-        acc[Name] = rest;
-        return acc;
-    }, {}) : {};
+    try{
+        return dataArray && Object.keys(dataArray).length ? dataArray.reduce((acc, item) => {
+            const { Name, ...rest } = item;
+            acc[Name] = rest;
+            return acc;
+        }, {}) : {};
+    }
+    catch (e){
+        console.error(e);
+        return {}
+    }
 }
 
 const truncateNumber = (number, decimalCount = 2) => {
-    if (number < 1000) return number.toString();
-    if (number < 100000) return `${(number / 1000).toFixed(decimalCount)}K`;
-    if (number < 10000000) return `${(number / 100000).toFixed(decimalCount)}L`;
-    return `${(number / 10000000).toFixed(decimalCount)}Cr`;
+    try{
+        if (number < 1000) return number.toString();
+        if (number < 100000) return `${(number / 1000).toFixed(decimalCount)}K`;
+        if (number < 10000000) return `${(number / 100000).toFixed(decimalCount)}L`;
+        return `${(number / 10000000).toFixed(decimalCount)}Cr`;
+    }
+    catch (e){
+        console.error(e)
+        return number;
+    }
 };
 
 function formatNumberWithLocale(number, symbol = '', decimalCount = 2){
@@ -36,6 +49,7 @@ function formatNumberWithLocale(number, symbol = '', decimalCount = 2){
         return `${symbol}${integerPart}${decimalCount > 0 ? '.'+decimalPart : ''}`;
     }
     catch (e){
+        console.error(e);
         return 0;
     }
 }
@@ -44,7 +58,6 @@ export function formatToIndianCurrency(number, decimalCount = 2, truncate = true
     const symbol = '₹';
     if(typeof number !== "number"){
         try{
-            console.log(number)
             number = parseInt(number);
         }
         catch (e){

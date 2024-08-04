@@ -58,9 +58,9 @@ const Menu = ({
                             key={listItem}
                             className={`listItem ${selectedMenuItem === listItem ? 'selected' : ''}`}
                             onClick={() => handleMenuClick(listItem)}
-                            title={instrumentsMetadataJson[listItem]["Label"]}>
-                            <DynamicIcons name={instrumentsMetadataJson[listItem]["Icon"]} className="menu-icon"></DynamicIcons>
-                            <span className="listItemTitle">{instrumentsMetadataJson[listItem]["Label"]}</span>
+                            title={instrumentsMetadataJson[listItem] ? instrumentsMetadataJson[listItem]["Label"] : listItem}>
+                            <DynamicIcons name={instrumentsMetadataJson[listItem] ? instrumentsMetadataJson[listItem]["Icon"]: ""} className="menu-icon"></DynamicIcons>
+                            <span className="listItemTitle">{instrumentsMetadataJson[listItem] ? instrumentsMetadataJson[listItem]["Label"] : listItem}</span>
                         </Link>
                     ))}
                 </div>

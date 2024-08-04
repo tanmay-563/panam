@@ -12,6 +12,7 @@ import Layout from "./pages/Layout";
 import AddInstrument from "./pages/AddInstrument";
 import DeleteInstrument from "./pages/DeleteInstrument";
 import CapitalGains from "./pages/calculators/CapitalGains";
+import ErrorBoundary from "./components/external/ErrorBoundary";
 
 function App() {
     console.log(process.env.NODE_ENV)
@@ -128,14 +129,17 @@ function App() {
                 },
                 {
                     path: "transactions/:instrumentId",
-                    element: <Instruments
-                        headerMap={data?.headerMap}
-                        transactionsRowMap={data?.transactionsRowMap}
-                        metadata={data?.metadata}
-                        instrument={selectedMenuItem}
-                        setSelectedMenuItem={setSelectedMenuItem}
-                        setDialogType={setDialogType}
-                    />,
+                    element:
+                        <ErrorBoundary>
+                            <Instruments
+                                headerMap={data?.headerMap}
+                                transactionsRowMap={data?.transactionsRowMap}
+                                metadata={data?.metadata}
+                                instrument={selectedMenuItem}
+                                setSelectedMenuItem={setSelectedMenuItem}
+                                setDialogType={setDialogType}
+                            />
+                        </ErrorBoundary>,
                 },
                 {
                     path: "add/instrument",

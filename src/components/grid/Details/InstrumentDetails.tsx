@@ -2,6 +2,15 @@ import {formatPercentage, formatToIndianCurrency, getDisplayName} from "../../..
 import React, {useState} from "react";
 import {getInstrumentDetailsData} from "../../../utils/detailsBox.utils";
 
+const getCellColor = (data, firstKey, secondKey) => {
+    if(!data || !(firstKey in data))
+        return '';
+    if(!secondKey || !(firstKey in data)){
+        return data[firstKey] > 0 ? 'green-color' : data[firstKey] < 0 ? 'red-color' : '';
+    }
+    return data[firstKey] > data[secondKey] ? 'green-color' : data[firstKey] < data[secondKey] ? 'red-color' : '';
+}
+
 const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => {
     const [sortValue, setSortValue] = useState("")
     const data = getInstrumentDetailsData(aggregatedData, dataSource, sortValue);
@@ -57,25 +66,24 @@ const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => 
                     </div>
                     {   valueTypeIndex == 0 ?
                         <div className="instrument-value" onClick={()=> setValueTypeIndex((valueTypeIndex+1)%valuesTypes.length)}>
-                            <div className={data[key].current > data[key].invested ? 'green-color' : data[key].current < data[key].invested ? 'red-color': ''}>
-                                {formatToIndianCurrency(data[key].current, 0, false)}
+                            <div className={getCellColor(data[key], "current", "invested")}>
+                                {formatToIndianCurrency(data[key]["current"], 0, false)}
                             </div>
                             <div>
-                                {formatToIndianCurrency(data[key].invested, 0, false)}
+                                {formatToIndianCurrency(data[key]["invested"], 0, false)}
                             </div>
                         </div> : valueTypeIndex == 1 ?
                         <div className="instrument-value" onClick={()=> setValueTypeIndex((valueTypeIndex+1)%valuesTypes.length)}>
-                            <div className={data[key].returns > 0 ?
-                                'green-color' : data[key].returns < 0 ? 'red-color': ''}>
-                                {formatToIndianCurrency(data[key].returns, 0, false)}
+                            <div className={getCellColor(data[key], "returns", 0)}>
+                                {formatToIndianCurrency(data[key]["returns"], 0, false)}
                             </div>
                             <div>
-                                {formatPercentage(data[key].returns/data[key].current)}
+                                {data[key]["current"] && formatPercentage(data[key]["returns"]/data[key]["current"])}
                             </div>
                         </div> :
                         <div className="instrument-value" onClick={()=> setValueTypeIndex((valueTypeIndex+1)%valuesTypes.length)}>
-                            <div className={data[key].xirr > 0 ? 'green-color' : data[key].xirr < 0 ? 'red-color' : ''}>
-                                {formatPercentage(data[key].xirr)}
+                            <div className={getCellColor(data[key], "xirr", 0)}>
+                                {formatPercentage(data[key]["xirr"])}
                             </div>
                             <div></div>
                         </div>

@@ -68,7 +68,7 @@ export function getCapitalGainsData(transactionsRowMap, instrument, name,
         return [longTermValue, shortTermValue];
     }
     catch (e){
-        console.log(e)
+        console.error(e)
         return [0, 0];
     }
 }

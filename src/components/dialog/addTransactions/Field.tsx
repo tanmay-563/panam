@@ -46,7 +46,7 @@ function Field({
                 onInputChange={onInputChange}
                 filterOptions={filterOptions}
                 options={suggestions}
-                getOptionLabel={(option) => option || ""}
+                getOptionLabel={(option) => option as string || ""}
                 renderInput={(params) =>
                     <TextField
                         {...params}

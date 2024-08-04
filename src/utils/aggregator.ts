@@ -99,7 +99,6 @@ export function getAggregatedData(transactionsRowMap, metadata) {
 
         finalizeCashflows(overallMap, 'overall', overallMap.current, overallMap.invested, true);
 
-        console.log(overallMap)
         return [overallMap, instrumentsDataMap];
     } catch (error) {
         console.error(error);

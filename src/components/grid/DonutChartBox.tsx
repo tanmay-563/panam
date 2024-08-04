@@ -116,7 +116,7 @@ const DonutChartBox = ({aggregatedData, metadata}) => {
                     <option key="Overall" value="overall">
                         Overall
                     </option>
-                    {instrumentsMetadata.map((element) => (
+                    {instrumentsMetadata && instrumentsMetadata.map((element) => (
                         <option key={element.Name} value={element.Name}>
                             {element.Label}
                         </option>

@@ -69,7 +69,7 @@ function updateColumnMetadata(data, columnSheet){
 
         if(data.hasOwnProperty("fields")){
             data.fields.forEach((field)=>{
-                if(field.name != ""){
+                if(field.name !== ""){
                     columnSheet.appendRow([lastRow++, field.name, data.name, field.isAutomated, field.dataType])
                 }
             })
@@ -127,7 +127,7 @@ function checkValueExistsInColumn(sheet, headerName, valueToCheck) {
     }
 
     for (let i = 1; i < data.length; i++) {
-        if (data[i][columnIndex] == valueToCheck) {
+        if (data[i][columnIndex] === valueToCheck) {
             return true;
         }
     }

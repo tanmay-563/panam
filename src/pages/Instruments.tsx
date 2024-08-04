@@ -27,7 +27,7 @@ const Instruments = ({
     }
 
     const theme = useTheme();
-    const instrumentMetadata = metadata?.instrument || {};
+    const instrumentMetadata = metadata?.instrument;
     const columnMetadata = metadata?.column?.filter((item) => item.Instrument.toLowerCase() == instrument.toLowerCase()) || {};
 
     useMemo(() => {
@@ -64,7 +64,7 @@ const Instruments = ({
 
     const rows: GridRowsProp[] = transactionsRowMap[instrument]
 
-    const headers = headerMap[instrument]
+    const headers = headerMap[instrument] ? headerMap[instrument].map(String) : [];
 
     const columns: GridColDef[] = headers && headers.length > 0 ?
         headers.map((columnName) => ({
@@ -81,7 +81,7 @@ const Instruments = ({
                     if (dataTypeMap[columnName].toLowerCase() === 'date') {
                         return moment(value).format('DD/MM/YYYY');
                     } else if (dataTypeMap[columnName].toLowerCase() === 'float') {
-                        return value?.toFixed(2);
+                        return typeof value === "number" ? value?.toFixed(2) : 0;
                     } else if (dataTypeMap[columnName].toLowerCase() === 'currency') {
                         return formatToIndianCurrency(value, 2, false);
                     } else if (dataTypeMap[columnName].toLowerCase() === 'percent') {
