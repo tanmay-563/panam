@@ -4,8 +4,6 @@ import {getDisplayName} from "../utils/common";
 import DynamicSelect from "../components/DynamicSelect";
 
 const DeleteInstrument = ({   metadata,
-                              setAlert,
-                              fetchSheetData,
                               setDialogType,
                               setDialogProps,
                               handleInstrumentDelete}) => {

@@ -148,8 +148,6 @@ function App() {
                     path: "delete/instrument",
                     element: <DeleteInstrument
                         metadata={data?.metadata}
-                        setAlert={setAlert}
-                        fetchSheetData={fetchSheetData}
                         setDialogType={setDialogType}
                         setDialogProps={setDialogProps}
                         handleInstrumentDelete={handleInstrumentDelete}/>,

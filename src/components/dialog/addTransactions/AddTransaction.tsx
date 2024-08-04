@@ -84,7 +84,7 @@ const AddTransaction = ({...props}) => {
             google.script.run
                 .withSuccessHandler((response) => {successHandler(response)})
                 .withFailureHandler(errorHandler)
-                .addRow(props.selectedMenuItem, inputValues);
+                .updateInstrumentTransactions(props.selectedMenuItem, inputValues);
         }
     };
 
