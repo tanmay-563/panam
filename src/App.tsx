@@ -40,7 +40,7 @@ function App() {
                 setData(getProcessedData(JSON.parse(data, dateReviver)));
                 setLoading(false)
             }).withFailureHandler((error) => {
-                console.error("Error fetching data:", error);
+                console.error("ErrorPage fetching data:", error);
                 setData([]);
                 setLoading(false);
             }).fetchData();
@@ -100,31 +100,35 @@ function App() {
         {
             path: "/",
             element: (
-                <Layout
-                    data={data}
-                    fetchSheetData={fetchSheetData}
-                    setSelectedMenuItem={setSelectedMenuItem}
-                    selectedMenuItem={selectedMenuItem}
-                    setDialogType={setDialogType}
-                    dialogType={dialogType}
-                    setAlertDetails={setAlertDetails}
-                    setAlert={setAlert}
-                    alertDetails={alertDetails}
-                    loading={loading}
-                    dialogProps={dialogProps}
-                    setDialogProps={setDialogProps}
-                />
+                <ErrorBoundary>
+                    <Layout
+                        data={data}
+                        fetchSheetData={fetchSheetData}
+                        setSelectedMenuItem={setSelectedMenuItem}
+                        selectedMenuItem={selectedMenuItem}
+                        setDialogType={setDialogType}
+                        dialogType={dialogType}
+                        setAlertDetails={setAlertDetails}
+                        setAlert={setAlert}
+                        alertDetails={alertDetails}
+                        loading={loading}
+                        dialogProps={dialogProps}
+                        setDialogProps={setDialogProps}
+                    />
+                </ErrorBoundary>
             ),
             children: [
                 {
                     path: "/",
                     element: (
-                        <Home
-                            instruments={data?.instruments}
-                            metadata={data?.metadata}
-                            reports={data?.reports}
-                            aggregatedData={data?.aggregatedData}
-                        />
+                        <ErrorBoundary>
+                            <Home
+                                instruments={data?.instruments}
+                                metadata={data?.metadata}
+                                reports={data?.reports}
+                                aggregatedData={data?.aggregatedData}
+                            />
+                        </ErrorBoundary>
                     ),
                 },
                 {
@@ -167,30 +171,35 @@ function App() {
         },
         {
             path: "*",
-            element: <Layout
-                data={data}
-                fetchSheetData={fetchSheetData}
-                setSelectedMenuItem={setSelectedMenuItem}
-                selectedMenuItem={selectedMenuItem}
-                setDialogType={setDialogType}
-                dialogType={dialogType}
-                setAlertDetails={setAlertDetails}
-                setAlert={setAlert}
-                alertDetails={alertDetails}
-                loading={loading}
-                dialogProps={dialogProps}
-                setDialogProps={setDialogProps}
-            />,
+            element:
+                <ErrorBoundary>
+                    <Layout
+                        data={data}
+                        fetchSheetData={fetchSheetData}
+                        setSelectedMenuItem={setSelectedMenuItem}
+                        selectedMenuItem={selectedMenuItem}
+                        setDialogType={setDialogType}
+                        dialogType={dialogType}
+                        setAlertDetails={setAlertDetails}
+                        setAlert={setAlert}
+                        alertDetails={alertDetails}
+                        loading={loading}
+                        dialogProps={dialogProps}
+                        setDialogProps={setDialogProps}
+                    />
+                </ErrorBoundary>,
             children: [
                 {
                     path: "*",
                     element: (
-                        <Home
-                            instruments={data?.instruments}
-                            metadata={data?.metadata}
-                            reports={data?.reports}
-                            aggregatedData={data?.aggregatedData}
-                        />
+                        <ErrorBoundary>
+                            <Home
+                                instruments={data?.instruments}
+                                metadata={data?.metadata}
+                                reports={data?.reports}
+                                aggregatedData={data?.aggregatedData}
+                            />
+                        </ErrorBoundary>
                     ),
                 },
             ]

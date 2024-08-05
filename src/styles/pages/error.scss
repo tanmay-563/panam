@@ -1,0 +1,15 @@
+.error-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+
+  .error-icon{
+    font-size: 140px;
+  }
+
+  p{
+    color: $soft-color;
+  }
+}

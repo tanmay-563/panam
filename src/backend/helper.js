@@ -53,7 +53,7 @@ function updateInstrumentMetadata(data, sheet){
     catch(e){
         return {
             statusCode: 400,
-            status: "Error while updating instrument metadata: " + e,
+            status: "ErrorPage while updating instrument metadata: " + e,
         }
     }
 }
@@ -83,7 +83,7 @@ function updateColumnMetadata(data, columnSheet){
     catch(e){
         return {
             statusCode: 400,
-            status: "Error while updating column metadata: " + e,
+            status: "ErrorPage while updating column metadata: " + e,
         }
     }
 }
@@ -112,7 +112,7 @@ function addInstrumentSheet(data){
     catch(e){
         return {
             statusCode: 400,
-            status: "Error while adding instrument sheet: " + e,
+            status: "ErrorPage while adding instrument sheet: " + e,
         }
     }
 }

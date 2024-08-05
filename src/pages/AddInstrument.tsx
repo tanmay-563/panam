@@ -113,7 +113,7 @@ const AddInstrument = ({metadata, setAlert, fetchSheetData}) => {
                 setSubmitting(false);
                 fetchSheetData(false);
             }).withFailureHandler((error) => {
-                console.error("Error fetching data:", error);
+                console.error("ErrorPage fetching data:", error);
                 setAlert("error", "Error", "Failed to add instrument.", 10);
             }).addInstrument(values);
         }

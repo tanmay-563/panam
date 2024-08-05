@@ -7,6 +7,7 @@ import { CgEditBlackPoint } from "react-icons/cg";
 import { RiMoneyRupeeCircleFill, RiDeleteBin2Fill } from "react-icons/ri";
 import { MdOutlineStackedLineChart } from "react-icons/md";
 import { MdElderly } from "react-icons/md";
+import { PiImageBrokenThin } from "react-icons/pi";
 import React from "react";
 
 export const iconMap = {
@@ -16,6 +17,7 @@ export const iconMap = {
     "_link": <FaExternalLinkAlt/>,
     "_delete": <RiDeleteBin2Fill/>,
     "_uparrowright": <FaArrowUpRightDots/>,
+    "_error": <PiImageBrokenThin/>,
     "piggy": <FaPiggyBank />,
     "shield": <FaShieldAlt/>,
     "gold": <AiFillGold />,

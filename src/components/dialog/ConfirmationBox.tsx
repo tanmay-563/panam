@@ -20,7 +20,7 @@ const ConfirmationBox = ({ dialogType, setDialogType, ...props}) => {
         try {
             await props.dialogProps.onConfirm();
         } catch (error) {
-            console.error('Error:', error);
+            console.error('ErrorPage:', error);
         } finally {
             setLoading(false);
             navigate("/")
