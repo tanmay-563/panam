@@ -29,6 +29,11 @@ const Navbar = ({   onRefresh,
             >
                 <MenuIcon/>
             </div>
+            {process.env.NODE_ENV === "development" &&
+                <p>
+                    This is a demo website. Data cannot be modified.
+                </p>
+            }
             <div className="icons">
                 <div title="Add Transaction">
                     <AddIcon className="icon" onClick={()=> setDialogType('addTransaction')}/>

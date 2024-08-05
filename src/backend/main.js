@@ -107,7 +107,7 @@ function updateInstrumentTransactions(sheetName, rowMap){
   if ((numRows < 2) || (firstCell === '')) {
     return {
       statusCode: 400,
-      status: (numRows === 1 && firstCell === '') ? "At least one entry must be manually added to the sheet" : "Header column missing from sheet",
+      status: (numRows > 1 && firstCell === '') ? "At least one entry must be manually added to the sheet" : "Header column missing from sheet",
       instrumentSheetUrl: getSheetUrl(ss, sheet)
     }
   }
