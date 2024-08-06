@@ -1,8 +1,21 @@
+# Table of Contents
+
+- [Panam](#panam)
+- [Demo](#demo)
+- [Features](#features)
+- [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Usage](#usage)
+   - [Getting Started with Development](#getting-started-with-development)
+
 # Panam
+
+![logo.png](./public/brand.jpg)
 
 Welcome to Panam! This web app built using Google Apps Script uses Google Sheets to help you manage and track your investments. It allows for easy visualization, performance analysis, and easy management of your investment portfolio, all while ensuring your data remains private and secure.
 
-**Demo**: [Panam-demo](https://panam-demo.akshayxml.com)
+## Demo
+A demo of the web app can be found at: https://panam-demo.akshayxml.com
 
 ## Features
 
@@ -20,7 +33,7 @@ Welcome to Panam! This web app built using Google Apps Script uses Google Sheets
 - Basic understanding of Google Sheets
 - Familiarity with JavaScript and Google Apps Script is beneficial but not required
 
-## Usage
+### Usage
 1. Make a Copy of the Spreadsheet:
    - Open the original spreadsheet at the following link: \
     [Google Spreadsheet](https://docs.google.com/spreadsheets/d/13P0q0RMEsY3uuaUJ1Il1DsnyIt4vcSZ_A-_HEHPVLD0/edit?usp=sharing)
@@ -39,7 +52,7 @@ Welcome to Panam! This web app built using Google Apps Script uses Google Sheets
 4. Start Using the Web App:
    - Once deployment is complete, open the web app URL to begin tracking your investments!
 
-## Getting Started with Development
+### Getting Started with Development
 
 1. **Clone the Repository:**  
    Clone the project repository to your local machine.
@@ -57,6 +70,6 @@ Welcome to Panam! This web app built using Google Apps Script uses Google Sheets
      "rootDir": "<project-dir>/dist"
    }
    ```
-    scriptId: The ID from the URL after https://script.google.com/u/0/home/projects/.
+    scriptId: Complete the steps mentioned in the `Usage` section. Open the Apps Script Editor (`Extensions` > `Apps Script` from the spreadsheet). You can find the ID in Apps Script Editor url: https://script.google.com/u/0/home/projects/<ID>/edit. \
     rootDir: The directory containing the project files, typically set to dist.
     Replace your-script-id with your specific script ID and <project-dir> with your project directory name.
