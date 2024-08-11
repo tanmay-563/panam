@@ -5,7 +5,7 @@
 - [Features](#features)
 - [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
-   - [Usage](#usage)
+   - [Installation](#installation)
    - [Getting Started with Development](#getting-started-with-development)
 
 # Panam
@@ -33,7 +33,7 @@ A demo of the web app can be found at: https://panam-demo.akshayxml.com
 - Basic understanding of Google Sheets
 - Familiarity with JavaScript and Google Apps Script is beneficial but not required
 
-### Usage
+### Installation
 1. Make a Copy of the Spreadsheet:
    - Open the original spreadsheet at the following link: \
     [Google Spreadsheet](https://docs.google.com/spreadsheets/d/13P0q0RMEsY3uuaUJ1Il1DsnyIt4vcSZ_A-_HEHPVLD0/edit?usp=sharing)
@@ -70,7 +70,7 @@ A demo of the web app can be found at: https://panam-demo.akshayxml.com
      "rootDir": "<project-dir>/dist"
    }
    ```
-    scriptId: Complete the steps mentioned in the `Usage` section. Open the Apps Script Editor (`Extensions` > `Apps Script` from the spreadsheet). You can find the ID in Apps Script Editor url: `https://script.google.com/u/0/home/projects/<ID>/edit`. \
+    scriptId: Complete the steps mentioned in the [Installation](#installation) section. Open the Apps Script Editor (`Extensions` > `Apps Script` from the spreadsheet). You can find the ID in Apps Script Editor url: `https://script.google.com/u/0/home/projects/<ID>/edit`. \
     rootDir: The directory containing the project files, typically set to dist. 
 
    Replace your-script-id with your specific script ID and <project-dir> with your project directory name.
