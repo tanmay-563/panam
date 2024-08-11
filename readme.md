@@ -70,6 +70,7 @@ A demo of the web app can be found at: https://panam-demo.akshayxml.com
      "rootDir": "<project-dir>/dist"
    }
    ```
-    scriptId: Complete the steps mentioned in the `Usage` section. Open the Apps Script Editor (`Extensions` > `Apps Script` from the spreadsheet). You can find the ID in Apps Script Editor url: https://script.google.com/u/0/home/projects/<ID>/edit. \
-    rootDir: The directory containing the project files, typically set to dist.
-    Replace your-script-id with your specific script ID and <project-dir> with your project directory name.
+    scriptId: Complete the steps mentioned in the `Usage` section. Open the Apps Script Editor (`Extensions` > `Apps Script` from the spreadsheet). You can find the ID in Apps Script Editor url: `https://script.google.com/u/0/home/projects/<ID>/edit`. \
+    rootDir: The directory containing the project files, typically set to dist. \
+
+   Replace your-script-id with your specific script ID and <project-dir> with your project directory name.
