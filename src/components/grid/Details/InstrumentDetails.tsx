@@ -12,7 +12,7 @@ const getCellColor = (data, firstKey, secondKey) => {
 }
 
 const InstrumentDetails = ({aggregatedData, metadata, dataSource, onChange}) => {
-    const [sortValue, setSortValue] = useState("")
+    const [sortValue, setSortValue] = useState("current")
     const data = getInstrumentDetailsData(aggregatedData, dataSource, sortValue);
     if(!data || Object.keys(data).length == 0)
         return <div></div>
