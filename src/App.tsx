@@ -1,49 +1,206 @@
-import Home from "./pages/Home";
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import {
     createBrowserRouter,
     RouterProvider,
-} from "react-router-dom";
-import Instruments from "./pages/Instruments";
-import React, { useEffect, useState } from 'react';
+    Outlet 
+} from 'react-router-dom';
+
+import Layout from './pages/Layout'; 
+import Home from './pages/Home';
+import Instruments from './pages/Instruments';
+import AddInstrument from './pages/AddInstrument';
+import DeleteInstrument from './pages/DeleteInstrument';
+import CapitalGains from './pages/calculators/CapitalGains';
+import ErrorBoundary from './components/external/ErrorBoundary';
 import {devData} from "./devdata.js";
 import getProcessedData from "./utils/dataProcessor";
 import {dateReviver} from "./utils/common";
-import Layout from "./pages/Layout";
-import AddInstrument from "./pages/AddInstrument";
-import DeleteInstrument from "./pages/DeleteInstrument";
-import CapitalGains from "./pages/calculators/CapitalGains";
-import ErrorBoundary from "./components/external/ErrorBoundary";
+
+export const AppContext = createContext(null);
+
+function LayoutWrapper() {
+    const context = useContext(AppContext);
+    if (!context) return <p>Loading...</p>; 
+
+    return (
+        <ErrorBoundary>
+            <Layout
+                data={context.data}
+                fetchSheetData={context.fetchSheetData}
+                setSelectedMenuItem={context.setSelectedMenuItem}
+                selectedMenuItem={context.selectedMenuItem}
+                setDialogType={context.setDialogType}
+                dialogType={context.dialogType}
+                setAlertDetails={context.setAlertDetails}
+                setAlert={context.setAlert}
+                alertDetails={context.alertDetails}
+                loading={context.loading}
+                dialogProps={context.dialogProps}
+                setDialogProps={context.setDialogProps}
+            />
+        </ErrorBoundary>
+    );
+}
+
+function HomeWrapper() {
+    const context = useContext(AppContext);
+    if (!context) return null;
+    return (
+         <ErrorBoundary> 
+            <Home
+                instruments={context.data?.instruments}
+                metadata={context.data?.metadata}
+                reports={context.data?.reports}
+                aggregatedData={context.data?.aggregatedData}
+            />
+         </ErrorBoundary>
+    );
+}
+
+function InstrumentsWrapper() {
+    const context = useContext(AppContext);
+    if (!context) return null;
+    return (
+        <ErrorBoundary>
+            <Instruments
+                headerMap={context.data?.headerMap}
+                transactionsRowMap={context.data?.transactionsRowMap}
+                metadata={context.data?.metadata}
+                instrument={context.selectedMenuItem} 
+                setSelectedMenuItem={context.setSelectedMenuItem}
+                setDialogType={context.setDialogType}
+            />
+        </ErrorBoundary>
+    );
+}
+
+function AddInstrumentWrapper() {
+    const context = useContext(AppContext);
+    if (!context) return null;
+    return (
+        <AddInstrument
+            metadata={context.data?.metadata}
+            setAlert={context.setAlert}
+            fetchSheetData={context.fetchSheetData}
+        />
+    );
+}
+
+function DeleteInstrumentWrapper() {
+    const context = useContext(AppContext);
+    if (!context) return null;
+    return (
+        <DeleteInstrument
+            metadata={context.data?.metadata}
+            setDialogType={context.setDialogType}
+            setDialogProps={context.setDialogProps}
+            handleInstrumentDelete={context.handleInstrumentDelete}
+        />
+    );
+}
+
+function CapitalGainsWrapper() {
+    const context = useContext(AppContext);
+    if (!context) return null;
+    return (
+        <CapitalGains
+            metadata={context.data?.metadata}
+            transactionsRowMap={context.data?.transactionsRowMap}
+            aggregatedData={context.data?.aggregatedData}
+        />
+    );
+}
+
+const routerConfig = [
+    {
+        path: "/",
+        element: <LayoutWrapper />,
+        children: [
+            {
+                index: true, 
+                element: <HomeWrapper />,
+            },
+            {
+                path: "transactions/:instrumentId",
+                element: <InstrumentsWrapper />,
+            },
+            {
+                path: "add/instrument",
+                element: <AddInstrumentWrapper />,
+            },
+            {
+                path: "delete/instrument",
+                element: <DeleteInstrumentWrapper />,
+            },
+            {
+                path: "calculator/capitalgains",
+                element: <CapitalGainsWrapper />
+            },
+        ],
+    },
+    {
+        path: "*",
+        element: <LayoutWrapper />, 
+        children: [
+            {
+                path: "*",
+                element: <HomeWrapper />,
+            },
+        ]
+    }
+];
+
+const router = createBrowserRouter(routerConfig);
 
 function App() {
-    console.log(process.env.NODE_ENV)
+    console.log("App Environment:", process.env.NODE_ENV);
+
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
-    const [selectedMenuItem, setSelectedMenuItem] = useState("");
+    const [selectedMenuItem, setSelectedMenuItem] = useState(""); 
     const [dialogType, setDialogType] = useState('');
-    const [dialogProps, setDialogProps] = useState({})
-    const [alertDetails, setAlertDetails] = useState({})
+    const [dialogProps, setDialogProps] = useState({});
+    const [alertDetails, setAlertDetails] = useState({});
 
     const fetchSheetData = (enableLoading = true) => {
-        console.log("fetching...")
+        console.log("App: fetching sheet data...");
         setLoading(enableLoading);
-        if (process.env.NODE_ENV == "development"){
-            let data = JSON.parse(devData, dateReviver);
-            console.log(data)
-            setData(getProcessedData(data));
-            console.log(getProcessedData(data))
-            setTimeout(() => setLoading(false), 500)
+        if (process.env.NODE_ENV === "development"){
+            try {
+                let parsedData = JSON.parse(devData, dateReviver);
+                console.log("App: Dev data parsed:", parsedData);
+                let processed = getProcessedData(parsedData);
+                console.log("App: Dev data processed:", processed);
+                setData(processed);
+                setTimeout(() => {
+                    setLoading(false);
+                    console.log("App: Dev loading finished.");
+                }, 500);
+            } catch (error) {
+                 console.error("App: Error processing dev data:", error);
+                 setData({}); 
+                 setLoading(false);
+            }
         }
-        else{
+        else {
             // @ts-ignore
-            google.script.run.withSuccessHandler((data) => {
-                console.log("data "+ data)
-                setData(getProcessedData(JSON.parse(data, dateReviver)));
-                setLoading(false)
+            google.script.run.withSuccessHandler((jsonData) => {
+                try {
+                    console.log("App: Received production data string length:", jsonData?.length);
+                    let parsedData = JSON.parse(jsonData, dateReviver);
+                    setData(getProcessedData(parsedData));
+                    setLoading(false);
+                    console.log("App: Production data processed and loading finished.");
+                } catch (error) {
+                     console.error("App: Error processing production data:", error);
+                     setData({});
+                     setLoading(false);
+                }
             }).withFailureHandler((error) => {
-                console.error("ErrorPage fetching data:", error);
-                setData([]);
+                console.error("App: Error fetching production data:", error);
+                setData({}); // Set empty data on failure
                 setLoading(false);
-            }).fetchData();
+            }).fetchData(); 
         }
     };
 
@@ -61,34 +218,37 @@ function App() {
         }));
     }
 
-    const handleInstrumentDelete = (instrument) => {
+     const handleInstrumentDelete = (instrument) => {
+        console.log("App: handleInstrumentDelete called for", instrument);
         return new Promise((resolve, reject) => {
             if (process.env.NODE_ENV === "development") {
+                 console.log("App: Simulating delete in dev...");
                 setTimeout(() => {
-                    let response = {
-                        statusCode: 200,
-                        status: "Success"
-                    };
-                    setAlert("success", "Success", "Deleted " + instrument, 10);
-                    setDialogType('')
+                    let response = { statusCode: 200, status: "Success (Simulated)" };
+                    setAlert("success", "Success", `Simulated deletion of ${instrument}`, 5);
+                    setDialogType('');
+                    console.log("App: Simulated delete successful.");
                     resolve(response);
-                }, 2000);
+                }, 1500); 
             } else {
+                console.log("App: Calling production delete script for", instrument);
                 // @ts-ignore
                 google.script.run
                     .withSuccessHandler((response) => {
+                        console.log("App: Production delete script success:", response);
                         if (response.statusCode >= 200 && response.statusCode < 300) {
-                            setAlert("success", "Success", "Deleted successfully.", 10);
-                            setDialogType('');
+                            setAlert("success", "Success", `Deleted ${instrument} successfully.`, 10);
+                            setDialogType(''); 
                             fetchSheetData(false);
                             resolve(response);
                         } else {
-                            setAlert("error", "Error", response.status, 10);
-                            reject(response);
+                             setAlert("error", "Deletion Error", response.status || "Unknown error", 10);
+                             reject(response);
                         }
                     })
                     .withFailureHandler((error) => {
-                        setAlert("error", "Error", error, 10);
+                        console.error("App: Production delete script failure:", error);
+                        setAlert("error", "Error", `Failed to delete ${instrument}: ${error.message || error}`, 10);
                         reject(error);
                     })
                     .deleteInstrument(instrument);
@@ -96,118 +256,27 @@ function App() {
         });
     };
 
-    const router = createBrowserRouter([
-        {
-            path: "/",
-            element: (
-                <ErrorBoundary>
-                    <Layout
-                        data={data}
-                        fetchSheetData={fetchSheetData}
-                        setSelectedMenuItem={setSelectedMenuItem}
-                        selectedMenuItem={selectedMenuItem}
-                        setDialogType={setDialogType}
-                        dialogType={dialogType}
-                        setAlertDetails={setAlertDetails}
-                        setAlert={setAlert}
-                        alertDetails={alertDetails}
-                        loading={loading}
-                        dialogProps={dialogProps}
-                        setDialogProps={setDialogProps}
-                    />
-                </ErrorBoundary>
-            ),
-            children: [
-                {
-                    path: "/",
-                    element: (
-                        <ErrorBoundary>
-                            <Home
-                                instruments={data?.instruments}
-                                metadata={data?.metadata}
-                                reports={data?.reports}
-                                aggregatedData={data?.aggregatedData}
-                            />
-                        </ErrorBoundary>
-                    ),
-                },
-                {
-                    path: "transactions/:instrumentId",
-                    element:
-                        <ErrorBoundary>
-                            <Instruments
-                                headerMap={data?.headerMap}
-                                transactionsRowMap={data?.transactionsRowMap}
-                                metadata={data?.metadata}
-                                instrument={selectedMenuItem}
-                                setSelectedMenuItem={setSelectedMenuItem}
-                                setDialogType={setDialogType}
-                            />
-                        </ErrorBoundary>,
-                },
-                {
-                    path: "add/instrument",
-                    element: <AddInstrument
-                                metadata={data?.metadata}
-                                setAlert={setAlert}
-                                fetchSheetData={fetchSheetData}/>,
-                },
-                {
-                    path: "delete/instrument",
-                    element: <DeleteInstrument
-                        metadata={data?.metadata}
-                        setDialogType={setDialogType}
-                        setDialogProps={setDialogProps}
-                        handleInstrumentDelete={handleInstrumentDelete}/>,
-                },
-                {
-                    path: "calculator/capitalgains",
-                    element: <CapitalGains
-                                metadata={data?.metadata}
-                                transactionsRowMap={data?.transactionsRowMap}
-                                aggregatedData={data?.aggregatedData}/>
-                },
-            ],
-        },
-        {
-            path: "*",
-            element:
-                <ErrorBoundary>
-                    <Layout
-                        data={data}
-                        fetchSheetData={fetchSheetData}
-                        setSelectedMenuItem={setSelectedMenuItem}
-                        selectedMenuItem={selectedMenuItem}
-                        setDialogType={setDialogType}
-                        dialogType={dialogType}
-                        setAlertDetails={setAlertDetails}
-                        setAlert={setAlert}
-                        alertDetails={alertDetails}
-                        loading={loading}
-                        dialogProps={dialogProps}
-                        setDialogProps={setDialogProps}
-                    />
-                </ErrorBoundary>,
-            children: [
-                {
-                    path: "*",
-                    element: (
-                        <ErrorBoundary>
-                            <Home
-                                instruments={data?.instruments}
-                                metadata={data?.metadata}
-                                reports={data?.reports}
-                                aggregatedData={data?.aggregatedData}
-                            />
-                        </ErrorBoundary>
-                    ),
-                },
-            ]
-        }
-    ]);
+    const contextValue = {
+        data,
+        loading,
+        selectedMenuItem,
+        setSelectedMenuItem,
+        dialogType,
+        setDialogType,
+        dialogProps,
+        setDialogProps,
+        alertDetails,
+        setAlertDetails, 
+        setAlert,
+        fetchSheetData,
+        handleInstrumentDelete 
+    };
+
     return (
-        <RouterProvider router={router} />
+        <AppContext.Provider value={contextValue}>
+            <RouterProvider router={router} />
+        </AppContext.Provider>
     );
 }
 
-export default App
+export default App;
