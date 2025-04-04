@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "rm -rf dist/* && cp -r src/backend/ ./src/appsscript.json ./dist && NODE_ENV=development parcel src/index.html --host 0.0.0.0 --dist-dir dist -p 8000 ",
     "start": "rm -rf dist/* && cp -r src/backend/ ./src/appsscript.json ./dist && NODE_ENV=production parcel src/index.html --dist-dir dist -p 8000",
-    "build": "rm -rf dist/* && cp -r src/backend/ ./src/appsscript.json ./dist && NODE_ENV=production parcel build src/index.html --dist-dir dist",
+    "build": "rm -rf dist/* && cp -r src/backend/* ./src/appsscript.json ./dist && NODE_ENV=production parcel build src/index.html --dist-dir dist",
     "debug": "parcel src/index.html --dist-dir dist --log-level verbose -p 8000",
     "gstart": "clasp push --watch",
     "deploy": "clasp push && clasp deploy",
@@ -36,13 +36,14 @@
     "react-router-dom": "^6.24.1",
     "recharts": "^2.13.0-alpha.4",
     "sass": "^1.77.6",
+    "svgo": "^2.8.0",
     "uninstall": "^0.0.0",
     "xirr": "^1.1.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",
-    "@parcel/transformer-svg-react": "^2.12.0",
+    "@parcel/transformer-svg-react": "^2.14.4",
     "@svgr/parcel-plugin-svgr": "^5.5.0",
     "@types/google-apps-script": "^1.0.83",
     "@types/node": "^20.14.10",
