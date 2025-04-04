@@ -28,10 +28,30 @@ export function convertToJson(dataArray){
 
 const truncateNumber = (number, decimalCount = 2) => {
     try{
-        if (number < 1000) return number.toString();
-        if (number < 100000) return `${(number / 1000).toFixed(decimalCount)}K`;
-        if (number < 10000000) return `${(number / 100000).toFixed(decimalCount)}L`;
-        return `${(number / 10000000).toFixed(decimalCount)}Cr`;
+        const isNegative = number < 0;
+        const absNumber = Math.abs(number);
+        const signPrefix = isNegative ? '-' : ''; 
+
+        if (absNumber < 1000) {
+            return number.toString(); 
+        }
+
+        let value;
+        let suffix;
+
+        if (absNumber < 100000) {
+            value = (absNumber / 1000);
+            suffix = 'K';
+        } else if (absNumber < 10000000) { 
+            value = (absNumber / 100000);
+            suffix = 'L'; 
+        } else { 
+            value = (absNumber / 10000000);
+            suffix = 'Cr'; 
+        }
+
+        const formattedValue = value.toFixed(decimalCount);
+        return `${signPrefix}${formattedValue}${suffix}`; 
     }
     catch (e){
         console.error(e)
