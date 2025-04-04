@@ -62,8 +62,10 @@ A demo of the web app can be found at: https://panam-demo.akshayxml.com
    Install clasp for command-line development of Google Apps Script.
    ```bash
    npm install -g @google/clasp
-3. **Create `clasp.json`:**  
-   In the project root, create a `clasp.json` file with the following content:
+3. **Run `clasp login`**  
+4. **Create `.clasp.json`:**
+
+   In the project root, create a `.clasp.json` file with the following content:
    ```json
    {
      "scriptId": "your-script-id",
