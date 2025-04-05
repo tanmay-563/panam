@@ -1,7 +1,9 @@
 import TextField from "@mui/material/TextField";
 
-const MuiTextField = ({value, setValue, width, height, fontSize}) => {
+const MuiTextField = ({label, value, setValue, width, height, fontSize}) => {
     return <TextField
+        label={label} 
+        variant="outlined" 
         type="number" size="small"
         value={value}
         onChange={(event) => {

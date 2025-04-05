@@ -72,3 +72,63 @@ export function getCapitalGainsData(transactionsRowMap, instrument, name,
         return [0, 0];
     }
 }
+
+export function getRedemptionAmountData(transactionsRowMap, instrument, name,
+                                    unitsField, currentNavField,
+                                    redemptionUnits) {
+    if (!transactionsRowMap || !(instrument in transactionsRowMap) || !unitsField || !currentNavField) {
+        return [0, 0];
+    }
+
+    try{
+        let currentNav = 0, investedAmount = 0, redemptionUnitsCopy = redemptionUnits;
+
+        const relevantTransactions = transactionsRowMap[instrument]
+        .filter(transaction => transaction.Name === name) 
+        .sort((a, b) => {                               
+            const dateA = new Date(a.Date);
+            const dateB = new Date(b.Date);
+            return dateA.getTime() - dateB.getTime(); 
+        });
+
+        let redeemdedUnits = relevantTransactions
+        .filter(transaction => transaction[unitsField] < 0) 
+        .reduce((sum, transaction) => sum + Math.abs(transaction[unitsField]), 0);
+        
+        relevantTransactions.forEach(transaction => {
+            let transactionUnits = Math.abs(transaction[unitsField]);
+            currentNav = transaction[currentNavField];
+
+            if (redeemdedUnits > 0) {
+                if (redeemdedUnits >= transactionUnits){
+                    redeemdedUnits -= transactionUnits;
+                    return;
+                }
+                else{
+                    transactionUnits -= redeemdedUnits;
+                    redeemdedUnits = 0;
+                }
+            } 
+            if (redemptionUnits > 0){
+                if (redemptionUnits >= transactionUnits){
+                    investedAmount += transaction.Invested;
+                    redemptionUnits -= transactionUnits;
+                }
+                else{
+                    investedAmount += (redemptionUnits/transactionUnits)*transaction.Invested
+                    redemptionUnits = 0;
+                }
+            }
+        });
+
+        if(redemptionUnits > 0)
+            return [-1, -1]
+        
+        const currentAmount = redemptionUnitsCopy*currentNav;
+        return [investedAmount, currentAmount];
+    }
+    catch (e){
+        console.error(e)
+        return [0, 0];
+    }
+}

@@ -27,6 +27,12 @@ export const menu = [
                 url: "/calculator/capitalgains",
                 icon: "_uparrowright",
             },
+            {
+                id: 2,
+                title: "Redemption",
+                url: "/calculator/redemption",
+                icon: "_redeem",
+            },
         ],
     },
 ];

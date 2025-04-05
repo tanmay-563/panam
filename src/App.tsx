@@ -11,6 +11,7 @@ import Instruments from './pages/Instruments';
 import AddInstrument from './pages/AddInstrument';
 import DeleteInstrument from './pages/DeleteInstrument';
 import CapitalGains from './pages/calculators/CapitalGains';
+import Redemption from './pages/calculators/Redemption';
 import ErrorBoundary from './components/external/ErrorBoundary';
 import {devData} from "./devdata.js";
 import getProcessedData from "./utils/dataProcessor";
@@ -111,6 +112,18 @@ function CapitalGainsWrapper() {
     );
 }
 
+function RedemptionWrapper() {
+    const context = useContext(AppContext);
+    if (!context) return null;
+    return (
+        <Redemption
+            metadata={context.data?.metadata}
+            transactionsRowMap={context.data?.transactionsRowMap}
+            aggregatedData={context.data?.aggregatedData}
+        />
+    );
+}
+
 const routerConfig = [
     {
         path: "/",
@@ -135,6 +148,10 @@ const routerConfig = [
             {
                 path: "calculator/capitalgains",
                 element: <CapitalGainsWrapper />
+            },
+            {
+                path: "calculator/redemption",
+                element: <RedemptionWrapper />
             },
         ],
     },

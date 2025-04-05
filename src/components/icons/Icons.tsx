@@ -8,7 +8,7 @@ import { RiMoneyRupeeCircleFill, RiDeleteBin2Fill } from "react-icons/ri";
 import { MdOutlineStackedLineChart } from "react-icons/md";
 import { MdElderly } from "react-icons/md";
 import { PiImageBrokenThin } from "react-icons/pi";
-import React from "react";
+import { MdRedeem } from "react-icons/md";
 
 export const iconMap = {
     "_overview": <GrOverview/>,
@@ -18,6 +18,7 @@ export const iconMap = {
     "_delete": <RiDeleteBin2Fill/>,
     "_uparrowright": <FaArrowUpRightDots/>,
     "_error": <PiImageBrokenThin/>,
+    "_redeem": <MdRedeem/>,
     "piggy": <FaPiggyBank />,
     "shield": <FaShieldAlt/>,
     "gold": <AiFillGold />,
