@@ -1,54 +1,7 @@
 import React, {useState} from "react";
-import TextField from "@mui/material/TextField";
 import {getCapitalGainsData} from "../../utils/calculator.utils";
 import {formatPercentage, formatToIndianCurrency} from "../../utils/common";
-
-const MuiTextField = ({value, setValue}) => {
-    return <TextField
-        type="number" size="small"
-        value={value}
-        onChange={(event) => {
-            setValue(event.target.value)
-        }}
-        InputProps={{ inputProps: { min: 0} }}
-        InputLabelProps={{
-            style: { color: 'var(--soft-color)' },
-        }}
-        sx={{
-            width: '35px',
-            height: '25px',
-            marginRight: '3px',
-            marginLeft: '3px',
-            input: {
-                color: 'var(--soft-color)'
-            },
-            "& .MuiInputBase-input": {
-                fontSize: 10,
-                height: 4,
-                padding: 1
-            },
-            '& .MuiOutlinedInput-root': {
-                '&:hover fieldset': {
-                    borderColor: 'var(--soft-color)'
-                }
-            },
-            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                borderColor: 'var(--ultra-soft-color)',
-            },
-            '& input[type=number]': {
-                'MozAppearance': 'textfield'
-            },
-            '& input[type=number]::-webkit-outer-spin-button': {
-                'WebkitAppearance': 'none',
-                margin: 0
-            },
-            '& input[type=number]::-webkit-inner-spin-button': {
-                'WebkitAppearance': 'none',
-                margin: 0
-            }
-        }}
-    />;
-};
+import MuiTextField from "../../components/MuiTextField";
 
 const CalculatedValueBox = ({label, percentageShare, amount, taxPercentage}) => {
     return (
@@ -108,17 +61,17 @@ const CapitalGainsField = ({
                 </div>
                 <div className="input-field">
                     Short Term Period
-                    <MuiTextField value={shortTermPeriod} setValue={setShortTermPeriod}/>
+                    <MuiTextField value={shortTermPeriod} setValue={setShortTermPeriod} width='40px' height='100%' fontSize={10}/>
                     <span style={{color: 'var(--ultra-soft-color)'}}>months </span>
                 </div>
                 <div className="input-field">
                     Short Term Tax
-                    <MuiTextField value={shortTermTax} setValue={setShortTermTax}/>
+                    <MuiTextField value={shortTermTax} setValue={setShortTermTax} width='40px' height='100%' fontSize={10}/>
                     <span style={{color: 'var(--ultra-soft-color)'}}>% </span>
                 </div>
                 <div className="input-field">
                     Long Term Tax
-                    <MuiTextField value={longTermTax} setValue={setLongTermTax}/>
+                    <MuiTextField value={longTermTax} setValue={setLongTermTax} width='40px' height='100%' fontSize={10}/>
                     <span style={{color: 'var(--ultra-soft-color)'}}>% </span>
                 </div>
             </div>
