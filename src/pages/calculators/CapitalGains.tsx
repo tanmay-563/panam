@@ -1,12 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {ErrorMessage, Field, Form, Formik} from "formik";
-import * as Yup from "yup";
-import Loading from "../../components/Loading";
-import TextField from "@mui/material/TextField";
-import {FormControl, InputAdornment, InputLabel, MenuItem, Select} from "@mui/material";
-import {getCapitalGainsData} from "../../utils/calculator.utils";
-import {Simulate} from "react-dom/test-utils";
-import select = Simulate.select;
 import DynamicSelect from "../../components/DynamicSelect";
 import CapitalGainsField from "./CapitalGainsField";
 
