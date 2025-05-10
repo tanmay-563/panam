@@ -117,7 +117,7 @@ export function getRedemptionAmountData(transactionsRowMap, instrument, name,
                     redemptionUnits -= transactionUnits;
                 }
                 else{
-                    investedAmount += (redemptionUnits/transactionUnits)*transaction.Invested
+                    investedAmount += (redemptionUnits/transaction[unitsField])*transaction.Invested
                     redemptionUnits = 0;
                 }
             }
