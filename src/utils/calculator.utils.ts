@@ -96,7 +96,9 @@ export function getRedemptionAmountData(transactionsRowMap, instrument, name,
         .reduce((sum, transaction) => sum + Math.abs(transaction[unitsField]), 0);
         
         relevantTransactions.forEach(transaction => {
-            let transactionUnits = Math.abs(transaction[unitsField]);
+            let transactionUnits = transaction[unitsField];
+            if(transactionUnits < 0)
+                return;
             currentNav = transaction[currentNavField];
 
             if (redeemdedUnits > 0) {
@@ -111,7 +113,7 @@ export function getRedemptionAmountData(transactionsRowMap, instrument, name,
             } 
             if (redemptionUnits > 0){
                 if (redemptionUnits >= transactionUnits){
-                    investedAmount += transaction.Invested;
+                    investedAmount += (transactionUnits/transaction[unitsField])*transaction.Invested;
                     redemptionUnits -= transactionUnits;
                 }
                 else{

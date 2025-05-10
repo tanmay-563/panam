@@ -14,7 +14,8 @@ function doGet() {
       .setTitle("Panam")
       .addMetaTag('viewport', 'width=device-width, initial-scale=1')
       .addMetaTag('apple-mobile-web-app-capable', 'yes')
-      .addMetaTag('mobile-web-app-capable', 'yes');
+      .addMetaTag('mobile-web-app-capable', 'yes')
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
 function fetchData(){
