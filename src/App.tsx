@@ -170,8 +170,6 @@ const routerConfig = [
 const router = createBrowserRouter(routerConfig);
 
 function App() {
-    console.log("App Environment:", process.env.NODE_ENV);
-
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState(""); 
@@ -203,18 +201,29 @@ function App() {
             // @ts-ignore
             google.script.run.withSuccessHandler((jsonData) => {
                 try {
-                    console.log("App: Received production data string length:", jsonData?.length);
+                    const env = process.env.NODE_ENV;
+                    const isBeta = env === "beta";
+                    console.log(`App: Received ${env} data string (length: ${jsonData?.length})`);
+                    if (isBeta) {
+                        console.log("App [Beta]: Raw data:", jsonData);
+                    }
+
                     let parsedData = JSON.parse(jsonData, dateReviver);
-                    setData(getProcessedData(parsedData));
+                    if (isBeta) {
+                        console.log("App [Beta]: Parsed data:", parsedData);
+                    }
+                    
+                    const processed = getProcessedData(parsedData);
+                    setData(processed);
                     setLoading(false);
-                    console.log("App: Production data processed and loading finished.");
+                    console.log("App: Data processed and loading finished.");
                 } catch (error) {
-                     console.error("App: Error processing production data:", error);
+                     console.error("App: Error processing data:", error);
                      setData({});
                      setLoading(false);
                 }
             }).withFailureHandler((error) => {
-                console.error("App: Error fetching production data:", error);
+                console.error("App: Error fetching data:", error);
                 setData({}); // Set empty data on failure
                 setLoading(false);
             }).fetchData(); 
@@ -248,11 +257,11 @@ function App() {
                     resolve(response);
                 }, 1500); 
             } else {
-                console.log("App: Calling production delete script for", instrument);
+                console.log("App: Calling delete script for", instrument);
                 // @ts-ignore
                 google.script.run
                     .withSuccessHandler((response) => {
-                        console.log("App: Production delete script success:", response);
+                        console.log("App: delete script success:", response);
                         if (response.statusCode >= 200 && response.statusCode < 300) {
                             setAlert("success", "Success", `Deleted ${instrument} successfully.`, 10);
                             setDialogType(''); 
@@ -264,7 +273,7 @@ function App() {
                         }
                     })
                     .withFailureHandler((error) => {
-                        console.error("App: Production delete script failure:", error);
+                        console.error("App: delete script failure:", error);
                         setAlert("error", "Error", `Failed to delete ${instrument}: ${error.message || error}`, 10);
                         reject(error);
                     })
