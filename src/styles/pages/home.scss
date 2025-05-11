@@ -44,18 +44,6 @@
     grid-column: span 1;
   }
 
-  .box-title{
-    display: flex;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    color: $soft-color;
-    font-size: 20px;
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    //font-variant: all-petite-caps;
-  }
-
   hr{
     border: 0.5px solid $max-soft;
     position: absolute;

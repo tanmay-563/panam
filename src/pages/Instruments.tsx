@@ -160,7 +160,7 @@ const Instruments = ({
          <div/> :
         (<div>
             <div className="title-box">
-                <div className="title">
+                <div className="box-title">
                     {getDisplayName(instrumentMetadata, instrument)}
                 </div>
                 <div className="add-transaction-box" onClick={()=>setDialogType('addTransaction')}>
