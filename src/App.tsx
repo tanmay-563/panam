@@ -12,6 +12,7 @@ import AddInstrument from './pages/AddInstrument';
 import DeleteInstrument from './pages/DeleteInstrument';
 import CapitalGains from './pages/calculators/CapitalGains';
 import Redemption from './pages/calculators/Redemption';
+import CostPerDay from './pages/calculators/CostPerDay';
 import ErrorBoundary from './components/external/ErrorBoundary';
 import {devData} from "./devdata.js";
 import getProcessedData from "./utils/dataProcessor";
@@ -124,6 +125,17 @@ function RedemptionWrapper() {
     );
 }
 
+function CostPerDayWrapper() {
+    const context = useContext(AppContext);
+    if (!context) return null;
+    return (
+        <CostPerDay
+            costPerDayRowMap={context.data?.reports?.costperday}
+            setDialogType={context.setDialogType}
+        />
+    );
+}
+
 const routerConfig = [
     {
         path: "/",
@@ -152,6 +164,10 @@ const routerConfig = [
             {
                 path: "calculator/redemption",
                 element: <RedemptionWrapper />
+            },
+            {
+                path: "calculator/costperday",
+                element: <CostPerDayWrapper />
             },
         ],
     },
@@ -205,14 +221,15 @@ function App() {
                     const isBeta = env === "beta";
                     console.log(`App: Received ${env} data string (length: ${jsonData?.length})`);
                     if (isBeta) {
-                        console.log("App [Beta]: Raw data:", jsonData);
+                        console.log("Printing fetched data...")
+                        console.log(JSON.stringify(jsonData));
                     }
 
                     let parsedData = JSON.parse(jsonData, dateReviver);
                     if (isBeta) {
                         console.log("App [Beta]: Parsed data:", parsedData);
                     }
-                    
+
                     const processed = getProcessedData(parsedData);
                     setData(processed);
                     setLoading(false);

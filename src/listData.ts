@@ -33,6 +33,12 @@ export const menu = [
                 url: "/calculator/redemption",
                 icon: "_redeem",
             },
+            {
+                id: 3,
+                title: "Cost Per Day",
+                url: "/calculator/costperday",
+                icon: "_calendar",
+            },
         ],
     },
 ];

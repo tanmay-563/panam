@@ -3,6 +3,7 @@ const DAILY_CRON_HOUR = 6
 const METADATA_PREFIX = '_'
 const REPORTS_PREFIX = '+'
 const IGNORE_PREFIX = '*'
+const COST_PER_DAY_SHEETNAME = "+costperday"
 
 function setupTriggers(){
   setupDailyCronTrigger()
@@ -151,5 +152,34 @@ function deleteInstrument(instrument){
       statusCode: 400,
       status: e
     }
+  }
+}
+
+function addCostPerDayEntry(newEntry){
+  let ss = SpreadsheetApp.getActiveSpreadsheet()
+  let sheet = ss.getSheetByName(COST_PER_DAY_SHEETNAME);
+
+  let headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  const requiredFields = ['Name', 'PurchaseDate', 'PurchaseCost']
+
+  let newRowData = headers.map(header => {
+    trimmedHeader = header.split(' ').join('');
+    if (requiredFields.includes(trimmedHeader)) {
+      return newEntry[trimmedHeader];
+    } else {
+      let lastRow = sheet.getLastRow();
+      if(header.toLowerCase() === "id"){
+        return lastRow;
+      }
+      let formula = sheet.getRange(lastRow, headers.indexOf(header) + 1).getFormula();
+      return formula.replace(new RegExp(lastRow, 'g'), lastRow+1).replace(new RegExp(lastRow-1, 'g'), lastRow);
+    }
+  });
+
+  sheet.appendRow(newRowData);
+
+  return {
+    statusCode: 200,
+    status: "Success"
   }
 }

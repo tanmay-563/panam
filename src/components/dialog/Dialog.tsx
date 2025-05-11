@@ -1,5 +1,6 @@
 import ConfirmationBox from "./ConfirmationBox";
 import AddTransaction from "./addTransactions/AddTransaction";
+import AddCostPerDay from "./AddCostPerDay";
 
 const Dialog = ({dialogType, setDialogType, ...props}) =>{
     if(!dialogType || dialogType === '')
@@ -15,6 +16,12 @@ const Dialog = ({dialogType, setDialogType, ...props}) =>{
             break;
         case "deleteconfirmation":
             dialogContent = <ConfirmationBox
+                                dialogType={dialogType}
+                                setDialogType={setDialogType}
+                                {...props}/>;
+            break;
+        case "addcostperdayentry":
+            dialogContent = <AddCostPerDay
                                 dialogType={dialogType}
                                 setDialogType={setDialogType}
                                 {...props}/>;

@@ -85,7 +85,7 @@ const LineGraphBox = ({reports}) => {
     return (
         <>
             <div>
-                <h6 className="box-title"> Overall Progress </h6>
+                <h6 className="box-title left-pad-20"> Overall Progress </h6>
             </div>
             <hr/>
             <div className="box-content">

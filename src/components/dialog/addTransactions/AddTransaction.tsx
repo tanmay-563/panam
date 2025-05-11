@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react'
+import {useMemo, useState} from 'react'
 import Fields from "./Fields";
 import Loading from "../../Loading";
 import CloseIcon from '@mui/icons-material/Close';

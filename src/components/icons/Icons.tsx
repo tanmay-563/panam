@@ -9,6 +9,7 @@ import { MdOutlineStackedLineChart } from "react-icons/md";
 import { MdElderly } from "react-icons/md";
 import { PiImageBrokenThin } from "react-icons/pi";
 import { MdRedeem } from "react-icons/md";
+import { FaCalendarDay } from "react-icons/fa";
 
 export const iconMap = {
     "_overview": <GrOverview/>,
@@ -19,6 +20,7 @@ export const iconMap = {
     "_uparrowright": <FaArrowUpRightDots/>,
     "_error": <PiImageBrokenThin/>,
     "_redeem": <MdRedeem/>,
+    "_calendar": <FaCalendarDay/>,
     "piggy": <FaPiggyBank />,
     "shield": <FaShieldAlt/>,
     "gold": <AiFillGold />,

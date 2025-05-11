@@ -5,6 +5,7 @@ import {useTheme} from "@mui/material";
 import {useParams} from "react-router-dom";
 import moment from "moment/moment";
 import AddIcon from "../../public/add.svg";
+import { getDataGridStyles } from '../styles/ts-styles/muiDataGridStyles';
 
 function getLocalStorageKey(instrument){
     return "datagrid_column_visibility_"+instrument;
@@ -103,58 +104,7 @@ const Instruments = ({
             }
     })) : [];
 
-    const dataGridStyles = {
-        borderColor: 'var(--max-soft-color)',
-        '& .MuiDataGrid-toolbarContainer': {
-            backgroundColor: 'var(--soft-bg)',
-            flexDirection : 'row-reverse',
-            [theme.breakpoints.down('sm')]: {
-                flexWrap: 'wrap-reverse',
-            },
-            '& .MuiButtonBase-root': {
-                color: 'var(--soft-color)',
-                [theme.breakpoints.down('sm')]: {
-                    fontSize: '0',
-                },
-            },
-        },
-        '& .MuiDataGrid-footerContainer':{
-            border: 'none',
-        },
-        '& .MuiInputBase-root': {
-            color: 'var(--soft-color)',
-        },
-        '& .MuiTablePagination-root': {
-            color: 'var(--soft-color)',
-        },
-        '& .MuiTablePagination-selectIcon': {
-            color: 'var(--soft-color)',
-        },
-        '& .MuiTablePagination-actions': {
-            color: 'var(--soft-color)',
-        },
-        '& .MuiDataGrid-selectedRowCount': {
-            color: 'var(--soft-color)',
-        },
-        '& .MuiDataGrid-topContainer': {
-            color: 'var(--dark-color)',
-        },
-        '& .MuiDataGrid-virtualScrollerContent':{
-            backgroundColor: 'var(--soft-bg)',
-        },
-        '& .MuiSvgIcon-root': {
-            color: 'var(--ultra-soft-color)',
-        },
-        '& .MuiDataGrid-cell': {
-            borderColor: 'var(--max-soft-color)',
-        },
-        '& .MuiDataGrid-virtualScrollerRenderZone':{
-            '--DataGrid-rowBorderColor': 'red',
-        },
-        '& .MuiDataGrid-columnHeaderCheckbox':{
-            backgroundColor: 'var(--dark-bg)',
-        },
-    };
+    const dataGridStyles = getDataGridStyles(theme);
 
     return loading ?
          <div/> :
@@ -165,7 +115,7 @@ const Instruments = ({
                 </div>
                 <div className="add-transaction-box" onClick={()=>setDialogType('addTransaction')}>
                     <AddIcon/>
-                    Add Transaction
+                    <p>Add Transaction</p>
                 </div>
             </div>
             <DataGrid

@@ -76,6 +76,7 @@ const Layout = ({ data,
                         fetchSheetData={fetchSheetData}
                         dialogProps={dialogProps}
                         setDialogProps={setDialogProps}
+                        reports={data?.reports}
                     />}
                 </div>
             </div>
