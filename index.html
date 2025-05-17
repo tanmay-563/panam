@@ -1,12 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<html><head>
-    <title>Panam</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    </head>
-    <frameset rows="100%">
-    <frame src="https://script.google.com/macros/s/AKfycbxawg2lySag7shFg2kl4dFNZP3hIHDQhwMQUNTvCjkNgNRJoS-q-z60sCuFZB2FFhc1/exec" title="Panam" frameborder="0" noresize="noresize">
-    </frameset>
-  </html>
-  
-  
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="./public/logo192.png" sizes="192x192" />
+
+  <style>
+    /* Make the page and iframe fill the viewport with no scroll bars */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+  <script>
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/service-worker.js')
+          .catch(err => console.error('SW registration failed:', err));
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <iframe
+    src="https://script.google.com/macros/s/AKfycbxawg2lySag7shFg2kl4dFNZP3hIHDQhwMQUNTvCjkNgNRJoS-q-z60sCuFZB2FFhc1/exec"
+    title="Panam"
+    allowfullscreen
+  ></iframe>
+</body>
+</html>
