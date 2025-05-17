@@ -17,7 +17,7 @@
     "push:prod": "npm run build:prod && clasp push",
     "deploy:dev": "npm run push:dev && clasp deploy --project=.beta-clasp.json -d dev/demo -i $DEV_DEPLOYMENT_ID", 
     "deploy:beta": "npm run push:beta && clasp deploy --project=.beta-clasp.json -d beta -i $BETA_DEPLOYMENT_ID", 
-    "deploy:prod": "npm run push:prod && clasp deploy",
+    "deploy:prod": "npm run push:prod && clasp deploy -d prod -i $PROD_DEPLOYMENT_ID",
     "clean": "rm -rf .parcel-cache && rm -rf dist/*"
   },
   "license": "ISC",
