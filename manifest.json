@@ -1,6 +1,6 @@
 {
-    "name": "Panam",
-    "short_name": "Panam",
+    "name": "Panam-Demo",
+    "short_name": "Panam-Demo",
     "start_url": "./",
     "display": "standalone",
     "background_color": "#ffffff",
