@@ -1,0 +1,10 @@
+.idea
+.env
+node_modules/
+package-lock.json
+index.html
+.parcel-cache
+**clasp.json
+dist
+.DS_Store
+src/devdata.js
