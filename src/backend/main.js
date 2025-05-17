@@ -10,7 +10,7 @@ function setupTriggers(){
 }
 
 function doGet() {
-  return HtmlService.createHtmlOutputFromFile("index")
+  return HtmlService.createHtmlOutputFromFile("index").setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
       .setFaviconUrl(faviconUrl)
       .setTitle("Panam")
       .addMetaTag('viewport', 'width=device-width, initial-scale=1')
