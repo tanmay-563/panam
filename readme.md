@@ -28,6 +28,8 @@ A demo of the web app can be found at: https://panam-demo.akshayxml.com
 - **Enhanced Privacy:** As the application is integrated with Google Sheets, it uses the user's Google account for authentication. This ensures that all data remains private and accessible only to the user, leveraging Google's robust security measures.
 - **Historical Graph:** See how your portfolio has grown over time.
 - **Capital Gains Calculator:** Check out how much capital gains tax will be applied on each of your investment.
+- **Redemption Calculator:** Check how much money you will receive upon redeeming certain units, and how much your invested amount will decrease as a result.
+- **Cost-Per-Day Calculator:** Check out how much a product has cost you on a per-day basis.
 
 ## Getting Started
 
