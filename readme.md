@@ -1,6 +1,13 @@
+<div align="center">
+
+# Panam
+
+![logo.png](./public/panam-banner.jpg)
+</div>
+
 # Table of Contents
 
-- [Panam](#panam)
+- [About](#about)
 - [Demo](#demo)
 - [Features](#features)
 - [Getting Started](#getting-started)
@@ -8,10 +15,7 @@
    - [Installation](#installation)
    - [Getting Started with Development](#getting-started-with-development)
 
-# Panam
-
-![logo.png](./public/panam-banner.jpg)
-
+## About
 Welcome to Panam! This web app built using Google Apps Script uses Google Sheets to help you manage and track your investments. It allows for easy visualization, performance analysis, and easy management of your investment portfolio, all while ensuring your data remains private and secure.
 
 ## Demo
