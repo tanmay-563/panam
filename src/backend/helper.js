@@ -10,6 +10,7 @@ const updateDailyTracker = () =>{
             let instrumentCurrentTotal = 0.0, instrumentInvestedTotal = 0.0;
 
             rows.forEach(row => {
+                if (row.every(cell => cell === "" || cell === null || cell === undefined)) return;
                 row.forEach((value, index) => {
                     const header = headers[index].toLowerCase();
                     if (header === "current") instrumentCurrentTotal += value;
